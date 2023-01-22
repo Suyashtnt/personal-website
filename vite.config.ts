@@ -6,7 +6,9 @@ import type { UserConfig } from 'vite';
 
 const config: UserConfig = {
 	plugins: [
-		UnoCSS<Theme>(),
+		UnoCSS<Theme>({
+			mode: 'svelte-scoped'
+		}),
 		sveltekit()
 	]
 };
