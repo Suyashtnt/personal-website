@@ -1,1 +1,7 @@
-body { font-family: "Inter", sans-serif; }
+html {
+    background-color: var(--un-preset-theme-colors-base);
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}

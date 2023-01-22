@@ -1,0 +1,7 @@
+[personal-website]
+name = "personal-website"
+relPath = ""
+subsystem = "nodejs"
+translator = "package-lock"
+installMethod = "copy"
+builder = "strict-builder"
