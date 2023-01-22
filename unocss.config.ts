@@ -8,19 +8,15 @@ const createTheme = (colors: Labels<Color, AlphaColor>)=> Object.fromEntries(Obj
 
 export default defineConfig<Theme>({
     theme: {
-        colors: createTheme(variants.latte)
+        colors: {
+            light: createTheme(variants.latte),
+            dark: createTheme(variants.mocha)
+        }
     },
     extractors: [extractorSvelte],
     presets: [
         presetUno({
             dark: 'media',
         }),
-        presetTheme<Theme>({
-            theme: {
-                dark: {
-                    colors: createTheme(variants.mocha)
-                }
-            }
-        })
     ]
 })

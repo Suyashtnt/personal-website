@@ -3,7 +3,7 @@
     import '@fontsource/inter'
 </script>
 
-<main class="flex flex-col h-full bg-base text-text">
+<main class="flex flex-col h-full bg-light-base text-light-text dark:bg-dark-base dark:text-dark-text">
     <slot />
 </main>
 
