@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Hero from './Hero.svelte'
-	import TagCloud from './TagCloud.svelte';
+	import Hero from './Hero.svelte';
+	import Interests from './Interests.svelte';
 </script>
 
 <Hero />
-<TagCloud />
+<Interests />

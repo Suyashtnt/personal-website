@@ -37,6 +37,7 @@
 		"@fontsource/inter": "^4.5.15",
 		"animejs": "^3.2.1",
 		"atropos": "^1.0.2",
+		"svelte-typewriter": "^3.1.4",
 		"TagCloud": "^2.3.2"
 	}
 }
