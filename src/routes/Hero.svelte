@@ -114,22 +114,23 @@
 			</div>
 		</Atropos>
 		<div class="flex-grow">
-			<h1 class="text-8xl leading-30">
-				Hi,
-				<br />
-				I'm
-				<span class="names ml-4">
-					<span class="name-1 inline-block absolute">TNTMan1671</span>
-					<span class="name-2 inline-block opacity-0 absolute">Suyashtnt</span>
-					<span class="name-3 inline-block opacity-0 absolute">TNT Man Inc</span>
-					<span class="name-4 inline-block opacity-0 absolute">A badly drawn wobbler</span>
+			<h1 class="text-8xl leading-30 text-center md:text-left">
+				Hi, I'm
+				<br>
+				<span class="names">
+					<span class="name-1 inline-block">TNT<wbr>Man<wbr>1671</span>
+					<span class="name-2 inline-block opacity-0">Suyash<wbr>tnt</span>
+					<span class="name-3 inline-block opacity-0">TNT Man Inc</span>
+					<span class="name-4 inline-block opacity-0">A badly drawn wobbler</span>
 				</span>
 
-				<h2 class="text-5xl mt-0 flex justify-start gap-[1ch] leading-0">
+				<h2 class="text-5xl mt-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0">
 					<p
 						class="student"
 						on:mouseenter={() => animateWord('student')}
+						on:touchstart={() => animateWord('student')}
 						on:mouseleave={() => endAnimateWord('student')}
+						on:touchend={() => endAnimateWord('student')}
 					>
 						{#each 'Student'.split('') as letter}
 							<span class="letter inline-block">{letter}</span>
@@ -139,7 +140,9 @@
 					<p
 						class="programmer"
 						on:mouseenter={() => animateWord('programmer')}
+						on:touchstart={() => animateWord('programmer')}
 						on:mouseleave={() => endAnimateWord('programmer')}
+						on:touchend={() => endAnimateWord('programmer')}
 					>
 						<a
 							href="https://github.com/Suyashtnt"
@@ -161,7 +164,9 @@
 					<p
 						class="gamer"
 						on:mouseenter={() => animateWord('gamer')}
+						on:touchstart={() => animateWord('gamer')}
 						on:mouseleave={() => endAnimateWord('gamer')}
+						on:touchend={() => endAnimateWord('gamer')}
 					>
 						<a
 							href="https://github.com/Suyashtnt"
@@ -214,5 +219,13 @@
 		display: block;
 		width: calc(155% + 1.3px);
 		height: 180px;
+	}
+
+	.names {
+		display: grid;
+	}
+	.names > * {
+		grid-row: 1;
+		grid-column: 1;
 	}
 </style>
