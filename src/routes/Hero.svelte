@@ -97,7 +97,7 @@
 	}
 </script>
 
-<section class="bg-light-base dark:bg-dark-base">
+<section class="relative bg-light-base dark:bg-dark-base">
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
 		<Atropos class="rounded-xl mx-8 mt-8 ">
 			<!-- placeholder image here -->
