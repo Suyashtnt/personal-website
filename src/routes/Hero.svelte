@@ -116,15 +116,17 @@
 		<div class="flex-grow">
 			<h1 class="text-8xl leading-30 text-center md:text-left">
 				Hi, I'm
-				<br>
+				<br />
 				<span class="names">
-					<span class="name-1 inline-block">TNT<wbr>Man<wbr>1671</span>
-					<span class="name-2 inline-block opacity-0">Suyash<wbr>tnt</span>
+					<span class="name-1 inline-block">TNT<wbr />Man<wbr />1671</span>
+					<span class="name-2 inline-block opacity-0">Suyash<wbr />tnt</span>
 					<span class="name-3 inline-block opacity-0">TNT Man Inc</span>
 					<span class="name-4 inline-block opacity-0">A badly drawn wobbler</span>
 				</span>
 
-				<h2 class="text-5xl mt-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0">
+				<h2
+					class="text-5xl mt-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0"
+				>
 					<p
 						class="student"
 						on:mouseenter={() => animateWord('student')}
@@ -154,9 +156,9 @@
 							"
 						>
 							{#each 'Programmer'.split('') as letter}
-								<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue"
-									>{letter}</span
-								>
+								<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue">
+									{letter}
+								</span>
 							{/each}
 						</a>
 					</p>
@@ -178,9 +180,9 @@
 							"
 						>
 							{#each 'Gamer'.split('') as letter}
-								<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue"
-									>{letter}</span
-								>
+								<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue">
+									{letter}
+								</span>
 							{/each}
 						</a>
 					</p>
@@ -188,6 +190,7 @@
 			</h1>
 		</div>
 	</div>
+
 	<div class="wave">
 		<svg
 			data-name="Layer 1"

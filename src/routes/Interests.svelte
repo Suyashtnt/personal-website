@@ -32,11 +32,12 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 		{
 			name: 'Svelte',
 			description:
-			'Svelte is yet another javascript frontend framework, except this time it\'s actually enjoyable to use. It converts your svelte code into regular high-performance JS, which is nearly regular JS speed (slower than solidjs, though). If you want a framework to go along with it, use <a href="https://kit.svelte.dev">SvelteKit</a>.'
+				'Svelte is yet another javascript frontend framework, except this time it\'s actually enjoyable to use. It converts your svelte code into regular high-performance JS, which is nearly regular JS speed (slower than solidjs, though). If you want a framework to go along with it, use <a href="https://kit.svelte.dev">SvelteKit</a>.'
 		},
 		{
 			name: 'SolidJS',
-			description: 'SolidJS is yet another JSX frontend framework, except this time it\'s actually enjoyable to use. It converts your JSX code into regular high-performance JS, which is basically regular JS speed. Looks interesting to me, but I haven\'t used it much.'
+			description:
+				"SolidJS is yet another JSX frontend framework, except this time it's actually enjoyable to use. It converts your JSX code into regular high-performance JS, which is basically regular JS speed. Looks interesting to me, but I haven't used it much."
 		},
 		{
 			name: 'Rust',
@@ -44,9 +45,9 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 				'You ever wanted to go <span class="italic">Blazingly</span> fast, without sacrificing safety? Well, Rust now exists, and is probably the best designed language I\'ve used. It taught me a lot about good code quality and how to abuse type systems to my advantage. Currently using it for building my minecraft launcher, Glowsquid. I would like to eventually try using the unsafe/lower-level side of rust, but currently I\'m :clueless: about it.'
 		},
 		{
-			name: "Dyson Sphere Program",
+			name: 'Dyson Sphere Program',
 			description:
-				'You build a factory that eventually harnesses the power of tens of stars in space. Need I say more? If you do need me to say more, people have modded in multiplayer, custom upgrades and factory buildings, more megastructures, and overall QOL improvements. There is a reason it\'s my most played game on steam.'
+				"You build a factory that eventually harnesses the power of tens of stars in space. Need I say more? If you do need me to say more, people have modded in multiplayer, custom upgrades and factory buildings, more megastructures, and overall QOL improvements. There is a reason it's my most played game on steam."
 		}
 	];
 
