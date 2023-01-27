@@ -73,7 +73,9 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 	}
 </script>
 
-<section class="flex flex-col md:flex-row justify-around items-center bg-light-surface-0 dark:bg-dark-surface-0 py-16">
+<section
+	class="flex flex-col md:flex-row justify-around items-center bg-light-surface-0 dark:bg-dark-surface-0 py-16"
+>
 	<div class="w-1/2">
 		<h1
 			class="text-8xl mb-4 bg-gradient-to-r from-light-blue to-light-lavender dark:from-dark-blue dark:to-light-lavender h-min rounded-2xl pa-2"
