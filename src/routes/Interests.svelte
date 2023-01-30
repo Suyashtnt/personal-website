@@ -59,7 +59,7 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 			items.map((i) => i.name),
 			{
 				maxSpeed: 'fast',
-				radius: 250
+				radius: window.innerWidth < 768 ? window.innerWidth * 0.5 : window.innerWidth * 0.1
 			}
 		);
 
@@ -76,14 +76,14 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 <section
 	class="flex flex-col md:flex-row justify-around items-center bg-light-surface-0 dark:bg-dark-surface-0 py-16"
 >
-	<div class="w-1/2">
+	<div class="md:w-1/2 mx-4">
 		<h1
-			class="text-8xl mb-4 bg-gradient-to-r from-light-blue to-light-lavender dark:from-dark-blue dark:to-light-lavender h-min rounded-2xl pa-2"
+			class="text-7xl md:text-8xl mb-4 bg-gradient-to-r from-light-blue to-light-lavender dark:from-dark-blue dark:to-light-lavender h-min rounded-2xl pa-2"
 		>
 			<div
-				class="h-full w-full bg-light-surface-0 dark:bg-dark-surface-0 rounded-xl-inner box-border px-2 py-4 rounded-lg"
+				class="h-full w-full bg-light-surface-0 dark:bg-dark-surface-0 box-border px-2 py-4 rounded-lg text-center md:text-left"
 			>
-				Things I Enjoy
+				Things <wbr />I Enjoy
 			</div>
 		</h1>
 		<div class="rounded-xl bg-light-mantle dark:bg-dark-mantle pa-4 text-2xl">
@@ -99,11 +99,12 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 			</Typewriter>
 		</div>
 	</div>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div id="tagcloud" bind:this={container} on:click={handleTagCloudClick} />
 </section>
 
 <style>
 	:global(.tagcloud--item) {
-		@apply text-2xl cursor-pointer text-light-text dark-text-dark-text underline underline-light-blue dark-underline-dark-blue hover-text-3xl hover-text-light-blue dark-hover-text-dark-blue transition-all;
+		--at-apply: 'text-2xl cursor-pointer text-light-text dark-text-dark-text underline underline-light-blue dark-underline-dark-blue hover-text-3xl hover-text-light-blue dark-hover-text-dark-blue transition-all';
 	}
 </style>

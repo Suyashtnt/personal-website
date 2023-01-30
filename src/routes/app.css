@@ -17,5 +17,5 @@ body {
 }
 
 a {
-	@apply text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender;
+	--at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
 }

@@ -107,7 +107,7 @@
 				<img
 					src="https://picsum.photos/800/900"
 					alt="placeholder"
-					class="rounded-lg"
+					class="rounded-lg w-64 h-64 md:w-[400px] md:h-[450px] object-cover"
 					loading="lazy"
 					decoding="async"
 					width="400"
@@ -117,7 +117,9 @@
 		</Atropos>
 		<div class="flex-grow flex justify-between items-center">
 			<div class="h-full">
-				<h1 class="text-8xl leading-30 text-center md:text-left mb-0">
+				<h1
+					class="text-7xl md:text-8xl leading-22 md:leading-30 text-center md:text-left mb-0 px-2 md:px-0"
+				>
 					Hi, I'm
 					<br />
 					<span class="names">
@@ -190,18 +192,28 @@
 						</a>
 					</p>
 				</h2>
-				<ul class="flex flex-row gap-4 list-none pl-0 mt-0 text-3xl">
-					<li class="flex flex-row gap-2 items-center">
-						<div class="i-ic-baseline-discord h-16 w-16 text-light-blue dark:text-dark-blue" />
+				<ul
+					class="grid justify-center items-center md:grid-cols-3 gap-4 list-none pl-0 mt-0 text-3xl"
+				>
+					<li class="flex flex-row gap-2 w-min items-center">
+						<div class="i-ic-baseline-discord h-24 w-24 text-light-blue dark:text-dark-blue" />
 						A badly drawn wobbler#8550
 					</li>
-					<li class="flex flex-row gap-2 items-center">
+					<li class="flex flex-row gap-2 w-min items-center">
 						<div class="i-mdi-youtube h-16 w-16 text-light-red dark:text-dark-red" />
-						<a href="https://www.youtube.com/@tabiasgeehuman" class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text">TNT Man Inc</a>
+						<a
+							href="https://www.youtube.com/@tabiasgeehuman"
+							class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text whitespace-nowrap"
+							>TNT Man Inc</a
+						>
 					</li>
-					<li class="flex flex-row gap-2 items-center">
+					<li class="flex flex-row gap-2 w-min items-center">
 						<div class="i-mdi-github h-16 w-16 text-dark-mantle dark:text-light-mantle" />
-						<a href="https://github.com/Suyashtnt" class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text">Suyashtnt</a>
+						<a
+							href="https://github.com/Suyashtnt"
+							class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
+							>Suyashtnt</a
+						>
 					</li>
 				</ul>
 			</div>

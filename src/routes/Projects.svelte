@@ -16,15 +16,15 @@
 	];
 </script>
 
-<section class="bg-light-base dark:bg-dark-base mx-24">
+<section class="bg-light-base dark:bg-dark-base lg:mx-24">
 	<h1
-		class="pb-2 text-8xl bg-gradient-to-br from-light-sapphire via-light-lavender to-light-mauve dark:from-dark-sapphire dark:via-dark-lavender dark:to-dark-mauve bg-clip-text text-transparent w-min"
+		class="pb-2 text-7xl w-full md:w-min text-center md:text-right md:text-8xl bg-gradient-to-br from-light-sapphire via-light-lavender to-light-mauve dark:from-dark-sapphire dark:via-dark-lavender dark:to-dark-mauve bg-clip-text text-transparent"
 	>
 		Projects
 	</h1>
 
 	<div
-		class="pa-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 rounded-xl bg-gradient-to-br from-light-blue via-light-lavender to-light-red dark:from-dark-blue dark:from-dark-lavender dark:to-dark-red"
+		class="pa-4 lg:pa-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 lg:rounded-xl bg-gradient-to-br from-light-blue via-light-lavender to-light-red dark:from-dark-blue dark:from-dark-lavender dark:to-dark-red"
 	>
 		{#each projects as project}
 			<a href={project.url} class="contents decoration-none text-light-text dark:text-dark-text">

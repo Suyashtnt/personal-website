@@ -1,5 +1,11 @@
 import { variants, type Labels, type Color, type AlphaColor } from '@catppuccin/palette';
-import { defineConfig, extractorSvelte, presetIcons, presetUno, transformerDirectives } from 'unocss';
+import {
+	defineConfig,
+	extractorSvelte,
+	presetIcons,
+	presetUno,
+	transformerDirectives
+} from 'unocss';
 import type { Theme } from 'unocss/preset-uno';
 
 // get the hex value of the color, and then set the color to the hex value
@@ -30,7 +36,7 @@ export default defineConfig<Theme>({
 	extractors: [extractorSvelte],
 	transformers: [transformerDirectives()],
 	presets: [
-    	presetIcons(),
+		presetIcons(),
 		presetUno({
 			dark: 'media'
 		})
