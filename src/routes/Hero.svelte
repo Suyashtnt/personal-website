@@ -108,24 +108,27 @@
 					src="https://picsum.photos/800/900"
 					alt="placeholder"
 					class="rounded-lg"
+					loading="lazy"
+					decoding="async"
 					width="400"
 					height="450"
 				/>
 			</div>
 		</Atropos>
-		<div class="flex-grow">
-			<h1 class="text-8xl leading-30 text-center md:text-left">
-				Hi, I'm
-				<br />
-				<span class="names">
-					<span class="name-1 inline-block">TNT<wbr />Man<wbr />1671</span>
-					<span class="name-2 inline-block opacity-0">Suyash<wbr />tnt</span>
-					<span class="name-3 inline-block opacity-0">TNT Man Inc</span>
-					<span class="name-4 inline-block opacity-0">A badly drawn wobbler</span>
-				</span>
-
+		<div class="flex-grow flex justify-between items-center">
+			<div class="h-full">
+				<h1 class="text-8xl leading-30 text-center md:text-left mb-0">
+					Hi, I'm
+					<br />
+					<span class="names">
+						<span class="name-1 inline-block">TNT<wbr />Man<wbr />1671</span>
+						<span class="name-2 inline-block opacity-0">Suyash<wbr />tnt</span>
+						<span class="name-3 inline-block opacity-0">TNT Man Inc</span>
+						<span class="name-4 inline-block opacity-0">A badly drawn wobbler</span>
+					</span>
+				</h1>
 				<h2
-					class="text-5xl mt-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0"
+					class="text-5xl my-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0"
 				>
 					<p
 						class="student"
@@ -171,7 +174,7 @@
 						on:touchend={() => endAnimateWord('gamer')}
 					>
 						<a
-							href="https://github.com/Suyashtnt"
+							href="https://steamcommunity.com/id/suyashtnt123"
 							class="
 								flex group
 								text-light-text dark:text-dark-text
@@ -187,7 +190,21 @@
 						</a>
 					</p>
 				</h2>
-			</h1>
+				<ul class="flex flex-row gap-4 list-none pl-0 mt-0 text-3xl">
+					<li class="flex flex-row gap-2 items-center">
+						<div class="i-ic-baseline-discord h-16 w-16 text-light-blue dark:text-dark-blue" />
+						A badly drawn wobbler#8550
+					</li>
+					<li class="flex flex-row gap-2 items-center">
+						<div class="i-mdi-youtube h-16 w-16 text-light-red dark:text-dark-red" />
+						<a href="https://www.youtube.com/@tabiasgeehuman" class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text">TNT Man Inc</a>
+					</li>
+					<li class="flex flex-row gap-2 items-center">
+						<div class="i-mdi-github h-16 w-16 text-dark-mantle dark:text-light-mantle" />
+						<a href="https://github.com/Suyashtnt" class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text">Suyashtnt</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 

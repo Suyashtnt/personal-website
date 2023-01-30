@@ -18,7 +18,15 @@
 		background-size: cover;
 	}
 
-	.interests-to-projects {
-		background-image: url('./interestsToProjects.svg');
+	@media (prefers-color-scheme: dark) {
+		.interests-to-projects {
+			background-image: url('./interestsToProjectsDark.svg');
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		.interests-to-projects {
+			background-image: url('./interestsToProjectsLight.svg');
+		}
 	}
 </style>
