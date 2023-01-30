@@ -24,7 +24,7 @@
 	</h1>
 
 	<div
-		class="pa-4 lg:pa-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 lg:rounded-xl bg-gradient-to-br from-light-blue via-light-lavender to-light-red dark:from-dark-blue dark:from-dark-lavender dark:to-dark-red"
+		class="pa-4 lg:pa-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 lg:rounded-xl bg-gradient-to-br from-light-blue via-light-lavender to-light-red dark:from-dark-blue dark:from-dark-lavender dark:to-dark-red"
 	>
 		{#each projects as project}
 			<a href={project.url} class="contents decoration-none text-light-text dark:text-dark-text">
@@ -32,9 +32,9 @@
 					<div
 						class="
 							h-min rounded-2xl pa-2
-							bg-gradient-to-br from-light-blue to-light-lavender dark:from-dark-blue dark:to-light-lavender
+							bg-gradient-to-tl from-light-blue to-light-lavender dark:from-dark-blue dark:to-light-lavender
 							transition-colors
-							group-hover:from-light-sapphire group-hover:to-light-mauve dark:group-hover:from-dark-sapphire dark:group-hover:to-dark-mauve
+							group-hover:bg-gradient-to-br group-hover:from-light-sapphire group-hover:to-light-mauve dark:group-hover:from-dark-sapphire dark:group-hover:to-dark-mauve
 						"
 					>
 						<div

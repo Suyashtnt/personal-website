@@ -12,7 +12,8 @@
 			autoplay: true,
 			rotate: () => anime.random(-30, 30),
 			translateX: () => anime.random(30, 30),
-			translateY: () => anime.random(-30, 30)
+			translateY: () => anime.random(-30, 30),
+			scale: () => anime.random(0.9, 1.1),
 		});
 	}
 
@@ -24,7 +25,8 @@
 			autoplay: true,
 			rotate: 0,
 			translateX: 0,
-			translateY: 0
+			translateY: 0,
+			scale: 1,
 		});
 	}
 
