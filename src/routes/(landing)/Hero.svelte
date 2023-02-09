@@ -119,6 +119,7 @@
 						class="rounded-lg object-cover"
 						width={width}
 						height={height}
+						rel="me"
 						alt="a contemporary portrait of me"
 					>
 				</picture>
@@ -162,6 +163,7 @@
 					>
 						<a
 							href="https://github.com/Suyashtnt"
+							rel="me"
 							class="
 								flex group
 								text-light-text dark:text-dark-text
@@ -186,6 +188,7 @@
 					>
 						<a
 							href="https://steamcommunity.com/id/suyashtnt123"
+							rel="me"
 							class="
 								flex group
 								text-light-text dark:text-dark-text
