@@ -19,13 +19,13 @@
 
 	@media (prefers-color-scheme: dark) {
 		.interests-to-projects {
-			background-image: url('./interestsToProjectsDark.svg');
+			background-image: url('$lib/pictures/interestsToProjectsDark.svg');
 		}
 	}
 
 	@media (prefers-color-scheme: light) {
 		.interests-to-projects {
-			background-image: url('./interestsToProjectsLight.svg');
+			background-image: url('$lib/pictures/interestsToProjectsLight.svg');
 		}
 	}
 </style>

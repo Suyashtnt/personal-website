@@ -3,6 +3,12 @@
 	import Atropos from 'atropos/svelte';
 	import anime from 'animejs';
 	import { browser } from '$app/environment';
+	// import 3 different sizes of the image and create a srcset from them
+	import faceSrcsetAvif from '$lib/pictures/face.png?w=300;500;700;900;1200&avif&srcset'
+	// do it a second time, but now as webp since safari can't display avif
+	import faceSrcsetWebp from '$lib/pictures/face.png?w=300;500;700;900;1200&webp&srcset'
+	// create a small placeholder and import its metadata
+	import { src as facePlaceholder, width, height } from '$lib/pictures/face.png?width=300&metadata'
 
 	function animateWord(word: 'student' | 'programmer' | 'gamer') {
 		anime.remove(`.${word} .letter`);
@@ -102,19 +108,20 @@
 <section class="relative bg-light-base dark:bg-dark-base">
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
 		<Atropos class="rounded-xl mx-8 mt-8 ">
-			<!-- placeholder image here -->
 			<div
 				class="flex content-center justify-center pa-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
 			>
-				<img
-					src="https://picsum.photos/800/900"
-					alt="placeholder"
-					class="rounded-lg w-64 h-64 md:w-[400px] md:h-[450px] object-cover"
-					loading="lazy"
-					decoding="async"
-					width="400"
-					height="450"
-				/>
+				<picture>
+					<source scrset={faceSrcsetAvif} type="image/avif"/>
+					<source srcset={faceSrcsetWebp} type="image/webp"/>
+					<img
+						src={facePlaceholder}
+						class="rounded-lg object-cover"
+						width={width}
+						height={height}
+						alt="a contemporary portrait of me"
+					>
+				</picture>
 			</div>
 		</Atropos>
 		<div class="flex-grow flex justify-between items-center">
