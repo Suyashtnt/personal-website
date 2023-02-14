@@ -59,7 +59,7 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 			items.map((i) => i.name),
 			{
 				maxSpeed: 'fast',
-				radius: window.innerWidth < 768 ? window.innerWidth * 0.5 : window.innerWidth * 0.1
+				radius: window.innerWidth < 768 ? window.innerWidth * 0.5 : window.innerWidth * 0.15
 			}
 		);
 
@@ -75,6 +75,7 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 
 <section
 	class="flex flex-col md:flex-row justify-around items-center bg-light-surface-0 dark:bg-dark-surface-0 py-16"
+	id="about"
 >
 	<div class="md:w-1/2 mx-4">
 		<h1
@@ -83,13 +84,13 @@ ULTRAKILL is one of the games of all time. Go to <a href="https://devilmayquake.
 			<div
 				class="h-full w-full bg-light-surface-0 dark:bg-dark-surface-0 box-border px-2 py-4 rounded-lg text-center md:text-left"
 			>
-				Things <wbr />I Enjoy
+				About Me
 			</div>
 		</h1>
 		<div class="rounded-xl bg-light-mantle dark:bg-dark-mantle pa-4 text-2xl">
 			<Typewriter>
 				<h2>
-					{selectedOpt?.name ?? 'Click a tag to learn more'}
+					{selectedOpt?.name ?? 'This whole section is getting reworked soon'}
 				</h2>
 			</Typewriter>
 			<Typewriter interval={2} mode="cascade">

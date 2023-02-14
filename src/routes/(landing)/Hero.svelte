@@ -105,7 +105,7 @@
 	}
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base">
+<section class="relative bg-light-base dark:bg-dark-base" id="landing">
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
 		<Atropos class="rounded-xl mx-8 mt-8 ">
 			<div

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Hero from './Hero.svelte';
-	import Interests from './Interests.svelte';
+	import About from './About.svelte';
 	import Projects from './Projects.svelte';
 </script>
 
 <Hero />
-<Interests />
+<About />
 <div class="spacer interests-to-projects" />
 <Projects />
 

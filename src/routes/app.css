@@ -19,3 +19,7 @@ body {
 a {
 	--at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
 }
+
+html, body {
+	scroll-behavior: smooth;
+}
