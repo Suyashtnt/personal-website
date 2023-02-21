@@ -1,7 +1,7 @@
 <script lang="ts">
 	import 'atropos/css';
 	import Atropos from 'atropos/svelte';
-	import anime from 'animejs';
+	import anime, { remove, random, timeline } from 'animejs';
 	import { browser } from '$app/environment';
 	// import 3 different sizes of the image and create a srcset from them
 	import faceSrcsetAvif from '$lib/pictures/face.png?w=300;500;700;900;1200&avif&srcset'
@@ -11,20 +11,20 @@
 	import { src as facePlaceholder, width, height } from '$lib/pictures/face.png?width=300&metadata'
 
 	function animateWord(word: 'student' | 'programmer' | 'gamer') {
-		anime.remove(`.${word} .letter`);
+		remove(`.${word} .letter`);
 
 		anime({
 			targets: `.${word} .letter`,
 			autoplay: true,
-			rotate: () => anime.random(-30, 30),
-			translateX: () => anime.random(30, 30),
-			translateY: () => anime.random(-30, 30),
-			scale: () => anime.random(0.9, 1.1),
+			rotate: () => random(-30, 30),
+			translateX: () => random(30, 30),
+			translateY: () => random(-30, 30),
+			scale: () => random(0.9, 1.1),
 		});
 	}
 
 	function endAnimateWord(word: 'student' | 'programmer' | 'gamer') {
-		anime.remove(`.${word} .letter`);
+		remove(`.${word} .letter`);
 
 		anime({
 			targets: `.${word} .letter`,
@@ -44,8 +44,7 @@
 		const durationOut = 600;
 		const delay = 1000;
 
-		anime
-			.timeline({ loop: true, autoplay: true })
+		timeline({ loop: true, autoplay: true })
 			.add({
 				targets: `.names .name-1`,
 				opacity: opacityIn,
@@ -112,14 +111,13 @@
 				class="flex content-center justify-center pa-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
 			>
 				<picture>
-					<source scrset={faceSrcsetAvif} type="image/avif"/>
+					<source srcset={faceSrcsetAvif} type="image/avif"/>
 					<source srcset={faceSrcsetWebp} type="image/webp"/>
 					<img
 						src={facePlaceholder}
 						class="rounded-lg object-cover"
 						width={width}
 						height={height}
-						rel="me"
 						alt="a contemporary portrait of me"
 					>
 				</picture>
