@@ -1,13 +1,23 @@
 <script lang="ts">
     import { page } from "$app/stores";
+	import { observers } from "$lib/autohash";
     let selected: 'landing' | 'about' | 'projects' | 'contact' = 'landing';
 
     $: if($page) {
         switch($page.url.hash) {
             case '#landing': selected = 'landing'; break;
             case '#about': selected = 'about'; break;
+            case '#projects': selected = 'projects'; break;
             default: selected = 'landing';
         }
+    }
+
+    const onNavigate = () => {
+        $observers.forEach(observer => observer.observer.disconnect());
+
+        setTimeout(() => {
+            $observers.forEach(observer => observer.observer.observe(observer.target));
+        }, 1000);
     }
 </script>
 
@@ -24,13 +34,17 @@
     >
         <h1>TNTMAN_1671</h1>
         <div class="text-2xl text-center">
-            <a href="#landing" data-selected={selected === 'landing'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text">
+            <a href="#landing" data-selected={selected === 'landing'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
                 <span class="anicon">M</span>
                 Landing
             </a>
-            <a href="#about" data-selected={selected === 'about'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text">
+            <a href="#about" data-selected={selected === 'about'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
                 <span class="anicon">M</span>
                 About
+            </a>
+            <a href="#projects" data-selected={selected === 'projects'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                <span class="anicon">M</span>
+                Projects
             </a>
         </div>
     </div>
@@ -41,17 +55,13 @@
         font-family: "Anicons Regular", sans-serif;
         font-variation-settings: "TIME" 100;
         transition: all 0.1s cubic-bezier(0.64, 0.57, 0.67, 1.53);
-        /* hidden by default */
-        opacity: 0;
     }
 
     a:hover .anicon {
         font-variation-settings: "TIME" 1;
-        opacity: 100;
     }
 
     a[data-selected="true"] .anicon {
         font-variation-settings: "TIME" 1;
-        opacity: 100;
     }
 </style>

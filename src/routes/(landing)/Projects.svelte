@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { autoHash } from '$lib/autohash';
 	import Atropos from 'atropos/svelte';
 
 	interface Project {
@@ -16,7 +17,7 @@
 	];
 </script>
 
-<section class="bg-light-base dark:bg-dark-base lg:mx-24">
+<section class="bg-light-base dark:bg-dark-base lg:mx-24" id="projects" use:autoHash>
 	<h1
 		class="pb-2 text-7xl w-full md:w-min text-center md:text-right md:text-8xl bg-gradient-to-br from-light-sapphire via-light-lavender to-light-mauve dark:from-dark-sapphire dark:via-dark-lavender dark:to-dark-mauve bg-clip-text text-transparent"
 	>

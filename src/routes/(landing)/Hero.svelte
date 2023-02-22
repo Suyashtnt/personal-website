@@ -1,7 +1,10 @@
 <script lang="ts">
 	import 'atropos/css';
 	import Atropos from 'atropos/svelte';
-	import anime, { remove, random, timeline } from 'animejs';
+
+	import anime  from 'animejs';
+	const{ remove, random, timeline } = anime;
+
 	import { browser } from '$app/environment';
 	// import 3 different sizes of the image and create a srcset from them
 	import faceSrcsetAvif from '$lib/pictures/face.png?w=300;500;700;900;1200&avif&srcset'
@@ -9,6 +12,7 @@
 	import faceSrcsetWebp from '$lib/pictures/face.png?w=300;500;700;900;1200&webp&srcset'
 	// create a small placeholder and import its metadata
 	import { src as facePlaceholder, width, height } from '$lib/pictures/face.png?width=300&metadata'
+	import { autoHash } from '$lib/autohash';
 
 	function animateWord(word: 'student' | 'programmer' | 'gamer') {
 		remove(`.${word} .letter`);
@@ -104,7 +108,7 @@
 	}
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base" id="landing">
+<section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash>
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
 		<Atropos class="rounded-xl mx-8 mt-8 ">
 			<div
