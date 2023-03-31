@@ -1,13 +1,12 @@
 <script lang="ts">
     import { page } from "$app/stores";
 	import { observers } from "$lib/autohash";
-    let selected: 'landing' | 'about' | 'projects' | 'contact' = 'landing';
+    let selected: 'landing' | 'about' | 'contact' = 'landing';
 
     $: if($page) {
         switch($page.url.hash) {
             case '#landing': selected = 'landing'; break;
             case '#about': selected = 'about'; break;
-            case '#projects': selected = 'projects'; break;
             default: selected = 'landing';
         }
     }
@@ -42,9 +41,9 @@
                 <span class="anicon">M</span>
                 About
             </a>
-            <a href="#projects" data-selected={selected === 'projects'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+            <a href="#contact" data-selected={selected === 'contact'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
                 <span class="anicon">M</span>
-                Projects
+                Contact
             </a>
         </div>
     </div>

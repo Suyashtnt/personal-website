@@ -1,5 +1,9 @@
 <script lang="ts">
 	import { autoHash } from '$lib/autohash';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import Projects from './Projects.svelte';
+	import { fly } from 'svelte/transition';
 
 	const sections = [
 		{
@@ -11,11 +15,17 @@
 			id: 'games',
 		},
 		{
-			name: 'Sample Text',
-			id: 'sample-text',
+			name: 'Projects',
+			id: 'projects',
 		},
 	] as const;
-	let selectedSection: typeof sections[number]['id'] = 'skills';
+	const sectionIDs = sections.map((section) => section.id);
+	type sectionID = typeof sectionIDs[number];
+
+	// check if $page.url.hash is a valid section
+	$: parsedHash = $page.url.hash.slice(1) in sectionIDs ? $page.url.hash.slice(1) as unknown as sectionID : null;
+
+	$: selectedSection = parsedHash || 'skills';
 
 	$: sectionsWithSelected = sections.map((section) => ({
 		...section,
@@ -23,35 +33,57 @@
 	}));
 </script>
 
-<section
-	class="flex flex-col md:flex-row justify-around items-center bg-light-surface-0 dark:bg-dark-surface-0 py-16"
+<div
+	class="
+		flex flex-col justify-around items-center gap-16 py-16
+		bg-light-surface-0 dark:bg-dark-surface-0
+		"
 	id="about"
 	use:autoHash
 >
 	<div class="flex justify-around w-full">
 		{#each sectionsWithSelected as section}
-		<button
+		<a
 			class="
-				text-7xl
-				bg-gradient-to-tr from-light-sapphire to-light-lavender dark:from-dark-sapphire dark:to-light-lavender
-				bg-clip-text text-transparent
+				text-7xl px-4 pt-3 pb-5
 				rounded-xl border-none hover:cursor-pointer
+				bg-clip-text text-transparent visited:text-transparent
+				bg-gradient-to-tr
+				from-light-blue to-light-sapphire
+				dark:from-dark-blue dark:to-dark-sapphire
 			"
 			class:bg-clip-unset={section.selected}
-			class:text-light-text={section.selected}
-			class:dark-text-dark-text={section.selected}
-			on:click={() => {
+
+			class:text-light-surface-0={section.selected}
+			class:dark-text-dark-surface-0={section.selected}
+
+			class:visited-text-surface-0={section.selected}
+			class:visited-dark-text-dark-surface-0={section.selected}
+
+			id={section.id}
+			href={`#${section.id}`}
+			on:click|preventDefault={() => {
 				selectedSection = section.id;
+				goto(`#${section.id}`, { noScroll: true });
 			}}
 		>
 			{section.name}
-		</button>
+		</a>
 		{/each}
 	</div>
-</section>
-
-<style>
-	:global(.tagcloud--item) {
-		--at-apply: 'text-2xl cursor-pointer text-light-text dark-text-dark-text underline underline-light-blue dark-underline-dark-blue hover-text-3xl hover-text-light-blue dark-hover-text-dark-blue transition-all';
-	}
-</style>
+	<div class="w-full h-full">
+			{#if selectedSection === 'skills'}
+				<section class="lg:mx-24" in:fly={{ x: '-100%' }} out:fly={{ x: '100%' }}>
+					TODO: skills
+				</section>
+			{:else if selectedSection === 'games'}
+				<section class="lg:mx-24" in:fly={{ x: '-100%' }} out:fly={{ x: '100%' }}>
+					TODO: games
+				</section>
+			{:else if selectedSection === 'projects'}
+				<section class="lg:mx-24" in:fly={{ x: '-100%' }} out:fly={{ x: '100%' }}>
+						<Projects />
+				</section>
+			{/if}
+	</div>
+</div>

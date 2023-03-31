@@ -15,7 +15,6 @@ export const autoHash: Action<HTMLElement> = (node) => {
 
         if (entry) {
             const id = entry.target.id;
-            console.log(`autohash: ${id}`);
             goto(`#${id}`, { replaceState: true, noScroll: true });
         }
     };
