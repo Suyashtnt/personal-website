@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { autoHash } from '$lib/autohash';
 	import Atropos from 'atropos/svelte';
 
 	interface Project {
@@ -13,6 +12,26 @@
 			name: 'Commafiles',
 			description: 'My NixOS system configuration.',
 			url: 'https://github.com/Suyashtnt/commafiles'
+		},
+		{
+			name: 'Glowsquid',
+			description: '[WIP] Next-gen minecraft launcher.',
+			url: 'https://github.com/Glowsquid-launcher/glowsquid-new'
+		},
+		{
+			name: 'Copper',
+			description: 'Rust library for launching minecraft. Used in glowsquid.',
+			url: 'https://github.com/Glowsquid-launcher/copper'
+		},
+		{
+			name: '37 Ocean Breeze',
+			description: 'Where happiness comes in waves.',
+			url: 'https://37oceanbreeze.co.za'
+		},
+		{
+			name: 'Chesscord',
+			description: '[WIP] Chess bot for discord.',
+			url: 'https://github.com/Suyashtnt/discord-chess-2'
 		}
 	];
 </script>
@@ -20,7 +39,7 @@
 <div
 	class="
 		pa-4 rounded-xl
-		grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4
+		grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4
 		bg-gradient-to-br
 		from-light-blue via-light-lavender to-light-red
 		dark:from-dark-blue dark:from-dark-lavender dark:to-dark-red
@@ -49,7 +68,7 @@
 						>
 							<h2
 								class="
-								text-5xl mb-0
+								text-5xl mb-0 text-center
 								transition-all
 								group-hover:bg-gradient-to-br from-light-sapphire via-light-lavender to-light-mauve dark:from-dark-sapphire dark:via-dark-lavender dark:to-dark-mauve text-light-text dark:text-dark-text group-hover:bg-clip-text group-hover:text-transparent
 								group-hover:tracking-wide group-hover:text-6xl
@@ -59,7 +78,7 @@
 								{project.name}
 							</h2>
 							<p
-								class="text-2xl text-center text-light-text dark:text-dark-text transition-all group-hover:text-4xl"
+								class="text-2xl text-center text-light-text dark:text-dark-text transition-all group-hover:text-3xl"
 							>
 								{project.description}
 							</p>
