@@ -5,8 +5,8 @@
 
 <Hero />
 <About />
-<!-- <div class="spacer interests-to-projects" />
-<Projects /> -->
+<div class="spacer about-to-blog" />
+<!-- <Contact /> -->
 
 <style>
 	.spacer {
@@ -17,13 +17,13 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
-		.interests-to-projects {
+		.about-to-blog {
 			background-image: url('$lib/pictures/interestsToProjectsDark.svg');
 		}
 	}
 
 	@media (prefers-color-scheme: light) {
-		.interests-to-projects {
+		.about-to-blog {
 			background-image: url('$lib/pictures/interestsToProjectsLight.svg');
 		}
 	}

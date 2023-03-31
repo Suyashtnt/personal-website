@@ -4,6 +4,7 @@
 	import { goto } from '$app/navigation';
 	import Projects from './Projects.svelte';
 	import { fly } from 'svelte/transition';
+	import Skills from './Skills.svelte';
 
 	const sections = [
 		{
@@ -73,16 +74,16 @@
 	</div>
 	<div class="w-full h-full">
 			{#if selectedSection === 'skills'}
-				<section class="lg:mx-24" in:fly={{ x: '-100%' }} out:fly={{ x: '100%' }}>
-					TODO: skills
+				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
+					<Skills />
 				</section>
 			{:else if selectedSection === 'games'}
-				<section class="lg:mx-24" in:fly={{ x: '-100%' }} out:fly={{ x: '100%' }}>
+				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
 					TODO: games
 				</section>
 			{:else if selectedSection === 'projects'}
-				<section class="lg:mx-24" in:fly={{ x: '-100%' }} out:fly={{ x: '100%' }}>
-						<Projects />
+				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
+					<Projects />
 				</section>
 			{/if}
 	</div>

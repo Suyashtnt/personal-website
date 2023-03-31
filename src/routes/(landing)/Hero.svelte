@@ -110,18 +110,18 @@
 
 <section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash>
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
-		<Atropos class="rounded-xl mx-8 mt-8 ">
+		<Atropos class="rounded-xl mx-8 mt-8 group rounded-xl">
 			<div
-				class="flex content-center justify-center pa-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
+				class="flex content-center justify-center transition-all pa-2 group-hover:pa-0 group-hover:ma-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
 			>
-				<picture>
+				<picture class="object-cover transition-all group-hover:scale-105">
 					<source srcset={faceSrcsetAvif} type="image/avif"/>
 					<source srcset={faceSrcsetWebp} type="image/webp"/>
 					<img
 						src={facePlaceholder}
-						class="rounded-lg object-cover"
 						width={width}
 						height={height}
+						class="rounded-lg"
 						alt="a contemporary portrait of me"
 					>
 				</picture>
