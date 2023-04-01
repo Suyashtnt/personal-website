@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { flip } from 'svelte/animate';
-	import { fly } from 'svelte/transition';
+	import { fly, slide } from 'svelte/transition';
 
     interface Skill {
         /**
@@ -44,7 +44,7 @@
             experience: `
                 I've been using svelte for about 4 years now.
                 From this personal website to 37 Ocean Breeze, it's been an absolute blast to use.
-                [I should make this longer]
+                [I should make this longer, but that will come later™]
             `,
             proficiency: 'Skilled',
             type: 'Framework'
@@ -60,7 +60,6 @@
                 I've used it for a few projects, including Glowsquid, copper, and chesscord.
                 It's possibly my favorite language to use because of its sheer speed and safety guarantees.
                 I am yet to use it in some sort of production environment, nor go into its dark arts of unsafe code.
-                [I should make this longer]
             `,
             proficiency: 'Intermediate',
             type: 'Language'
@@ -74,7 +73,6 @@
             experience: `
                 I've been using TypeScript for about 5 years now. Just a few months after I started using JavaScript.
                 It makes JavaScript actually bearable to use, and I've used it for a few projects, including this website.
-                [I should make this longer]
             `,
             proficiency: 'Skilled',
             type: 'Language'
@@ -210,9 +208,11 @@
         </section>
         <!-- experience/main content -->
         <section class="text-xl mt-4">
-            <p class="my-0">
-                {selectedSkill.experience}
-            </p>
+            {#key selectedSkill}
+                <p class="my-0" in:slide={{ axis: 'y', delay: 300 }} out:slide={{ axis: 'y', duration: 300 }}>
+                    {selectedSkill.experience}
+                </p>
+            {/key}
         </section>
     </article>
 </section>

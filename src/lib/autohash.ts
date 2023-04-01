@@ -8,14 +8,13 @@ export const observers = writable<{
     target: HTMLElement;
 }[]>([]);
 
-
 export const autoHash: Action<HTMLElement> = (node) => {
-    const callback: IntersectionObserverCallback = (entries) => {
+    const callback: IntersectionObserverCallback = async (entries) => {
         const entry = entries.find(entry => entry.isIntersecting);
 
         if (entry) {
             const id = entry.target.id;
-            goto(`#${id}`, { replaceState: true, noScroll: true });
+            await goto(`#${id}`, { replaceState: true, noScroll: true });
         }
     };
 
@@ -27,8 +26,10 @@ export const autoHash: Action<HTMLElement> = (node) => {
     observers.update(observers => [...observers, { observer, target: node }]);
 
 
-    return { destroy: () => {
-        observer.disconnect();
-        observers.update(observers => observers.filter(({ target }) => target !== node));
-    } };
+    return {
+        destroy(){
+            observer.disconnect();
+            observers.update(observers => observers.filter(({ target }) => target !== node));
+        }
+    };
 }

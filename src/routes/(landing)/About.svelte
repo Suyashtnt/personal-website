@@ -5,6 +5,7 @@
 	import Projects from './Projects.svelte';
 	import { fly } from 'svelte/transition';
 	import Skills from './Skills.svelte';
+	import Games from './Games.svelte';
 
 	const sections = [
 		{
@@ -79,7 +80,7 @@
 				</section>
 			{:else if selectedSection === 'games'}
 				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
-					TODO: games
+					<Games />
 				</section>
 			{:else if selectedSection === 'projects'}
 				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
