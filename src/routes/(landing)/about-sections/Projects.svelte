@@ -78,7 +78,7 @@
 							{project.name}
 						</h2>
 						<p
-							class="text-2xl text-center text-light-text dark:text-dark-text transition-all group-hover:text-3xl"
+							class="text-2xl text-center text-light-text dark:text-dark-text"
 						>
 							{project.description}
 						</p>

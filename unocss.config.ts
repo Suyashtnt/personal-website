@@ -11,20 +11,30 @@ import type { Theme } from 'unocss/preset-uno';
 // get the hex value of the color, and then set the color to the hex value
 const createTheme = (colors: Labels<Color, AlphaColor>) => {
 	let vals = Object.fromEntries(Object.entries(colors).map(([key, value]) => [key, value.hex]));
-	vals = Object.fromEntries(
-		Object.entries(vals)
-			.map(([key, value]) => {
-				const [k, v] = key.split(/(?<=[a-z])(?=\d)/);
-				if (v) {
-					return [k, { [v]: value }];
-				} else {
-					return [key, value];
+	vals = Object.entries(vals)
+		// turn overlay0, overlay1 into an object, containing {
+		//   '0': '#000000',
+		//   '1': '#000000'
+		// }
+		// so that we can use overlay-0 and overlay-1 in the theme
+		// do the same for all that contain numbers
+		.reduce((acc, [key, value]) => {
+			const match = key.match(/^(?<name>.+?)(?<num>\d+)$/);
+			if (match?.groups) {
+				const { name, num } = match.groups;
+				if (!acc[name]) {
+					acc[name] = {};
 				}
-			})
-			.filter(([key]) => key)
-	);
+				acc[name][num] = value;
+				return acc;
+			}
+			acc[key] = value;
+			return acc;
+		}, {} as Record<string, string | Record<string, string>>);
 	return vals;
 };
+
+console.log(createTheme(variants.latte));
 
 export default defineConfig<Theme>({
 	theme: {

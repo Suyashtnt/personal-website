@@ -47,6 +47,19 @@
                 [I should make this longer, but that will come later™]
             `,
             proficiency: 'Skilled',
+            type: 'Frontend'
+        },
+        {
+            name: 'Deno',
+            description: 'The easiest, most secure JavaScript runtime.',
+            icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Deno_2021.svg',
+            iconAlt: 'Deno Logo',
+            url: 'https://deno.land/',
+            experience: `
+                I've been using Deno for about 2 years now, although only basic scripts.
+                I'm yet to use it for anything big, but it seems like a great alternative to Node.js.
+            `,
+            proficiency: 'Beginner',
             type: 'Framework'
         },
         {
@@ -77,19 +90,6 @@
             proficiency: 'Skilled',
             type: 'Language'
         },
-        {
-            name: 'Deno',
-            description: 'The easiest, most secure JavaScript runtime.',
-            icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Deno_2021.svg',
-            iconAlt: 'Deno Logo',
-            url: 'https://deno.land/',
-            experience: `
-                I've been using Deno for about 2 years now, although only basic scripts.
-                I'm yet to use it for anything big, but it seems like a great alternative to Node.js.
-            `,
-            proficiency: 'Beginner',
-            type: 'Framework'
-        }
     ] as const satisfies readonly Skill[]
 
     let selectedSkillName: typeof skills[number]['name'] = skills[0].name
@@ -97,24 +97,25 @@
     $: shownSkills = skills.filter(skill => skill.name !== selectedSkillName)
 </script>
 
-<section
-    class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full
-            ring-4 ring-offset-8 rounded-lg
-            ring-offset-light-surface-0 dark:ring-offset-dark-surface-0
-            ring-light-blue dark:ring-dark-blue
-">
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
     <ul class="list-none flex flex-col gap-4 my-0 pl-0">
         {#each shownSkills as skill (skill.name)}
             <li
                 animate:flip={{ duration: 200 }}
-                class="transition-all duration-200 hover:shadow-md ring-0"
+                class="
+                    rounded-xl
+                "
             >
                 <button
                     class="
-                        pa-3 w-full flex gap-4 items-center
-                        rounded-xl border-none
+                        pa-3 w-full flex gap-4 items-center hover:cursor-pointer rounded-xl
                         text-light-text dark:text-dark-text
                         bg-light-base dark:bg-dark-base
+
+
+                        border-light-overlay-0 dark:border-dark-overlay-0
+                        transition-all duration-200
+                        hover:shadow-2xl hover:border-light-sapphire dark:hover:border-dark-sapphire
                     "
                     on:click={() => selectedSkillName = skill.name}
                 >
@@ -194,9 +195,11 @@
 
                 class:bg-light-green={selectedSkill.type === 'Language'}
                 class:bg-light-yellow={selectedSkill.type === 'Framework'}
+                class:bg-light-sapphire={selectedSkill.type === 'Frontend'}
 
                 class:dark-bg-dark-green={selectedSkill.type === 'Language'}
                 class:dark-bg-dark-yellow={selectedSkill.type === 'Framework'}
+                class:dark-bg-dark-sapphire={selectedSkill.type === 'Frontend'}
 
                 in:fly={{ x: '-100%', delay: 350 }}
                 out:fly={{ x: '-100%', duration: 100, delay: 50 }}
