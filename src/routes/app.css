@@ -16,6 +16,10 @@ body {
 	font-family: 'Inter', sans-serif;
 }
 
+body:has(#dropdown-button[data-active="true"]) {
+	overflow: hidden;
+}
+
 a {
 	--at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
 }

@@ -98,20 +98,14 @@
 </script>
 
 <section class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-    <ul class="list-none flex flex-col gap-4 my-0 pl-0">
+    <ul class="list-none flex flex-col gap-4 my-0 px-4 lg:px-0">
         {#each shownSkills as skill (skill.name)}
-            <li
-                animate:flip={{ duration: 200 }}
-                class="
-                    rounded-xl
-                "
-            >
+            <li animate:flip={{ duration: 200 }} class="rounded-xl">
                 <button
                     class="
                         pa-3 w-full flex gap-4 items-center hover:cursor-pointer rounded-xl
                         text-light-text dark:text-dark-text
                         bg-light-base dark:bg-dark-base
-
 
                         border-light-overlay-0 dark:border-dark-overlay-0
                         transition-all duration-200
@@ -135,7 +129,7 @@
         {/each}
     </ul>
     <article
-        class="bg-light-mantle dark:bg-dark-mantle rounded-xl px-4 box-border"
+        class="bg-light-mantle dark:bg-dark-mantle rounded-xl px-4 box-border pb-4 mx-2"
     >
         <!-- title -->
         <header class="my-4 flex items-center gap-4">

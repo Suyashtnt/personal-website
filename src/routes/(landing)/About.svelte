@@ -38,16 +38,16 @@
 <div
 	class="
 		flex flex-col justify-around items-center gap-16 py-16
-		bg-light-surface-0 dark:bg-dark-surface-0
+		bg-light-surface-0 dark:bg-dark-surface-0 lg:px-24
 		"
 	id="about"
 	use:autoHash
 >
-	<div class="flex justify-around w-full">
+	<div class="flex flex-col md:flex-row justify-around w-full gap-6 box-border px-4 lg:px-0">
 		{#each sectionsWithSelected as section}
 			<a
 				class="
-					text-7xl px-4 py-2
+					text-7xl px-4 py-2 text-center flex-1
 					rounded-xl border-none hover:cursor-pointer decoration-none
 					bg-clip-text text-transparent visited:text-transparent
 					bg-gradient-to-tr
@@ -75,15 +75,15 @@
 	</div>
 	<section class="w-full h-full">
 			{#if selectedSection === 'skills'}
-				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
+				<section in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
 					<Skills />
 				</section>
 			{:else if selectedSection === 'games'}
-				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
+				<section in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
 					<Games />
 				</section>
 			{:else if selectedSection === 'projects'}
-				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
+				<section in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
 					<Projects />
 				</section>
 			{/if}
