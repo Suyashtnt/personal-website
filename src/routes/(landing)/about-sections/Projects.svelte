@@ -24,11 +24,6 @@
 			url: 'https://github.com/Glowsquid-launcher/copper'
 		},
 		{
-			name: '37 Ocean Breeze',
-			description: 'Where happiness comes in waves.',
-			url: 'https://37oceanbreeze.co.za'
-		},
-		{
 			name: 'Chesscord',
 			description: '[WIP] Chess bot for discord.',
 			url: 'https://github.com/Suyashtnt/discord-chess-2'
