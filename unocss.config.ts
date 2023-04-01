@@ -18,6 +18,7 @@ const createTheme = (colors: Labels<Color, AlphaColor>) => {
 		// }
 		// so that we can use overlay-0 and overlay-1 in the theme
 		// do the same for all that contain numbers
+		// (yes, I used copilot here)
 		.reduce((acc, [key, value]) => {
 			const match = key.match(/^(?<name>.+?)(?<num>\d+)$/);
 			if (match?.groups) {
@@ -33,8 +34,6 @@ const createTheme = (colors: Labels<Color, AlphaColor>) => {
 		}, {} as Record<string, string | Record<string, string>>);
 	return vals;
 };
-
-console.log(createTheme(variants.latte));
 
 export default defineConfig<Theme>({
 	theme: {

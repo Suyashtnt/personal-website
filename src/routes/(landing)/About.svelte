@@ -73,7 +73,7 @@
 			</a>
 		{/each}
 	</div>
-	<section class="w-full h-full">
+	<section class="w-full h-full overflow-y-hidden">
 			{#if selectedSection === 'skills'}
 				<section in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
 					<Skills />
