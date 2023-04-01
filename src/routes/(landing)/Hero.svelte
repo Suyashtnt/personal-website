@@ -20,10 +20,10 @@
 		anime({
 			targets: `.${word} .letter`,
 			autoplay: true,
-			rotate: () => random(-30, 30),
-			translateX: () => random(30, 30),
-			translateY: () => random(-30, 30),
-			scale: () => random(0.9, 1.1),
+			rotate: () => random(-15, 15),
+			translateX: () => random(-15, 15),
+			translateY: () => random(-15, 15),
+			scale: () => random(0.95, 1.05),
 		});
 	}
 
@@ -167,7 +167,7 @@
 							href="https://github.com/Suyashtnt"
 							rel="me"
 							class="
-								flex group
+								flex group underline-offset-14
 								text-light-text dark:text-dark-text
 								visited:text-light-text dark:visited:text-dark-text
 								hover:underline-light-blue dark:hover:underline-dark-blue
@@ -192,7 +192,7 @@
 							href="https://steamcommunity.com/id/suyashtnt123"
 							rel="me"
 							class="
-								flex group
+								flex group underline-offset-14
 								text-light-text dark:text-dark-text
 								visited:text-light-text dark:visited:text-dark-text
 								hover:underline-light-blue dark:hover:underline-dark-blue

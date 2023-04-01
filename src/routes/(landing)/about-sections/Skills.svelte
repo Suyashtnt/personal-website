@@ -107,6 +107,7 @@
         {#each shownSkills as skill (skill.name)}
             <li
                 animate:flip={{ duration: 200 }}
+                class="transition-all duration-200 hover:shadow-md ring-0"
             >
                 <button
                     class="
