@@ -7,6 +7,7 @@
         switch($page.url.hash) {
             case '#landing': selected = 'landing'; break;
             case '#about': selected = 'about'; break;
+            case '#contact': selected = 'contact'; break;
             default: selected = 'landing';
         }
     }

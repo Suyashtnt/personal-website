@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Hero from './Hero.svelte';
 	import About from './About.svelte';
+	import Contact from './Contact.svelte';
 </script>
 
 <Hero />
 <About />
 <div class="spacer about-to-blog" />
-<!-- <Contact /> -->
+<Contact />
 
 <style>
 	.spacer {

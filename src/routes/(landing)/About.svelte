@@ -2,10 +2,10 @@
 	import { autoHash } from '$lib/autohash';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import Projects from './Projects.svelte';
 	import { fly } from 'svelte/transition';
-	import Skills from './Skills.svelte';
-	import Games from './Games.svelte';
+	import Projects from './about-sections/Projects.svelte';
+	import Skills from './about-sections/Skills.svelte';
+	import Games from './about-sections/Games.svelte';
 
 	const sections = [
 		{
@@ -73,7 +73,7 @@
 		</a>
 		{/each}
 	</div>
-	<div class="w-full h-full">
+	<section class="w-full h-full">
 			{#if selectedSection === 'skills'}
 				<section class="lg:mx-24" in:fly={{ x: '-100%', delay: 300 }} out:fly={{ x: '100%', duration: 300 }}>
 					<Skills />
@@ -87,5 +87,5 @@
 					<Projects />
 				</section>
 			{/if}
-	</div>
+	</section>
 </div>

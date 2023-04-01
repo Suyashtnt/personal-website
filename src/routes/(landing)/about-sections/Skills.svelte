@@ -136,7 +136,7 @@
         class="bg-light-mantle dark:bg-dark-mantle rounded-xl px-4 box-border"
     >
         <!-- title -->
-        <section class="my-4 flex items-center gap-4">
+        <header class="my-4 flex items-center gap-4">
             {#key selectedSkill}
                 <img
                     src={selectedSkill.icon}
@@ -145,7 +145,7 @@
                     in:fly={{ x: '-100%', delay: 300 }}
                     out:fly={{ x: '-100%', duration: 300 }}
                 >
-                <section
+                <hgroup
                     in:fly={{ y: '-100%', delay: 300 }}
                     out:fly={{ y: '-100%', duration: 300 }}
                 >
@@ -154,12 +154,12 @@
                     >
                         {selectedSkill.name}
                     </h1>
-                    <h2 class="text-2xl my-0">
+                    <p class="text-2xl my-0">
                         {selectedSkill.description}
-                    </h2>
-                </section>
+                    </p>
+                </hgroup>
             {/key}
-        </section>
+        </header>
         <!-- chips -->
         <section class="flex w-min">
             {#key selectedSkill}
