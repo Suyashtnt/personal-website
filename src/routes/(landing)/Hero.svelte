@@ -1,7 +1,10 @@
 <script lang="ts">
 	import 'atropos/css';
 	import Atropos from 'atropos/svelte';
-	import anime, { remove, random, timeline } from 'animejs';
+
+	import anime  from 'animejs';
+	const{ remove, random, timeline } = anime;
+
 	import { browser } from '$app/environment';
 	// import 3 different sizes of the image and create a srcset from them
 	import faceSrcsetAvif from '$lib/pictures/face.png?w=300;500;700;900;1200&avif&srcset'
@@ -9,6 +12,7 @@
 	import faceSrcsetWebp from '$lib/pictures/face.png?w=300;500;700;900;1200&webp&srcset'
 	// create a small placeholder and import its metadata
 	import { src as facePlaceholder, width, height } from '$lib/pictures/face.png?width=300&metadata'
+	import { autoHash } from '$lib/autohash';
 
 	function animateWord(word: 'student' | 'programmer' | 'gamer') {
 		remove(`.${word} .letter`);
@@ -16,10 +20,10 @@
 		anime({
 			targets: `.${word} .letter`,
 			autoplay: true,
-			rotate: () => random(-30, 30),
-			translateX: () => random(30, 30),
-			translateY: () => random(-30, 30),
-			scale: () => random(0.9, 1.1),
+			rotate: () => random(-15, 15),
+			translateX: () => random(-15, 15),
+			translateY: () => random(-15, 15),
+			scale: () => random(0.95, 1.05),
 		});
 	}
 
@@ -104,20 +108,20 @@
 	}
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base">
+<section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash>
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
-		<Atropos class="rounded-xl mx-8 mt-8 ">
+		<Atropos class="rounded-xl mx-8 mt-8 group rounded-xl">
 			<div
-				class="flex content-center justify-center pa-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
+				class="flex content-center justify-center transition-all pa-2 group-hover:pa-0 group-hover:ma-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
 			>
-				<picture>
+				<picture class="object-cover transition-all group-hover:scale-105">
 					<source srcset={faceSrcsetAvif} type="image/avif"/>
 					<source srcset={faceSrcsetWebp} type="image/webp"/>
 					<img
 						src={facePlaceholder}
-						class="rounded-lg object-cover"
 						width={width}
 						height={height}
+						class="rounded-lg"
 						alt="a contemporary portrait of me"
 					>
 				</picture>
@@ -163,7 +167,7 @@
 							href="https://github.com/Suyashtnt"
 							rel="me"
 							class="
-								flex group
+								flex group underline-offset-14
 								text-light-text dark:text-dark-text
 								visited:text-light-text dark:visited:text-dark-text
 								hover:underline-light-blue dark:hover:underline-dark-blue
@@ -188,7 +192,7 @@
 							href="https://steamcommunity.com/id/suyashtnt123"
 							rel="me"
 							class="
-								flex group
+								flex group underline-offset-14
 								text-light-text dark:text-dark-text
 								visited:text-light-text dark:visited:text-dark-text
 								hover:underline-light-blue dark:hover:underline-dark-blue

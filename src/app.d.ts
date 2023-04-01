@@ -8,7 +8,7 @@ declare global {
 		// interface Platform {}
 	}
 
-	declare module "*&srcset" {
+	module "*&srcset" {
 		/**
 		 * actual types
 		 * - code https://github.com/JonasKruckenberg/imagetools/blob/main/packages/core/src/output-formats.ts
@@ -18,7 +18,7 @@ declare global {
 		export default out;
 	}
 
-	declare module "*metadata" {
+	module "*metadata" {
 		export const width: number;
 		export const height: number;
 		export const src: string;

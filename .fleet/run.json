@@ -1,0 +1,9 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "dev",
+            "program": "pnpm run dev",
+        },
+    ],
+}

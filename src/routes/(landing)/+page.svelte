@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Hero from './Hero.svelte';
-	import Interests from './Interests.svelte';
-	import Projects from './Projects.svelte';
+	import About from './About.svelte';
+	import Contact from './Contact.svelte';
 </script>
 
 <Hero />
-<Interests />
-<div class="spacer interests-to-projects" />
-<Projects />
+<About />
+<div class="spacer about-to-blog" />
+<Contact />
 
 <style>
 	.spacer {
@@ -18,13 +18,13 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
-		.interests-to-projects {
+		.about-to-blog {
 			background-image: url('$lib/pictures/interestsToProjectsDark.svg');
 		}
 	}
 
 	@media (prefers-color-scheme: light) {
-		.interests-to-projects {
+		.about-to-blog {
 			background-image: url('$lib/pictures/interestsToProjectsLight.svg');
 		}
 	}
