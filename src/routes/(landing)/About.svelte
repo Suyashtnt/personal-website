@@ -45,32 +45,32 @@
 >
 	<div class="flex justify-around w-full">
 		{#each sectionsWithSelected as section}
-		<a
-			class="
-				text-7xl px-4 pt-3 pb-5
-				rounded-xl border-none hover:cursor-pointer
-				bg-clip-text text-transparent visited:text-transparent
-				bg-gradient-to-tr
-				from-light-blue to-light-sapphire
-				dark:from-dark-blue dark:to-dark-sapphire
-			"
-			class:bg-clip-unset={section.selected}
+			<a
+				class="
+					text-7xl px-4 py-2
+					rounded-xl border-none hover:cursor-pointer decoration-none
+					bg-clip-text text-transparent visited:text-transparent
+					bg-gradient-to-tr
+					from-light-blue to-light-sapphire
+					dark:from-dark-blue dark:to-dark-sapphire
+				"
+				class:bg-clip-unset={section.selected}
 
-			class:text-light-surface-0={section.selected}
-			class:dark-text-dark-surface-0={section.selected}
+				class:text-light-surface-0={section.selected}
+				class:dark-text-dark-surface-0={section.selected}
 
-			class:visited-text-surface-0={section.selected}
-			class:visited-dark-text-dark-surface-0={section.selected}
+				class:visited-text-surface-0={section.selected}
+				class:visited-dark-text-dark-surface-0={section.selected}
 
-			id={section.id}
-			href={`#${section.id}`}
-			on:click|preventDefault={() => {
-				selectedSection = section.id;
-				goto(`#${section.id}`, { noScroll: true });
-			}}
-		>
-			{section.name}
-		</a>
+				id={section.id}
+				href={`#${section.id}`}
+				on:click|preventDefault={() => {
+					selectedSection = section.id;
+					goto(`#${section.id}`, { noScroll: true });
+				}}
+			>
+				{section.name}
+			</a>
 		{/each}
 	</div>
 	<section class="w-full h-full">
