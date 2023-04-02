@@ -1,6 +1,7 @@
 <script lang="ts">
 	import 'atropos/css';
 	import Atropos from 'atropos/svelte';
+    import { storyblokEditable, type SbBlokData } from '@storyblok/svelte';
 
 	import anime  from 'animejs';
 	const{ remove, random, timeline } = anime;
@@ -14,7 +15,10 @@
 	import { src as facePlaceholder, width, height } from '$lib/pictures/face.png?width=300&metadata'
 	import { autoHash } from '$lib/autohash';
 
-	function animateWord(word: 'student' | 'programmer' | 'gamer') {
+    export let blok: SbBlokData;
+	const names = (blok.names as string).split(',').map(name => name.trim());
+
+	function animateWord(word: string) {
 		remove(`.${word} .letter`);
 
 		anime({
@@ -27,7 +31,7 @@
 		});
 	}
 
-	function endAnimateWord(word: 'student' | 'programmer' | 'gamer') {
+	function endAnimateWord(word: string) {
 		remove(`.${word} .letter`);
 
 		anime({
@@ -48,67 +52,31 @@
 		const durationOut = 600;
 		const delay = 1000;
 
-		timeline({ loop: true, autoplay: true })
+		const tl = timeline({ loop: true, autoplay: true })
+
+		names.forEach((_, i) => {
+			tl
 			.add({
-				targets: `.names .name-1`,
+				targets: `.names .name-${i}`,
 				opacity: opacityIn,
 				translateY: transYIn,
 				duration: durationIn
 			})
 			.add({
-				targets: `.names .name-1`,
+				targets: `.names .name-${i}`,
 				opacity: 0,
 				translateY: transYOut,
 				duration: durationOut,
 				easing: 'easeInExpo',
 				delay: delay
 			})
-			.add({
-				targets: `.names .name-2`,
-				opacity: opacityIn,
-				translateY: transYIn,
-				duration: durationIn
-			})
-			.add({
-				targets: `.names .name-2`,
-				opacity: 0,
-				translateY: transYOut,
-				duration: durationOut,
-				easing: 'easeInExpo',
-				delay: delay
-			})
-			.add({
-				targets: `.names .name-3`,
-				opacity: opacityIn,
-				translateY: transYIn,
-				duration: durationIn
-			})
-			.add({
-				targets: `.names .name-3`,
-				opacity: 0,
-				translateY: transYOut,
-				duration: durationOut,
-				easing: 'easeInExpo',
-				delay: delay
-			})
-			.add({
-				targets: `.names .name-4`,
-				opacity: opacityIn,
-				translateY: transYIn,
-				duration: durationIn
-			})
-			.add({
-				targets: `.names .name-4`,
-				opacity: 0,
-				translateY: transYOut,
-				duration: durationOut,
-				easing: 'easeInExpo',
-				delay: delay
-			});
+		})
+
+		tl.play()
 	}
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash>
+<section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash use:storyblokEditable={blok}>
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
 		<Atropos class="rounded-xl mx-8 mt-8 group rounded-xl">
 			<div
@@ -135,10 +103,13 @@
 					Hi, I'm
 					<br />
 					<span class="names">
-						<span class="name-1 inline-block">TNT<wbr />Man<wbr />1671</span>
-						<span class="name-2 inline-block opacity-0">Suyash<wbr />tnt</span>
-						<span class="name-3 inline-block opacity-0">TNT Man Inc</span>
-						<span class="name-4 inline-block opacity-0">A badly drawn wobbler</span>
+						{#each names as name, i}
+							<span class={`name-${i} inline-block`} class:opacity-0={i !== 0}>
+								{#each name.split('\\') as segement}
+									{segement}<wbr>
+								{/each}
+							</span>
+						{/each}
 					</span>
 				</h1>
 				<h2
