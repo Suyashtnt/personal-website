@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
     export interface SectionBlok extends SbBlokData {
+        id: string
         hasXPadding: boolean
         hasYPadding: boolean
         hasXMargin: boolean
@@ -17,6 +18,7 @@
 </script>
 
 <section
+    id={blok.id}
     class:py-4={blok.hasYPadding}
     class:px-4={blok.hasXPadding}
     class:my-4={blok.hasYMargin}
