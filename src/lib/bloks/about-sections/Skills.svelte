@@ -98,10 +98,16 @@
                 class:bg-light-green={selectedSkill.type === 'Language'}
                 class:bg-light-yellow={selectedSkill.type === 'Framework'}
                 class:bg-light-sapphire={selectedSkill.type === 'Frontend'}
+                class:bg-light-maroon={selectedSkill.type === 'Backend'}
+                class:bg-light-blue={selectedSkill.type === 'Tool'}
+                class:bg-light-mauve={selectedSkill.type === 'Other'}
 
                 class:dark-bg-dark-green={selectedSkill.type === 'Language'}
                 class:dark-bg-dark-yellow={selectedSkill.type === 'Framework'}
                 class:dark-bg-dark-sapphire={selectedSkill.type === 'Frontend'}
+                class:dark-bg-dark-maroon={selectedSkill.type === 'Backend'}
+                class:dark-bg-dark-blue={selectedSkill.type === 'Tool'}
+                class:dark-bg-dark-mauve={selectedSkill.type === 'Other'}
 
                 in:fly={{ x: '-100%', delay: 350 }}
                 out:fly={{ x: '-100%', duration: 100, delay: 50 }}
