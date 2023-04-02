@@ -5,7 +5,7 @@
 </script>
 
 <script lang="ts">
-	import type { SbBlokData } from "@storyblok/svelte"
+	import { storyblokEditable, type SbBlokData } from "@storyblok/svelte"
 	import Project from "./Project.svelte";
 	import type { ProjectBlok } from "./Project.svelte";
 
@@ -20,8 +20,9 @@
 		from-light-blue via-light-lavender to-light-red
 		dark:from-dark-blue dark:from-dark-lavender dark:to-dark-red
 		"
+    use:storyblokEditable={blok}
 >
-	{#each blok.projects as project}
+	{#each blok.projects as project (project._uid)}
 		<Project blok={project} />
 	{/each}
 </div>

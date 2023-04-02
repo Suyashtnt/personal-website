@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-	import { StoryblokComponent, type SbBlokData } from "@storyblok/svelte";
+	import { StoryblokComponent, storyblokEditable, type SbBlokData } from "@storyblok/svelte";
 
     export let blok: SectionBlok;
 </script>
@@ -35,6 +35,7 @@
 
     class:bg-light-surface-0={blok.background === 'surface'}
     class:dark-bg-dark-surface-0={blok.background === 'surface'}
+    use:storyblokEditable={blok}
 >
     {#each blok.content as contentBlok}
         <StoryblokComponent

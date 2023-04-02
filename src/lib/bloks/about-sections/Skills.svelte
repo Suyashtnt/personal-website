@@ -5,34 +5,38 @@
 </script>
 
 <script lang="ts">
-    import { renderRichText, type SbBlokData } from '@storyblok/svelte';
+    import { renderRichText, storyblokEditable, type SbBlokData } from '@storyblok/svelte';
 	import { flip } from 'svelte/animate';
 	import { fly, slide } from 'svelte/transition';
 	import Skill, { type SkillBlok } from './Skill.svelte';
 
     export let blok: SkillsBlok;
 
-    let selectedSkillName: SkillBlok['name'] = blok.skills[0].name
+    let selectedSkillUid: SkillBlok['_uid'] = blok.skills[0]._uid
 
-    $: selectedSkillNullable = blok.skills.find(skill => skill.name === selectedSkillName)
+    $: selectedSkillNullable = blok.skills.find(skill => skill._uid === selectedSkillUid)
     $: selectedSkill = selectedSkillNullable ?? blok.skills[0]
     $: selectedSkillExperienceHTML = renderRichText(selectedSkill.experience)
 
-    $: shownSkills = blok.skills.filter(skill => skill.name !== selectedSkillName)
+    $: shownSkills = blok.skills.filter(skill => skill._uid !== selectedSkillUid)
 </script>
 
-<section class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+<section
+    class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full"
+    use:storyblokEditable={blok}
+>
     <ul class="list-none flex flex-col gap-4 my-0 px-4 lg:px-0">
-        {#each shownSkills as skill (skill.name)}
+        {#each shownSkills as skill (skill._uid)}
             <li animate:flip={{ duration: 200 }} class="rounded-xl">
                 <Skill
                     blok={skill}
-                    on:click={() => selectedSkillName = skill.name}
+                    on:click={() => selectedSkillUid = skill._uid}
                 />
             </li>
         {/each}
     </ul>
     <article
+        use:storyblokEditable={selectedSkill}
         class="bg-light-mantle dark:bg-dark-mantle rounded-xl px-4 box-border pb-4 mx-2"
     >
         <!-- title -->

@@ -7,7 +7,7 @@
 
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import type { SbBlokData } from "@storyblok/js";
+	import { storyblokEditable, type SbBlokData } from "@storyblok/svelte";
 	import { createEventDispatcher } from "svelte";
 
 
@@ -44,6 +44,8 @@
         dispatch("click");
         goto(`#${blok.name}`, { noScroll: true });
     }}
+
+    use:storyblokEditable={blok}
 >
     {blok.name}
 </a>

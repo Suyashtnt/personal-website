@@ -33,7 +33,7 @@
 </script>
 
 <script lang="ts">
-    import type { SbBlokData, ISbRichtext } from '@storyblok/svelte';
+    import { type SbBlokData, type ISbRichtext, storyblokEditable } from '@storyblok/svelte';
 	import { createEventDispatcher } from 'svelte';
 
     export let blok: SkillBlok;
@@ -54,6 +54,7 @@
         hover:shadow-2xl hover:border-light-sapphire dark:hover:border-dark-sapphire
     "
     on:click={() => dispatch('click')}
+    use:storyblokEditable={blok}
 >
     <img
         src={blok.icon}

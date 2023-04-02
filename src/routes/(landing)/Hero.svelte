@@ -1,7 +1,7 @@
 <script lang="ts">
 	import 'atropos/css';
 	import Atropos from 'atropos/svelte';
-    import type { SbBlokData } from '@storyblok/svelte';
+    import { storyblokEditable, type SbBlokData } from '@storyblok/svelte';
 
 	import anime  from 'animejs';
 	const{ remove, random, timeline } = anime;
@@ -76,7 +76,7 @@
 	}
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash>
+<section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash use:storyblokEditable={blok}>
 	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
 		<Atropos class="rounded-xl mx-8 mt-8 group rounded-xl">
 			<div

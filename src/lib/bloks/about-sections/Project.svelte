@@ -7,13 +7,17 @@
 </script>
 
 <script lang="ts">
-    import type { SbBlokData } from "@storyblok/svelte";
+    import { storyblokEditable, type SbBlokData } from "@storyblok/svelte";
 	import Atropos from "atropos/svelte";
     export let blok: ProjectBlok;
 </script>
 
-<a href={blok.url} class="decoration-none text-light-text dark:text-dark-text">
-    <Atropos class="rounded-xl group h-full" highlight={false}>
+<a
+    href={blok.url}
+    class="decoration-none text-light-text dark:text-dark-text"
+    use:storyblokEditable={blok}
+>
+    <Atropos class="rounded-xl group h-full">
         <div
             class="
                 rounded-2xl pa-2 h-full
