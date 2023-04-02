@@ -112,13 +112,11 @@
             </div>
             {/key}
         </section>
-        <!-- experience/main content -->
-        <section class="text-xl mt-4">
-            {#key selectedSkill}
-                <p class="my-0" in:slide={{ axis: 'y', delay: 300 }} out:slide={{ axis: 'y', duration: 300 }}>
-                    {@html selectedSkillExperienceHTML}
-                </p>
-            {/key}
-        </section>
+        <!-- experience/main content. Key is required for transitions -->
+        {#key selectedSkill}
+            <section class="text-xl mt-4" in:slide={{ axis: 'y', delay: 300 }} out:slide={{ axis: 'y', duration: 300 }}>
+                        {@html selectedSkillExperienceHTML}
+            </section>
+        {/key}
     </article>
 </section>
