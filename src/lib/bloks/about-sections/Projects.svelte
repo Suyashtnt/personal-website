@@ -16,9 +16,6 @@
 	class="
 		rounded-xl md:pa-2
 		grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4
-		bg-gradient-to-br
-		from-light-blue via-light-lavender to-light-red
-		dark:from-dark-blue dark:from-dark-lavender dark:to-dark-red
 		"
     use:storyblokEditable={blok}
 >
