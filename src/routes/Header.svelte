@@ -2,16 +2,26 @@
     import { page } from "$app/stores";
 	import { observers } from "$lib/autohash";
 	import { slide } from "svelte/transition";
-    let selected: 'landing' | 'about' | 'contact' = 'landing';
+
+    let selected: 'landing' | 'about' | 'contact' | 'blog' = 'landing';
 
     $: if($page) {
-        switch($page.url.hash) {
-            case '#landing': selected = 'landing'; break;
-            case '#about': selected = 'about'; break;
-            case '#contact': selected = 'contact'; break;
-            default: selected = 'landing';
+        // if home page, set selected to landing
+        selected = 'landing';
+
+        if ($page.url.pathname === '/posts') {
+            selected = 'blog';
+        } else {
+            switch($page.url.hash) {
+                case '#landing': selected = 'landing'; break;
+                case '#about': selected = 'about'; break;
+                case '#contact': selected = 'contact'; break;
+                default: selected = 'landing';
+            }
         }
     }
+
+    $: isHomePage = $page && $page.url.pathname === '/';
 
     const onNavigate = () => {
         mobileHambugerMenuOpen = false;
@@ -38,17 +48,23 @@
             bg-light-mantle/80 dark:bg-dark-mantle/80 backdrop-blur-lg"
         transition:slide={{duration: 400, axis: 'y'}}
     >
-        <a href="#landing" data-selected={selected === 'landing'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+        {#if isHomePage}
+            <a href="#landing" data-selected={selected === 'landing'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                <span class="anicon">M</span>
+                Landing
+            </a>
+            <a href="#about" data-selected={selected === 'about'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                <span class="anicon">M</span>
+                About
+            </a>
+            <a href="#contact" data-selected={selected === 'contact'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                <span class="anicon">M</span>
+                Contact
+            </a>
+        {/if}
+        <a href="/posts" data-selected={selected === 'blog'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
             <span class="anicon">M</span>
-            Landing
-        </a>
-        <a href="#about" data-selected={selected === 'about'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
-            <span class="anicon">M</span>
-            About
-        </a>
-        <a href="#contact" data-selected={selected === 'contact'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
-            <span class="anicon">M</span>
-            Contact
+            Posts
         </a>
     </div>
 {/if}
@@ -62,17 +78,28 @@
     >
         <h1>TNTMAN_1671</h1>
         <div class="text-2xl text-center hidden sm:block">
-            <a href="#landing" data-selected={selected === 'landing'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+            {#if isHomePage}
+                <a href="#landing" data-selected={selected === 'landing'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                    <span class="anicon">M</span>
+                    Landing
+                </a>
+                <a href="#about" data-selected={selected === 'about'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                    <span class="anicon">M</span>
+                    About
+                </a>
+                <a href="#contact" data-selected={selected === 'contact'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                    <span class="anicon">M</span>
+                    Contact
+                </a>
+            {:else}
+                <a href="/" data-selected={selected === 'landing'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
+                    <span class="anicon">M</span>
+                    Home
+                </a>
+            {/if}
+            <a href="/posts" data-selected={selected === 'blog'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
                 <span class="anicon">M</span>
-                Landing
-            </a>
-            <a href="#about" data-selected={selected === 'about'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
-                <span class="anicon">M</span>
-                About
-            </a>
-            <a href="#contact" data-selected={selected === 'contact'} class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text" on:click={onNavigate}>
-                <span class="anicon">M</span>
-                Contact
+                Posts
             </a>
         </div>
         <button

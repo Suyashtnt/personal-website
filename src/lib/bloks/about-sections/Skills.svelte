@@ -37,7 +37,7 @@
     </ul>
     <article
         use:storyblokEditable={selectedSkill}
-        class="bg-light-mantle dark:bg-dark-mantle rounded-xl px-4 box-border pb-4 mx-2"
+        class="bg-light-mantle dark:bg-dark-mantle rounded-xl px-4 box-border pb-4 mx-2 overflow-hidden"
     >
         <!-- title -->
         <header class="my-4 flex items-center gap-4">
