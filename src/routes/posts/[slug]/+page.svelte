@@ -4,6 +4,7 @@
 	import PageHead from '$lib/components/PageHead.svelte';
 
 	export let data: PageData;
+    import './syntax.css'
 
 	type C = $$Generic<typeof SvelteComponentTyped<unknown, unknown, unknown>>;
 	$: component = data.component as unknown as C;
