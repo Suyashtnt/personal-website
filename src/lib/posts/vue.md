@@ -3,6 +3,7 @@ title: 'VueJS: Great ideas, good execution, outshone by the competition'
 description: 'A look on Vue.JS.'
 author: 'Suyashtnt'
 date: '2023-05-23'
+updated: '2023-05-21'
 published: true
 ---
 

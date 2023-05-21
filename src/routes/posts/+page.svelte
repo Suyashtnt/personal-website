@@ -7,7 +7,7 @@
 
 <PageHead title="Posts" description="My blog posts" />
 
-<h1>Posts</h1>
+<h1 class="text-5xl ml-4">Posts</h1>
 
 <ul class="post-grid list-none">
 	{#each data.posts as post (post.slug)}
