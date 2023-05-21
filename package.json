@@ -14,7 +14,7 @@
 	"devDependencies": {
 		"@iconify-json/ic": "^1.1.13",
 		"@iconify-json/mdi": "^1.1.52",
-		"@sveltejs/adapter-auto": "^2.1.0",
+		"@sveltejs/adapter-cloudflare": "^2.2.4",
 		"@sveltejs/kit": "^1.18.0",
 		"@types/animejs": "^3.1.7",
 		"@types/marked": "^5.0.0",
