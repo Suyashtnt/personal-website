@@ -1,11 +1,11 @@
 import { error } from "@sveltejs/kit";
 import { marked } from 'marked'; // import the marked lib
-import type { PageLoad } from "./$types";
+import { skills } from '../+layout'
+import type { PageLoad, EntryGenerator } from "./$types";
 export const prerender = true;
 
-export const load: PageLoad = async ({ params, parent }) => {
-    const { skills } = await parent()
 
+export const load: PageLoad = async ({ params, parent }) => {
     const selectedSkill = skills.find(skill => skill.name.toLowerCase() === params.skill.toLowerCase())
     if (selectedSkill === undefined) return error(404, 'Skill not found')
 
@@ -21,3 +21,9 @@ export const load: PageLoad = async ({ params, parent }) => {
         html
     }
 };
+
+export const entries = (() => {
+    return skills.map(skill => ({
+        skill: skill.name.toLowerCase()
+    }))
+}) satisfies EntryGenerator;

@@ -33,8 +33,6 @@
 </script>
 
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-
     export let skill: ISkill;
     export let href: string
 </script>

@@ -3,10 +3,6 @@
 	import type { SvelteComponentTyped } from 'svelte/internal';
 	import PageHead from '$lib/components/PageHead.svelte';
 
- // import PageHead from '$lib/components/PageHead.svelte';
- // 	import ArticleTitle from '$lib/components/ArticleTitle.svelte';
- // 	import ArticleMeta from '$lib/components/ArticleMeta.svelte';
-
 	export let data: PageData;
 
 	type C = $$Generic<typeof SvelteComponentTyped<unknown, unknown, unknown>>;

@@ -1,7 +1,6 @@
 import type { LayoutLoad } from './$types';
-import type { ISkill } from './Skill.svelte'
 
-const skills: ISkill[] = [
+export const skills = [
     {
         name: 'Svelte',
         description: 'Cybernetically enhanced web apps',
@@ -64,7 +63,7 @@ I am yet to use it in some sort of production environment, nor go into its dark 
         type: 'Language',
         url: 'https://www.rust-lang.org/'
     }
-]
+] as const
 
 export const load: LayoutLoad = async () => {
     return {
