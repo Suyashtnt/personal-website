@@ -1,22 +1,16 @@
 <script lang="ts">
 	import 'atropos/css';
 	import Atropos from 'atropos/svelte';
-    import { storyblokEditable, type SbBlokData } from '@storyblok/svelte';
+	import Image from '$lib/components/Image.svelte';
 
 	import anime  from 'animejs';
 	const{ remove, random, timeline } = anime;
 
 	import { browser } from '$app/environment';
-	// import 3 different sizes of the image and create a srcset from them
-	import faceSrcsetAvif from '$lib/pictures/face.png?w=300;500;700;900;1200&avif&srcset'
-	// do it a second time, but now as webp since safari can't display avif
-	import faceSrcsetWebp from '$lib/pictures/face.png?w=300;500;700;900;1200&webp&srcset'
-	// create a small placeholder and import its metadata
-	import { src as facePlaceholder, width, height } from '$lib/pictures/face.png?width=300&metadata'
-	import { autoHash } from '$lib/autohash';
 
-    export let blok: SbBlokData;
-	const names = (blok.names as string).split(',').map(name => name.trim());
+	import face from '$lib/pictures/face.png?w=640;320;160&optimize';
+
+	const names = ["TNTMan\\1671", "Suyashtnt", "TNT \\Man \\Inc"];
 
 	function animateWord(word: string) {
 		remove(`.${word} .letter`);
@@ -76,132 +70,125 @@
 	}
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base" id="landing" use:autoHash use:storyblokEditable={blok}>
-	<div class="flex flex-row flex-wrap justify-around content-center pb-32">
-		<Atropos class="rounded-xl mx-8 mt-8 group rounded-xl">
+<section class="relative bg-light-base dark:bg-dark-base" id="landing">
+	<div class="flex flex-col lg:flex-row justify-center lg:justify-start items-center pb-32">
+		<Atropos class="rounded-xl mx-8 mt-8 group rounded-xl w-64">
 			<div
 				class="flex content-center justify-center transition-all pa-2 group-hover:pa-0 group-hover:ma-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
 			>
-				<picture class="object-cover transition-all group-hover:scale-105">
-					<source srcset={faceSrcsetAvif} type="image/avif"/>
-					<source srcset={faceSrcsetWebp} type="image/webp"/>
-					<img
-						src={facePlaceholder}
-						width={width}
-						height={height}
-						class="rounded-lg"
-						alt="a contemporary portrait of me"
-					>
-				</picture>
+				<Image
+					alt="a contemporary portrait of me"
+					loading="eager"
+					src={face}
+					class="object-cover transition-all group-hover:scale-105 rounded-xl"
+				/>
 			</div>
 		</Atropos>
-		<div class="flex-grow flex justify-between items-center">
-			<div class="h-full">
-				<h1
-					class="text-7xl md:text-8xl leading-22 md:leading-30 text-center md:text-left mb-0 px-2 md:px-0"
+		<div>
+			<h1
+				class="text-7xl md:text-8xl leading-22 md:leading-30 text-center md:text-left mb-0 px-2 md:px-0"
+			>
+				Hi, I'm
+				<br />
+				<span class="names">
+					{#each names as name, i}
+						<span class={`name-${i} inline-block`} class:opacity-0={i !== 0}>
+							{#each name.split('\\') as segement}
+								{segement}<wbr>
+							{/each}
+						</span>
+					{/each}
+				</span>
+			</h1>
+			<h2
+				class="text-5xl my-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0"
+			>
+				<p
+					class="student"
+					on:mouseenter={() => animateWord('student')}
+					on:touchstart={() => animateWord('student')}
+					on:mouseleave={() => endAnimateWord('student')}
+					on:touchend={() => endAnimateWord('student')}
 				>
-					Hi, I'm
-					<br />
-					<span class="names">
-						{#each names as name, i}
-							<span class={`name-${i} inline-block`} class:opacity-0={i !== 0}>
-								{#each name.split('\\') as segement}
-									{segement}<wbr>
-								{/each}
+					{#each 'Student'.split('') as letter}
+						<span class="letter inline-block">{letter}</span>
+					{/each}
+				</p>
+
+				<p
+					class="programmer"
+					on:mouseenter={() => animateWord('programmer')}
+					on:touchstart={() => animateWord('programmer')}
+					on:mouseleave={() => endAnimateWord('programmer')}
+					on:touchend={() => endAnimateWord('programmer')}
+				>
+					<a
+						href="https://github.com/Suyashtnt"
+						rel="me"
+						class="
+							flex group underline-offset-14
+							text-light-text dark:text-dark-text
+							visited:text-light-text dark:visited:text-dark-text
+							hover:underline-light-blue dark:hover:underline-dark-blue
+						"
+					>
+						{#each 'Programmer'.split('') as letter}
+							<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue">
+								{letter}
 							</span>
 						{/each}
-					</span>
-				</h1>
-				<h2
-					class="text-5xl my-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0"
+					</a>
+				</p>
+
+				<p
+					class="gamer"
+					on:mouseenter={() => animateWord('gamer')}
+					on:touchstart={() => animateWord('gamer')}
+					on:mouseleave={() => endAnimateWord('gamer')}
+					on:touchend={() => endAnimateWord('gamer')}
 				>
-					<p
-						class="student"
-						on:mouseenter={() => animateWord('student')}
-						on:touchstart={() => animateWord('student')}
-						on:mouseleave={() => endAnimateWord('student')}
-						on:touchend={() => endAnimateWord('student')}
+					<a
+						href="https://steamcommunity.com/id/suyashtnt123"
+						rel="me"
+						class="
+							flex group underline-offset-14
+							text-light-text dark:text-dark-text
+							visited:text-light-text dark:visited:text-dark-text
+							hover:underline-light-blue dark:hover:underline-dark-blue
+						"
 					>
-						{#each 'Student'.split('') as letter}
-							<span class="letter inline-block">{letter}</span>
+						{#each 'Gamer'.split('') as letter}
+							<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue">
+								{letter}
+							</span>
 						{/each}
-					</p>
-
-					<p
-						class="programmer"
-						on:mouseenter={() => animateWord('programmer')}
-						on:touchstart={() => animateWord('programmer')}
-						on:mouseleave={() => endAnimateWord('programmer')}
-						on:touchend={() => endAnimateWord('programmer')}
+					</a>
+				</p>
+			</h2>
+			<ul
+				class="grid justify-center items-center md:grid-cols-3 gap-4 list-none pl-0 mt-0 text-3xl"
+			>
+				<li class="flex flex-row gap-2 w-min items-center">
+					<div class="i-ic-baseline-discord h-24 w-24 text-light-blue dark:text-dark-blue" />
+					A badly drawn wobbler#8550
+				</li>
+				<li class="flex flex-row gap-2 w-min items-center">
+					<div class="i-mdi-youtube h-16 w-16 text-light-red dark:text-dark-red" />
+					<a
+						href="https://www.youtube.com/@tabiasgeehuman"
+						class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text whitespace-nowrap"
+						>TNT Man Inc</a
 					>
-						<a
-							href="https://github.com/Suyashtnt"
-							rel="me"
-							class="
-								flex group underline-offset-14
-								text-light-text dark:text-dark-text
-								visited:text-light-text dark:visited:text-dark-text
-								hover:underline-light-blue dark:hover:underline-dark-blue
-							"
-						>
-							{#each 'Programmer'.split('') as letter}
-								<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue">
-									{letter}
-								</span>
-							{/each}
-						</a>
-					</p>
-
-					<p
-						class="gamer"
-						on:mouseenter={() => animateWord('gamer')}
-						on:touchstart={() => animateWord('gamer')}
-						on:mouseleave={() => endAnimateWord('gamer')}
-						on:touchend={() => endAnimateWord('gamer')}
+				</li>
+				<li class="flex flex-row gap-2 w-min items-center">
+					<div class="i-mdi-github h-16 w-16 text-dark-mantle dark:text-light-mantle" />
+					<a
+						href="https://github.com/Suyashtnt"
+						class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
+						>Suyashtnt</a
 					>
-						<a
-							href="https://steamcommunity.com/id/suyashtnt123"
-							rel="me"
-							class="
-								flex group underline-offset-14
-								text-light-text dark:text-dark-text
-								visited:text-light-text dark:visited:text-dark-text
-								hover:underline-light-blue dark:hover:underline-dark-blue
-							"
-						>
-							{#each 'Gamer'.split('') as letter}
-								<span class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue">
-									{letter}
-								</span>
-							{/each}
-						</a>
-					</p>
-				</h2>
-				<ul
-					class="grid justify-center items-center md:grid-cols-3 gap-4 list-none pl-0 mt-0 text-3xl"
-				>
-					<li class="flex flex-row gap-2 w-min items-center">
-						<div class="i-ic-baseline-discord h-24 w-24 text-light-blue dark:text-dark-blue" />
-						A badly drawn wobbler#8550
-					</li>
-					<li class="flex flex-row gap-2 w-min items-center">
-						<div class="i-mdi-youtube h-16 w-16 text-light-red dark:text-dark-red" />
-						<a
-							href="https://www.youtube.com/@tabiasgeehuman"
-							class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text whitespace-nowrap"
-							>TNT Man Inc</a
-						>
-					</li>
-					<li class="flex flex-row gap-2 w-min items-center">
-						<div class="i-mdi-github h-16 w-16 text-dark-mantle dark:text-light-mantle" />
-						<a
-							href="https://github.com/Suyashtnt"
-							class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
-							>Suyashtnt</a
-						>
-					</li>
-				</ul>
-			</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 

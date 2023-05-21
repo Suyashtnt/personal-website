@@ -1,6 +1,5 @@
 <script lang="ts">
     import { page } from "$app/stores";
-	import { observers } from "$lib/autohash";
 	import { slide } from "svelte/transition";
 
     let selected: 'landing' | 'about' | 'contact' | 'blog' = 'landing';
@@ -21,15 +20,10 @@
         }
     }
 
-    $: isHomePage = $page && $page.url.pathname === '/';
+    $: isHomePage = $page && ['/', 'projects', 'games', 'skills'].includes($page.url.pathname.split('/')[1]);
 
     const onNavigate = () => {
         mobileHambugerMenuOpen = false;
-        $observers.forEach(observer => observer.observer.disconnect());
-
-        setTimeout(() => {
-            $observers.forEach(observer => observer.observer.observe(observer.target));
-        }, 1000);
     }
 
     let mobileHambugerMenuOpen = false;

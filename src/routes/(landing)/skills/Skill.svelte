@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    export interface SkillBlok extends SbBlokData {
+    export interface ISkill {
         /**
          * Name of the skill
          */
@@ -18,9 +18,9 @@
         */
         url?: string;
         /**
-         * My experience with the skill
+         * My experience with the skill. In markdown.
          */
-        experience: ISbRichtext;
+        experience: string;
         /**
          * My proficiency with the skill.
         */
@@ -33,38 +33,35 @@
 </script>
 
 <script lang="ts">
-    import { type SbBlokData, type ISbRichtext, storyblokEditable } from '@storyblok/svelte';
 	import { createEventDispatcher } from 'svelte';
 
-    export let blok: SkillBlok;
-
-    const dispatch = createEventDispatcher<{
-        click: void;
-    }>()
+    export let skill: ISkill;
+    export let href: string
 </script>
 
-<button
+<a
     class="
-        pa-3 w-full flex gap-4 items-center hover:cursor-pointer rounded-xl
+        pa-3 max-w-full flex gap-4 items-center hover:cursor-pointer rounded-xl
+        decoration-none
         text-light-text dark:text-dark-text
+        visited:text-light-text visited:dark-text-dark-text
         bg-light-base dark:bg-dark-base
 
         border-light-overlay-0 dark:border-dark-overlay-0
         transition-all duration-200
         hover:shadow-2xl hover:border-light-sapphire dark:hover:border-dark-sapphire
     "
-    on:click={() => dispatch('click')}
-    use:storyblokEditable={blok}
+
+    {href}
+    data-sveltekit-noscroll
 >
     <img
-        src={blok.icon}
-        alt={blok.iconAlt}
+        src={skill.icon}
+        alt={skill.iconAlt}
         class="w-10 h-auto"
     >
 
-    <h2
-        class="text-2xl"
-    >
-        {blok.name}
+    <h2 class="text-2xl">
+        {skill.name}
     </h2>
-</button>
+</a>

@@ -1,7 +1,6 @@
 import { variants, type Labels, type Color, type AlphaColor } from '@catppuccin/palette';
 import {
 	defineConfig,
-	extractorSvelte,
 	presetIcons,
 	presetUno,
 	transformerDirectives
@@ -42,7 +41,6 @@ export default defineConfig<Theme>({
 			dark: createTheme(variants.mocha)
 		}
 	},
-	extractors: [extractorSvelte],
 	transformers: [transformerDirectives()],
 	presets: [
 		presetIcons(),

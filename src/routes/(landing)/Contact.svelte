@@ -1,8 +1,4 @@
-<script lang="ts">
-	import { autoHash } from "$lib/autohash";
-</script>
-
-<section class="relative bg-light-base dark:bg-dark-base pb-8" id="contact" use:autoHash>
+<section class="relative bg-light-base dark:bg-dark-base pb-8" id="contact">
     <h1 class="mx-8 text-6xl">Contact Me</h1>
 
     <address class="mx-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 not-italic">

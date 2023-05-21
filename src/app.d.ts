@@ -1,5 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
+import { Picture } from 'vite-imagetools';
 declare global {
 	namespace App {
 		// interface Error {}
@@ -18,10 +19,23 @@ declare global {
 		export default out;
 	}
 
-	module "*metadata" {
+	module "*&metadata" {
 		export const width: number;
 		export const height: number;
 		export const src: string;
+	}
+
+	module "*optimize" {
+		interface PictureWithLQIP extends Picture {
+			lqip: string;
+		}
+
+		const out: PictureWithLQIP;
+		export default out;
+	}
+
+	interface Document {
+		lazyloadInstance: import('vanilla-lazyload').ILazyLoadInstance
 	}
 }
 

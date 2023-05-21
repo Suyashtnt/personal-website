@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-    export interface ProjectBlok extends SbBlokData {
+    export interface IProject {
         name: string;
         description: string;
         url: string;
@@ -7,15 +7,13 @@
 </script>
 
 <script lang="ts">
-    import { storyblokEditable, type SbBlokData } from "@storyblok/svelte";
 	import Atropos from "atropos/svelte";
-    export let blok: ProjectBlok;
+    export let project: IProject;
 </script>
 
 <a
-    href={blok.url}
+    href={project.url}
     class="decoration-none text-light-text dark:text-dark-text"
-    use:storyblokEditable={blok}
 >
     <Atropos class="rounded-xl group h-full">
         <div
@@ -45,16 +43,16 @@
                     "
                     data-atropos-offset="3"
                 >
-                    {blok.name}
+                    {project.name}
                 </h2>
                 <p
                     class="text-2xl text-center text-light-text dark:text-dark-text"
                 >
-                    {blok.description}
+                    {project.description}
                 </p>
                 <div class="flex flex-col space-y-2 mb-2 w-full">
                     <a
-                        href={blok.url}
+                        href={project.url}
                         class="
                         text-2xl rounded-xl pa-2 text-center decoration-none transition-all
                         bg-light-maroon dark:bg-dark-maroon

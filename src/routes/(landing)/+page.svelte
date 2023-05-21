@@ -1,17 +1,6 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import { useStoryblokBridge, StoryblokComponent } from "@storyblok/svelte";
+	import { browser } from "$app/environment";
+	import { goto } from "$app/navigation";
 
-	export let data;
-
-	onMount(() => {
-		useStoryblokBridge(
-			data.story.id,
-			(newStory) => (data.story = newStory)
-		);
-	});
+    if(browser) goto("/skills/Svelte");
 </script>
-
-{#if data.story}
-	<StoryblokComponent blok={data.story.content} />
-{/if}
