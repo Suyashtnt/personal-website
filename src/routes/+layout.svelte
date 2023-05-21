@@ -8,7 +8,7 @@
 
 	if (browser && !document.lazyloadInstance) {
 		document.lazyloadInstance = new lazyload({
-			use_native: true,
+			use_native: true
 		});
 	}
 </script>

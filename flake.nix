@@ -26,7 +26,7 @@
     packages."${system}".website = napalm.legacyPackages."${system}".buildPackage ./. {};
 
     devShells."${system}".default = pkgs.mkShell {
-      nativeBuildInputs = with pkgs; [nodejs alejandra nodePackages.pnpm];
+      nativeBuildInputs = with pkgs; [nil nodejs alejandra nodePackages.svelte-language-server nodePackages.typescript-language-server];
     };
   };
 }

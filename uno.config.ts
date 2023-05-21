@@ -3,6 +3,7 @@ import {
 	defineConfig,
 	presetIcons,
 	presetUno,
+	presetTypography,
 	transformerDirectives
 } from 'unocss';
 import type { Theme } from 'unocss/preset-uno';
@@ -46,6 +47,7 @@ export default defineConfig<Theme>({
 		presetIcons(),
 		presetUno({
 			dark: 'media'
-		})
+		}),
+		presetTypography()
 	]
 });
