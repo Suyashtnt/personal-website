@@ -4,7 +4,7 @@
 	import PageHead from '$lib/components/PageHead.svelte';
 
 	export let data: PageData;
-    import './syntax.css'
+	import './syntax.css';
 
 	type C = $$Generic<typeof SvelteComponentTyped<unknown, unknown, unknown>>;
 	$: component = data.component as unknown as C;
@@ -12,8 +12,20 @@
 
 <PageHead title={data.frontmatter.title} description={data.frontmatter.description} />
 
+<svelte:head>
+	<meta property="og:type" content="article" />
+	<meta
+		property="og:article:published_time"
+		content={new Date(data.frontmatter.date).toISOString()}
+	/>
+	<meta
+		property="og:article:modified_time"
+		content={new Date(data.frontmatter.updated).toISOString()}
+	/>
+</svelte:head>
+
 <div class="flex items-center justify-center">
-    <article class="text-base prose prose-light-text dark:prose-dark-text xl:text-xl w-full">
-        <svelte:component this={component} />
-    </article>
+	<article class="text-base prose prose-light-text dark:prose-dark-text xl:text-xl w-full">
+		<svelte:component this={component} />
+	</article>
 </div>
