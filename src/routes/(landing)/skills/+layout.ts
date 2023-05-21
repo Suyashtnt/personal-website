@@ -1,6 +1,6 @@
 import type { LayoutLoad } from './$types';
 
-export const skills = [
+export const _skills = [
     {
         name: 'Svelte',
         description: 'Cybernetically enhanced web apps',
@@ -67,6 +67,6 @@ I am yet to use it in some sort of production environment, nor go into its dark 
 
 export const load: LayoutLoad = async () => {
     return {
-        skills
+        skills: _skills
     }
 };
