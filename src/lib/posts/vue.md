@@ -305,7 +305,8 @@ new App({
 })
 ```
 
-Vue state management \
+Vue state management
+
 `stores.js`
 ```js
 export const useCounterStore = defineStore('counter', () => {
