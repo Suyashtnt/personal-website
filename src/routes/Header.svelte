@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+ 	import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css'
 
 	let selected: 'landing' | 'about' | 'contact' | 'blog' = 'landing';
 
@@ -35,13 +36,6 @@
 
 	let mobileHambugerMenuOpen = false;
 </script>
-
-<svelte:head>
-	<link
-		href="https://res.cloudinary.com/dr6lvwubh/raw/upload/v1581441981/Anicons/anicons-regular.css"
-		rel="stylesheet"
-	/>
-</svelte:head>
 
 {#if mobileHambugerMenuOpen}
 	<div
