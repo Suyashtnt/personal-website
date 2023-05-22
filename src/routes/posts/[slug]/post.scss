@@ -1,0 +1,13 @@
+.article-content {
+  h1, h2, h3, h4, h5, h6  {
+    --at-apply: 'text-center rounded-xl py-2 outline outline-2 outline-light-blue';
+
+    > a {
+      --at-apply: 'text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text text-3xl decoration-none font-semibold';
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

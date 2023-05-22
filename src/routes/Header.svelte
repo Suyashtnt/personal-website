@@ -7,7 +7,7 @@
 		// if home page, set selected to landing
 		selected = 'landing';
 
-		if ($page.url.pathname === '/posts') {
+		if ($page.url.pathname.split('/')[1] === 'posts') {
 			selected = 'blog';
 		} else {
 			switch ($page.url.hash) {
@@ -79,6 +79,16 @@
 				<span class="anicon">M</span>
 				Contact
 			</a>
+			{:else}
+				<a
+					href="/"
+					data-selected={selected === 'landing'}
+					class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+					on:click={onNavigate}
+				>
+					<span class="anicon">M</span>
+					Home
+				</a>
 		{/if}
 		<a
 			href="/posts"
@@ -100,7 +110,11 @@
         border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
         bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
 	>
-		<h1>TNTMAN_1671</h1>
+		<h1>
+			<a href="/" class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none">
+				TNTMAN_1671
+			</a>
+		</h1>
 		<div class="text-2xl text-center hidden sm:block">
 			{#if isHomePage}
 				<a

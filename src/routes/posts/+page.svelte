@@ -9,7 +9,7 @@
 
 <h1 class="text-5xl ml-4">Posts</h1>
 
-<ul class="post-grid list-none">
+<ul class="post-grid list-none pa-0 mx-2">
 	{#each data.posts as post (post.slug)}
 		<li>
 			<article class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2">
@@ -30,15 +30,15 @@
 	/* stolen from https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ */
 	.post-grid {
 		/**
-    * User input values.
-    */
+		* User input values.
+		*/
 		--grid-layout-gap: 1rem;
 		--grid-column-count: 6;
 		--grid-item--min-width: 400px;
 
 		/**
-    * Calculated values.
-    */
+		* Calculated values.
+		*/
 		--gap-count: calc(var(--grid-column-count) - 1);
 		--total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
 		--grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));

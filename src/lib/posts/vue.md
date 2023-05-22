@@ -3,16 +3,20 @@ title: 'VueJS: Great ideas, good execution, outshone by the competition'
 description: 'A look on Vue.JS.'
 author: 'Suyashtnt'
 date: '2023-05-23'
-updated: '2023-05-21'
+updated: '2023-05-23'
 published: true
 ---
 
-# This post is a public draft. It's meant for testing out my blogging system. It is not the final post.
 # Preface
-This blog post was initially an essay for school, so thats that.
+This blog post was initially an essay for school, so thats why it's closer to an essay than a blog post. This is also my first blog post so thats exciting.
 
-# The actual post
+While this post mainly criticizes Vue, I do not at all think its a bad framework. It was actually the first JS framework I learnt. It has and still is an incredible framework and web development would be different today without it.
+I am not saying don't use Vue or that you should switch from it, but rather pointing out some of its issues that other frameworks have either solved or don't have.
+
+# Introduction
 VueJS is lauded as a highly flexible and accessible web framework, but is it really _that_ good? While it does many things right, it also does many things wrong. It is known for being fast, lightweight, and straightforward when setting up complex applications. However, other frameworks are much faster and remove tons of unnecessary complexity. While Vue is known for its massive ecosystem, it is also split. Vue 3 is known to bring many improvements and remove much of the complexity of Vue 2, but with such significant changes also come enormous technical debt. The following essay will discuss these issues in detail and show why Vue is good but needs to be improved to keep up with its new competition.
+
+# Lost simplicity
 
 VueJS was known to be one of the most straightforward frameworks, but that has severely degraded. Let us take a trip down the passage of time. In the year 2013, web frameworks could have been better. BackboneJS was too heavyweight and focused on the code organisation rather than syncing variables with the DOM. Look at their [to-do List Example](https://backbonejs.org/docs/examples/todos/todos.html). The code is lengthy, unnecessarily complex, and not "reactive." You still have to tell what the compiler to do when a variable changes; it is _imperative_ code. 
 
@@ -58,7 +62,7 @@ new Vue({
 })
 </script>
 ```
-While declarative is not necessarily _worse_ than imperative, it usually leads to a messier code with strict guidelines. BackboneJS added those guidelines, but it still leads to bulky, hard-to-read code, as seen in their To-do list example. Conversely, Vue took the more straightforward approach: Make the framework work for you. These solutions provided _were_ great, but now we have moved on from that.
+While imperative is not necessarily _worse_ than declarative, imperative usually leads to a messier code without strict guidelines. BackboneJS added those guidelines, but it still leads to bulky, hard-to-read code, as seen in their To-do list example. Conversely, Vue took the more straightforward approach: Make the framework work for you. These solutions provided _were_ great, but now we have moved on from that.
 
 Let us look at modern Vue. The Options API is bulky. It also creates many opportunities to shoot yourself in the foot. In the above example, if you were to replace `increment` with an arrow function, it would no longer work. Vue 3 saw these issues and fixed them through the *Composition API*. 
 ```html
@@ -73,7 +77,7 @@ import { ref } from 'vue' // import ref, which is a reactive variable
 const count = ref(0) // create a reactive variable. When this changes it updates the DOM automatically
 </script>
 ```
-This API was effectively stolen from another framework, React. React created _React Hooks_ and Vue transformed them into the Composition API. The composition API is far learner and has less boilerplate, which leads to far cleaner code. However, the API is not without its flaws. We have to tell Vue that we want the variable to be reactive, and we have to import this functionality from Vue, which is just boilerplate. Vue also changes many things when using `ref`, which can cause many compatibility issues.
+This API was effectively stolen from another framework, React. React created _React Hooks_ and Vue transformed them into the Composition API. The composition API is far learer and has less boilerplate, which leads to far cleaner code. However, the API is not without its flaws. We have to tell Vue that we want the variable to be reactive, and we have to import this functionality from Vue, which is just boilerplate. Vue also changes many things when using `ref`, which can cause many compatibility issues.
 
 The primary issue is that `ref` and `reactive` (Which is `ref` but it applies to objects) introduces a _proxy object._ Vue handles updating the DOM by using a proxy object. When the variable changes, the proxy object tells Vue. However, this causes major issues. Firstly, `count` is no longer simply a number but now a `Proxy`. We need to unwrap this proxy object to access the variable, which means we get even more boilerplate when accessing the variable. Other frameworks/libraries an application may use could have some incompatibility issues when handling Proxies. Instead of simply getting `count`, we need to get `count.value`. While this may initially seem like a small change, in larger, more complex codebases, code can get ugly.
 
@@ -129,9 +133,13 @@ export default {
 
 It is more meant as a migration tool than direct compatibility, but more is required to help the situation. If a person wants to migrate a codebase to the Composition API, they may call their existing code in your Composition API code, which is currently disallowed. The composition API caused a massive ecosystem split between Vue 2 and 3 code, which affects the whole ecosystem.
 
+# A split ecosystem is not a simple one
+
 Due to the massive changes made in Vue 3 and the composition API, Vue has a very split ecosystem. Migrating libraries to Vue 3 has taken multiple Years. Take Nuxt. Nuxt is an incredibly popular full-stack framework for Vue, but until last year you could not use it with Vue 3. Vue 3 was released back in late 2020. Nuxt 3 was only released in late 2022. The late release left many apps stuck on Nuxt 2, which is still the most used version of Nuxt because it takes time and effort to migrate over. The migration project (Nuxt Bridge) is still declared semi-stable and only partially supports what Nuxt 3 offers. The weird migration strategy drives away Nuxt 2 users from migrating to Nuxt 3 and extends to the rest of the Vue ecosystem.
 
 Vue Demi exists for this reason: to solve these compatibility issues. While the bundle size is not big, at under a kilobyte, getting your library working with both framework versions is still more work and effort. The extra effort required goes against Vue's main point of being simple and easy. While other frameworks also have difficult migration for major changes, none has been as big as Vue 2 to 3.
+
+# The competition is fierce
 
 A few other frameworks now do what Vue was built to do, but better. Take the two big new frameworks: Svelte and SolidJS. Svelte describes itself as "a radical new approach to building user interfaces.", while SolidJS describes itself as "Simple and performant reactivity for building user interfaces." Both of these sound like what Vue was meant to do initially, create a new, simple, and performant way to create apps. Both of these frameworks achieve this goal, and the weight of technical legacy baggage no longer drags them down. 
 
@@ -180,7 +188,7 @@ render(() => <Counter />, document.getElementById("app")!);
 
 While this has more boilerplate than Vue, it is near the speed of regular JS code and a fraction of the bundle size. The generated code is also far more fine-grained and directly injects variables, creating incredibly performant code.
 
-These two frameworks do what Vue does; they do _more._ Svelte has stores and its transition API, while SolidJS has incredible rendering flexibility and fine-grained reactivity, which makes it the fastest-performing JS framework. Vue has a transition API, which is unnecessarily tied to manual CSS since it still requires JS.
+These two frameworks don't just do what Vue does: they do _more._ Svelte has stores and its transition API, while SolidJS has incredible rendering flexibility and fine-grained reactivity, which makes it the fastest-performing JS framework. Vue has a transition API, which is unnecessarily tied to manual CSS since it still requires JS.
 
 ```html
 <button @click="visible = !visible">Toggle</button>
@@ -229,6 +237,8 @@ Svelte adds a declarative `transition` item while Vue does imperative CSS. In th
 Another way these frameworks make code easier to reason about is how they allow you to do state management. Vue is based around semi-official tooling, with Pinia being Vue's recommended state management, but why have complex external state management when you can have a simpler, more flexible solution? Svelte has its solution to state management: Svelte stores. A store in Svelte is an object with a `subscribe` method, which gets updated when the value is changed. Svelte allows us to use stores in templates using a special `$` syntax, which allows the template to use the store effectively. There are also special stores such as `derived`, which make fetching and computing data simpler when stores change. See [The full code sample in the appendix](#code-sample-a) for svelte stores in action and how they simplify cross-file state management compared to Vue's Pinia state management. Svelte stores can also be used for more than state management. They have been used for state management across black boxes, such as connecting Tauri state to Svelte state (see [Glowsquids codebase](https://github.com/glowsquid-launcher/glowsquid-new) for an example of that). Svelte stores are SSR-compatible OOTB, while Pinia requires extra work for features such as client hydration.
 
 With Vue (and Svelte), there are only two officially supported rendering schemes: Client side and server-side rendering. SolidJS has this neat benefit of being modern: incredible rendering flexibility. By default, it renders using Client-side rendering, or CSR for short. CSR means that the browser renders your whole app. Then there is server-side rendering or SSR. SSR is where the website is rendered by a server and sent to the client simultaneously. While these are good, they have their drawbacks. CSR can be slow, have large bundle sizes, and have poor SEO performance. Server-side rendering has to wait for the server to render the whole page, which may take a ton of time if we are doing, e.g. database queries. SolidJS and other frameworks solve this issue by having a new rendering method: Streaming SSR. What this does is _instantly_ load the minimum amount of data, then add placeholders for the `lazy` or async components and stream that data in the background. Streaming means the client never queries data, but the initial page load is incredibly quick since the rest of the HTML is streamed. Streaming in the slow data leads to great initial page load times and fewer things for the client to compute since the server can compute the data instead and stream it over. SvelteKit, Svelte's full-stack framework, has a similar way of doing this, but sadly does not stream in the HTML but rather the data itself. Vue has no support for these features, which is a huge downside compared to the new frameworks.
+
+# Conclusion
 
 While Vue is good, it has been outshone by its competitors. It started as an extremely simple and relatively fast framework, but years of technical debt have now accumulated. Having two different ways of doing the same thing with various foot guns in each prevents it from being nearly boilerplate. A split ecosystem prevents companies from adopting its latest version, and it is now being beaten at what was its own game: being a simple, fast framework. While it is still an excellent choice, there are far better choices out there than when it was first made.
 

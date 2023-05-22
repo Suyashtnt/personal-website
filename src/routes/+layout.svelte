@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './app.css';
 	import '@fontsource/inter/400.css';
+	import '@fontsource/inter/600.css';
 	import Header from './Header.svelte';
 
 	import lazyload from 'vanilla-lazyload';

@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 	import './syntax.css';
-	import './post.css';
+	import './post.scss';
 
 	type C = $$Generic<typeof SvelteComponentTyped<unknown, unknown, unknown>>;
 	$: component = data.component as unknown as C;
@@ -39,7 +39,7 @@
 				)}
 			</p>
 		</header>
-		<p class="text-justify">
+		<p class="text-justify article-content">
 			<svelte:component this={component} />
 		</p>
 	</article>
