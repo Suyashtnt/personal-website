@@ -8,7 +8,7 @@ published: true
 ---
 
 # Preface
-This blog post was initially an essay for school, so thats why it's closer to an essay than a blog post. This is also my first blog post so thats exciting.
+This blog post was initially an essay for school, so that's why it's closer to an essay than a blog post. This is also my first blog post so that's exciting.
 
 While this post mainly criticizes Vue, I do not at all think its a bad framework. It was actually the first JS framework I learnt. It has and still is an incredible framework and web development would be different today without it.
 I am not saying don't use Vue or that you should switch from it, but rather pointing out some of its issues that other frameworks have either solved or don't have.
