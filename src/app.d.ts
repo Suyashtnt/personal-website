@@ -49,11 +49,6 @@ declare global {
 		const out: PictureWithLQIP;
 		export default out;
 	}
-
-	interface Document {
-		lazyloadInstance: import('vanilla-lazyload').ILazyLoadInstance
-	}
-
 }
 
 

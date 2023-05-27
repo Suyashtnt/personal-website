@@ -1,4 +1,4 @@
-<script lang="ts">
+<lang script="ts">
 	import { page } from '$app/stores';
  	import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css'
 
@@ -40,10 +40,10 @@
 {#if mobileHambugerMenuOpen}
 	<div
 		class="
-            text-6xl text-left
-            h-screen w-screen fixed z-2
-            flex flex-col justify-center gap-16
-            bg-light-mantle/80 dark:bg-dark-mantle/80 backdrop-blur-lg"
+			text-6xl text-left
+			h-screen w-screen fixed z-2
+			flex flex-col justify-center gap-16
+			bg-light-mantle/80 dark:bg-dark-mantle/80 backdrop-blur-lg"
 	>
 		{#if isHomePage}
 			<a
@@ -99,10 +99,10 @@
 <nav class="pa-2 sticky top-0 z-10">
 	<div
 		class="
-        flex justify-between items-center
-        px-4 sm:px-8 rounded-xl
-        border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
-        bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
+		flex justify-between items-center
+		px-4 sm:px-8 rounded-xl
+		border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
+		bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
 	>
 		<h1>
 			<a href="/" class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none">
