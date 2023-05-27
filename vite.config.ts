@@ -1,6 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import type { Theme } from 'unocss/preset-uno';
-import UnoCSS from 'unocss/vite';
+import UnoCSS from '@unocss/svelte-scoped/vite'
 import type { UserConfig } from 'vite';
 import { imagetools, setMetadata, type OutputFormat, type TransformFactory, type Picture } from 'vite-imagetools'
 import { createPlaceholder } from './placeholder';
@@ -20,7 +19,6 @@ const pictureProxy = (a: OutputFormat): OutputFormat => {
 	return function (metadatas) {
 		const pictureFormat = a(metadatas);
 		return async function (imageConfig) {
-			// console.log(imageConfig);
 			const picture = pictureFormat(imageConfig) as Picture;
 			return { ...picture, lqip: imageConfig[0].lqip };
 		};
@@ -29,9 +27,7 @@ const pictureProxy = (a: OutputFormat): OutputFormat => {
 
 const config: UserConfig = {
 	plugins: [
-		UnoCSS<Theme>({
-			mode: 'svelte-scoped'
-		}),
+		UnoCSS(),
 		imagetools({
 			extendOutputFormats: (builtins) => {
 				return { ...builtins, picture: pictureProxy(builtins.picture) };

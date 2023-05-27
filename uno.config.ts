@@ -6,6 +6,7 @@ import {
 	presetTypography,
 	transformerDirectives
 } from 'unocss';
+import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 import type { Theme } from 'unocss/preset-uno';
 
 // get the hex value of the color, and then set the color to the hex value
@@ -48,6 +49,7 @@ export default defineConfig<Theme>({
 		presetUno({
 			dark: 'media'
 		}),
-		presetTypography()
+		presetTypography(),
+		presetHeroPatterns()
 	]
 });

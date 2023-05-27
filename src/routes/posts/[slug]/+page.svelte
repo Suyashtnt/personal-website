@@ -5,7 +5,6 @@
 
 	export let data: PageData;
 	import './syntax.css';
-	import './post.scss';
 
 	type C = $$Generic<typeof SvelteComponentTyped<unknown, unknown, unknown>>;
 	$: component = data.component as unknown as C;
@@ -28,7 +27,9 @@
 	<meta property="og:article:modified_time" content={dateModified.toISOString()} />
 </svelte:head>
 
-<div class="flex items-center justify-center mx-2 md:mx-0">
+<div
+	class="flex items-center justify-center mx-2 md:mx-0 bg-hero-plus-light-overlay-0 dark:bg-hero-plus-light-overlay-0/10 bg-fixed"
+>
 	<article class="text-lg prose prose-light-text dark:prose-dark-text xl:text-xl w-full">
 		<header class="mb-8 bg-light-mantle dark:bg-dark-mantle rounded-xl pa-4">
 			<h1 class="text-4xl xl:text-5xl my-0">{data.frontmatter.title}</h1>
@@ -44,3 +45,22 @@
 		</p>
 	</article>
 </div>
+
+<style lang="scss" global>
+	.article-content {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			> a {
+				--at-apply: 'text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text';
+
+				&:hover {
+					--at-apply: 'text-light-blue dark:text-dark-blue visited:text-light-blue dark:visited:text-dark-blue';
+				}
+			}
+		}
+	}
+</style>

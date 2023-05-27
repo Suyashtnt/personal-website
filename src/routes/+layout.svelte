@@ -9,5 +9,3 @@
 	<Header />
 	<slot />
 </main>
-
-<style uno:preflights uno:safelist global></style>

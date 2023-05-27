@@ -1,11 +1,10 @@
-<lang script="ts">
+<script lang="ts">
 	import { page } from '$app/stores';
- 	import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css'
+	import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css';
 
 	let selected: 'landing' | 'about' | 'contact' | 'blog' = 'landing';
 
 	$: if ($page) {
-		// if home page, set selected to landing
 		selected = 'landing';
 
 		if ($page.url.pathname.split('/')[1] === 'posts') {
@@ -35,7 +34,23 @@
 	};
 
 	let mobileHambugerMenuOpen = false;
+
+	let navUp = true;
+
+	let scrollY = 0;
+	let lastScrollY = scrollY;
+
+	// me when I steal react code to svelte code (https://www.codemzy.com/blog/react-sticky-header-disappear-scroll):
+	const updateScrollDirection = () => {
+		const direction = scrollY > lastScrollY ? true : false;
+		if (direction !== navUp && (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)) {
+			navUp = direction;
+		}
+		lastScrollY = scrollY > 0 ? scrollY : 0;
+	};
 </script>
+
+<svelte:window on:scroll={updateScrollDirection} bind:scrollY />
 
 {#if mobileHambugerMenuOpen}
 	<div
@@ -43,6 +58,7 @@
 			text-6xl text-left
 			h-screen w-screen fixed z-2
 			flex flex-col justify-center gap-16
+			bg-hero-polka-dots-light-base/20 dark:bg-hero-polka-dots-dark-base/20
 			bg-light-mantle/80 dark:bg-dark-mantle/80 backdrop-blur-lg"
 	>
 		{#if isHomePage}
@@ -73,16 +89,16 @@
 				<span class="anicon">M</span>
 				Contact
 			</a>
-			{:else}
-				<a
-					href="/"
-					data-selected={selected === 'landing'}
-					class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
-					on:click={onNavigate}
-				>
-					<span class="anicon">M</span>
-					Home
-				</a>
+		{:else}
+			<a
+				href="/"
+				data-selected={selected === 'landing'}
+				class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+				on:click={onNavigate}
+			>
+				<span class="anicon">M</span>
+				Home
+			</a>
 		{/if}
 		<a
 			href="/posts"
@@ -96,16 +112,20 @@
 	</div>
 {/if}
 
-<nav class="pa-2 sticky top-0 z-10">
+<nav class="pa-2 sticky top-0 z-10 h-21 transition-all" class:-top-21={navUp}>
 	<div
 		class="
 		flex justify-between items-center
 		px-4 sm:px-8 rounded-xl
 		border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
+		bg-hero-polka-dots-light-base/20 dark:bg-hero-diagonal-lines-dark-overlay-0/40
 		bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
 	>
 		<h1>
-			<a href="/" class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none">
+			<a
+				href="/"
+				class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
+			>
 				TNTMAN_1671
 			</a>
 		</h1>
