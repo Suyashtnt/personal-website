@@ -28,7 +28,7 @@
 </svelte:head>
 
 <div
-	class="flex items-center justify-center mx-2 md:mx-0 bg-hero-plus-light-overlay-0 dark:bg-hero-plus-light-overlay-0/10 bg-fixed"
+	class="flex items-center justify-center mx-2 md:mx-0 bg-hero-plus-light-overlay-0/15 dark:bg-hero-plus-dark-overlay-0/10 bg-fixed"
 >
 	<article class="text-lg prose prose-light-text dark:prose-dark-text xl:text-xl w-full">
 		<header class="mb-8 bg-light-mantle dark:bg-dark-mantle rounded-xl pa-4">
