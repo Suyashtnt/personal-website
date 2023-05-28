@@ -3,6 +3,12 @@
 	import PageHead from '$lib/components/PageHead.svelte';
 
 	export let data: PageData;
+
+	const dateFormatter = new Intl.DateTimeFormat('en-uk', {
+		year: 'numeric',
+		month: 'short',
+		day: '2-digit'
+	});
 </script>
 
 <PageHead title="Posts" description="My blog posts" />
@@ -12,16 +18,24 @@
 <ul class="post-grid list-none pa-0 mx-2">
 	{#each data.posts as post (post.slug)}
 		<li>
-			<article class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2">
-				<header>
-					<h1>
-						<a href="/posts/{post.slug}" class="text-light-text dark:text-dark-text">
+			<a
+				href="/posts/{post.slug}"
+				class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
+			>
+				<article class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2">
+					<header>
+						<h1 class="hover:decoration-underline mb-2">
 							{post.title}
-						</a>
-					</h1>
-				</header>
-				<p>{post.description}</p>
-			</article>
+						</h1>
+						<div role="doc-subtitle" class="text-light-text/80 dark:text-dark-text/80">
+							Published {dateFormatter.format(new Date(post.date))} | Updated {dateFormatter.format(
+								new Date(post.updated)
+							)}
+						</div>
+					</header>
+					<p>{post.description}</p>
+				</article>
+			</a>
 		</li>
 	{/each}
 </ul>

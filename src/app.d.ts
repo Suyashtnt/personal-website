@@ -21,6 +21,7 @@ declare global {
 			author: string;
 			description: string;
 			date: string;
+			updated: string;
 			published: boolean;
 		}
 	}

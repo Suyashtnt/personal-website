@@ -32,7 +32,9 @@
 >
 	<article class="text-lg prose prose-light-text dark:prose-dark-text xl:text-xl w-full">
 		<header class="mb-8 bg-light-mantle dark:bg-dark-mantle rounded-xl pa-4">
-			<h1 class="text-4xl xl:text-5xl my-0">{data.frontmatter.title}</h1>
+			<h1 class="text-4xl xl:text-5xl my-0">
+				{data.frontmatter.title}
+			</h1>
 			<h2 class="mb-0">By {data.frontmatter.author}.</h2>
 			<p class="mb-0">
 				Published {dateFormatter.format(datePublished)} | Last updated {dateFormatter.format(

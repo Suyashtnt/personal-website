@@ -1,32 +1,30 @@
-# {
-#   inputs.dream2nix.url = "github:nix-community/dream2nix";
-#   outputs = inp:
-#     inp.dream2nix.lib.makeFlakeOutputs {
-#       systemsFromFile = ./nix_systems;
-#       config.projectRoot = ./.;
-#       source = ./.;
-#       projects = ./projects.toml;
-#     };
-# }
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.napalm.url = "github:nix-community/napalm";
+  inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  # NOTE: This is optional, but is how to configure napalm's env
   inputs.napalm.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = {
     self,
     nixpkgs,
     napalm,
-  }: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages."${system}";
-  in {
-    packages."${system}".website = napalm.legacyPackages."${system}".buildPackage ./. {};
+    flake-utils,
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      packages = rec {
+        website = napalm.legacyPackages."${system}".buildPackage ./. {};
+        default = website;
+      };
+      apps = rec {
+        website = flake-utils.lib.mkApp {drv = self.packages.${system}.website;};
+        default = website;
+      };
 
-    devShells."${system}".default = pkgs.mkShell {
-      nativeBuildInputs = with pkgs; [nil nodejs alejandra nodePackages.svelte-language-server nodePackages.typescript-language-server];
-    };
-  };
+      devShells.default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [nil nodejs alejandra nodePackages.svelte-language-server nodePackages.typescript-language-server];
+      };
+    });
 }
