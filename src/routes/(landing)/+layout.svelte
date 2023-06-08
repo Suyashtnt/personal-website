@@ -21,7 +21,7 @@
 	</Tabs>
 
 	{#key $page.url.pathname}
-		<div out:fly={{ duration: 300, x: '100%' }} in:fly={{ delay: 300, duration: 300, x: '-100%' }}>
+		<div out:fly|global={{ duration: 300, x: '100%' }} in:fly|global={{ delay: 300, duration: 300, x: '-100%' }}>
 			<slot />
 		</div>
 	{/key}
