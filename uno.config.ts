@@ -50,6 +50,7 @@ export default defineConfig<Theme>({
 			dark: 'media'
 		}),
 		presetTypography(),
+		// @ts-expect-error This is a valid preset
 		presetHeroPatterns()
 	]
 });

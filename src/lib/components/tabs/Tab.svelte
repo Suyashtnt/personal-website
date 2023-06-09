@@ -21,13 +21,13 @@
         dark:from-dark-blue dark:to-dark-sapphire
     "
 
-    class:bg-clip-unset={active}
+    class:important-bg-clip-unset={active}
 
-    class:text-light-surface-0={active}
-    class:dark-text-dark-surface-0={active}
+    class:important-text-light-surface-0={active}
+    class:important-dark-text-dark-surface-0={active}
 
-    class:visited-text-surface-0={active}
-    class:visited-dark-text-dark-surface-0={active}
+    class:important-visited-text-surface-0={active}
+    class:important-visited-dark-text-dark-surface-0={active}
 
     id={name}
     href={path}

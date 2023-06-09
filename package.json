@@ -49,6 +49,7 @@
 	"dependencies": {
 		"@catppuccin/palette": "^0.1.8",
 		"@fontsource/inter": "^5.0.2",
+		"@mobily/ts-belt": "^4.0.0-rc.5",
 		"@vcarl/remark-headings": "^0.1.0",
 		"animejs": "^3.2.1",
 		"atropos": "^1.0.2"
