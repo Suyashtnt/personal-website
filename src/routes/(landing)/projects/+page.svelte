@@ -35,7 +35,7 @@
 	];
 </script>
 
-<ul class="rounded-xl md:pa-2 projects list-none">
+<ul class="rounded-xl projects list-none">
 	{#each projects as project (project.name)}
 		<li>
 			<Project {project} />

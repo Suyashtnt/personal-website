@@ -20,12 +20,22 @@
 		<Tab name="Games" path="/games" />
 	</Tabs>
 
-	{#key $page.url.pathname}
-		<div out:fly={{ duration: 300, x: '100%' }} in:fly={{ delay: 300, duration: 300, x: '-100%' }}>
-			<slot />
-		</div>
-	{/key}
+	<div class="grid grid-template-area overflow-hidden">
+		{#key $page.url.pathname.split('/')[1]}
+			<div out:fly={{ duration: 300, x: '100%' }} in:fly={{ delay: 300, duration: 300, x: '-100%' }} class="grid-area-[area]">
+				{#key $page.url.pathname}
+					<slot />
+				{/key}
+			</div>
+		{/key}
+	</div>
 </section>
+
+<style>
+	.grid-template-area {
+		grid-template: "area";
+	}
+</style>
 
 <AboutToBlog />
 

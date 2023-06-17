@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css';
+	import { slide } from 'svelte/transition';
 
 	let selected: 'landing' | 'about' | 'contact' | 'blog' = 'landing';
 
@@ -26,8 +27,9 @@
 		}
 	}
 
+	$: element = $page.url.pathname.split('/')[1]
 	$: isHomePage =
-		$page && ['/', 'projects', 'games', 'skills'].includes($page.url.pathname.split('/')[1]);
+		element && ['/', 'projects', 'games', 'skills'].includes(element);
 
 	const onNavigate = () => {
 		mobileHambugerMenuOpen = false;
@@ -35,7 +37,7 @@
 
 	let mobileHambugerMenuOpen = false;
 
-	let navUp = true;
+	let navUp = false;
 
 	let scrollY = 0;
 	let lastScrollY = scrollY;
@@ -112,13 +114,14 @@
 	</div>
 {/if}
 
-<nav class="pa-2 sticky top-0 z-10 h-21 transition-all" class:-top-21={navUp}>
+{#if !navUp}
+<nav class="pa-2 sticky top-0 z-10" transition:slide>
 	<div
 		class="
 		flex justify-between items-center
 		px-4 sm:px-8 rounded-xl
 		border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
-		bg-hero-polka-dots-light-base/20 dark:bg-hero-diagonal-lines-dark-overlay-0/40
+		bg-hero-diagonal-lines-light-base/40 dark:bg-hero-diagonal-lines-dark-overlay-0/40
 		bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
 	>
 		<h1>
@@ -189,6 +192,7 @@
 		</button>
 	</div>
 </nav>
+{/if}
 
 <style>
 	.anicon {

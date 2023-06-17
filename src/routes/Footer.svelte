@@ -10,9 +10,10 @@
 
 <footer
 	class="
-           flex flex-col md:flex-row items-center justify-between
-           px-2 lg:px-16
-           text-light-text dark:text-dark-text bg-light-mantle dark:bg-dark-mantle"
+		flex flex-col md:flex-row items-center justify-between
+		px-2 lg:px-16
+		text-light-text dark:text-dark-text bg-light-mantle dark:bg-dark-mantle
+		"
 >
 	<p class="font-semibold text-2xl">TNTMan1671</p>
 	<p>

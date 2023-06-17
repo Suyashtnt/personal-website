@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { fly, slide } from 'svelte/transition';
+	import type { PageData } from './$types';
 
-    export let data
+    export let data: PageData
     const { selectedSkill, html } = data
 </script>
 

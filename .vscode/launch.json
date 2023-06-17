@@ -10,7 +10,6 @@
 			"reAttach": true,
 			"name": "Launch localhost",
 			"url": "http://localhost:5173",
-			"webRoot": "${workspaceFolder}"
 		}
-	]
+	],
 }

@@ -7,9 +7,9 @@
 </script>
 
 <Header />
-<main class="bg-light-base text-light-text dark:bg-dark-base dark:text-dark-text">
-	<slot />
-</main>
+	<main class="bg-light-base text-light-text dark:bg-dark-base dark:text-dark-text">
+		<slot />
+	</main>
 <Footer />
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
