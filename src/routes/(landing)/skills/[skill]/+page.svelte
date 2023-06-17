@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { fly, slide } from 'svelte/transition';
+	import type { PageData } from './$types';
 
-    export let data
+    export let data: PageData
     const { selectedSkill, html } = data
 </script>
 
@@ -12,12 +13,12 @@
             src={selectedSkill?.icon}
             alt={selectedSkill?.iconAlt}
             class="w-12 h-auto"
-            in:fly|global={{ x: '-100%', delay: 300 }}
-            out:fly|global={{ x: '-100%', duration: 300 }}
+            in:fly={{ x: '-100%', delay: 300 }}
+            out:fly={{ x: '-100%', duration: 300 }}
         >
         <hgroup
-            in:fly|global={{ y: '-100%', delay: 300 }}
-            out:fly|global={{ y: '-100%', duration: 300 }}
+            in:fly={{ y: '-100%', delay: 300 }}
+            out:fly={{ y: '-100%', duration: 300 }}
         >
             <h1
                 class="text-4xl my-0"
@@ -47,8 +48,8 @@
         class:dark-bg-dark-yellow={selectedSkill?.proficiency === 'Intermediate'}
         class:dark-bg-dark-red={selectedSkill?.proficiency === 'Skilled'}
 
-        in:fly|global={{ x: '-100%', delay: 200 }}
-        out:fly|global={{ x: '-100%', duration: 100 }}
+        in:fly={{ x: '-100%', delay: 200 }}
+        out:fly={{ x: '-100%', duration: 100 }}
     >
         <p class="text-lg font-normal leading-none max-w-full flex-initial my-0">
             {selectedSkill?.proficiency}
@@ -75,8 +76,8 @@
         class:dark-bg-dark-blue={selectedSkill?.type === 'Tool'}
         class:dark-bg-dark-mauve={selectedSkill?.type === 'Other'}
 
-        in:fly|global={{ x: '-100%', delay: 350 }}
-        out:fly|global={{ x: '-100%', duration: 100, delay: 50 }}
+        in:fly={{ x: '-100%', delay: 350 }}
+        out:fly={{ x: '-100%', duration: 100, delay: 50 }}
     >
         <p class="text-lg font-normal leading-none max-w-full flex-initial my-0">
             {selectedSkill?.type}
@@ -86,7 +87,7 @@
 </section>
 <!-- experience/main content. Key is required for transitions -->
 {#key selectedSkill}
-    <section class="text-xl mt-4" in:slide|global={{ axis: 'y', delay: 300 }} out:slide|global={{ axis: 'y', duration: 300 }}>
+    <section class="text-xl mt-4" in:slide={{ axis: 'y', delay: 300 }} out:slide={{ axis: 'y', duration: 300 }}>
                 {@html html}
     </section>
 {/key}
