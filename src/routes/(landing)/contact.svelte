@@ -10,9 +10,7 @@
         </div>
         <div class="bg-light-mantle dark:bg-dark-mantle pa-4 rounded-xl">
             <h2 class="text-4xl">Phone</h2>
-            <p class="text-2xl">
-                Yeah no I don't want to get spam called 24/7
-            </p>
+            <p class="text-2xl">Yeah no I don't want to get spam called 24/7</p>
         </div>
     </address>
 </section>

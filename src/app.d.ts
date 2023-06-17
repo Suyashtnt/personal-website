@@ -1,56 +1,55 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
-import { Picture } from 'vite-imagetools';
+import type {Picture} from 'vite-imagetools';
+import type {SvelteComponent} from 'svelte';
+
 declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface Platform {}
+    namespace App {
+        // Interface Error {}
+        // interface Locals {}
+        // interface PageData {}
+        // interface Platform {}
 
-		interface MdsvexFile {
-			default: import('svelte/internal').SvelteComponent;
-			metadata: Record<string, string>;
-		}
+        type MdsvexFile = {
+            default: SvelteComponent;
+            metadata: BlogPost & Record<string, string>;
+        };
 
-		type MdsvexResolver = () => Promise<MdsvexFile>;
+        type MdsvexResolver = () => Promise<MdsvexFile>;
 
-		interface BlogPost {
-			slug: string;
-			title: string;
-			author: string;
-			description: string;
-			date: string;
-			updated: string;
-			published: boolean;
-		}
-	}
+        type BlogPost = {
+            author: string;
+            date: string;
+            description: string;
+            published: boolean;
+            slug: string;
+            title: string;
+            updated: string;
+        };
+    }
 
-	module "*&srcset" {
-		/**
-		 * actual types
-		 * - code https://github.com/JonasKruckenberg/imagetools/blob/main/packages/core/src/output-formats.ts
-		 * - docs https://github.com/JonasKruckenberg/imagetools/blob/main/docs/guide/getting-started.md#metadata
-		 */
-		const out;
-		export default out;
-	}
+    module '*&srcset' {
+        /**
+         * Actual types
+         * - code https://github.com/JonasKruckenberg/imagetools/blob/main/packages/core/src/output-formats.ts
+         * - docs https://github.com/JonasKruckenberg/imagetools/blob/main/docs/guide/getting-started.md#metadata
+         */
+        const out;
+        export default out;
+    }
 
-	module "*&metadata" {
-		export const width: number;
-		export const height: number;
-		export const src: string;
-	}
+    module '*&metadata' {
+        export const width: number;
+        export const height: number;
+        export const src: string;
+    }
 
-	module "*optimize" {
-		interface PictureWithLQIP extends Picture {
-			lqip: string;
-		}
+    module '*optimize' {
+        type PictureWithLqip = Picture & {
+            lqip: string;
+        };
 
-		const out: PictureWithLQIP;
-		export default out;
-	}
+        const out: PictureWithLqip;
+        export default out;
+    }
 }
-
-
-export {};

@@ -1,40 +1,40 @@
 <script context="module" lang="ts">
     export interface ISkill {
         /**
-         * Name of the skill
-         */
-        name: string;
-        /**
          * Very short description or tagline of the skill
          */
         description: string;
+        /**
+         * My experience with the skill. In markdown.
+         */
+        experience: string;
         /**
          * Preferably SVG, 1:1 aspect ratio
          */
         icon: string;
         iconAlt: string;
         /**
-         * URL to the skill's website or documentation
-        */
-        url?: string;
-        /**
-         * My experience with the skill. In markdown.
+         * Name of the skill
          */
-        experience: string;
+        name: string;
         /**
          * My proficiency with the skill.
-        */
-        proficiency: 'Beginner' | 'Intermediate' | 'Skilled'
-        /**
-         * type of skill
          */
-        type: 'Language' | 'Framework' | 'Tool' | 'Frontend' | 'Backend' | 'Other'
+        proficiency: 'Beginner' | 'Intermediate' | 'Skilled';
+        /**
+         * Type of skill
+         */
+        type: 'Backend' | 'Framework' | 'Frontend' | 'Language' | 'Other' | 'Tool';
+        /**
+         * URL to the skill's website or documentation
+         */
+        url?: string;
     }
 </script>
 
 <script lang="ts">
     export let skill: ISkill;
-    export let href: string
+    export let href: string;
 </script>
 
 <a
@@ -49,15 +49,10 @@
         transition-all duration-200
         hover:shadow-2xl hover:border-light-sapphire dark:hover:border-dark-sapphire
     "
-
     {href}
     data-sveltekit-noscroll
 >
-    <img
-        src={skill.icon}
-        alt={skill.iconAlt}
-        class="w-10 h-auto"
-    >
+    <img src={skill.icon} alt={skill.iconAlt} class="w-10 h-auto" />
 
     <h2 class="text-2xl">
         {skill.name}

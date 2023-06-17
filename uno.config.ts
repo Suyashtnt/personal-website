@@ -1,56 +1,61 @@
-import { variants, type Labels, type Color, type AlphaColor } from '@catppuccin/palette';
+import {type AlphaColor, type Color, type Labels, variants} from '@catppuccin/palette';
 import {
-	defineConfig,
-	presetIcons,
-	presetUno,
-	presetTypography,
-	transformerDirectives
+    defineConfig,
+    presetIcons,
+    presetTypography,
+    presetUno,
+    transformerDirectives
 } from 'unocss';
-import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
-import type { Theme } from 'unocss/preset-uno';
+import {presetHeroPatterns} from '@julr/unocss-preset-heropatterns';
 
-// get the hex value of the color, and then set the color to the hex value
+// Get the hex value of the color, and then set the color to the hex value
 const createTheme = (colors: Labels<Color, AlphaColor>) => {
-	let vals = Object.fromEntries(Object.entries(colors).map(([key, value]) => [key, value.hex]));
-	vals = Object.entries(vals)
-		// turn overlay0, overlay1 into an object, containing {
-		//   '0': '#000000',
-		//   '1': '#000000'
-		// }
-		// so that we can use overlay-0 and overlay-1 in the theme
-		// do the same for all that contain numbers
-		// (yes, I used copilot here)
-		.reduce((acc, [key, value]) => {
-			const match = key.match(/^(?<name>.+?)(?<num>\d+)$/);
-			if (match?.groups) {
-				const { name, num } = match.groups;
-				if (!acc[name]) {
-					acc[name] = {};
-				}
-				acc[name][num] = value;
-				return acc;
-			}
-			acc[key] = value;
-			return acc;
-		}, {} as Record<string, string | Record<string, string>>);
-	return vals;
+    const values = Object.fromEntries(
+        Object.entries(colors).map(([key, value]) => [key, value.hex])
+    );
+    const vals = Object.entries(values);
+
+    const finalTheme: Record<string, Record<string, string> | string> = {};
+
+    for (const [key, value] of vals) {
+        const keyContainsNumber = /\d/.test(key);
+        if (keyContainsNumber) {
+            const [name, number] = key.split(/(?<=\D)(?=\d)|(?<=\d)(?=\D)/);
+
+            const hasNameAlready = finalTheme[name] !== undefined;
+            if (!hasNameAlready) {
+                finalTheme[name] = {};
+            }
+
+            const objectToAddValueTo = finalTheme[name];
+
+            if (typeof objectToAddValueTo === 'string')
+                throw new Error(`Theme key ${name.toString()} is already a string`);
+
+            objectToAddValueTo[number] = value;
+        } else {
+            finalTheme[key] = value;
+        }
+    }
+
+    return finalTheme;
 };
 
-export default defineConfig<Theme>({
-	theme: {
-		colors: {
-			light: createTheme(variants.latte),
-			dark: createTheme(variants.mocha)
-		}
-	},
-	transformers: [transformerDirectives()],
-	presets: [
-		presetIcons(),
-		presetUno({
-			dark: 'media'
-		}),
-		presetTypography(),
-		// @ts-expect-error This is a valid preset
-		presetHeroPatterns()
-	]
+export default defineConfig({
+    presets: [
+        presetIcons(),
+        presetUno({
+            dark: 'media'
+        }),
+        presetTypography(),
+        // @ts-expect-error This is a valid preset
+        presetHeroPatterns()
+    ],
+    theme: {
+        colors: {
+            dark: createTheme(variants.mocha),
+            light: createTheme(variants.latte)
+        }
+    },
+    transformers: [transformerDirectives()]
 });

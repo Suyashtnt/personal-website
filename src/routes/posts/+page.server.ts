@@ -1,17 +1,17 @@
-import { slugFromPath } from '$lib/helpers/slugFromPath';
-import type { PageServerLoad } from './$types'
+import type {PageServerLoad} from './$types';
+import {slugFromPath} from '$lib/helpers/slug-from-path';
+
 export const prerender = true;
 
 export const load: PageServerLoad = async () => {
-    const modules = import.meta.glob("/src/lib/posts/*.{md,svx,svelte.md}")
+    const modules = import.meta.glob('/src/lib/posts/*.{md,svx,svelte.md}');
 
-    const postPromises = Object.entries(modules).map(([path, resolver]) =>
+    const postPromises = Object.entries(modules).map(async ([path, resolver]) =>
         resolver().then(
-            (post) =>
-            ({
-                slug: slugFromPath(path),
-                ...(post as unknown as App.MdsvexFile).metadata
-            } as App.BlogPost)
+            (post): App.BlogPost => ({
+                ...(post as App.MdsvexFile).metadata,
+                slug: slugFromPath(path)
+            })
         )
     );
 
@@ -20,5 +20,5 @@ export const load: PageServerLoad = async () => {
 
     publishedPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 
-    return { posts: publishedPosts };
-}
+    return {posts: publishedPosts};
+};

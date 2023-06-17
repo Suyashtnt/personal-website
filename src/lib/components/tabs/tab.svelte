@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+    import {page} from '$app/stores';
+
     $: active = $page.url.pathname.includes(path);
 
     export let name: string;
@@ -20,15 +21,11 @@
         from-light-blue to-light-sapphire
         dark:from-dark-blue dark:to-dark-sapphire
     "
-
     class:important-bg-clip-unset={active}
-
     class:important-text-light-surface-0={active}
     class:important-dark-text-dark-surface-0={active}
-
     class:important-visited-text-surface-0={active}
     class:important-visited-dark-text-dark-surface-0={active}
-
     id={name}
     href={path}
     data-sveltekit-noscroll
