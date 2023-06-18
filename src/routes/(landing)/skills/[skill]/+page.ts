@@ -10,7 +10,7 @@ export const load: PageLoad = ({params}) => {
         (skill) =>
             skill.name.toLowerCase() === params.skill.toLowerCase()
     );
-    if (!selectedSkill) return error(404, 'Skill not found');
+    if (!selectedSkill) throw error(404, 'Skill not found');
 
     const html = marked(selectedSkill.experience, {
         breaks: true,

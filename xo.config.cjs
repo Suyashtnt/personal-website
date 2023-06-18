@@ -24,6 +24,8 @@ module.exports = {
     plugins: ['perfectionist'],
     prettier: true,
     rules: {
+        // This breaks sveltekit throw error()
+        '@typescript-eslint/no-throw-literal': 'off',
         // The rule no-unsafe seems to be broken
         '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',

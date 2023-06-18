@@ -14,8 +14,8 @@ const placeholderTransform: TransformFactory = (config) => {
     return async function (image) {
         if (!('lqip' in config)) return image;
 
-        /** @ts-expect-error it's a string */
         const href = await createPlaceholder(
+            // @ts-expect-error it's a string
             image.options.input.file
         );
         setMetadata(image, 'lqip', href);
