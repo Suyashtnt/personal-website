@@ -12,7 +12,10 @@
     export let project: IProject;
 </script>
 
-<a href={project.url} class="decoration-none text-light-text dark:text-dark-text">
+<a
+    href={project.url}
+    class="decoration-none text-light-text dark:text-dark-text"
+>
     <Atropos class="rounded-xl group h-full">
         <div
             class="
@@ -43,7 +46,9 @@
                 >
                     {project.name}
                 </h2>
-                <p class="text-2xl text-center text-light-text dark:text-dark-text">
+                <p
+                    class="text-2xl text-center text-light-text dark:text-dark-text"
+                >
                     {project.description}
                 </p>
                 <div class="flex flex-col space-y-2 mb-2 w-full">

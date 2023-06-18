@@ -32,7 +32,8 @@ const config = defineConfig({
         [
             remarkGithub,
             {
-                repository: 'https://github.com/suyashtnt/personal-website.git'
+                repository:
+                    'https://github.com/suyashtnt/personal-website.git'
             }
         ],
         remarkAbbr

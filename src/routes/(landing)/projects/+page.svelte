@@ -23,12 +23,14 @@
             url: 'https://github.com/glowsquid-launcher/copper'
         },
         {
-            description: 'Small website I made for a bit of my grade 8 Afrikaans and LO projects',
+            description:
+                'Small website I made for a bit of my grade 8 Afrikaans and LO projects',
             name: 'Afr School Website',
             url: 'https://afr-school-website.vercel.app'
         },
         {
-            description: '🚀A blazingly fast fizzbuzz implementation in rust🚀',
+            description:
+                '🚀A blazingly fast fizzbuzz implementation in rust🚀',
             name: 'FizzBuzz',
             url: 'https://github.com/Suyashtnt/fizzbuzz'
         }
@@ -57,13 +59,23 @@
     * Calculated values.
     */
         --gap-count: calc(var(--grid-column-count) - 1);
-        --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-        --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+        --total-gap-width: calc(
+            var(--gap-count) * var(--grid-layout-gap)
+        );
+        --grid-item--max-width: calc(
+            (100% - var(--total-gap-width)) / var(--grid-column-count)
+        );
 
         display: grid;
         grid-template-columns: repeat(
             auto-fill,
-            minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
+            minmax(
+                max(
+                    var(--grid-item--min-width),
+                    var(--grid-item--max-width)
+                ),
+                1fr
+            )
         );
         grid-gap: var(--grid-layout-gap);
     }

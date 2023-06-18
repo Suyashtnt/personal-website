@@ -7,7 +7,8 @@ export const prerender = true;
 
 export const load: PageLoad = ({params}) => {
     const selectedSkill = _skills.find(
-        (skill) => skill.name.toLowerCase() === params.skill.toLowerCase()
+        (skill) =>
+            skill.name.toLowerCase() === params.skill.toLowerCase()
     );
     if (!selectedSkill) return error(404, 'Skill not found');
 

@@ -17,7 +17,10 @@ async function resizeImage(
 
     let sharpInstance = sharp(inputFile).toFormat('webp').blur(3);
 
-    sharpInstance = sharpInstance.resize(options.width, options.height);
+    sharpInstance = sharpInstance.resize(
+        options.width,
+        options.height
+    );
 
     return sharpInstance.toBuffer();
 }

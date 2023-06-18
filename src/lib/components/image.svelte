@@ -36,12 +36,22 @@
     class="img__placeholder {className}"
 >
     {#if typeof src === 'string'}
-        <img bind:this={image} class={className} class:hidden {src} {alt} {loading} {decoding} />
+        <img
+            bind:this={image}
+            class={className}
+            class:hidden
+            {src}
+            {alt}
+            {loading}
+            {decoding}
+        />
     {:else}
         <picture class={className}>
             {#each Object.entries(src.sources) as [format, images]}
                 <source
-                    srcset={images.map((i) => `${i.src} ${i.w}w`).join(', ')}
+                    srcset={images
+                        .map((i) => `${i.src} ${i.w}w`)
+                        .join(', ')}
                     type={'image/' + format}
                 />
             {/each}

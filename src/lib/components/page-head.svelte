@@ -3,7 +3,9 @@
     export let description: string;
 
     const siteTitle = 'TNTMan1671';
-    const formattedTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+    const formattedTitle = title
+        ? `${title} | ${siteTitle}`
+        : siteTitle;
 </script>
 
 <svelte:head>

@@ -67,8 +67,13 @@
     }
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base" id="landing">
-    <div class="flex flex-col lg:flex-row justify-center lg:justify-start items-center pb-32">
+<section
+    class="relative bg-light-base dark:bg-dark-base"
+    id="landing"
+>
+    <div
+        class="flex flex-col lg:flex-row justify-center lg:justify-start items-center pb-32"
+    >
         <Atropos class="rounded-xl mx-8 mt-8 group rounded-xl w-64">
             <div
                 class="flex content-center justify-center transition-all pa-2 group-hover:pa-0 group-hover:ma-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
@@ -89,7 +94,10 @@
                 <br />
                 <span class="names">
                     {#each names as name, i}
-                        <span class={`name-${i} inline-block`} class:opacity-0={i !== 0}>
+                        <span
+                            class={`name-${i} inline-block`}
+                            class:opacity-0={i !== 0}
+                        >
                             {#each name.split('\\') as segement}
                                 {segement}<wbr />
                             {/each}
@@ -108,7 +116,9 @@
                     on:touchend={() => endAnimateWord('student')}
                 >
                     {#each 'Student'.split('') as letter}
-                        <span class="letter inline-block">{letter}</span>
+                        <span class="letter inline-block"
+                            >{letter}</span
+                        >
                     {/each}
                 </p>
 
@@ -176,7 +186,9 @@
                     A badly drawn wobbler#8550
                 </li>
                 <li class="flex flex-row gap-2 w-min items-center">
-                    <div class="i-mdi-youtube h-16 w-16 text-light-red dark:text-dark-red" />
+                    <div
+                        class="i-mdi-youtube h-16 w-16 text-light-red dark:text-dark-red"
+                    />
                     <a
                         href="https://www.youtube.com/@tabiasgeehuman"
                         class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text whitespace-nowrap"
@@ -184,7 +196,9 @@
                     >
                 </li>
                 <li class="flex flex-row gap-2 w-min items-center">
-                    <div class="i-mdi-github h-16 w-16 text-dark-mantle dark:text-light-mantle" />
+                    <div
+                        class="i-mdi-github h-16 w-16 text-dark-mantle dark:text-light-mantle"
+                    />
                     <a
                         href="https://github.com/Suyashtnt"
                         class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"

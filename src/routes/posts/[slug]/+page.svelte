@@ -14,7 +14,11 @@
     // eslint-disable-next-line no-undef
     $: component = data.component as unknown as C;
 
-    if (!data.frontmatter.date || !data.frontmatter.updated || !data.frontmatter.description) {
+    if (
+        !data.frontmatter.date ||
+        !data.frontmatter.updated ||
+        !data.frontmatter.description
+    ) {
         throw new Error('Missing date or updated in frontmatter');
     }
 
@@ -40,20 +44,35 @@
 
 <svelte:head>
     <meta property="og:type" content="article" />
-    <meta property="og:article:published_time" content={datePublished.toISOString()} />
-    <meta property="og:article:modified_time" content={dateModified.toISOString()} />
+    <meta
+        property="og:article:published_time"
+        content={datePublished.toISOString()}
+    />
+    <meta
+        property="og:article:modified_time"
+        content={dateModified.toISOString()}
+    />
 
     <link rel="stylesheet" href={lightSyntax} />
-    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href={darkSyntax} />
+    <link
+        rel="stylesheet"
+        media="(prefers-color-scheme: dark)"
+        href={darkSyntax}
+    />
 </svelte:head>
 
 <div class="grid gap-8 grid-layout-article">
-    <aside class="ml-4 grid-area-[sidebar] self-start md:sticky top-0">
+    <aside
+        class="ml-4 grid-area-[sidebar] self-start md:sticky top-0"
+    >
         <p class="text-2xl line-clamp-2 mt-4">
             {data.frontmatter.title}
         </p>
         <ol class="pl-4 text-lg list-position">
-            <ToC {...data.headings} value={data.headings.value ?? ''} />
+            <ToC
+                {...data.headings}
+                value={data.headings.value ?? ''}
+            />
         </ol>
     </aside>
     <article
@@ -81,9 +100,12 @@
                 class="h-0.5 mb-2 bg-gradient-to-r from-light-blue to-light-sapphire dark:from-dark-blue dark:to-dark-blue"
             />
 
-            <p class="my-0 text-light-subtext-0 dark:text-dark-subtext-0">
-                By {data.frontmatter.author} | Published {dateFormatter.format(datePublished)} | Last
-                updated {dateFormatter.format(dateModified)}
+            <p
+                class="my-0 text-light-subtext-0 dark:text-dark-subtext-0"
+            >
+                By {data.frontmatter.author} | Published {dateFormatter.format(
+                    datePublished
+                )} | Last updated {dateFormatter.format(dateModified)}
             </p>
         </header>
         <p class="text-justify article-content">
@@ -91,7 +113,9 @@
         </p>
     </article>
 
-    <aside class="mr-4 grid-area-[notes]">This is where I would put my notes... IF I HAD ANY</aside>
+    <aside class="mr-4 grid-area-[notes]">
+        This is where I would put my notes... IF I HAD ANY
+    </aside>
 </div>
 
 <style lang="scss" global>

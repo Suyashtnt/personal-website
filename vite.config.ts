@@ -15,7 +15,9 @@ const placeholderTransform: TransformFactory = (config) => {
         if (!('lqip' in config)) return image;
 
         /** @ts-expect-error it's a string */
-        const href = await createPlaceholder(image.options.input.file);
+        const href = await createPlaceholder(
+            image.options.input.file
+        );
         setMetadata(image, 'lqip', href);
         return image;
     };
@@ -45,14 +47,19 @@ const config: UserConfig = {
                         as: 'picture',
                         format: 'avif;webp;jpg',
                         lqip: true,
-                        w: url.searchParams.get('w') ?? '1920;1366;780;414'
+                        w:
+                            url.searchParams.get('w') ??
+                            '1920;1366;780;414'
                     });
                 }
 
                 return new URLSearchParams();
             },
             extendOutputFormats(builtins) {
-                return {...builtins, picture: pictureProxy(builtins.picture)};
+                return {
+                    ...builtins,
+                    picture: pictureProxy(builtins.picture)
+                };
             },
             extendTransforms(builtins) {
                 return [placeholderTransform, ...builtins];

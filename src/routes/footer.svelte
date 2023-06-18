@@ -6,7 +6,9 @@
     ] as const;
 
     const footerText =
-        potentialFooterTexts[Math.floor(Math.random() * potentialFooterTexts.length)];
+        potentialFooterTexts[
+            Math.floor(Math.random() * potentialFooterTexts.length)
+        ];
 </script>
 
 <footer

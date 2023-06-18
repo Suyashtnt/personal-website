@@ -24,7 +24,13 @@
         /**
          * Type of skill
          */
-        type: 'Backend' | 'Framework' | 'Frontend' | 'Language' | 'Other' | 'Tool';
+        type:
+            | 'Backend'
+            | 'Framework'
+            | 'Frontend'
+            | 'Language'
+            | 'Other'
+            | 'Tool';
         /**
          * URL to the skill's website or documentation
          */

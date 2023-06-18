@@ -13,7 +13,10 @@
 
 <Hero />
 
-<section class="bg-light-surface-0 dark:bg-dark-surface-0 py-8 md:px-8 overflow-clip" id="about">
+<section
+    class="bg-light-surface-0 dark:bg-dark-surface-0 py-8 md:px-8 overflow-clip"
+    id="about"
+>
     <Tabs class="mb-4">
         <Tab name="Skills" path="/skills" />
         <Tab name="Projects" path="/projects" />

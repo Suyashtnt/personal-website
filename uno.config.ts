@@ -1,4 +1,9 @@
-import {type AlphaColor, type Color, type Labels, variants} from '@catppuccin/palette';
+import {
+    type AlphaColor,
+    type Color,
+    type Labels,
+    variants
+} from '@catppuccin/palette';
 import {
     defineConfig,
     presetIcons,
@@ -15,12 +20,17 @@ const createTheme = (colors: Labels<Color, AlphaColor>) => {
     );
     const vals = Object.entries(values);
 
-    const finalTheme: Record<string, Record<string, string> | string> = {};
+    const finalTheme: Record<
+        string,
+        Record<string, string> | string
+    > = {};
 
     for (const [key, value] of vals) {
         const keyContainsNumber = /\d/.test(key);
         if (keyContainsNumber) {
-            const [name, number] = key.split(/(?<=\D)(?=\d)|(?<=\d)(?=\D)/);
+            const [name, number] = key.split(
+                /(?<=\D)(?=\d)|(?<=\d)(?=\D)/
+            );
 
             const hasNameAlready = finalTheme[name] !== undefined;
             if (!hasNameAlready) {
@@ -30,7 +40,9 @@ const createTheme = (colors: Labels<Color, AlphaColor>) => {
             const objectToAddValueTo = finalTheme[name];
 
             if (typeof objectToAddValueTo === 'string')
-                throw new Error(`Theme key ${name.toString()} is already a string`);
+                throw new Error(
+                    `Theme key ${name.toString()} is already a string`
+                );
 
             objectToAddValueTo[number] = value;
         } else {

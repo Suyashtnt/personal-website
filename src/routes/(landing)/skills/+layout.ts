@@ -46,7 +46,8 @@ I first used it when making a website for my first discord bot, emojicord. That 
         url: 'https://vuejs.org/'
     },
     {
-        description: 'Empowering everyone to build reliable and efficient software.',
+        description:
+            'Empowering everyone to build reliable and efficient software.',
         experience: `
 I've been using Rust for about 3 years now.
 

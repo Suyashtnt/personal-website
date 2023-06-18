@@ -22,13 +22,20 @@
                 href="/posts/{post.slug}"
                 class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
             >
-                <article class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2">
+                <article
+                    class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2"
+                >
                     <header>
                         <h1 class="hover:decoration-underline mb-2">
                             {post.title}
                         </h1>
-                        <div role="doc-subtitle" class="text-light-text/80 dark:text-dark-text/80">
-                            Published {dateFormatter.format(new Date(post.date))} | Updated {dateFormatter.format(
+                        <div
+                            role="doc-subtitle"
+                            class="text-light-text/80 dark:text-dark-text/80"
+                        >
+                            Published {dateFormatter.format(
+                                new Date(post.date)
+                            )} | Updated {dateFormatter.format(
                                 new Date(post.updated)
                             )}
                         </div>
@@ -54,13 +61,23 @@
 		* Calculated values.
 		*/
         --gap-count: calc(var(--grid-column-count) - 1);
-        --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-        --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+        --total-gap-width: calc(
+            var(--gap-count) * var(--grid-layout-gap)
+        );
+        --grid-item--max-width: calc(
+            (100% - var(--total-gap-width)) / var(--grid-column-count)
+        );
 
         display: grid;
         grid-template-columns: repeat(
             auto-fill,
-            minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
+            minmax(
+                max(
+                    var(--grid-item--min-width),
+                    var(--grid-item--max-width)
+                ),
+                1fr
+            )
         );
         grid-gap: var(--grid-layout-gap);
     }

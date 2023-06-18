@@ -3,7 +3,8 @@
     import {page} from '$app/stores';
     import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css';
 
-    let selected: 'about' | 'blog' | 'contact' | 'landing' = 'landing';
+    let selected: 'about' | 'blog' | 'contact' | 'landing' =
+        'landing';
 
     $: if ($page) {
         selected = 'landing';
@@ -35,7 +36,9 @@
     }
 
     $: element = $page.url.pathname.split('/')[1];
-    $: isHomePage = element && ['/', 'games', 'projects', 'skills'].includes(element);
+    $: isHomePage =
+        element &&
+        ['/', 'games', 'projects', 'skills'].includes(element);
 
     const onNavigate = () => {
         mobileHambugerMenuOpen = false;
@@ -51,7 +54,10 @@
     // Me when I steal react code to svelte code (https://www.codemzy.com/blog/react-sticky-header-disappear-scroll):
     const updateScrollDirection = () => {
         const direction = scrollY > lastScrollY;
-        if (direction !== navUp && (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)) {
+        if (
+            direction !== navUp &&
+            (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)
+        ) {
             navUp = direction;
         }
 

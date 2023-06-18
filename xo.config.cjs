@@ -1,5 +1,8 @@
 module.exports = {
-    extends: ['plugin:svelte/prettier', 'plugin:perfectionist/recommended-natural'],
+    extends: [
+        'plugin:svelte/prettier',
+        'plugin:perfectionist/recommended-natural'
+    ],
     extensions: ['svelte'],
     overrides: [
         {
