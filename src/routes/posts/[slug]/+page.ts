@@ -91,7 +91,6 @@ export const load: PageLoad = async ({params}) => {
 
     const post = await match?.resolver?.();
 
-    // allow non-published posts, so uploaded drafts can be viewed via a direct URL
     const cannotFindPost =
         !post?.metadata ||
         !post.metadata.title;
@@ -140,7 +139,5 @@ export const entries: EntryGenerator = (async () => {
     );
 
     const posts = await Promise.all(postPromises);
-    return posts
-        .filter((post) => post.published)
-        .map(D.selectKeys(['slug']));
+    return posts.map(D.selectKeys(['slug']));
 }) satisfies EntryGenerator;
