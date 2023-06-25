@@ -17,13 +17,15 @@
     if (
         !data.frontmatter.date ||
         !data.frontmatter.updated ||
-        !data.frontmatter.description
+        !data.frontmatter.description ||
+        data.frontmatter.published === undefined
     ) {
         throw new Error('Missing date or updated in frontmatter');
     }
 
     // Svelte's template doesn't recognize the type narrowing done above
     const description = data.frontmatter.description;
+    const draft = !data.frontmatter.published
 
     const datePublished = new Date(data.frontmatter.date);
     const dateModified = new Date(data.frontmatter.updated);
@@ -63,7 +65,7 @@
 
 <div class="grid gap-8 grid-layout-article">
     <aside
-        class="ml-4 grid-area-[sidebar] self-start md:sticky top-0"
+        class="ml-4 grid-area-[sidebar] self-start lg:sticky top-0"
     >
         <p class="text-2xl line-clamp-2 mt-4">
             {data.frontmatter.title}
@@ -75,6 +77,7 @@
             />
         </ol>
     </aside>
+
     <article
         class="text-lg xl:text-xl prose prose-light-text dark:prose-dark-text grid-area-[content] justify-self-center"
     >
@@ -105,9 +108,13 @@
             >
                 By {data.frontmatter.author} | Published {dateFormatter.format(
                     datePublished
-                )} | Last updated {dateFormatter.format(dateModified)}
+                )} | Last updated {dateFormatter.format(dateModified)} 
+		{#if draft}
+		| <span class="text-light-red dark:text-dark-red">DRAFT</span>
+		{/if}
             </p>
         </header>
+
         <p class="text-justify article-content">
             <svelte:component this={component} />
         </p>
@@ -127,18 +134,18 @@
 
         grid-template-columns: 1fr;
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             grid-template-areas:
                 'sidebar content'
-                'notes notes';
+                'sidebar notes';
 
-            grid-template-columns: auto 1fr;
+            grid-template-columns: 1fr 3fr;
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1280px) {
             grid-template-areas: 'sidebar content notes';
 
-            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-columns: 1fr 3fr 1fr;
         }
     }
 

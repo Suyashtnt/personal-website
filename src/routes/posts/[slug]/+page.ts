@@ -91,10 +91,11 @@ export const load: PageLoad = async ({params}) => {
 
     const post = await match?.resolver?.();
 
+    // allow non-published posts, so uploaded drafts can be viewed via a direct URL
     const cannotFindPost =
         !post?.metadata ||
-        !post.metadata.published ||
         !post.metadata.title;
+
     if (cannotFindPost) {
         // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw error(404);
