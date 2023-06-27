@@ -1,7 +1,7 @@
 ---
 title: 'The badly drawn wobbler'
-description: 'From Minecraft mod to profile picture: The origins of the badly drawn wobbler'
-author: 'Suyashtnt'
+description: 'From Minecraft mod to profile picture: The origins of the badly drawn wobbler and my other miscellaneous usernames.'
+author: 'A badly drawn wobbler (AKA Suyashtnt, TNTMan1671)'
 date: '2023-06-30'
 updated: '2023-06-25'
 published: false
@@ -16,10 +16,21 @@ import Upscaled from '$lib/pictures/posts/the-wobbler/upscaled.png?optimize'
 import YouShouldMakeItYourPfp from '$lib/pictures/posts/the-wobbler/make-it-your-pfp.png?optimize'
 </script>
 
-Yo whats up blog post readers it's ya boy A badly drawn wobbler! Wait, but how did it become the badly drawn wobbler? Why was this chosen above all `TNTMan1671`, `Suyashtnt`, or `TNT MAN!!!`?
+In the distant past of... 2016, young me decided that I was going to be a _Youtuber!_ Wether that was a good idea or not is debatable, but I remember clearly that I wanted to have one of those cringe as hell gaming intros with what is equivalent to the average YouTube family content creator personality. I started my first channel, under the name of `TNT MAN!!!`. You can already see the 8 year old energy in that. That would evolve into `TNT Man Inc` and now it's settled as `A badly drawn wobbler`. *(switch to youtube family creator voice)* _**But wait!**_ Why a _badly drawn wobbler_? Why was I a **MAN MADE OUT OF TNT IN THE FIRST PLACE!!!** in the first place? Why was _this mysterious wobbler_ chosen above **_ALL ELSE!?_**
+
+For the people who didn't die reading the intro, heres the story.
 
 ## The beginning
-It all starts in the distant past of... 2020. Lockdown hit South Africa. 2 Months later, 12 Year old me (and my friend) decided it would be a cool idea to start Minecraft modding, because why not. We were both stuck at home. I was working on [Just Another Ruby Mod](https://www.curseforge.com/minecraft/mc-mods/just-another-ruby-mod), but my friend had different ideas.
+In the distant past of before lockdown, 11 year old me decided that memory was not important I guess. All I remember that when I was 8 I started a [YouTube channel](https://www.youtube.com/@tabiasgeehuman). I had to decide a name on it, and out of all the names I could've chosen, it was `TNT MAN!!!`. This was because I really liked Minecraft (I still do), specifically the demolition part of it (I also still like this part, but less). 
+
+9 Year old me decided "hmm, I kinda like making scuffed music. Maybe I can upload those to YouTube!" And so my first corporate rebrand started, under the name of `TNT Man Inc`. I still have the original songs on hand, but I'm not sure if I want to publish them online again. Maybe one day as a blog post in case I need to speedrun making one. I'll just say that they were sub-par.
+
+11 Was the time I started programming open source, so I needed a name for my github account. This was chosen by chance to be the cool, hip, and fresh name of... Suyashtnt. I do not remember why I chose this name, but it probably has to do that my email was also "Suyashtnt@gmail.com."
+
+12 Year old me... It's a long story.
+
+## Lockdown strikes
+Lockdown hit South Africa. 2 Months later, 12 Year old me (and my friend) decided it would be a cool idea to start Minecraft modding, because why not. We were both stuck at home. I was working on [Just Another Ruby Mod](https://www.curseforge.com/minecraft/mc-mods/just-another-ruby-mod), but my friend had different ideas.
 
 My friend decided to start working on the next biggest mod in minecraft: The Sushal mod. This mod was basically an inside joke of my common nickname at the time: Sushi/Sushal. The mod added blocks of sushal which dropped sushi, soya oceans, and a whole Sushal dimension. It was going to be LEGENDARY.
 
