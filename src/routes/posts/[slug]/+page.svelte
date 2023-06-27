@@ -70,7 +70,7 @@
         <p class="text-2xl line-clamp-2 mt-4">
             {data.frontmatter.title}
         </p>
-        <ol class="pl-4 text-lg list-position">
+        <ol class="pl-0 text-lg counter-reset-item list-none">
             <ToC
                 {...data.headings}
                 value={data.headings.value ?? ''}
@@ -177,5 +177,9 @@
                 }
             }
         }
+    }
+
+    .counter-reset-item {
+    	counter-reset: item;
     }
 </style>

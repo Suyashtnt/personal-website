@@ -17,12 +17,12 @@
 </script>
 
 <!-- according to catppuccin style guidelines: red, peach, yellow, green, sapphire, Lavender -->
-<li class="pb-1 pl-1">
+<li class="pb-1">
     <a
         class="
         text-inherit decoration-none relative inline-block
         after:bg-none after:bg-repeat after:bg-scroll after:bottom-0 after:content-empty after:block after:h-0.5 after:absolute after:transition-all after:w-0
-        hover:after:w-full
+        hover:after:w-full before:text-light-text dark:before:text-dark-text
         "
         class:important-decoration-underline={active}
         class:text-light-red={depth === 1}
@@ -64,10 +64,22 @@
         href={`#${href}`}>{value}</a
     >
     {#if children.length > 0}
-        <ol class="flex flex-col pl-6">
+        <ol class="flex flex-col pl-6 counter-reset-item list-none">
             {#each children as child}
                 <svelte:self {...child} />
             {/each}
         </ol>
     {/if}
 </li>
+
+<style>
+    .counter-reset-item {
+    	counter-reset: item;
+    }
+
+a:before {
+  content: counters(item, ".") ". ";
+  counter-increment: item;
+  display: inline;
+}
+</style>
