@@ -12,6 +12,9 @@ const config = {
         alias: {
             $lib: './src/lib',
             '@storyblok/svelte': './node_modules/@storyblok/svelte'
+        },
+        prerender: {
+            handleMissingId: 'warn'
         }
     },
 

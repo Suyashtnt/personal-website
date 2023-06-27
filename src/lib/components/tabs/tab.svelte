@@ -1,7 +1,7 @@
 <script lang="ts">
     import {page} from '$app/stores';
 
-    $: active = $page.url.pathname.includes(onlyNameOfPath ?? "");
+    $: active = $page.url.pathname.includes(onlyNameOfPath ?? '');
 
     export let name: string;
 
@@ -10,7 +10,9 @@
      * Should be relative to the root of the website. (e.g. /about)
      */
     export let path: string;
-    const onlyNameOfPath = path.includes("#") ? path.split("#")[0] : path;
+    const onlyNameOfPath = path.includes('#')
+        ? path.split('#')[0]
+        : path;
 </script>
 
 <a

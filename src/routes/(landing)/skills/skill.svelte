@@ -58,7 +58,11 @@
     {href}
     data-sveltekit-noscroll
 >
-    <img src={skill.icon} alt={skill.iconAlt} class="w-8 md:w-10 h-auto" />
+    <img
+        src={skill.icon}
+        alt={skill.iconAlt}
+        class="w-8 md:w-10 h-auto"
+    />
 
     <h2 class="text-2xl md:text-2xl">
         {skill.name}
