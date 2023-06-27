@@ -7,7 +7,6 @@ import {defineMDSveXConfig as defineConfig} from 'mdsvex';
 
 function headings() {
     return async (_tree, vFile) => {
-        console.log('here');
         if (!vFile.data.fm) vFile.data.fm = {};
         vFile.data.fm.headings = vFile.data.headings;
     };
