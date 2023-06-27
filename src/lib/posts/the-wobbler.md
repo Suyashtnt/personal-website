@@ -16,7 +16,7 @@ import Upscaled from '$lib/pictures/posts/the-wobbler/upscaled.png?optimize'
 import YouShouldMakeItYourPfp from '$lib/pictures/posts/the-wobbler/make-it-your-pfp.png?optimize'
 </script>
 
-In the distant past of... 2016, young me decided that I was going to be a _Youtuber!_ Wether that was a good idea or not is debatable, but I remember clearly that I wanted to have one of those cringe as hell gaming intros with what is equivalent to the average YouTube family content creator personality. I started my first channel, under the name of `TNT MAN!!!`. You can already see the 8 year old energy in that. That would evolve into `TNT Man Inc` and now it's settled as `A badly drawn wobbler`. *(switch to youtube family creator voice)* _**But wait!**_ Why a _badly drawn wobbler_? Why was I a **MAN MADE OUT OF TNT IN THE FIRST PLACE!!!** in the first place? Why was _this mysterious wobbler_ chosen above **_ALL ELSE!?_**
+In the distant past of... 2016, young me decided that I was going to be a _Youtuber!_ Wether that was a good idea or not is debatable, but I remember clearly that I wanted to have one of those cringe as hell gaming intros with what is equivalent to the average YouTube family content creator personality. I started my first channel, under the name of `TNT MAN!!!`. You can already see the 8 year old energy in that. That would evolve into `TNT Man Inc` and now it's settled as `A badly drawn wobbler`. *(switch to youtube family creator voice)* _**But wait!**_ Why a _badly drawn wobbler_? Why was I a **MAN MADE OUT OF TNT IN THE FIRST PLACE!!!** Why was _this mysterious wobbler_ chosen above **_ALL ELSE!?_**
 
 For the people who didn't die reading the intro, heres the story.
 
