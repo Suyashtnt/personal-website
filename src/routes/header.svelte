@@ -45,27 +45,7 @@
     };
 
     let mobileHambugerMenuOpen = false;
-
-    let navUp = false;
-
-    let scrollY = 0;
-    let lastScrollY = scrollY;
-
-    // Me when I steal react code to svelte code (https://www.codemzy.com/blog/react-sticky-header-disappear-scroll):
-    const updateScrollDirection = () => {
-        const direction = scrollY > lastScrollY;
-        if (
-            direction !== navUp &&
-            (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)
-        ) {
-            navUp = direction;
-        }
-
-        lastScrollY = scrollY > 0 ? scrollY : 0;
-    };
 </script>
-
-<svelte:window on:scroll={updateScrollDirection} bind:scrollY />
 
 {#if mobileHambugerMenuOpen}
     <div
@@ -127,87 +107,85 @@
     </div>
 {/if}
 
-{#if !navUp}
-    <nav class="pa-2 sticky top-0 z-10" transition:slide>
-        <div
-            class="
-		flex justify-between items-center
-		px-4 sm:px-8 rounded-xl
-		border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
-		bg-hero-diagonal-lines-light-base/40 dark:bg-hero-diagonal-lines-dark-overlay-0/40
-		bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
-        >
-            <h1>
+<nav class="pa-2 top-0 z-10" transition:slide>
+    <div
+        class="
+	flex justify-between items-center
+	px-4 sm:px-8 rounded-xl
+	border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
+	bg-hero-diagonal-lines-light-base/40 dark:bg-hero-diagonal-lines-dark-overlay-0/40
+	bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
+    >
+        <h1>
+            <a
+                href="/"
+                class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
+            >
+                TNTMAN_1671
+            </a>
+        </h1>
+        <div class="text-2xl text-center hidden sm:block">
+            {#if isHomePage}
                 <a
-                    href="/"
-                    class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
-                >
-                    TNTMAN_1671
-                </a>
-            </h1>
-            <div class="text-2xl text-center hidden sm:block">
-                {#if isHomePage}
-                    <a
-                        href="#landing"
-                        data-selected={selected === 'landing'}
-                        class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
-                        on:click={onNavigate}
-                    >
-                        <span class="anicon">M</span>
-                        Landing
-                    </a>
-                    <a
-                        href="#about"
-                        data-selected={selected === 'about'}
-                        class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
-                        on:click={onNavigate}
-                    >
-                        <span class="anicon">M</span>
-                        About
-                    </a>
-                    <a
-                        href="#contact"
-                        data-selected={selected === 'contact'}
-                        class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
-                        on:click={onNavigate}
-                    >
-                        <span class="anicon">M</span>
-                        Contact
-                    </a>
-                {:else}
-                    <a
-                        href="/"
-                        data-selected={selected === 'landing'}
-                        class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
-                        on:click={onNavigate}
-                    >
-                        <span class="anicon">M</span>
-                        Home
-                    </a>
-                {/if}
-                <a
-                    href="/posts"
-                    data-selected={selected === 'blog'}
+                    href="#landing"
+                    data-selected={selected === 'landing'}
                     class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
                     on:click={onNavigate}
                 >
                     <span class="anicon">M</span>
-                    Posts
+                    Landing
                 </a>
-            </div>
-            <button
-                on:click={() => {
-                    mobileHambugerMenuOpen = !mobileHambugerMenuOpen;
-                }}
-                class="dropdown-icon text-5xl bg-transparent border-none text-light-text dark:text-dark-text hover:cursor-pointer sm:hidden"
-                id="dropdown-button"
-                data-active={mobileHambugerMenuOpen}
+                <a
+                    href="#about"
+                    data-selected={selected === 'about'}
+                    class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                    on:click={onNavigate}
+                >
+                    <span class="anicon">M</span>
+                    About
+                </a>
+                <a
+                    href="#contact"
+                    data-selected={selected === 'contact'}
+                    class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                    on:click={onNavigate}
+                >
+                    <span class="anicon">M</span>
+                    Contact
+                </a>
+            {:else}
+                <a
+                    href="/"
+                    data-selected={selected === 'landing'}
+                    class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                    on:click={onNavigate}
+                >
+                    <span class="anicon">M</span>
+                    Home
+                </a>
+            {/if}
+            <a
+                href="/posts"
+                data-selected={selected === 'blog'}
+                class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                on:click={onNavigate}
             >
-                A
-            </button>
+                <span class="anicon">M</span>
+                Posts
+            </a>
         </div>
-    </nav>
-{/if}
+        <button
+            on:click={() => {
+                mobileHambugerMenuOpen = !mobileHambugerMenuOpen;
+            }}
+            class="dropdown-icon text-5xl bg-transparent border-none text-light-text dark:text-dark-text hover:cursor-pointer sm:hidden"
+            id="dropdown-button"
+            data-active={mobileHambugerMenuOpen}
+        >
+            A
+        </button>
+    </div>
+</nav>
 
 <style>
     .anicon {

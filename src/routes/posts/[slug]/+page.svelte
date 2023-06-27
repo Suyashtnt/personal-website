@@ -25,7 +25,7 @@
 
     // Svelte's template doesn't recognize the type narrowing done above
     const description = data.frontmatter.description;
-    const draft = !data.frontmatter.published
+    const draft = !data.frontmatter.published;
 
     const datePublished = new Date(data.frontmatter.date);
     const dateModified = new Date(data.frontmatter.updated);
@@ -79,7 +79,7 @@
     </aside>
 
     <article
-        class="text-lg xl:text-xl prose prose-light-text dark:prose-dark-text grid-area-[content] justify-self-center"
+        class="text-xl mx-6 md:mx-0 prose prose-light-text dark:prose-dark-text grid-area-[content] justify-self-center"
     >
         <header class="mb-8 py-4">
             <hr
@@ -108,10 +108,12 @@
             >
                 By {data.frontmatter.author} | Published {dateFormatter.format(
                     datePublished
-                )} | Last updated {dateFormatter.format(dateModified)} 
-		{#if draft}
-		| <span class="text-light-red dark:text-dark-red">DRAFT</span>
-		{/if}
+                )} | Last updated {dateFormatter.format(dateModified)}
+                {#if draft}
+                    | <span class="text-light-red dark:text-dark-red"
+                        >DRAFT</span
+                    >
+                {/if}
             </p>
         </header>
 

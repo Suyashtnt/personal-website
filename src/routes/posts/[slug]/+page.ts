@@ -91,12 +91,9 @@ export const load: PageLoad = async ({params}) => {
 
     const post = await match?.resolver?.();
 
-    const cannotFindPost =
-        !post?.metadata ||
-        !post.metadata.title;
+    const cannotFindPost = !post?.metadata || !post.metadata.title;
 
     if (cannotFindPost) {
-        // eslint-disable-next-line @typescript-eslint/no-throw-literal
         throw error(404);
     }
 
