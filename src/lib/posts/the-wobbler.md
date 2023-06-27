@@ -3,7 +3,7 @@ title: 'The badly drawn wobbler'
 description: 'From Minecraft mod to profile picture: The origins of the badly drawn wobbler and my other miscellaneous usernames.'
 author: 'A badly drawn wobbler (AKA Suyashtnt, TNTMan1671)'
 date: '2023-06-30'
-updated: '2023-06-25'
+updated: '2023-06-27'
 published: false
 ---
 
