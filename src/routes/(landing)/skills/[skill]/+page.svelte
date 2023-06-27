@@ -20,10 +20,10 @@
             in:fly={{delay: 300, y: '-100%'}}
             out:fly={{duration: 300, y: '-100%'}}
         >
-            <h1 class="text-4xl my-0">
+            <h1 class="text-3xl my-0">
                 {selectedSkill?.name}
             </h1>
-            <p class="text-2xl my-0">
+            <p class="text-xl my-0">
                 {selectedSkill?.description}
             </p>
         </hgroup>
@@ -34,7 +34,7 @@
     {#key selectedSkill}
         <div
             class="
-            flex justify-center items-center m-1 py-1 px-2 rounded-full h-min
+            flex justify-center items-center m-1 py-1 px-2 rounded-full h-5
             text-light-mantle dark:text-dark-mantle
         "
             class:bg-light-green={selectedSkill?.proficiency ===
@@ -61,7 +61,7 @@
 
         <div
             class="
-            flex justify-center items-center m-1 py-1 px-2 rounded-full h-min
+            flex justify-center items-center m-1 py-1 px-2 rounded-full h-5
             text-light-mantle dark:text-dark-mantle
         "
             class:bg-light-green={selectedSkill?.type === 'Language'}
@@ -96,7 +96,7 @@
 <!-- experience/main content. Key is required for transitions -->
 {#key selectedSkill}
     <section
-        class="text-xl mt-4"
+        class="text-lg mt-4"
         in:slide={{axis: 'y', delay: 300}}
         out:slide={{axis: 'y', duration: 300}}
     >

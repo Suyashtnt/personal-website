@@ -88,7 +88,7 @@
         </Atropos>
         <div>
             <h1
-                class="text-7xl md:text-8xl leading-22 md:leading-30 text-center md:text-left mb-0 px-2 md:px-0"
+                class="text-6xl md:text-7xl leading-18 text-center md:text-left mb-2 md:mb-0 px-2 md:px-0"
             >
                 Hi, I'm
                 <br />
@@ -106,7 +106,7 @@
                 </span>
             </h1>
             <h2
-                class="text-5xl my-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0"
+                class="text-4xl my-0 flex flex-col md:flex-row items-center md:items-start md:gap-[1ch] leading-0"
             >
                 <p
                     class="student"
@@ -177,7 +177,7 @@
                 </p>
             </h2>
             <ul
-                class="grid justify-center items-center md:grid-cols-3 gap-4 list-none pl-0 mt-0 text-3xl"
+                class="grid justify-center items-center md:grid-cols-3 gap-4 list-none pl-0 mt-0 text-2xl"
             >
                 <li class="flex flex-row gap-2 w-min items-center">
                     <div

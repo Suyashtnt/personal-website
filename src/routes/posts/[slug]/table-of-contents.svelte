@@ -17,7 +17,7 @@
 </script>
 
 <!-- according to catppuccin style guidelines: red, peach, yellow, green, sapphire, Lavender -->
-<li class="pb-1">
+<li class="pb-1 pl-1">
     <a
         class="
         text-inherit decoration-none relative inline-block
@@ -64,7 +64,7 @@
         href={`#${href}`}>{value}</a
     >
     {#if children.length > 0}
-        <ol class="flex flex-col">
+        <ol class="flex flex-col pl-6">
             {#each children as child}
                 <svelte:self {...child} />
             {/each}

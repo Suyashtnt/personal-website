@@ -34,11 +34,11 @@ Lockdown hit South Africa. 2 Months later, 12 Year old me (and my friend) decide
 
 My friend decided to start working on the next biggest mod in minecraft: The Sushal mod. This mod was basically an inside joke of my common nickname at the time: Sushi/Sushal. The mod added blocks of sushal which dropped sushi, soya oceans, and a whole Sushal dimension. It was going to be LEGENDARY.
 
-### The creation of JARM
+### Creation of JARM
 
 We decided that using Java to create our mods would be too difficult, so we both decided to use [MCreator](https://mcreator.net/). This choice was pretty good for both of us, and the first version of The Sushal mod was finished in about a day. It was the start of something great, but there was one major issue.
 
-### The Sushal block texture
+### Sushal block texture
 The main block of the Sushal dimension was the Sushal block. There were a few options for the texture at the time:
 - My face (no)
 - Literal sushi (boring)
@@ -52,9 +52,9 @@ So, the first version of the mod had my discord profile as the texture. The issu
     class="rounded-xl"
 />
 
-## The creation of the badly drawn wobbler
+## Creation of the badly drawn wobbler
 
-### The 3 minute paint
+### 3 Minute speedpaint
 2 hours and 25 minutes later, I started work on the wobbler. Since I didn't want to use MS paint for some bizzare reason, I decided to use [Paint 3D](https://apps.microsoft.com/store/detail/paint-3d/9NBLGGH5FV99), Windows 10's secondary builtin paint tool. I basically put in the emoji into paint 3D and then traced over it, using a mouse. One could call it quite _badly drawn_. 3 minutes of work later, this was produced:
 
 <Image

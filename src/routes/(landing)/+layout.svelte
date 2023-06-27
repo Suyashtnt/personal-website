@@ -17,10 +17,10 @@
     class="bg-light-surface-0 dark:bg-dark-surface-0 py-8 md:px-8 overflow-clip"
     id="about"
 >
-    <Tabs class="mb-4">
-        <Tab name="Skills" path="/skills" />
-        <Tab name="Projects" path="/projects" />
-        <Tab name="Games" path="/games" />
+    <Tabs class="mb-4 px-8 md:px-0">
+        <Tab name="Skills" path="/skills#about" />
+        <Tab name="Projects" path="/projects#about" />
+        <Tab name="Games" path="/games#about" />
     </Tabs>
 
     <div class="grid grid-template-area overflow-hidden">

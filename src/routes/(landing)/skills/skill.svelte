@@ -45,7 +45,7 @@
 
 <a
     class="
-        pa-3 max-w-full flex gap-4 items-center hover:cursor-pointer rounded-xl
+        pl-4 max-w-full flex gap-4 items-center hover:cursor-pointer rounded-xl
         decoration-none
         text-light-text dark:text-dark-text
         visited:text-light-text visited:dark-text-dark-text
@@ -58,9 +58,9 @@
     {href}
     data-sveltekit-noscroll
 >
-    <img src={skill.icon} alt={skill.iconAlt} class="w-10 h-auto" />
+    <img src={skill.icon} alt={skill.iconAlt} class="w-8 md:w-10 h-auto" />
 
-    <h2 class="text-2xl">
+    <h2 class="text-2xl md:text-2xl">
         {skill.name}
     </h2>
 </a>
