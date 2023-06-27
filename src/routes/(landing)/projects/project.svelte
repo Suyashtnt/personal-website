@@ -36,7 +36,7 @@
             >
                 <h2
                     class="
-                    text-5xl mb-0 text-center
+                    text-4xl mb-0 text-center
                     transition-all
                     group-hover:bg-gradient-to-br
                     from-light-sapphire via-light-lavender to-light-mauve group-hover:bg-clip-text group-hover:text-transparent
@@ -47,15 +47,15 @@
                     {project.name}
                 </h2>
                 <p
-                    class="text-2xl text-center text-light-text dark:text-dark-text"
+                    class="text-xl text-center text-light-text dark:text-dark-text"
                 >
                     {project.description}
                 </p>
-                <div class="flex flex-col space-y-2 mb-2 w-full">
+                <div class="flex flex-col space-y-2 mb-2">
                     <a
                         href={project.url}
                         class="
-                        text-2xl rounded-xl pa-2 text-center decoration-none transition-all
+                        text-xl rounded-xl pa-2 text-center decoration-none transition-all
                         bg-light-maroon dark:bg-dark-maroon
                         text-light-mantle visited:text-light-mantle dark:text-dark-mantle visited:dark:text-dark-mantle
                         "

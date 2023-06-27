@@ -37,7 +37,7 @@
     ];
 </script>
 
-<ul class="rounded-xl projects list-none">
+<ul class="rounded-xl projects list-none pl-0 mx-4 md:mx-0">
     {#each projects as project (project.name)}
         <li>
             <Project {project} />
@@ -53,7 +53,7 @@
     */
         --grid-layout-gap: 1rem;
         --grid-column-count: 6;
-        --grid-item--min-width: 400px;
+        --grid-item--min-width: 300px;
 
         /**
     * Calculated values.
