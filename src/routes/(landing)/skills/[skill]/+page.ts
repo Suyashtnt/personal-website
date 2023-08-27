@@ -27,6 +27,6 @@ export const load: PageLoad = ({params}) => {
 
 export const entries = (() => {
     return _skills.map((skill) => ({
-        skill: skill.name.toLowerCase()
+        skill: skill.id.toLowerCase()
     }));
 }) satisfies EntryGenerator;
