@@ -8,7 +8,7 @@
             url: 'https://github.com/suyashtnt/personal-website'
         },
         {
-            description: '[WIP] Next-generation minecraft launcher',
+            description: 'Next-generation minecraft launcher',
             name: 'Glowsquid',
             url: 'https://github.com/glowsquid-launcher/glowsquid-new'
         },
@@ -16,11 +16,6 @@
             description: 'My NixOS configuration',
             name: 'Commafiles',
             url: 'https://github.com/suyashtnt/commafiles'
-        },
-        {
-            description: '[WIP] Minecraft launching rust crate',
-            name: 'Copper',
-            url: 'https://github.com/glowsquid-launcher/copper'
         },
         {
             description:

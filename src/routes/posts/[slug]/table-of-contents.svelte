@@ -8,10 +8,12 @@
 
     // Remove all grammar from the href
     // replace all spaces with dashes
-    const href = value
+    const slug = value
         ?.toLowerCase()
-        .replace(/[^a-z\d ]/g, '')
-        .replace(/ /g, '-');
+        .replaceAll(/[^a-z\d ]/g, '')
+        .replaceAll(' ', '-');
+
+    const href = depth === 1 ? 'title' : slug;
 
     $: active = $page.url.hash === href;
 </script>
@@ -74,12 +76,12 @@
 
 <style>
     .counter-reset-item {
-    	counter-reset: item;
+        counter-reset: item;
     }
 
-a:before {
-  content: counters(item, ".") ". ";
-  counter-increment: item;
-  display: inline;
-}
+    a:before {
+        content: counters(item, '.') '. ';
+        counter-increment: item;
+        display: inline;
+    }
 </style>

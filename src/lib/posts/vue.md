@@ -29,18 +29,18 @@ Take the following imperative JS code
 
 ```html
 <script>
-  let count = 0;
-  // we get elements in JS
-  const button = document.getElementById("btn")
-  const counter = document.getElementById("counter")
-  // we handle event listening in JS
-  button.addEventListener("click", handleCount);
+    let count = 0;
+    // we get elements in JS
+    const button = document.getElementById('btn');
+    const counter = document.getElementById('counter');
+    // we handle event listening in JS
+    button.addEventListener('click', handleCount);
 
-  function handleCount() {
-    count++;
-    // we have to tell JS to update the counter manually
-    counter.innerHTML = `Count: ${count}`
-  }
+    function handleCount() {
+        count++;
+        // we have to tell JS to update the counter manually
+        counter.innerHTML = `Count: ${count}`;
+    }
 </script>
 
 <button id="btn">Click me!</button>
@@ -51,40 +51,41 @@ Take the following imperative JS code
 
 ```html
 <div id="app">
-  <!-- you declare what method you want to call here -->
-  <button v-on:click="increment"> click me! </button>
-  <p>Count: {{ count }}</p>
+    <!-- you declare what method you want to call here -->
+    <button v-on:click="increment">click me!</button>
+    <p>Count: {{ count }}</p>
 </div>
 
 <script>
-new Vue({
-  el: '#app', // tell vue where your app is
-  data: {
-    count: 0
-  },
-  methods: { // define methods that update your data/run code
-    increment() {
-      this.count++ // simply update your state. Vue changes the DOM for you
-    }
-  }
-})
+    new Vue({
+        el: '#app', // tell vue where your app is
+        data: {
+            count: 0
+        },
+        methods: {
+            // define methods that update your data/run code
+            increment() {
+                this.count++; // simply update your state. Vue changes the DOM for you
+            }
+        }
+    });
 </script>
 ```
 
 While imperative is not necessarily _worse_ than declarative, imperative usually leads to a messier code without strict guidelines. BackboneJS added those guidelines, but it still leads to bulky, hard-to-read code, as seen in their To-do list example. Conversely, Vue took the more straightforward approach: Make the framework work for you. These solutions provided _were_ great, but now we have moved on from that.
 
-Let us look at modern Vue. The Options API is bulky. It also creates many opportunities to shoot yourself in the foot. In the above example, if you were to replace `increment` with an arrow function, it would no longer work. Vue 3 saw these issues and fixed them through the *Composition API*. 
+Let us look at modern Vue. The Options API is bulky. It also creates many opportunities to shoot yourself in the foot. In the above example, if you were to replace `increment` with an arrow function, it would no longer work. Vue 3 saw these issues and fixed them through the _Composition API_.
 
 ```html
 <template>
-  <!-- you declare what method you want to call here, or just put your code in -->
-  <button @click="count++"> click me! </button>
-  <p>Count: {{ count }}</p>
+    <!-- you declare what method you want to call here, or just put your code in -->
+    <button @click="count++">click me!</button>
+    <p>Count: {{ count }}</p>
 </template>
 
 <script setup>
-import { ref } from 'vue' // import ref, which is a reactive variable
-const count = ref(0) // create a reactive variable. When this changes it updates the DOM automatically
+    import { ref } from 'vue'; // import ref, which is a reactive variable
+    const count = ref(0); // create a reactive variable. When this changes it updates the DOM automatically
 </script>
 ```
 
@@ -98,10 +99,10 @@ Take the following code:
 
 ```js
 function useMouse() {
-  const x = $ref(0)
-  const y = $ref(0)
-  // do some stuff to change x and y via events
-  return { x, y }
+    const x = $ref(0);
+    const y = $ref(0);
+    // do some stuff to change x and y via events
+    return { x, y };
 }
 ```
 
@@ -109,40 +110,40 @@ This gets transformed/unwrapped into
 
 ```js
 function useMouse() {
-  const x = ref(0)
-  const y = ref(0)
+    const x = ref(0);
+    const y = ref(0);
 
-  return { x: x.value, y: y.value } // x and y are no longer reactive!
+    return { x: x.value, y: y.value }; // x and y are no longer reactive!
 }
 ```
 
 `$ref` values stop being reactive when returned from a function because they get changed to `ref.value`. `.value` is not the proxy object, so it is not reactive. Instead, We have to do `return $$({ x, y })`. We still have the issues of boilerplate, and we still have the woes of proxy objects. All of these issues go _against_ Vue's motto of being simple and lightweight. Vue 3 still allows you to use the options API if you do not want to deal with these proxy objects, but allowing both options has its issues.
 
 The Options and Setup API are compatible, but in a strange way. First of all, it is only 1-way compatibility. Options API code can call into the `setup()` function, but the `setup()` function cannot access methods and data from the Options API.
+
 ```html
-
 <script>
-import { ref } from 'vue'
+    import { ref } from 'vue';
 
-export default {
-  setup() {
-    // as far as I know and tested, you have no access to `this` here. this means you don't have access to data or methods here
-    const count = ref(0)
+    export default {
+        setup() {
+            // as far as I know and tested, you have no access to `this` here. this means you don't have access to data or methods here
+            const count = ref(0);
 
-    // expose to template and other options API hooks
-    return {
-      count
-    }
-  },
+            // expose to template and other options API hooks
+            return {
+                count
+            };
+        },
 
-  mounted() {
-    console.log(this.count) // 0
-  }
-}
+        mounted() {
+            console.log(this.count); // 0
+        }
+    };
 </script>
 
 <template>
-  <button @click="count++">{{ count }}</button>
+    <button @click="count++">{{ count }}</button>
 </template>
 ```
 
@@ -162,10 +163,10 @@ Take a look at the following svelte code:
 
 ```html
 <script>
-  let count = 0
+    let count = 0;
 </script>
 
-<button on:click={() => count++}> click me! </button>
+<button on:click="{()" ="">count++}> click me!</button>
 <p>Count: {count}</p>
 ```
 
@@ -210,23 +211,23 @@ These two frameworks don't just do what Vue does: they do _more._ Svelte has sto
 ```html
 <button @click="visible = !visible">Toggle</button>
 <Transition>
-  <p v-if="visible">Fades in and out</p>
+    <p v-if="visible">Fades in and out</p>
 </Transition>
 
 <style>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
-}
+    .v-enter-active,
+    .v-leave-active {
+        transition: opacity 0.5s ease;
+    }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
+    .v-enter-from,
+    .v-leave-to {
+        opacity: 0;
+    }
 </style>
 
 <script setup>
-const visible = ref(true)
+    const visible = ref(true);
 </script>
 ```
 
@@ -234,14 +235,14 @@ Svelte, on the other hand, has a flexible, JS-powered transition API.
 
 ```html
 <script>
-  import { fade } from 'svelte/transition';
-  let visible = true;
+    import { fade } from 'svelte/transition';
+    let visible = true;
 </script>
 
 <label>
- <!-- Special svelte bind syntax -->
-  <input type="checkbox" bind:checked={visible}>
-  Toggle
+    <!-- Special svelte bind syntax -->
+    <input type="checkbox" bind:checked="{visible}" />
+    Toggle
 </label>
 
 {#if visible}
@@ -277,57 +278,53 @@ export const count = writable(0);
 
 ```html
 <script>
-  import { count } from './stores.js';
+    import { count } from './stores.js';
 
-  function increment() {
-    count.update(n => n + 1);
-  }
+    function increment() {
+        count.update((n) => n + 1);
+    }
 </script>
 
-<button on:click={increment}>
-  +
-</button>
+<button on:click="{increment}">+</button>
 ```
 
 `Decrementer.svelte`
 
 ```html
 <script>
-  import { count } from './stores.js';
+    import { count } from './stores.js';
 
-  function decrement() {
-    count.update(n => n - 1);
-  }
+    function decrement() {
+        count.update((n) => n - 1);
+    }
 </script>
 
-<button on:click={decrement}>
-  -
-</button>
+<button on:click="{decrement}">-</button>
 ```
 
 `App.svelte` (Entrypoint to the svelte app)
 
 ```html
 <script>
-  import { count } from './stores.js';
-  import Incrementer from './Incrementer.svelte';
-  import Decrementer from './Decrementer.svelte';
+    import { count } from './stores.js';
+    import Incrementer from './Incrementer.svelte';
+    import Decrementer from './Decrementer.svelte';
 </script>
 
 <h1>The count is {$count}</h1>
 
-<Incrementer/>
-<Decrementer/>
+<Incrementer />
+<Decrementer />
 ```
 
 `index.js` (Mounting svelte component to the DOM)
 
 ```js
-import App from './App.svelte'
+import App from './App.svelte';
 
 new App({
-  target: document.body,
-})
+    target: document.body
+});
 ```
 
 Vue state management
@@ -336,32 +333,30 @@ Vue state management
 
 ```js
 export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
+    const count = ref(0);
 
-  function increment() {
-    count.value++
-  }
+    function increment() {
+        count.value++;
+    }
 
-  function decrement() {
-    count.value++
-  }
+    function decrement() {
+        count.value++;
+    }
 
-  return { count, decrement, increment }
-})
+    return { count, decrement, increment };
+});
 ```
 
 `Incrementer.vue`
 
 ```html
 <script setup>
-  import { useCounterStore } from './stores.js';
- const store = useCounterStore()
+    import { useCounterStore } from './stores.js';
+    const store = useCounterStore();
 </script>
 
 <template>
-  <button @click={store.increment}>
-    +
-  </button>
+    <button @click="{store.increment}">+</button>
 </template>
 ```
 
@@ -369,14 +364,12 @@ export const useCounterStore = defineStore('counter', () => {
 
 ```html
 <script setup>
-  import { useCounterStore } from './stores.js';
- const store = useCounterStore()
+    import { useCounterStore } from './stores.js';
+    const store = useCounterStore();
 </script>
 
 <template>
-  <button @click={store.decrement}>
-    -
-  </button>
+    <button @click="{store.decrement}">-</button>
 </template>
 ```
 
@@ -384,31 +377,31 @@ export const useCounterStore = defineStore('counter', () => {
 
 ```html
 <script setup>
-  import { useCounterStore } from './stores.js';
- const store = useCounterStore()
- 
- import Incrementer from './Incrementer.vue';
-  import Decrementer from './Decrementer.vue';
+    import { useCounterStore } from './stores.js';
+    const store = useCounterStore();
+
+    import Incrementer from './Incrementer.vue';
+    import Decrementer from './Decrementer.vue';
 </script>
 
 <template>
-  <h1>The count is {{ store.count }}</h1>
-  
-  <Incrementer/>
-  <Decrementer/>
+    <h1>The count is {{ store.count }}</h1>
+
+    <Incrementer />
+    <Decrementer />
 </template>
 ```
 
 `index.js` (Adding pinia to Vue and mounting component to the DOM)
 
 ```js
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import App from './App.vue';
 
-const pinia = createPinia()
-const app = createApp(App)
+const pinia = createPinia();
+const app = createApp(App);
 
-app.use(pinia)
-app.mount('#app') // Vue reccomends to rather mount to a regular element rather than the body
+app.use(pinia);
+app.mount('#app'); // Vue reccomends to rather mount to a regular element rather than the body
 ```

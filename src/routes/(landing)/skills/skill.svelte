@@ -13,10 +13,11 @@
          */
         icon: string;
         iconAlt: string;
+        id: string;
         /**
          * Name of the skill
          */
-        name: string;
+        name: str;
         /**
          * My proficiency with the skill.
          */

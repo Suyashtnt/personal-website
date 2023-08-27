@@ -23,7 +23,9 @@
                 class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
             >
                 <article
-                    class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2"
+                    class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2 h-full flex flex-col justify-between"
+                    id="title-card"
+                    data-flip-id={post.slug}
                 >
                     <header>
                         <h1 class="hover:decoration-underline mb-2">
@@ -35,12 +37,16 @@
                         >
                             Published {dateFormatter.format(
                                 new Date(post.date)
-                            )} | Updated {dateFormatter.format(
+                            )} | Updated
+                            {dateFormatter.format(
                                 new Date(post.updated)
                             )}
                         </div>
                     </header>
-                    <p>{post.description}</p>
+
+                    <footer>
+                        <p>{post.description}</p>
+                    </footer>
                 </article>
             </a>
         </li>

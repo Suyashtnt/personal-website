@@ -1,5 +1,18 @@
 <script lang="ts">
-    import Atropos from 'atropos/svelte';
+    import {onMount} from 'svelte';
+
+    onMount(async () => {
+        const {default: AtroposComponent} = await import(
+            'atropos/element'
+        );
+        if (!customElements.get('atropos-component')) {
+            customElements.define(
+                'atropos-component',
+                AtroposComponent
+            );
+        }
+    });
+
     import anime from 'animejs';
     import Image from '$lib/components/image.svelte';
     import 'atropos/css'; // eslint-disable-line import/no-unassigned-import, import/order
@@ -74,7 +87,9 @@
     <div
         class="flex flex-col lg:flex-row justify-center lg:justify-start items-center pb-32"
     >
-        <Atropos class="rounded-xl mx-8 mt-8 group rounded-xl w-64">
+        <atropos-component
+            class="rounded-xl mx-8 mt-8 group rounded-xl w-64"
+        >
             <div
                 class="flex content-center justify-center transition-all pa-2 group-hover:pa-0 group-hover:ma-2 bg-gradient-to-br from-light-red to-light-rosewater dark:from-dark-red dark:to-dark-rosewater rounded-2xl"
             >
@@ -85,7 +100,7 @@
                     class="object-cover transition-all group-hover:scale-105 rounded-xl"
                 />
             </div>
-        </Atropos>
+        </atropos-component>
         <div>
             <h1
                 class="text-6xl md:text-7xl leading-18 text-center md:text-left mb-2 md:mb-0 px-2 md:px-0"
