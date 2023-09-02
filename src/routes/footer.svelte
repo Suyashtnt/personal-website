@@ -2,7 +2,8 @@
     const potentialFooterTexts = [
         'Do you really need a footer?',
         'Hello welcome to the bottom of the page!',
-        'Why do websites even have footers anymore?'
+        'Why do websites even have footers anymore?',
+        'Footer disclaimer: We ran out of witty things to say.'
     ] as const;
 
     const footerText =
