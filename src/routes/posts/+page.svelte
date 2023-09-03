@@ -24,10 +24,13 @@
             >
                 <article
                     class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2 h-full flex flex-col justify-between"
-                    id="title-card"
-                    data-flip-id={post.slug}
+                    id="card"
+                    data-flip-id="{post.slug}"
                 >
-                    <header>
+                    <header
+                    id="title-card"
+                    data-flip-id="title-{post.slug}"
+                    >
                         <h1 class="hover:decoration-underline mb-2">
                             {post.title}
                         </h1>
@@ -44,7 +47,10 @@
                         </div>
                     </header>
 
-                    <footer>
+                    <footer
+                        id="text"
+                        data-flip-id="text-{post.slug}"
+                    >
                         <p>{post.description}</p>
                     </footer>
                 </article>

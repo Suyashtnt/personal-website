@@ -74,12 +74,17 @@
     </aside>
 
     <article
-        class="text-xl mx-6 md:mx-0 prose prose-light-text dark:prose-dark-text grid-area-[content] justify-self-center"
+        class="
+        text-xl mx-6 md:mx-0 prose prose-light-text dark:prose-dark-text grid-area-[content] justify-self-center
+        bg-light-mantle dark:bg-dark-mantle px-4 mb-6 rounded-3xl
+        "
+        id="card"
+        data-flip-id="{data.slug}"
     >
         <header
             class="mb-8 py-4"
             id="title-card"
-            data-flip-id={data.slug}
+            data-flip-id="title-{data.slug}"
         >
             <hr
                 class="h-0.5 -0 bg-gradient-to-r from-light-blue to-light-sapphire dark:from-dark-blue dark:to-dark-blue"
@@ -115,7 +120,11 @@
             </p>
         </header>
 
-        <p class="text-justify article-content">
+        <p
+            class="text-justify article-content"
+            id="text"
+            data-flip-id="text-{data.slug}"
+        >
             <svelte:component this={component} />
         </p>
     </article>
