@@ -10,9 +10,9 @@
 
 <svelte:head>
     <title>{formattedTitle}</title>
-    <meta name="description" content={description} />
+    <meta content={description} name="description" />
 
-    <meta property="og:site_name" content={siteTitle} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta content={siteTitle} property="og:site_name" />
+    <meta content={title} property="og:title" />
+    <meta content={description} property="og:description" />
 </svelte:head>

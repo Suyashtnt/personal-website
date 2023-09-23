@@ -32,7 +32,7 @@
     ];
 </script>
 
-<ul class="rounded-xl projects list-none pl-0 mx-4 md:mx-0">
+<ul class="projects mx-4 list-none rounded-xl pl-0 md:mx-0">
     {#each projects as project (project.name)}
         <li>
             <Project {project} />

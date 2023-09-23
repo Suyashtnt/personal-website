@@ -11,53 +11,29 @@
 </script>
 
 <a
+    class="group text-light-text decoration-none dark:text-dark-text"
     href={project.url}
-    class="
-    decoration-none text-light-text dark:text-dark-text group
-    "
 >
     <div
-        class="
-    rounded-2xl pa-2 h-full
-    bg-gradient-to-tl from-light-blue to-light-lavender dark:from-dark-blue dark:to-light-lavender
-    transition-all box-border
-    group-hover:bg-gradient-to-br group-hover:shadow-2xl
-    group-hover:from-light-sapphire group-hover:to-light-mauve
-    dark:group-hover:from-dark-sapphire dark:group-hover:to-dark-mauve
-    "
+        class="box-border h-full rounded-2xl from-light-blue to-light-lavender bg-gradient-to-tl pa-2 transition-all dark:from-dark-blue group-hover:from-light-sapphire dark:to-light-lavender group-hover:to-light-mauve group-hover:bg-gradient-to-br group-hover:shadow-2xl dark:group-hover:from-dark-sapphire dark:group-hover:to-dark-mauve"
     >
         <div
-            class="
-          rounded-xl flex flex-col items-center justify-between h-full pa-2 box-border
-          bg-light-mantle dark:bg-dark-mantle
-        "
+            class="box-border h-full flex flex-col items-center justify-between rounded-xl bg-light-mantle pa-2 dark:bg-dark-mantle"
         >
             <h2
-                class="
-              text-5xl mb-0 text-center
-              transition-all
-              group-hover:bg-gradient-to-br
-              from-light-sapphire via-light-lavender to-light-mauve group-hover:bg-clip-text group-hover:text-transparent
-              dark:from-dark-sapphire dark:via-dark-lavender dark:to-dark-mauve text-light-text dark:text-dark-text
-            "
+                class="mb-0 from-light-sapphire via-light-lavender to-light-mauve text-center text-5xl text-light-text transition-all dark:from-dark-sapphire dark:via-dark-lavender dark:to-dark-mauve group-hover:bg-gradient-to-br group-hover:bg-clip-text dark:text-dark-text group-hover:text-transparent"
             >
                 {project.name}
             </h2>
             <p
-                class="text-xl text-center text-light-text dark:text-dark-text"
+                class="text-center text-xl text-light-text dark:text-dark-text"
             >
                 {project.description}
             </p>
-            <div class="flex flex-col space-y-2 mb-2">
+            <div class="mb-2 flex flex-col space-y-2">
                 <a
+                    class="rounded-xl bg-transparent pa-2 text-center text-xl text-light-text decoration-none outline-light-maroon outline transition-all group-hover:(bg-light-maroon text-2xl tracking-wider text-light-mantle outline-0 dark:bg-dark-maroon dark:text-dark-mantle visited:text-light-mantle visited:dark:text-dark-mantle) dark:text-dark-text visited:text-light-text dark:outline-dark-maroon visited:dark:text-dark-text"
                     href={project.url}
-                    class="
-                      text-xl rounded-xl pa-2 text-center decoration-none transition-all
-                      bg-transparent outline outline-light-maroon dark:outline-dark-maroon
-                      group-hover:(outline-0 bg-light-maroon dark:bg-dark-maroon tracking-wider text-2xl)
-                      text-light-text visited:text-light-text dark:text-dark-text visited:dark:text-dark-text
-                      group-hover:(text-light-mantle visited:text-light-mantle dark:text-dark-mantle visited:dark:text-dark-mantle)
-                    "
                 >
                     Learn more →
                 </a>

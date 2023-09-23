@@ -1,7 +1,7 @@
 <script lang="ts">
-    import {slide} from 'svelte/transition';
     import {page} from '$app/stores';
     import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css';
+    import {slide} from 'svelte/transition';
 
     let selected: 'about' | 'blog' | 'contact' | 'landing' =
         'landing';
@@ -49,36 +49,31 @@
 
 {#if mobileHambugerMenuOpen}
     <div
-        class="
-			text-6xl text-left
-			h-screen w-screen fixed z-2
-			flex flex-col justify-center gap-16
-			bg-hero-polka-dots-light-base/20 dark:bg-hero-polka-dots-dark-base/20
-			bg-light-mantle/80 dark:bg-dark-mantle/80 backdrop-blur-lg"
+        class="fixed z-2 h-screen w-screen flex flex-col justify-center gap-16 bg-light-mantle/80 text-left text-6xl backdrop-blur-lg bg-hero-polka-dots-light-base/20 dark:bg-dark-mantle/80 dark:bg-hero-polka-dots-dark-base/20"
     >
         {#if isHomePage}
             <a
-                href="#landing"
+                class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 data-selected={selected === 'landing'}
-                class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                href="#landing"
                 on:click={onNavigate}
             >
                 <span class="anicon">M</span>
                 Landing
             </a>
             <a
-                href="#about"
+                class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 data-selected={selected === 'about'}
-                class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                href="#about"
                 on:click={onNavigate}
             >
                 <span class="anicon">M</span>
                 About
             </a>
             <a
-                href="#contact"
+                class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 data-selected={selected === 'contact'}
-                class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                href="#contact"
                 on:click={onNavigate}
             >
                 <span class="anicon">M</span>
@@ -86,9 +81,9 @@
             </a>
         {:else}
             <a
-                href="/"
+                class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 data-selected={selected === 'landing'}
-                class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                href="/"
                 on:click={onNavigate}
             >
                 <span class="anicon">M</span>
@@ -96,9 +91,9 @@
             </a>
         {/if}
         <a
-            href="/posts"
+            class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
             data-selected={selected === 'blog'}
-            class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+            href="/posts"
             on:click={onNavigate}
         >
             <span class="anicon">M</span>
@@ -107,47 +102,42 @@
     </div>
 {/if}
 
-<nav class="pa-2 top-0 z-10" transition:slide>
+<nav class="top-0 z-10 pa-2" transition:slide>
     <div
-        class="
-	flex justify-between items-center
-	px-4 sm:px-8 rounded-xl
-	border-solid border-4 border-light-mantle/80 dark:border-dark-mantle/50
-	bg-hero-diagonal-lines-light-base/40 dark:bg-hero-diagonal-lines-dark-overlay-0/40
-	bg-light-mantle/20 dark:bg-dark-mantle/40 backdrop-blur-sm"
+        class="flex items-center justify-between border-4 border-light-mantle/80 rounded-xl border-solid bg-light-mantle/20 px-4 backdrop-blur-sm bg-hero-diagonal-lines-light-base/40 dark:border-dark-mantle/50 dark:bg-dark-mantle/40 sm:px-8 dark:bg-hero-diagonal-lines-dark-overlay-0/40"
     >
         <h1>
             <a
+                class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 href="/"
-                class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
             >
                 TNTMAN_1671
             </a>
         </h1>
-        <div class="text-2xl text-center hidden sm:block">
+        <div class="hidden text-center text-2xl sm:block">
             {#if isHomePage}
                 <a
-                    href="#landing"
+                    class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                     data-selected={selected === 'landing'}
-                    class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                    href="#landing"
                     on:click={onNavigate}
                 >
                     <span class="anicon">M</span>
                     Landing
                 </a>
                 <a
-                    href="#about"
+                    class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                     data-selected={selected === 'about'}
-                    class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                    href="#about"
                     on:click={onNavigate}
                 >
                     <span class="anicon">M</span>
                     About
                 </a>
                 <a
-                    href="#contact"
+                    class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                     data-selected={selected === 'contact'}
-                    class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                    href="#contact"
                     on:click={onNavigate}
                 >
                     <span class="anicon">M</span>
@@ -155,9 +145,9 @@
                 </a>
             {:else}
                 <a
-                    href="/"
+                    class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                     data-selected={selected === 'landing'}
-                    class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                    href="/"
                     on:click={onNavigate}
                 >
                     <span class="anicon">M</span>
@@ -165,9 +155,9 @@
                 </a>
             {/if}
             <a
-                href="/posts"
+                class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 data-selected={selected === 'blog'}
-                class="decoration-none text-light-text visited:text-light-text dark:text-dark-text dark:visited:text-dark-text"
+                href="/posts"
                 on:click={onNavigate}
             >
                 <span class="anicon">M</span>
@@ -175,12 +165,12 @@
             </a>
         </div>
         <button
+            class="dropdown-icon border-none bg-transparent text-5xl text-light-text sm:hidden hover:cursor-pointer dark:text-dark-text"
+            data-active={mobileHambugerMenuOpen}
+            id="dropdown-button"
             on:click={() => {
                 mobileHambugerMenuOpen = !mobileHambugerMenuOpen;
             }}
-            class="dropdown-icon text-5xl bg-transparent border-none text-light-text dark:text-dark-text hover:cursor-pointer sm:hidden"
-            id="dropdown-button"
-            data-active={mobileHambugerMenuOpen}
         >
             A
         </button>

@@ -1,6 +1,7 @@
 <script lang="ts">
-    import {onMount} from 'svelte';
     import type {Picture} from 'vite-imagetools';
+
+    import {onMount} from 'svelte';
 
     interface PictureWithLQIP extends Picture {
         lqip: string;
@@ -30,20 +31,20 @@
 </script>
 
 <div
+    class="img__placeholder{className}"
     style="{typeof src !== 'string' && src.lqip
         ? `background-image: url(${src.lqip})`
         : `background-color: ${dominantColor}`};"
-    class="img__placeholder {className}"
 >
     {#if typeof src === 'string'}
         <img
+            {alt}
             bind:this={image}
             class={className}
             class:hidden
-            {src}
-            {alt}
-            {loading}
             {decoding}
+            {loading}
+            {src}
         />
     {:else}
         <picture class={className}>
@@ -56,15 +57,15 @@
                 />
             {/each}
             <img
+                {alt}
                 bind:this={image}
                 class={className}
                 class:hidden
+                {decoding}
+                height={src.img.h}
+                {loading}
                 src={src.img.src}
                 width={src.img.w}
-                height={src.img.h}
-                {alt}
-                {loading}
-                {decoding}
             />
         </picture>
     {/if}

@@ -17,7 +17,7 @@
         /**
          * Name of the skill
          */
-        name: str;
+        name: string;
         /**
          * My proficiency with the skill.
          */
@@ -45,24 +45,14 @@
 </script>
 
 <a
-    class="
-        pl-4 max-w-full flex gap-4 items-center hover:cursor-pointer rounded-xl
-        decoration-none
-        text-light-text dark:text-dark-text
-        visited:text-light-text visited:dark-text-dark-text
-        bg-light-base dark:bg-dark-base
-
-        border-light-overlay-0 dark:border-dark-overlay-0
-        transition-all duration-200
-        hover:shadow-2xl hover:border-light-sapphire dark:hover:border-dark-sapphire
-    "
-    {href}
+    class="max-w-full flex items-center gap-4 border-light-overlay-0 rounded-xl bg-light-base pl-4 text-light-text decoration-none transition-all duration-200 hover:cursor-pointer dark:border-dark-overlay-0 hover:border-light-sapphire dark:bg-dark-base dark:text-dark-text visited:text-light-text hover:shadow-2xl dark:hover:border-dark-sapphire visited:dark-text-dark-text"
     data-sveltekit-noscroll
+    {href}
 >
     <img
-        src={skill.icon}
         alt={skill.iconAlt}
-        class="w-8 md:w-10 h-auto"
+        class="h-auto w-8 md:w-10"
+        src={skill.icon}
     />
 
     <h2 class="text-2xl md:text-2xl">

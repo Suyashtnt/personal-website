@@ -5,4 +5,4 @@
     if (browser) goto('/skills/Svelte', {noScroll: true});
 </script>
 
-<a href="/skills/Svelte" data-sveltekit-noscroll>Goto</a>
+<a data-sveltekit-noscroll href="/skills/Svelte">Goto</a>

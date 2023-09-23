@@ -1,12 +1,15 @@
-<script lang="ts" generics="C extends typeof SvelteComponent">
+<script generics="C extends typeof SvelteComponent" lang="ts">
     // Generics bork
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     import type {SvelteComponent} from 'svelte';
-    import ToC from './table-of-contents.svelte';
+
+    import PageHead from '$lib/components/page-head.svelte'; import { createTableOfContents } from '@melt-ui/svelte';
+
     import type {PageData} from './$types';
-    import lightSyntax from './syntax.light.css?url';
+
     import darkSyntax from './syntax.dark.css?url';
-    import PageHead from '$lib/components/page-head.svelte';
+    import lightSyntax from './syntax.light.css?url';
+    import ToC from './table-of-contents.svelte';
 
     export let data: PageData;
 
@@ -35,75 +38,75 @@
         month: 'short',
         year: 'numeric'
     });
+
+    const {
+        elements: { item },
+        states: { activeHeadingIdxs, headingsTree },
+    } = createTableOfContents({
+        activeType: 'highest-parents',
+        selector: '#card',
+    });
 </script>
 
-<PageHead title={data.frontmatter.title} {description} />
+<PageHead {description} title={data.frontmatter.title} />
 
 <svelte:head>
-    <meta property="og:type" content="article" />
+    <meta content="article" property="og:type" />
     <meta
-        property="og:article:published_time"
         content={datePublished.toISOString()}
+        property="og:article:published_time"
     />
     <meta
-        property="og:article:modified_time"
         content={dateModified.toISOString()}
+        property="og:article:modified_time"
     />
 
-    <link rel="stylesheet" href={lightSyntax} />
+    <link href={lightSyntax} rel="stylesheet" />
     <link
-        rel="stylesheet"
-        media="(prefers-color-scheme: dark)"
         href={darkSyntax}
+        media="(prefers-color-scheme: dark)"
+        rel="stylesheet"
     />
 </svelte:head>
 
-<div class="grid gap-8 grid-layout-article">
+<div class="grid-layout-article grid gap-8">
     <aside
-        class="ml-4 grid-area-[sidebar] self-start lg:sticky top-0"
+        class="top-0 grid-area-[sidebar] ml-4 self-start lg:sticky"
     >
-        <p class="text-2xl line-clamp-2 mt-4">
+        <p class="line-clamp-2 mt-4 text-2xl">
             {data.frontmatter.title}
         </p>
-        <ol class="pl-0 text-lg counter-reset-item list-none">
+        {#key $headingsTree}
             <ToC
-                {...data.headings}
-                value={data.headings.value ?? ''}
+                activeHeadingIdxs={$activeHeadingIdxs}
+                {item}
+                tree={$headingsTree}
             />
-        </ol>
+        {/key}
     </aside>
 
     <article
-        class="
-        text-xl mx-6 md:mx-0 prose prose-light-text dark:prose-dark-text grid-area-[content] justify-self-center
-        bg-light-mantle dark:bg-dark-mantle px-4 mb-6 rounded-3xl
-        "
-        id="card"
+        class="prose-light-text dark:prose-dark-text grid-area-[content] mx-6 mb-6 justify-self-center rounded-3xl bg-light-mantle px-4 text-xl prose md:mx-0 dark:bg-dark-mantle"
         data-flip-id="{data.slug}"
+        id="card"
     >
         <header
             class="mb-8 py-4"
-            id="title-card"
             data-flip-id="title-{data.slug}"
+            id="title-card"
         >
             <hr
-                class="h-0.5 -0 bg-gradient-to-r from-light-blue to-light-sapphire dark:from-dark-blue dark:to-dark-blue"
+                class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-blue dark:to-dark-blue"
             />
 
             <h1
-                class="
-				text-4xl xl:text-5xl transition-all
-				my-0 text-center font-light
-				text-transparent
-				bg-gradient-to-br bg-clip-text
-				from-light-lavender to-light-mauve dark:from-dark-lavender dark:to-dark-mauve
-				"
+                class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl font-light text-transparent transition-all dark:from-dark-lavender dark:to-dark-mauve xl:text-5xl"
             >
                 {data.frontmatter.title}
             </h1>
 
             <hr
-                class="h-0.5 mb-2 bg-gradient-to-r from-light-blue to-light-sapphire dark:from-dark-blue dark:to-dark-blue"
+                class="mb-2 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-blue dark:to-dark-blue"
             />
 
             <p
@@ -121,18 +124,18 @@
         </header>
 
         <p
-            class="text-justify article-content"
-            id="text"
+            class="article-content text-justify"
             data-flip-id="text-{data.slug}"
+            id="text"
         >
             <svelte:component this={component} />
         </p>
     </article>
 
-    <aside class="mr-4 grid-area-[notes]" />
+    <aside class="grid-area-[notes] mr-4 hidden md:block" />
 </div>
 
-<style lang="scss" global>
+<style>
     .grid-layout-article {
         grid-template-areas:
             'sidebar'
@@ -156,34 +159,50 @@
     }
 
     .article-content {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        & h1,
+        & h2,
+        & h3,
+        & h4,
+        & h5,
+        & h6 {
             --at-apply: 'scroll-mt-8';
             --at-apply: 'text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text';
 
-            > a {
+            & > a {
                 --at-apply: 'text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text inline-block relative decoration-none transition-all';
 
-                &:after {
+                & :after {
                     --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-blue bottom-0 content-empty block h-0.5 absolute transition-all w-0';
                 }
 
-                &:hover {
+                & :hover {
                     --at-apply: 'text-light-blue dark:text-dark-blue visited:text-light-blue dark:visited:text-dark-blue';
 
-                    &:after {
+                    & :after {
                         --at-apply: 'w-full';
                     }
                 }
             }
         }
-    }
 
-    .counter-reset-item {
-        counter-reset: item;
+        & h2 > a {
+            --at-apply: '!text-light-red !dark:text-dark-red';
+        }
+
+        & h3 > a {
+            --at-apply: '!text-light-peach !dark:text-dark-peach';
+        }
+
+        & h4 > a {
+            --at-apply: '!text-light-yellow !dark:text-dark-yellow';
+        }
+
+        & h5 > a {
+            --at-apply: '!text-light-green !dark:text-dark-green';
+        }
+
+        & h6 > a {
+            --at-apply: '!text-light-sapphire !dark:text-dark-sapphire';
+        }
     }
 </style>

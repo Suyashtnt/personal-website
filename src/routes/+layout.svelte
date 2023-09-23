@@ -1,8 +1,9 @@
 <script lang="ts">
     import '@fontsource/inter/400.css';
     import '@fontsource/inter/600.css';
-    import Header from './header.svelte';
+
     import Footer from './footer.svelte';
+    import Header from './header.svelte';
 </script>
 
 <Header />
@@ -14,12 +15,12 @@
 <Footer />
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
-<style lang="scss" global>
-    a {
+<style>
+    :global(a) {
         --at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
     }
 
-    body {
+    :global(body) {
         font-family: 'Inter', sans-serif;
         min-height: 100vh;
 
@@ -28,8 +29,7 @@
         }
     }
 
-    html,
-    body {
+    :global(html, body) {
         scroll-behavior: smooth;
         --at-apply: 'bg-light-base dark:bg-dark-base';
     }

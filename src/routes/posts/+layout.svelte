@@ -1,12 +1,13 @@
 <script lang="ts">
     import type {gsap as Gsap} from 'gsap';
     import type {Flip as FlipType} from 'gsap/Flip';
-    import {onMount} from 'svelte';
+
     import {afterNavigate, beforeNavigate} from '$app/navigation';
+    import {onMount} from 'svelte';
     let state: Flip.FlipState | null = null;
 
-    let gsap: typeof Gsap | null = null;
-    let Flip: typeof FlipType | null = null;
+    let gsap: null | typeof Gsap = null;
+    let Flip: null | typeof FlipType = null;
 
     const selector = ["#card", "#title-card", "#text"];
 
@@ -31,10 +32,10 @@
     afterNavigate(async () => {
         if (gsap && Flip && state) {
             Flip.from(state, {
+                absolute: true,
                 duration: 0.64,
                 ease: 'power4.inOut',
                 scale: true,
-                absolute: true,
                 targets: selector
             });
         }

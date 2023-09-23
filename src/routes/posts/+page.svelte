@@ -1,6 +1,7 @@
 <script lang="ts">
-    import type {PageData} from './$types';
     import PageHead from '$lib/components/page-head.svelte';
+
+    import type {PageData} from './$types';
 
     export let data: PageData;
 
@@ -11,32 +12,32 @@
     });
 </script>
 
-<PageHead title="Posts" description="My blog posts" />
+<PageHead description="My blog posts" title="Posts" />
 
-<h1 class="text-5xl ml-4">Posts</h1>
+<h1 class="ml-4 text-5xl">Posts</h1>
 
-<ul class="post-grid list-none pa-0 mx-2">
+<ul class="post-grid mx-2 list-none pa-0">
     {#each data.posts as post (post.slug)}
         <li>
             <a
+                class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 href="/posts/{post.slug}"
-                class="text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text decoration-none"
             >
                 <article
-                    class="bg-light-mantle dark:bg-dark-mantle rounded-2xl px-6 py-2 h-full flex flex-col justify-between"
-                    id="card"
+                    class="h-full flex flex-col justify-between rounded-2xl bg-light-mantle px-6 py-2 dark:bg-dark-mantle"
                     data-flip-id="{post.slug}"
+                    id="card"
                 >
                     <header
-                    id="title-card"
                     data-flip-id="title-{post.slug}"
+                    id="title-card"
                     >
-                        <h1 class="hover:decoration-underline mb-2">
+                        <h1 class="mb-2 hover:decoration-underline">
                             {post.title}
                         </h1>
                         <div
-                            role="doc-subtitle"
                             class="text-light-text/80 dark:text-dark-text/80"
+                            role="doc-subtitle"
                         >
                             Published {dateFormatter.format(
                                 new Date(post.date)
@@ -48,8 +49,8 @@
                     </header>
 
                     <footer
-                        id="text"
                         data-flip-id="text-{post.slug}"
+                        id="text"
                     >
                         <p>{post.description}</p>
                     </footer>

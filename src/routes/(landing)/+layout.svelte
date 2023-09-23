@@ -1,16 +1,18 @@
 <script lang="ts">
-    import {fly} from 'svelte/transition';
     import type {gsap as Gsap} from 'gsap';
     import type {Flip as FlipType} from 'gsap/Flip';
-    import {onMount} from 'svelte';
-    import Hero from './hero.svelte';
-    import Contact from './contact.svelte';
-    import AboutToBlog from './about-to-blog.svelte';
-    import Tabs from '$lib/components/tabs/tabs.svelte';
-    import Tab from '$lib/components/tabs/tab.svelte';
+
+    import {afterNavigate, beforeNavigate} from '$app/navigation';
     import {page} from '$app/stores';
     import PageHead from '$lib/components/page-head.svelte';
-    import {afterNavigate, beforeNavigate} from '$app/navigation';
+    import Tab from '$lib/components/tabs/tab.svelte';
+    import Tabs from '$lib/components/tabs/tabs.svelte';
+    import {onMount} from 'svelte';
+    import {fly} from 'svelte/transition';
+
+    import AboutToBlog from './about-to-blog.svelte';
+    import Contact from './contact.svelte';
+    import Hero from './hero.svelte';
 
     let gsap: null | typeof Gsap = null;
     let Flip: null | typeof FlipType = null;
@@ -48,26 +50,26 @@
     });
 </script>
 
-<PageHead title={undefined} description="Hi, I'm TNTMan1671." />
+<PageHead description="Hi, I'm TNTMan1671." title={undefined} />
 
 <Hero />
 
 <section
-    class="bg-light-surface-0 dark:bg-dark-surface-0 py-8 md:px-8 overflow-clip"
+    class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface-0 md:px-8"
     id="about"
 >
-    <Tabs class="mb-4 px-8 md:px-0">
+    <Tabs class="mb-2 mb-4 flex px-8 md:flex-row md:px-0">
         <Tab name="Skills" path="/skills#about" />
         <Tab name="Projects" path="/projects#about" />
         <Tab name="Games" path="/games#about" />
     </Tabs>
 
-    <div class="grid grid-template-area overflow-hidden">
+    <div class="grid-template-area grid overflow-hidden">
         {#key $page.url.pathname.split('/')[1]}
             <div
-                out:fly={{duration: 300, x: '100%'}}
-                in:fly={{delay: 300, duration: 300, x: '-100%'}}
                 class="grid-area-[area]"
+                in:fly={{delay: 300, duration: 300, x: '-100%'}}
+                out:fly={{duration: 300, x: '100%'}}
             >
                 {#key $page.url.pathname}
                     <slot />
