@@ -1,11 +1,12 @@
 <script lang="ts">
-    import Image from '$lib/components/image.svelte'; import anime from 'animejs';
+    import Image from '@zerodevx/svelte-img';
+    import anime from 'animejs';
     import 'atropos/css';
     import {onMount} from 'svelte';
 
     const {random, remove, timeline} = anime;
 
-    import face from '$lib/pictures/face.png?w=640;320;160&optimize';
+    import face from '$lib/pictures/face.png?w=640;320;160&as=optimize';
 
     const names = ['TNTMan\\1671', 'Suyashtnt', 'TNT \\Man \\Inc'];
 
@@ -93,7 +94,7 @@
             >
                 <Image
                     alt="a contemporary portrait of me"
-                    class="rounded-xl object-cover transition-all group-hover:scale-105"
+                    class="h-auto w-60 rounded-xl object-cover transition-all group-hover:scale-105"
                     loading="eager"
                     src={face}
                 />

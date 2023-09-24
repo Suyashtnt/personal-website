@@ -8,12 +8,12 @@ published: true
 ---
 
 <script>
-import Image from '$lib/components/image.svelte'
-import CanPlsMakeTexture from '$lib/pictures/posts/the-wobbler/CanPlsMakeTexture.png?optimize'
-import FirstImage from '$lib/pictures/posts/the-wobbler/first-image.png?optimize'
-import Refined from '$lib/pictures/posts/the-wobbler/refined.png?optimize'
-import Upscaled from '$lib/pictures/posts/the-wobbler/upscaled.png?optimize'
-import YouShouldMakeItYourPfp from '$lib/pictures/posts/the-wobbler/make-it-your-pfp.png?optimize'
+import Image from '@zerodevx/svelte-img';
+import CanPlsMakeTexture from '$lib/pictures/posts/the-wobbler/CanPlsMakeTexture.png?as=optimize'
+import FirstImage from '$lib/pictures/posts/the-wobbler/first-image.png?as=optimize'
+import Refined from '$lib/pictures/posts/the-wobbler/refined.png?as=optimize'
+import Upscaled from '$lib/pictures/posts/the-wobbler/upscaled.png?as=optimize'
+import YouShouldMakeItYourPfp from '$lib/pictures/posts/the-wobbler/make-it-your-pfp.png?as=optimize'
 </script>
 
 In the distant past of... 2016, young me decided that I was going to be a _Youtuber!_ Whether that was a good idea or not is debatable, but I remember clearly that I wanted to have one of those cringe as hell gaming intros with what is equivalent to the average YouTube family content creator personality. I started my first channel, under the name of `TNT MAN!!!`. You can already see the 8 year old energy in that. That would evolve into `TNT Man Inc` and now it's settled as `A badly drawn wobbler`. _(switch to youtube family creator voice)_ _**But wait!**_ Why a _badly drawn wobbler_? Why was I a **MAN MADE OUT OF TNT IN THE FIRST PLACE!!!** Why was _this mysterious wobbler_ chosen above **_ALL ELSE!?_**
@@ -26,7 +26,7 @@ In the distant past of before lockdown, 11 year old me decided that my memory wa
 
 9 year old me decided "hmm, I kinda like making scuffed music. Maybe I can upload those to YouTube!" And so my first corporate rebrand started, under the name of `TNT Man Inc`. I still have the original songs on hand, but I'm not sure if I want to publish them online again. Maybe one day as a blog post in case I need to speedrun making one. I'll just say that they were, _scuffed_.
 
-11 was the time I started programming open source, so I needed a name for my github account. This was chosen by chance to be the cool, hip, and fresh name of... Suyashtnt. I do not remember why I chose this name, but it probably has to do that my email was also "suyashtnt@gmail.com."
+11 was the time I started programming open source, so I needed a name for my github account. This was chosen by chance to be the cool, hip, and fresh name of... Suyashtnt. I do not remember why I chose this name, but it probably has to do that my email was also "<suyashtnt@gmail.com>."
 
 12 Year old me... It's a long story.
 
@@ -44,9 +44,9 @@ We decided that using Java to create our mods would be too difficult, so we both
 
 The main block of the Sushal dimension was the Sushal block. There were a few options for the texture at the time:
 
--   My face (no)
--   Literal sushi (boring)
--   My discord profile picture (sure I guess; Why not?)
+- My face (no)
+- Literal sushi (boring)
+- My discord profile picture (sure I guess; Why not?)
 
 So, the first version of the mod had my discord profile as the texture. The issue was that my discord profile picture was Landfall's [TABS Emoji](https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless) <Image src="https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless" alt="Landfall's TABS emoji on discord" class="important-h-auto important-w-[1em] align-middle inline-block" />. This emoji is what's known as a wobbler, the base humanoid-style unit in TABS. Me at the time thought "Wait since landfall owns this emoji they may not like it." I asked my friend about that. This was the response:
 
@@ -78,19 +78,19 @@ So, first things first: increase the resolution. It was bumped up by quite a bit
     <Image
         alt="The first image of the badly drawn wobbler"
         src={FirstImage}
-        class="rounded-xl aspect-square"
+        class="rounded-xl aspect-square h-62 w-auto"
     />
 
     <Image
         alt="The 'refined' badly drawn wobbler"
         src={Refined}
-        class="rounded-xl aspect-square"
+        class="rounded-xl aspect-square h-62 w-auto"
     />
 
     <Image
         alt="The AI upscaled badly drawn wobbler"
         src={Upscaled}
-        class="rounded-xl aspect-square"
+        class="rounded-xl aspect-square h-62 w-auto"
     />
 
 </div>

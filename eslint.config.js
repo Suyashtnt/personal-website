@@ -37,7 +37,7 @@ const defaultRules = {
  */
 export default [
     {
-        ignores: [".svelte-kit/**/*"],
+        ignores: [".svelte-kit/**/*", "node_modules/**/*"],
     },
     js.configs.recommended,
     {

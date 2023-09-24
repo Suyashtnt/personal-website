@@ -16,15 +16,15 @@
 
 <h1 class="ml-4 text-5xl">Posts</h1>
 
-<ul class="post-grid mx-2 list-none pa-0">
+<ul class="mx-2 flex flex-wrap list-none gap-2 pa-0">
     {#each data.posts as post (post.slug)}
-        <li>
+        <li class="flex-[1_1_280px]">
             <a
                 class="text-light-text decoration-none dark:text-dark-text visited:text-light-text dark:visited:text-dark-text"
                 href="/posts/{post.slug}"
             >
                 <article
-                    class="h-full flex flex-col justify-between rounded-2xl bg-light-mantle px-6 py-2 dark:bg-dark-mantle"
+                    class="h-full flex flex-col justify-between rounded-2xl bg-light-mantle px-6 dark:bg-dark-mantle"
                     data-flip-id="{post.slug}"
                     id="card"
                 >
@@ -61,37 +61,19 @@
 </ul>
 
 <style>
-    /* stolen from https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ */
-    .post-grid {
-        /**
-		* User input values.
-		*/
-        --grid-layout-gap: 1rem;
-        --grid-column-count: 6;
-        --grid-item--min-width: 400px;
+    .instances {
+        padding: 0 1rem;
 
-        /**
-		* Calculated values.
-		*/
-        --gap-count: calc(var(--grid-column-count) - 1);
-        --total-gap-width: calc(
-            var(--gap-count) * var(--grid-layout-gap)
-        );
-        --grid-item--max-width: calc(
-            (100% - var(--total-gap-width)) / var(--grid-column-count)
-        );
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 
-        display: grid;
-        grid-template-columns: repeat(
-            auto-fill,
-            minmax(
-                max(
-                    var(--grid-item--min-width),
-                    var(--grid-item--max-width)
-                ),
-                1fr
-            )
-        );
-        grid-gap: var(--grid-layout-gap);
+    .instances :global(article) {
+        flex: 1 1 280px;
+    }
+
+    .instances :global(article.collapsed) {
+        flex: 0 0 64px;
     }
 </style>

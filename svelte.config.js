@@ -8,7 +8,7 @@ import mdsvexConfig from "./mdsvex.config.js";
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
-    extensions: [".svelte", ...mdsvexConfig.extensions],
+    extensions: [".svelte", ...(mdsvexConfig.extensions ?? [])],
     kit: {
         adapter: adapter(),
         alias: {
@@ -23,7 +23,7 @@ const config = {
                 config.include.push("../vite.config.ts");
                 config.include.push("../mdsvex.config.js");
                 config.include.push("../eslint.config.js");
-                config.include.push("../placeholder.ts");
+                config.include.push("../svelte.config.js");
                 return config;
             },
         },

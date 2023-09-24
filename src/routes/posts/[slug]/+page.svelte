@@ -60,7 +60,7 @@
     />
 </svelte:head>
 
-<div class="grid-layout-article grid gap-8">
+<div class="grid-layout-article grid justify-center">
     <aside
         class="top-0 grid-area-[sidebar] ml-4 self-start lg:sticky"
     >
@@ -77,7 +77,7 @@
     </aside>
 
     <article
-        class="prose-light-text dark:prose-dark-text grid-area-[content] mx-6 mb-6 justify-self-center rounded-3xl bg-light-mantle px-4 text-xl prose md:mx-0 dark:bg-dark-mantle"
+        class="grid-area-[content] mb-6 justify-self-center rounded-3xl bg-light-mantle px-4 text-xl prose md:mx-0 dark:bg-dark-mantle"
         data-flip-id="{data.slug}"
         id="card"
     >
@@ -131,8 +131,6 @@
         grid-template-areas:
             'sidebar'
             'content';
-
-        grid-template-columns: 1fr;
 
         @media (min-width: 1024px) {
             grid-template-areas:

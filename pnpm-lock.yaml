@@ -8,12 +8,6 @@ dependencies:
   '@catppuccin/palette':
     specifier: ^0.2.0
     version: 0.2.0
-  '@fontsource-variable/recursive':
-    specifier: ^5.0.8
-    version: 5.0.8
-  '@fontsource/inter':
-    specifier: ^5.0.8
-    version: 5.0.8
   '@mobily/ts-belt':
     specifier: ^4.0.0-rc.5
     version: 4.0.0-rc.5
@@ -76,15 +70,15 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^6.7.2
     version: 6.7.2(eslint@8.50.0)(typescript@5.2.2)
-  '@unocss/eslint-config':
-    specifier: ^0.56.1
-    version: 0.56.1(eslint@8.50.0)(typescript@5.2.2)
   '@unocss/eslint-plugin':
     specifier: ^0.56.1
     version: 0.56.1(eslint@8.50.0)(typescript@5.2.2)
   '@unocss/svelte-scoped':
     specifier: ^0.56.1
     version: 0.56.1
+  '@zerodevx/svelte-img':
+    specifier: ^2.1.0
+    version: 2.1.0(svelte@4.2.1)
   browserslist:
     specifier: ^4.21.11
     version: 4.21.11
@@ -166,9 +160,6 @@ devDependencies:
   vite:
     specifier: ^4.4.9
     version: 4.4.9(lightningcss@1.22.0)
-  vite-imagetools:
-    specifier: ^5.0.8
-    version: 5.0.8
 
 packages:
 
@@ -455,14 +446,6 @@ packages:
   /@floating-ui/utils@0.1.4:
     resolution: {integrity: sha512-qprfWkn82Iw821mcKofJ5Pk9wgioHicxcQMxx+5zt5GSKoqdWvgG5AxVmpmUUjzTLPVSH5auBrhI93Deayn/DA==}
     dev: true
-
-  /@fontsource-variable/recursive@5.0.8:
-    resolution: {integrity: sha512-6CPUJM3M4+fHtuH5Rbm/uUmWzbOAP2W/DValZSD5w+1avG9VmbAit2m0FSfOGc4DZzhRx1rCBR4HuQReiysVqA==}
-    dev: false
-
-  /@fontsource/inter@5.0.8:
-    resolution: {integrity: sha512-28knWH1BfOiRalfLs90U4sge5mpQ8ZH6FS0PTT+IZMKrZ7wNHDHRuKa1kQJg+uHcc6axBppnxll+HXM4c7zo/Q==}
-    dev: false
 
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
@@ -975,17 +958,6 @@ packages:
     resolution: {integrity: sha512-2qmb/+hQ2CXmIgSqaeL6Pw2reO2MxsZlLMFuu71J8T3+UKrkI9NAwkZ4sdb38EoOisVIr2lvE48uc44XBfaOdg==}
     dev: true
 
-  /@unocss/eslint-config@0.56.1(eslint@8.50.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-ph1w2FO+wCHq0jz0iQyxUbjwLSVjSz6wQ2yd0fCsm6mHNlewWHmu6gD3Grs9j5XDyFJEwz4HZZRHspJanqSJyA==}
-    engines: {node: '>=14'}
-    dependencies:
-      '@unocss/eslint-plugin': 0.56.1(eslint@8.50.0)(typescript@5.2.2)
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-      - typescript
-    dev: true
-
   /@unocss/eslint-plugin@0.56.1(eslint@8.50.0)(typescript@5.2.2):
     resolution: {integrity: sha512-WLTybFXK9FJUMmEdUBa4Yj6uZx4qTCThGVej5Rn3XA+5f58zNmcSbipUG5oz16Z/QqYKP8iKhtg5zAQJMi0erg==}
     engines: {node: '>=14'}
@@ -1176,6 +1148,17 @@ packages:
       fast-glob: 3.3.1
       magic-string: 0.30.3
       vite: 4.4.9(lightningcss@1.22.0)
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
+  /@zerodevx/svelte-img@2.1.0(svelte@4.2.1):
+    resolution: {integrity: sha512-ktOcv5svIm8qQQ7sBnSST1zaA5mJpTp+MbzaMeDNBEw4hulwzSD0VRPtq/pvYsjacA1OAw+JIN/qmBl7doh7HA==}
+    peerDependencies:
+      svelte: ^3.55.1 || ^4.0.0
+    dependencies:
+      svelte: 4.2.1
+      vite-imagetools: 5.0.8
     transitivePeerDependencies:
       - rollup
     dev: true
