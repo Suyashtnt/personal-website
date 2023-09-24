@@ -65,12 +65,14 @@
             </a>
         </li>
         {#if heading.children && heading.children.length}
-          <svelte:self
-            {activeHeadingIdxs}
-            {item}
-            level={level + 1}
-            tree={heading.children}
-          />
+            <li>
+                <svelte:self
+                    {activeHeadingIdxs}
+                    {item}
+                    level={level + 1}
+                    tree={heading.children}
+                />
+            </li>
         {/if}
     {/each}
   {/if}
