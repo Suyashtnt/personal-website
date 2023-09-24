@@ -7,8 +7,6 @@
 
     import type {PageData} from './$types';
 
-    import darkSyntax from './syntax.dark.css?url';
-    import lightSyntax from './syntax.light.css?url';
     import ToC from './table-of-contents.svelte';
 
     export let data: PageData;
@@ -59,13 +57,6 @@
     <meta
         content={dateModified.toISOString()}
         property="og:article:modified_time"
-    />
-
-    <link href={lightSyntax} rel="stylesheet" />
-    <link
-        href={darkSyntax}
-        media="(prefers-color-scheme: dark)"
-        rel="stylesheet"
     />
 </svelte:head>
 
@@ -198,11 +189,30 @@
         }
 
         & h5 > a {
-            --at-apply: '!text-light-green !dark:text-dark-green';
+            --at-apply: '!text-light-green !dark:text-dark-green text-xl';
         }
 
         & h6 > a {
-            --at-apply: '!text-light-sapphire !dark:text-dark-sapphire';
+            --at-apply: '!text-light-sapphire !dark:text-dark-sapphire text-xl';
+        }
+
+        & pre {
+            --at-apply: 'rounded-xl pa-2 overflow-x-auto';
+        }
+        & code {
+            --at-apply: 'rounded-xl';
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :global(.shiki),
+        :global(.shiki span) {
+            color: var(--shiki-dark) !important;
+            background-color: var(--shiki-dark-bg) !important;
+            /* Optional, if you also want font styles */
+            font-style: var(--shiki-dark-font-style) !important;
+            font-weight: var(--shiki-dark-font-weight) !important;
+            text-decoration: var(--shiki-dark-text-decoration) !important;
         }
     }
 </style>

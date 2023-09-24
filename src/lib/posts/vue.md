@@ -1,9 +1,9 @@
 ---
-title: 'VueJS: Great ideas, good execution, outshone by the competition'
-description: 'A look on Vue.JS.'
-author: 'Suyashtnt'
-date: '2023-05-23'
-updated: '2023-07-03'
+title: "VueJS: Great ideas, good execution, outshone by the competition"
+description: "A look on Vue.JS."
+author: "Suyashtnt"
+date: "2023-05-23"
+updated: "2023-07-03"
 published: true
 ---
 
@@ -31,10 +31,10 @@ Take the following imperative JS code
 <script>
     let count = 0;
     // we get elements in JS
-    const button = document.getElementById('btn');
-    const counter = document.getElementById('counter');
+    const button = document.getElementById("btn");
+    const counter = document.getElementById("counter");
     // we handle event listening in JS
-    button.addEventListener('click', handleCount);
+    button.addEventListener("click", handleCount);
 
     function handleCount() {
         count++;
@@ -58,16 +58,16 @@ Take the following imperative JS code
 
 <script>
     new Vue({
-        el: '#app', // tell vue where your app is
+        el: "#app", // tell vue where your app is
         data: {
-            count: 0
+            count: 0,
         },
         methods: {
             // define methods that update your data/run code
             increment() {
                 this.count++; // simply update your state. Vue changes the DOM for you
-            }
-        }
+            },
+        },
     });
 </script>
 ```
@@ -84,7 +84,7 @@ Let us look at modern Vue. The Options API is bulky. It also creates many opport
 </template>
 
 <script setup>
-    import { ref } from 'vue'; // import ref, which is a reactive variable
+    import { ref } from "vue"; // import ref, which is a reactive variable
     const count = ref(0); // create a reactive variable. When this changes it updates the DOM automatically
 </script>
 ```
@@ -123,7 +123,7 @@ The Options and Setup API are compatible, but in a strange way. First of all, it
 
 ```html
 <script>
-    import { ref } from 'vue';
+    import { ref } from "vue";
 
     export default {
         setup() {
@@ -132,13 +132,13 @@ The Options and Setup API are compatible, but in a strange way. First of all, it
 
             // expose to template and other options API hooks
             return {
-                count
+                count,
             };
         },
 
         mounted() {
             console.log(this.count); // 0
-        }
+        },
     };
 </script>
 
@@ -235,7 +235,7 @@ Svelte, on the other hand, has a flexible, JS-powered transition API.
 
 ```html
 <script>
-    import { fade } from 'svelte/transition';
+    import { fade } from "svelte/transition";
     let visible = true;
 </script>
 
@@ -269,7 +269,7 @@ Svelte state management through stores
 `stores.js`
 
 ```js
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
 export const count = writable(0);
 ```
@@ -278,7 +278,7 @@ export const count = writable(0);
 
 ```html
 <script>
-    import { count } from './stores.js';
+    import { count } from "./stores.js";
 
     function increment() {
         count.update((n) => n + 1);
@@ -292,7 +292,7 @@ export const count = writable(0);
 
 ```html
 <script>
-    import { count } from './stores.js';
+    import { count } from "./stores.js";
 
     function decrement() {
         count.update((n) => n - 1);
@@ -306,9 +306,9 @@ export const count = writable(0);
 
 ```html
 <script>
-    import { count } from './stores.js';
-    import Incrementer from './Incrementer.svelte';
-    import Decrementer from './Decrementer.svelte';
+    import { count } from "./stores.js";
+    import Incrementer from "./Incrementer.svelte";
+    import Decrementer from "./Decrementer.svelte";
 </script>
 
 <h1>The count is {$count}</h1>
@@ -320,10 +320,10 @@ export const count = writable(0);
 `index.js` (Mounting svelte component to the DOM)
 
 ```js
-import App from './App.svelte';
+import App from "./App.svelte";
 
 new App({
-    target: document.body
+    target: document.body,
 });
 ```
 
@@ -332,7 +332,7 @@ Vue state management
 `stores.js`
 
 ```js
-export const useCounterStore = defineStore('counter', () => {
+export const useCounterStore = defineStore("counter", () => {
     const count = ref(0);
 
     function increment() {
@@ -351,7 +351,7 @@ export const useCounterStore = defineStore('counter', () => {
 
 ```html
 <script setup>
-    import { useCounterStore } from './stores.js';
+    import { useCounterStore } from "./stores.js";
     const store = useCounterStore();
 </script>
 
@@ -364,7 +364,7 @@ export const useCounterStore = defineStore('counter', () => {
 
 ```html
 <script setup>
-    import { useCounterStore } from './stores.js';
+    import { useCounterStore } from "./stores.js";
     const store = useCounterStore();
 </script>
 
@@ -377,11 +377,11 @@ export const useCounterStore = defineStore('counter', () => {
 
 ```html
 <script setup>
-    import { useCounterStore } from './stores.js';
+    import { useCounterStore } from "./stores.js";
     const store = useCounterStore();
 
-    import Incrementer from './Incrementer.vue';
-    import Decrementer from './Decrementer.vue';
+    import Incrementer from "./Incrementer.vue";
+    import Decrementer from "./Decrementer.vue";
 </script>
 
 <template>
@@ -395,13 +395,13 @@ export const useCounterStore = defineStore('counter', () => {
 `index.js` (Adding pinia to Vue and mounting component to the DOM)
 
 ```js
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
-import App from './App.vue';
+import { createApp } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
 
 const pinia = createPinia();
 const app = createApp(App);
 
 app.use(pinia);
-app.mount('#app'); // Vue reccomends to rather mount to a regular element rather than the body
+app.mount("#app"); // Vue reccomends to rather mount to a regular element rather than the body
 ```

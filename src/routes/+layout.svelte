@@ -1,10 +1,11 @@
 <script lang="ts">
-    import '@fontsource/inter/400.css';
-    import '@fontsource/inter/600.css';
-
     import Footer from './footer.svelte';
     import Header from './header.svelte';
 </script>
+
+<svelte:head>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght,MONO@300..800,0..1&display=swap" rel="stylesheet">
+</svelte:head>
 
 <Header />
 <main
@@ -16,17 +17,29 @@
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
 <style>
+
     :global(a) {
         --at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
     }
 
     :global(body) {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Recursive', sans-serif;
+        font-variation-settings:
+            "wght" 450,
+            "MONO" 0;
+
         min-height: 100vh;
 
         &:has(#dropdown-button[data-active='true']) {
             overflow: hidden;
         }
+    }
+
+    :global(code) {
+        font-family: 'Recursive', monospace !important;
+        font-variation-settings:
+            "MONO" 1,
+            "wght" 450;
     }
 
     :global(html, body) {

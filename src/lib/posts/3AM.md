@@ -1,9 +1,9 @@
 ---
-title: '3AM: A short story'
-description: 'Short filler blog containing a short story I made for an English project'
-author: 'Suyashtnt'
-date: '2023-08-27'
-updated: '2023-08-27'
+title: "3AM: A short story"
+description: "Short filler blog containing a short story I made for an English project"
+author: "Suyashtnt"
+date: "2023-08-27"
+updated: "2023-09-23"
 published: true
 ---
 
@@ -14,7 +14,7 @@ This can't be.
 I wasn't told this.
 It's password protected.
 
-```
+```sh
 [sudo] password for server: admin
 █▒▒▒▒▒▒▒▒▒ 10% Downloading...
 ```

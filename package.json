@@ -24,6 +24,7 @@
         "@types/eslint-config-prettier": "^6.11.0",
         "@types/eslint__js": "^8.42.0",
         "@types/marked": "^5.0.1",
+        "@types/remark-abbr": "^1.4.1",
         "@typescript-eslint/eslint-plugin": "^6.7.2",
         "@typescript-eslint/parser": "^6.7.2",
         "@unocss/eslint-config": "^0.56.1",
@@ -45,6 +46,7 @@
         "remark-abbr": "^1.4.1",
         "remark-github": "^11.2.4",
         "sharp": "^0.32.6",
+        "shikiji": "^0.6.8",
         "svelte": "^4.2.1",
         "svelte-check": "^3.5.2",
         "svelte-eslint-parser": "^0.33.0",
@@ -63,9 +65,9 @@
     "type": "module",
     "dependencies": {
         "@catppuccin/palette": "^0.2.0",
+        "@fontsource-variable/recursive": "^5.0.8",
         "@fontsource/inter": "^5.0.8",
         "@mobily/ts-belt": "^4.0.0-rc.5",
-        "@vcarl/remark-headings": "^0.1.0",
         "animejs": "^3.2.1",
         "atropos": "^2.0.2",
         "gsap": "^3.12.2"
