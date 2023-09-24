@@ -4,7 +4,7 @@ description: "Welcome to your local wobblers guide to Sveltekit. This is an intr
 author: "Suyashtnt"
 date: "2023-09-24"
 updated: "2023-09-24"
-published: false
+published: true
 ---
 
 <script lang="ts">
@@ -21,8 +21,7 @@ If thats the case, welcome to the local wobblers guide to it!
 
 ## What the hell is Sveltekit anyways?
 
-Sveltekit is a _metaframework_ for Svelte. It adds a bunch of stuff to make app
-development easier. From routing to SSR, it's got it all.
+Sveltekit is a _metaframework_ for Svelte.
 
 > A meta-what?
 
@@ -30,23 +29,27 @@ A metaframework is a framework built on top of a framework.
 In this case, Sveltekit is built on top of Svelte.
 Svelte is the framework for building your UI. It handles the DOM,
 CSS, declarative rendering, and a bunch of other stuff that makes
-writing your UI easier. Sveltekit handles higher-level backend stuff,
+writing your UI easier.
+
+Sveltekit handles higher-level backend stuff,
 like routing, SSR, deployment, pre-rendering, compiling, and stuff that
 you don't want to do yourself, but isn't related to the UI.
 
 ## Why Sveltekit
 
-Now you probably are saying*:
+Now you're probably saying*:
 > That's cool and all, but why should I use it when I can just use HTML?
 
 <Note>
     * Paraphrased :)
 </Note>
 
-Sveltekit (And Svelte) are both there to make building websites not a pain.
-Sure you can use HTML, but you'll have to figure out a bunch of stuff on your own.
+Sveltekit (And Svelte) are both there to make creating websites _fun._
+Sure you can use plain HTML + CSS + JS, but you'll have to
+figure out how to do a ton of stuff on your own. E.g. syncing state,
+components, realtime updates, etc.
 
-Svelte makes JS a lot easier to work with. Instead of having manually
+Svelte makes JS _manageable_. Instead of having manually
 make sure that your frontend is in sync with your internal state, Svelte
 handles that sync for you with its declarative UI patterns.
 Instead of saying "When the button of ID `btn` is clicked,
@@ -61,25 +64,28 @@ Thats the power of Svelte.
 
 Well, you _could_, but it's a lot of work to get routing, SSR,
 and making sure your frontend and backend are on the same page about your data model
-(You would usually use a REST API, which has many downsides when it comes to typing),
-you can just use Sveltekit. You can use the file system to make your routes,
-create layouts, and use many of the builtin features to make sure your backend
-and frontend have the exact same data model. It even has a bunch of other features
-that would require a bunch of work to implement yourself.
+(You would usually use a REST API, which has many downsides when it comes to typing).
+Why do all of that when somebody else has done it for you?
+With Sveltekit you can use the file system to make your routes, create layouts,
+and use many of the builtin features to make sure your backend and frontend
+have the exact same data model. It even has a bunch of other features
+that would require a bunch of work to implement yourself (e.g. page state persistence).
 
-> 'ight, I'm sold. How do I get started?
+> I'm sold. How do I get started?
 
-Well then, read on as we create an overly complicated todo app!
+Well then, read on as we create an overly complicated todo app
+(Over the course of a _few_ blog posts. You can't create an overly complicated
+todo app in one ~~day~~ blog post).
 
 ## Creating the project
 
 <Note>
-This project is setup using Svelte 4, which at the time of writing
-is the latest version of Sveltekit. I'll make a new blog for svelte 5.
+This project is setup using Svelte 4 and Sveltekit 1, which at the time of writing
+is the latest version of Svelte. I'll make a new blog for Svelte 5/Sveltekit 2.
 </Note>
 
 Now its time to setup the project. I'll be using the official template,
-and then updating it for some nice modern tooling, along with Nix support.
+and then updating it for some nice modern tooling.
 First, lets setup the project using `npx`. This comes by default with
 Node 18+, which is required for Sveltekit.
 
@@ -91,14 +97,18 @@ The project is named after the word for "done" in Afrikaans.
 npx create-svelte@latest doen
 ```
 
-Now, follow the prompts. Firstly, select a Skeleton project,
-since we won't be needing the stuff in the demo app. For type checking,
-use typescript syntax. While sveltekit uses JSDoc, we are writing an app,
-which requires a compilation step anyways. Typescript reduces the amount
-of errors you'll get at runtime, and makes it easier to write code.
+Once the process starts, you'll receive a bunch of prompts.
+Firstly, select a Skeleton project, since we won't be needing the stuff
+in the demo app.
 
-Enable ESLint, Playwright, and Vitest. ESLint is a linter, which makes sure
-your code is decent. We'll be adding prettier through eslint later, so don't worry.
+For type checking, use typescript syntax.
+While sveltekit uses JSDoc internally, we are writing an app,
+which requires a compilation step anyways. Typescript reduces the amount
+of boilerplate for typings, and makes it _wayyyy_ faster to write correct code.
+
+On the next step for additional tooling, Enable ESLint, Playwright, and Vitest.
+ESLint is a linter, which makes sure your code is decent.
+We'll be adding prettier through eslint later, so don't worry.
 Playwright/Vitest are testing frameworks, which we'll be using to test our
 app later on.
 
@@ -114,23 +124,26 @@ cd doen
 I won't be getting into nix, but if you have nix installed, this is really useful.
 You can skip this step if you don't plan on using nix.
 </Note>
+
 Lets get into the project directory, and get nix setup.
 
 ```sh
 nvim flake.nix
 ```
 
-(You can use any editor you want, but I'll be using neovim to edit files).
+(You can use any editor you want, but I'll be using [Neovim](https://neovim.io)
+as my editor).
 
-Paste in the following `flake.nix`. This is a nix file, which is used to
-declaratively set what our project needs to run.
+Paste in the following `flake.nix`. This is a nix flake,
+which sets up a "devshell". This devshell contains a bunch
+of tooling that we'll be using (i.e. Nodejs, pnpm, and language
+servers).
 
 ```nix
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.napalm.url = "github:nix-community/napalm";
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
   inputs.napalm.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs = {
@@ -138,11 +151,9 @@ declaratively set what our project needs to run.
     nixpkgs,
     napalm,
     flake-utils,
-    treefmt-nix,
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
-      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
     in {
       formatter = treefmtEval.config.build.wrapper;
 
@@ -154,10 +165,6 @@ declaratively set what our project needs to run.
       apps = rec {
         website = flake-utils.lib.mkApp {drv = self.packages.${system}.website;};
         default = website;
-      };
-
-      checks = {
-        formatting = treefmtEval.config.build.check self;
       };
 
       devShells.default = pkgs.mkShell {
@@ -357,15 +364,15 @@ You may be viewing this and thinking:
 This config is a combination of 8 different configs layered together.
 This is why its called a flat config. Each config is layered on top of each other.
 The first config is the base config, which ignores the svelte-kit folder
-(cached files sveltekit uses). Then it uses the default JS config,
-which is the recommended default config for JS. Then it sets up a bunch of
-default rules for the languages we'll be using (Javascript, Typescript, Svelte,
-and CSS via unocss). The final step is setting up the perfectionist plugin,
-which adds a bunch of eslint rules to make your code more consistent and overall
-readable. I've also added the prettier config, which disables some rules that may
-conflict with prettier.
+(cached files sveltekit uses). Then it uses the default recommended JS config
+(`eslint:reccomended` equivalent). Then it sets up a bunch of default rules for
+the languages we'll be using (Javascript, Typescript, Svelte, and CSS via unocss).
+The final step is setting up the perfectionist plugin, which adds a bunch of
+eslint rules to make your code more consistent and overall readable.
+I've also added the default prettier config, which disables
+some rules that may conflict with prettier.
 
-As you can tell, this config imports a ton of plugins, so lets install 'em.
+This config imports a ton of plugins, so lets install 'em.
 
 ```sh
 pnpm i -D @typescript-eslint/eslint-plugin @typescript-eslint/parser \
@@ -374,8 +381,8 @@ eslint-plugin-svelte svelte-eslint-parser @unocss/eslint-plugin \
 eslint-plugin-perfectionist @eslint/js
 ```
 
-This config will handle everything related to code formatting and linting for you,
-so you don't have to worry about it.
+Now you'll be able to format and lint your code based on a
+set of rules that make your code more consistent and readable.
 
 #### Code editor
 
@@ -389,7 +396,7 @@ It works fairly well, but it doesn't have as many features as the VSCode plugin.
 For Neovim, Emacs, and most other editors, you can setup the svelte language server.
 Check the guide for your specific editor to see how to do this.
 
-#### Svelte-kit
+#### Sveltekit
 
 Sveltekit by default is already feature-rich, but there are some things we can
 add to make it just that much better.
@@ -447,13 +454,13 @@ export default defineConfig({
 
 This sets up vite to use lightningcss as the CSS bundler, and unocss as a CSS framework.
 
-You may also notice this isn't using `unocss`, but `@unocss/svelte-scoped`.
-This is because sveltekit has a scoped css system, which unocss can take
-advantage of to make your CSS bundles as small as possible. Neat!
+You may also notice that I'm not using `unocss`, but `@unocss/svelte-scoped`.
+Svelte has a scoped css system, which unocss can take advantage of to make your
+CSS bundles as small as possible by inlining it into your components. Neat!
 
 ###### Unocss changes
 
-Some of svelte-kit's files need to be changed to support unocss.
+Some of SvelteKit's files need to be changed to support unocss.
 See [The UnoCSS Docs](https://unocss.dev/integrations/svelte-scoped#global-styles)
 on how to do so. It mentions a `hooks.server.js` file.
 That file is stored in `src/hooks.server.js`. I've made
@@ -461,7 +468,7 @@ it typescript in my app, but you can use the JS version for now.
 
 ##### Sveltekit config
 
-The sveltekit config can also be improved a bit.
+The default Sveltekit config can also be improved a bit.
 First, let's setup a tool called [Melt UI](https://www.melt-ui.com).
 This is a headless component library for svelte, which has a bunch of components
 that can be completely customized. It removes a ton of complexity when making
@@ -500,7 +507,7 @@ const config = {
 export default config;
 ```
 
-run `npx svelte-kit sync` to sync svelte-kits build cache with the new config.
+run `npx svelte-kit sync` to sync Sveltekit's build cache with the new config.
 You should also now be able to run `npx eslint . --fix` to fix any linting errors.
 
 #### Booting up the server
@@ -517,4 +524,4 @@ soon enough this will become an overly complicated todo app!
 The next blog post will be about understanding the project structure,
 and creating some basic functionality for our todo app. While this post
 may not be the most exciting, it's important to get the tooling setup
-before diving head first into the project
+before diving head first into the project.
