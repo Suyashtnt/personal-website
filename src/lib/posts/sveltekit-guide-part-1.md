@@ -354,16 +354,16 @@ You may be viewing this and thinking:
 
 > What the hell is this chaos of a config?
 
-Firstly, this config format is a lot more flexible than the old one.
-So thats why it looks so complicated. Secondly, this config is a combination
-of 8 different configs layered together. This is why its called a flat config.
-Each config is layered on top of each other. The first config is the base config,
-which ignores the svelte-kit folder (cached files sveltekit uses). Then it uses
-the default JS config, which is the recommended default config for JS. Then it
-sets up a bunch of default rules for the languages we'll be using (Javascript,
-Typescript, Svelte, and CSS via unocss). After that, it sets up a plugin called
-"perfectionist." This just makes your code better. I also setup prettier, which
-is a code formatter. It makes your code look actually good.
+This config is a combination of 8 different configs layered together.
+This is why its called a flat config. Each config is layered on top of each other.
+The first config is the base config, which ignores the svelte-kit folder
+(cached files sveltekit uses). Then it uses the default JS config,
+which is the recommended default config for JS. Then it sets up a bunch of
+default rules for the languages we'll be using (Javascript, Typescript, Svelte,
+and CSS via unocss). The final step is setting up the perfectionist plugin,
+which adds a bunch of eslint rules to make your code more consistent and overall
+readable. I've also added the prettier config, which disables some rules that may
+conflict with prettier.
 
 As you can tell, this config imports a ton of plugins, so lets install 'em.
 
