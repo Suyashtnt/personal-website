@@ -118,6 +118,9 @@ Lets get into the project directory.
 cd doen
 ```
 
+<details open>
+<summary>Nix Guide</summary>
+
 ### Nix
 
 <Note>
@@ -204,6 +207,7 @@ direnv allow
 ```
 
 Now, we can finally start working on it!
+</details>
 
 ### Installing dependencies
 
