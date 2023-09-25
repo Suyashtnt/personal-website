@@ -25,6 +25,7 @@
         "@types/eslint__js": "^8.42.0",
         "@types/marked": "^5.0.1",
         "@types/remark-abbr": "^1.4.1",
+        "@types/uuid": "^9.0.4",
         "@typescript-eslint/eslint-plugin": "^6.7.2",
         "@typescript-eslint/parser": "^6.7.2",
         "@unocss/eslint-plugin": "^0.56.1",
@@ -56,6 +57,7 @@
         "typescript": "^5.2.2",
         "unocss": "^0.56.1",
         "unocss-preset-theme": "^0.10.0",
+        "uuid": "^9.0.1",
         "vite": "^4.4.9"
     },
     "overrides": {
