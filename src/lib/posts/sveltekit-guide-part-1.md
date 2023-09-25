@@ -2,8 +2,8 @@
 title: "The Sveltekit tutorial: Part 1 | What, why, and how?"
 description: "Welcome to your local wobblers guide to Sveltekit. This is an introduction to sveltekit and setting up the project to get stuff done™️."
 author: "Suyashtnt"
-date: "2023-09-24"
-updated: "2023-09-24"
+date: "2023-09-24 19:56"
+updated: "2023-09-25 12:38"
 published: true
 ---
 
