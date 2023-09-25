@@ -41,15 +41,15 @@ const _render = (posts: App.BlogPost[]) => `
 
   <id>tag:tntman.tech,2008-03-10:${blogUuid}</id>
 
-  <link href="http://tntman.tech/posts" />
-  <link href="http://tntman.tech/atom.xml" rel="self" type="application/atom+xml" />
+  <link href="https://tntman.tech/posts" />
+  <link href="https://tntman.tech/atom.xml" rel="self" type="application/atom+xml" />
 
   <updated>${new Date(posts[0]!.updated).toISOString()}</updated>
 
   <author>
     <name>Suyashtnt</name>
     <email>Suyashtnt@gmail.com</email>
-    <uri>http://tntman.tech</uri>
+    <uri>https://tntman.tech</uri>
   </author>
 
   ${posts.map(_renderPost).join('\n')}
@@ -60,15 +60,10 @@ const _render = (posts: App.BlogPost[]) => `
 const _renderPost = (post: App.BlogPost) => `
 <entry>
     <title>${post.title}</title>
-    <id>tag:tntman.tech,${post.date}:${_getPostUuid(post)}</id>
+    <id>tag:tntman.tech,${new Date(post.date).toISOString().split('T')[0]}:${_getPostUuid(post)}</id>
 
     <link
-        href="http://tntman.tech/posts/${post.slug}"
-        type="text/html"
-    />
-    <link
-        href="http://tntman.tech/posts/${post.slug}"
-        rel="alternate"
+        href="https://tntman.tech/posts/${post.slug}"
         type="text/html"
     />
 
@@ -77,7 +72,7 @@ const _renderPost = (post: App.BlogPost) => `
     </author>
 
     <summary>${post.description}</summary>
-    <content src="http://tntman.tech/posts/${post.slug}" type="text/html" />
+    <content src="https://tntman.tech/posts/${post.slug}" type="text/html" />
 
     <updated>${new Date(post.updated).toISOString()}</updated>
     <published>${new Date(post.date).toISOString()}</published>
