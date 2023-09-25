@@ -26,7 +26,7 @@ export const GET: RequestHandler = async ({  }) => {
 	const options = {
 		headers: {
 			'Cache-Control': 'max-age=0, s-maxage=3600',
-			'Content-Type': 'application/xml'
+			'Content-Type': 'application/atom+xml'
 		}
 	};
 
@@ -54,7 +54,7 @@ const _render = (posts: App.BlogPost[]) => `
 
   ${posts.map(_renderPost).join('\n')}
 </feed>
-`
+`.trim()
 
 // TODO: copyright (still figuring it out)
 const _renderPost = (post: App.BlogPost) => `
@@ -82,6 +82,6 @@ const _renderPost = (post: App.BlogPost) => `
     <updated>${new Date(post.updated).toISOString()}</updated>
     <published>${new Date(post.date).toISOString()}</published>
 </entry>
-`
+`.trim()
 
 const _getPostUuid = (post: App.BlogPost) => uuid(post.slug, blogUuid);
