@@ -2,8 +2,6 @@ import { slugFromPath } from '$lib/helpers/slug-from-path';
 
 import type { PageServerLoad } from './$types';
 
-export const prerender = true;
-
 export const load: PageServerLoad = async () => {
 	const modules = import.meta.glob('/src/lib/posts/*.{md,svx,svelte.md}');
 

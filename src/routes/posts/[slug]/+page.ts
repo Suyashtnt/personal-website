@@ -4,8 +4,6 @@ import { error } from '@sveltejs/kit';
 
 import type { EntryGenerator, PageLoad } from './$types';
 
-export const prerender = true;
-
 export type DataItem = {
 	depth: 1 | 2 | 3 | 4 | 5 | 6;
 	value: string | undefined;
