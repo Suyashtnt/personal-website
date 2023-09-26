@@ -1,16 +1,16 @@
 <script lang="ts">
-    import {fly, slide} from 'svelte/transition';
-
     import type {PageData} from './$types';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
     export let data: PageData;
     const {html, selectedSkill} = data;
+
+	const { transition } = setupViewTransition();
 </script>
 
 <article
     class="mx-2 box-border overflow-hidden rounded-xl bg-light-mantle px-4 pb-4 dark:bg-dark-mantle"
-    data-flip-id={selectedSkill.id}
-    id="card"
+    use:transition={`card-${selectedSkill.id}`}
 >
     <!-- title -->
     <header class="my-4 flex items-center gap-4">
@@ -18,15 +18,11 @@
             <img
                 alt={selectedSkill?.iconAlt}
                 class="h-auto w-12"
-                in:fly={{delay: 300, x: '-100%'}}
-                out:fly={{duration: 300, x: '-100%'}}
                 src={selectedSkill?.icon}
+                use:transition={`img-${selectedSkill.id}`}
             />
-            <hgroup
-                in:fly={{delay: 300, y: '-100%'}}
-                out:fly={{duration: 300, y: '-100%'}}
-            >
-                <h1 class="my-0 text-3xl">
+            <hgroup>
+                <h1 class="my-0 text-3xl" use:transition={`text-${selectedSkill.id}`}>
                     {selectedSkill?.name}
                 </h1>
                 <p class="my-0 text-xl">
@@ -52,8 +48,6 @@
                     'Skilled'}
                 class:dark-bg-dark-yellow={selectedSkill?.proficiency ===
                     'Intermediate'}
-                in:fly={{delay: 200, x: '-100%'}}
-                out:fly={{duration: 100, x: '-100%'}}
             >
                 <p
                     class="my-0 max-w-full flex-initial text-lg font-normal leading-none"
@@ -86,8 +80,6 @@
                     'Frontend'}
                 class:dark-bg-dark-yellow={selectedSkill?.type ===
                     'Framework'}
-                in:fly={{delay: 350, x: '-100%'}}
-                out:fly={{delay: 50, duration: 100, x: '-100%'}}
             >
                 <p
                     class="my-0 max-w-full flex-initial text-lg font-normal leading-none"
@@ -101,8 +93,6 @@
     {#key selectedSkill}
         <section
             class="mt-4 text-lg"
-            in:slide={{axis: 'y', delay: 300}}
-            out:slide={{axis: 'y', duration: 300}}
         >
             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
             {@html html}

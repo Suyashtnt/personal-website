@@ -1,5 +1,6 @@
 <script lang="ts">
     import PageHead from '$lib/components/page-head.svelte';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
     import type {PageData} from './$types';
 
@@ -10,11 +11,15 @@
         month: 'short',
         year: 'numeric'
     });
+
+	const { transition } = setupViewTransition();
 </script>
 
 <PageHead description="My blog posts" title="Posts" />
 
-<h1 class="ml-4 text-5xl">Posts</h1>
+<h1 class="ml-4 text-5xl">
+    Posts
+</h1>
 
 <ul class="mx-2 flex flex-wrap list-none gap-2 pa-0">
     {#each data.posts as post (post.slug)}
@@ -25,19 +30,16 @@
             >
                 <article
                     class="h-full flex flex-col justify-between rounded-2xl bg-light-mantle px-6 dark:bg-dark-mantle"
-                    data-flip-id="{post.slug}"
-                    id="card"
+                    use:transition={`post-${post.slug}`}
                 >
-                    <header
-                    data-flip-id="title-{post.slug}"
-                    id="title-card"
-                    >
-                        <h1 class="mb-2 hover:decoration-underline">
+                    <header>
+                        <h1 class="mb-2 hover:decoration-underline" use:transition={`post-title-${post.slug}`}>
                             {post.title}
                         </h1>
                         <div
                             class="text-light-text/80 dark:text-dark-text/80"
                             role="doc-subtitle"
+                            use:transition={`post-dates-${post.slug}`}
                         >
                             Published {dateFormatter.format(
                                 new Date(post.date)
@@ -48,10 +50,7 @@
                         </div>
                     </header>
 
-                    <footer
-                        data-flip-id="text-{post.slug}"
-                        id="text"
-                    >
+                    <footer>
                         <p>{post.description}</p>
                     </footer>
                 </article>
@@ -59,21 +58,3 @@
         </li>
     {/each}
 </ul>
-
-<style>
-    .instances {
-        padding: 0 1rem;
-
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .instances :global(article) {
-        flex: 1 1 280px;
-    }
-
-    .instances :global(article.collapsed) {
-        flex: 0 0 64px;
-    }
-</style>

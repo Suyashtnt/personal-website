@@ -24,7 +24,7 @@ Sveltekit then turns Svelte from a frontend library into a fullstack app framewo
 		experience: `
 Vue was the first JS framework I learnt, and I still try it out sometimes. Vue was my first real step in becoming a web dev, and was my go-to before Svelte. It's an absolute blast to use for prototyping and getting stuff running quickly with it's huge ecosystem and Nuxt 3, but it just lacks some of the features I like in Svelte which is why I don't really use it often anymore.
 
-I first used it when making a website for my first discord bot, emojicord. That bot is dead and so is the website, but I still have memories of both. I also learnt Vuetify from this website, as I used one of its starter templates. 
+I first used it when making a website for my first discord bot, emojicord. That bot is dead and so is the website, but I still have memories of both. I also learnt Vuetify from this website, as I used one of its starter templates.
         `,
 		icon: 'https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg',
 		iconAlt: 'Vue logo',

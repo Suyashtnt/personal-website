@@ -1,6 +1,9 @@
 <script lang="ts">
     import Footer from './footer.svelte';
     import Header from './header.svelte';
+	import { setupViewTransition } from 'sveltekit-view-transition';
+
+	setupViewTransition();
 </script>
 
 <svelte:head>
@@ -17,7 +20,6 @@
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
 <style>
-
     :global(a) {
         --at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
     }
@@ -46,4 +48,8 @@
         scroll-behavior: smooth;
         --at-apply: 'bg-light-base dark:bg-dark-base';
     }
+
+	:root {
+		view-transition-name: none;
+	}
 </style>

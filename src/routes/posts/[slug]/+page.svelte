@@ -1,4 +1,6 @@
 <script generics="C extends typeof SvelteComponent" lang="ts">
+    import { setupViewTransition } from 'sveltekit-view-transition';
+
     // Generics bork
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     import type {SvelteComponent} from 'svelte';
@@ -37,12 +39,14 @@
         year: 'numeric'
     });
 
+    const { transition } = setupViewTransition();
+
     const {
         elements: { item },
         states: { activeHeadingIdxs, headingsTree },
     } = createTableOfContents({
         activeType: 'highest-parents',
-        selector: '#card',
+        selector: '#article',
     });
 </script>
 
@@ -78,13 +82,11 @@
 
     <article
         class="grid-area-[content] mb-6 justify-self-center rounded-3xl bg-light-mantle px-4 text-xl prose md:mx-0 dark:bg-dark-mantle"
-        data-flip-id="{data.slug}"
-        id="card"
+        id="article"
+        use:transition={`post-${data.slug}`}
     >
         <header
             class="mb-8 py-4"
-            data-flip-id="title-{data.slug}"
-            id="title-card"
         >
             <hr
                 class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-blue dark:to-dark-blue"
@@ -92,6 +94,7 @@
 
             <h1
                 class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl font-light text-transparent transition-all dark:from-dark-lavender dark:to-dark-mauve xl:text-5xl"
+                use:transition={`post-title-${data.slug}`}
             >
                 {data.frontmatter.title}
             </h1>
@@ -102,6 +105,7 @@
 
             <p
                 class="my-0 text-light-subtext-0 dark:text-dark-subtext-0"
+                use:transition={`post-dates-${data.slug}`}
             >
                 By {data.frontmatter.author} | Published {dateFormatter.format(
                     datePublished
@@ -116,8 +120,6 @@
 
         <p
             class="article-content text-justify"
-            data-flip-id="text-{data.slug}"
-            id="text"
         >
             <svelte:component this={component} />
         </p>

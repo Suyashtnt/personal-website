@@ -17,9 +17,6 @@ dependencies:
   atropos:
     specifier: ^2.0.2
     version: 2.0.2
-  gsap:
-    specifier: ^3.12.2
-    version: 3.12.2
 
 devDependencies:
   '@eslint/js':
@@ -148,6 +145,9 @@ devDependencies:
   svelte-sequential-preprocessor:
     specifier: ^2.0.1
     version: 2.0.1
+  sveltekit-view-transition:
+    specifier: ^0.4.6
+    version: 0.4.6(@sveltejs/kit@1.25.0)(svelte@4.2.1)
   tslib:
     specifier: ^2.6.2
     version: 2.6.2
@@ -2082,10 +2082,6 @@ packages:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
 
-  /gsap@3.12.2:
-    resolution: {integrity: sha512-EkYnpG8qHgYBFAwsgsGEqvT1WUidX0tt/ijepx7z8EUJHElykg91RvW1XbkT59T0gZzzszOpjQv7SE41XuIXyQ==}
-    dev: false
-
   /gzip-size@6.0.0:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
     engines: {node: '>=10'}
@@ -3603,6 +3599,16 @@ packages:
       locate-character: 3.0.0
       magic-string: 0.30.3
       periscopic: 3.1.0
+    dev: true
+
+  /sveltekit-view-transition@0.4.6(@sveltejs/kit@1.25.0)(svelte@4.2.1):
+    resolution: {integrity: sha512-aZCooKPQdgOD3H3wDTLLWJdsBcvssxWnraXHJadb1aQ3nd5MN57Ws4AD3uAGt/nbBlXgsQNvZCXs9p+3mcFRcQ==}
+    peerDependencies:
+      '@sveltejs/kit': ^1.20.4
+      svelte: ^4.0.0
+    dependencies:
+      '@sveltejs/kit': 1.25.0(svelte@4.2.1)(vite@4.4.9)
+      svelte: 4.2.1
     dev: true
 
   /synckit@0.8.5:
