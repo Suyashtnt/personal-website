@@ -27,6 +27,7 @@ async function highlighter(code, lang = "") {
 
     const html = await codeToHtml(code, {
         lang,
+        
         themes: {
             dark: mochaTheme,
             light: frappeTheme
