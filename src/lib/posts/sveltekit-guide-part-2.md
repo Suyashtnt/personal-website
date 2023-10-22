@@ -2,8 +2,8 @@
 title: "The Sveltekit tutorial: Part 2 | What am I even looking at?"
 description: "Welcome to your local wobblers guide to Sveltekit. This part will be about understanding the project structure and routing. We'll also get a basic todo-list going (doing it wrong way)"
 author: "Suyashtnt"
-date: "2023-10-02 13:06"
-updated: "2023-10-02 13:06"
+date: "2023-10-22 16:42"
+updated: "2023-10-22 16:42"
 published: false
 ---
 
@@ -35,7 +35,7 @@ git checkout part-1
 
 ## Project structure
 
-The project structure is _fairly_ simple in a sveltekit app.
+The project structure is _fairly_ simple in a SvelteKit app.
 There are only a few files you usually have to worry about when you're starting out.
 
 I'll be talking about the following below:
@@ -63,49 +63,47 @@ I'll be talking about the following below:
 └── [0;38;2;166;227;161mvite.config.ts[0m
 ```
 
-### Svelte.config.js
+### svelte.config.js
 
-This is the config file for Svelte and Sveltekit.
-This file usually tells sveltekit where your files are,
+This is the config file for Svelte and SvelteKit.
+This file usually tells SvelteKit where your files are,
 and what to do with them.
 
-It sets up _preprocessors_, which can transform your code
-before it's compiled (e.g. compile typescript to javascript).
-In doen, we tell svelte to use vite to process our files,
-transforming typescript to javascript, and process our css
-through lightningcss. We also tell it to use Melt-ui's preprocessor,
-which is a custom preprocessor that allows us to remove a lot of boilerplate
-melt-ui code usually creates.
+It first sets up _preprocessors_, which can transform your code before it's compiled.
+In Doen, we tell Svelte to:
 
-Another thing it does is set up _adapters_. This is a sveltekit specific feature.
-It allows you to deploy your app to different platforms
+- use Vite to transform typescript to javascript
+- use Vite to process our CSS through LightningCSS
+- use MeltUI's preprocessor to remove a lot of boilerplate
+
+Another thing it does is set up _adapters_. This is a SvelteKit specific feature.
+It allows you to deploy your app to different hosting platforms
 (Vercel, Netlify, Cloudflare, etc.) by compiling your already compiled code
-to a format that the platform understands. Sveltekit by default comes with a
-smart auto adapter, which can detect which platform you're deploying to,
-and use the appropriate adapter.
-In doen, we're using this auto-adapter so we don't have to
-worry about it.
+to a format that the platform understands. In Doen, we're using SvelteKit's auto-adapter,
+which automatically detects the platform and uses the correct adapter.
 
 See [Part 1](/posts/sveltekit-guide-part-1#sveltekit) for more info.
 
-### Vite.config.js
+### vite.config.js
 
-This is the config file for vite, which is the bundler that sveltekit uses.
+This is the config file for [Vite](https://vitejs.dev),
+which is the bundler that SvelteKit uses by default.
 
 <Note>
-In the future, sveltekit will be using Turbopack instead of vite.
+In the future, SvelteKit will be using Turbopack instead of Vite.
 This will most likely be in svelte 5, so if you are reading this in the future,
 check the new guide if it exists.
 </Note>
 
-This file is pretty simple. It just configures vite to use LightningCSS over
-postcss, and to use the UnoCSS and sveltekit plugins. The UnoCSS plugin is
-svelte's specific plugin for UnoCSS, which does a bunch of fancy stuff to get
-its atomic css engine working inside of svelte components. The sveltekit plugin
-is a plugin that allows vite to work with sveltekit, and does basically everything
-that sveltekit needs to work.
+This file is pretty simple. It just configures Vite to use LightningCSS over
+Postcss, and to use the UnoCSS and SvelteKit plugins. The UnoCSS plugin is
+Svelte's specific plugin for UnoCSS, which does a bunch of fancy stuff to _inject_
+it's generated CSS classes into the `<style>` tag of a Svelte component,
+which leads to a much smaller bundle. The SvelteKit plugin is a plugin that
+connects Vite to SvelteKit's engine, and does the bulk of the work to get
+SvelteKit up and running.
 
-You will also see a `test` config object, which is for vitest.
+You will also see a `test` config object, which is for Vitest.
 Vitest is an absurdly fast testing framework for any vite project,
 and works with Svelte. We'll be using it later on for testing our app.
 
@@ -113,10 +111,10 @@ See [Part 1](/posts/sveltekit-guide-part-1#vite-config) for more info.
 
 ### Package.json
 
-A regular nodejs package.json file. Nothing special here.
+A regular NodeJS package.json file. Nothing special here.
 It tells pnpm what packages to install and what your scripts are.
 It also has `type` set to `module`, which tells nodejs to use es modules
-over commonjs modules. This is a requirement for sveltekit to work, and
+over commonjs modules. This is a requirement for SvelteKit to work, and
 recommended in any modern nodejs project.
 
 ### eslint.config.js
@@ -154,29 +152,26 @@ contain components as well, which will be described down below.
 
 #### The `src/routes` folder
 
-Welcome to the most confusing part of sveltekit for beginners: _folder_ based routing.
+Welcome to the most confusing part of SvelteKit for beginners: _folder_ based routing.
 If you're coming from other meta-frameworks, you may know file-based routing,
 where each file it its own route. `pages/index.tsx` is the root route,
 `pages/about.tsx` is `/about`, etc.
 
-Sveltekit _used_ to have this, but it was replace with folder-based routing.
-This is where each folder is a route, and there are special files
-that are used to determine what to do with the folder. In sveltekit,
-these files are prefixed with a `+`. E.g. `+page.svelte`. For now,
-I'll be explaining `+page.svelte` and `+layout.svelte`. When we use other
-files in future posts, I'll explain them then.
+In Sveltekit, each _folder_ is a route, and there are special files
+that are used to determine what the route does. These special files are
+prefixed with a `+`. E.g. `+page.svelte`.
+For now, I'll be explaining `+page.svelte` and `+layout.svelte`. I'll explain more
+in future parts of the guide when we need them.
 
 ##### `+page.svelte` (Go here for a barebones todo list app!)
 
-Lets, start with the basics. The root `routes` folder is your root route (`/`).
-Sveltekits folder based routing works off files that begin with a `+`.
-The most common one is `+page.svelte`, which is used to render a page.
-This is your markup file, which contains your svelte code for that page.
-This is where you work on the contents of a page. `src/routes/+page.svelte`
-will be rendered at `/`, `src/routes/about/+page.svelte` will be rendered at `/about`,
-and so on.
+The most common route file is `+page.svelte`, which is used to render a page.
+This is a Svelte component which contains the content of the page.
+`src/routes/+page.svelte` will be the content of `/`, and
+`src/routes/about/+page.svelte` will be rendered at `/about`.
+Not that difficult, right?
 
-In fact, let's create a basic todo list app using the root `+page.svelte` file!
+Now, let's create a basic todo list app using the root `+page.svelte` file!
 
 ```svelte
 <!-- change lang="js" to lang="ts". Limitation of my blog setup -->
@@ -184,7 +179,7 @@ In fact, let's create a basic todo list app using the root `+page.svelte` file!
     import { browser } from "$app/environment";
     import { flip } from 'svelte/animate'
 
-    // Interface for a todo. This is effectively the data model
+    // Interface for a todo. This is the data model
     interface Todo {
         done: boolean
         id: string
@@ -192,10 +187,12 @@ In fact, let's create a basic todo list app using the root `+page.svelte` file!
     }
 
     // The internal todo list
+    // This is the wrong way to do it,
+    // but we'll fix it and move the logic to the server in the next post
     let todos: Todo[] = []
 
     const addTodo = (text: string) => {
-        // in order to get svelte to update the list,
+        // In order to get Svelte to update the list,
         // we need to reassign the todos variable
         todos = [
             ...todos,
@@ -212,7 +209,7 @@ In fact, let's create a basic todo list app using the root `+page.svelte` file!
         todos = todos.filter(todo => todo.id !== id)
     }
 
-    // while we could just use window.crypto.randomUUID() directly,
+    // While we could just use window.crypto.randomUUID() directly,
     // it may lead to collisions. So we'll just recursively call
     // the function until we get a unique id.
     //
@@ -229,10 +226,10 @@ In fact, let's create a basic todo list app using the root `+page.svelte` file!
         return id
     }
 
-    // since sveltekit does SSR, we need to check if we're in the browser
+    // Since SvelteKit does SSR, we need to check if we're in the browser
     // before accessing browser APIs
     if (browser) {
-        // since we want to sync the todo list between sessions,
+        // Since we want to sync the todo list between sessions,
         // we'll use localStorage to get the todos
         const rawTodos = localStorage.getItem('todos')
 
@@ -241,19 +238,19 @@ In fact, let's create a basic todo list app using the root `+page.svelte` file!
         }
     }
 
-    // whenever `todos` changes, we'll update localStorage with the new todos
+    // Whenever `todos` changes, we'll update localStorage with the new todos
     $: if (browser) {
         localStorage.setItem('todos', JSON.stringify(todos))
     }
 
-    // temporarily store the new todo
+    // Temporarily store the new todo
     let newTodo = ''
 
-    // should we show done todos?
+    // Should we show done todos?
     let showDone = true
 
-    // todo list shown in the UI
-    // if we want to show done todos, we'll just use the todos array
+    // Todo list shown in the UI
+    // If we want to show done todos, we'll just use the todos array
     // else, we'll filter out the done todos
     $: todoList = showDone ? todos : todos.filter(todo => !todo.done)
 </script>
@@ -403,13 +400,15 @@ so I can improve this guide.
 ##### `+layout.svelte`
 
 Svelte has the concept of layouts, which are basically wrappers
-around pages. The neat thing about layouts is that they can be nested.
+around pages. The neat thing about layouts is that they can be _nested_.
 This allows for some incredibly powerful stuff, like having a
 layout for your entire app, and then in the `/settings` route
 having a layout for the settings page, so e.g. the sidebar is
 shared between the settings pages.
 
 Let's create a layout for our app:
+
+`+layout.svelte`:
 
 ```svelte
 <!-- Lets keep the default styling across pages -->
@@ -499,6 +498,10 @@ Let's create a layout for our app:
 </form>
 ```
 
+Now every route will be wrapped in the layout we created,
+inherit the styling and header. During client side navigation,
+only the new page's code will be loaded,
+and the layout will not have to be re-downloaded nor rerendered.
 Neat!
 
 #### The `src/app.d.ts` file
