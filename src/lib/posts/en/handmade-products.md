@@ -14,9 +14,9 @@ published: true
 ## About
 
 <Note>
-This post was written for a school project. It is not meant to be taken super seriously.
-The Afrikaans version will have some comments locked inside of the post itself
-as part of the word count. I'm also constrained to 150 words, so R.I.P detail.
+This post was written for a school project.
+It is not meant to be taken super seriously.
+I'm also constrained to 150 words, so R.I.P detail.
 </Note>
 
 Handmade products are quite interesting pieces of art. They are, well,
