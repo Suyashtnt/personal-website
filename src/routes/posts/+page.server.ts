@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({ parent }) => {
 	const { language } = await parent();
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const posts = allPosts[language].map(({ component: _, ...rest }) => rest);
+	const posts = (await allPosts[language]).map(({ component: _, ...rest }) => rest);
 
 	const publishedPosts = posts.filter((post) => post.published);
 

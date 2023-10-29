@@ -18,15 +18,15 @@ const moduleToPost = (path: string, resolver: App.MdsvexResolver) =>
 		})
 	);
 
-const englishPosts = await Promise.all(
+const englishPosts = Promise.all(
 	Object.entries(englishModules).map(([path, resolver]) => moduleToPost(path, resolver))
 );
 
-const afrikaansPosts = await Promise.all(
+const afrikaansPosts = Promise.all(
 	Object.entries(afrikaansModules).map(([path, resolver]) => moduleToPost(path, resolver))
 );
 
-export const allPosts: Record<AvailableLanguageTag, App.BlogPost[]> = {
+export const allPosts: Record<AvailableLanguageTag, Promise<App.BlogPost[]>> = {
 	af: afrikaansPosts,
 	en: englishPosts
 };

@@ -17,7 +17,7 @@ export type DataItemWithChildren = {
 export const load: PageLoad = async ({ params, parent }) => {
 	const { language } = await parent();
 
-	const posts = allPosts[language];
+	const posts = await allPosts[language];
 	const post = posts.find((post) => post.slug === params.slug);
 
 	const cannotFindPost = !post?.title;
