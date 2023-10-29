@@ -3,7 +3,7 @@ title: "Handgemaakte produkte"
 description: "Wat is hulle, en moet jy 'n paar kry?"
 author: "Suyashtnt"
 date: "2023-10-29 15:40"
-updated: "2023-10-29 15:40"
+updated: "2023-10-29 19:22"
 published: true
 ---
 
@@ -20,9 +20,6 @@ Dit word nie superernstig opgeneem nie.
 
 Handgemaakte produkte is nogal interessante kunsstukke.
 Dit is items wat met die hand met min masjinerie gemaak.
-
-Some examples include: Prisma Audio's AZULs, some musical instruments,
-and a ton of items on [Etsy](https://etsy.com)*.
 
 Sommige voorbeelde sluit in: Prisma Audio se AZUL's, sommige musiekinstrumente,
 en baie items op [Etsy](https://etsy.com)*.
