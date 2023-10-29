@@ -17,6 +17,7 @@ declare global {
 
 		type BlogPost = {
 			author: string;
+			component: SvelteComponent;
 			date: string;
 			description: string;
 			published: boolean;

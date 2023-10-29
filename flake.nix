@@ -33,7 +33,7 @@
       };
 
       devShells.default = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [nil nodejs alejandra nodePackages.svelte-language-server nodePackages.typescript-language-server nodePackages.pnpm marksman];
+        nativeBuildInputs = with pkgs; [nil nodejs alejandra nodePackages.svelte-language-server nodePackages.typescript-language-server marksman];
       };
     });
 }

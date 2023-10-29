@@ -1,6 +1,7 @@
 <script lang="ts">
     import PageHead from '$lib/components/page-head.svelte';
-	import { setupViewTransition } from 'sveltekit-view-transition';
+	import * as m from "@inlang/paraglide-js/website/messages"
+    import { setupViewTransition } from 'sveltekit-view-transition';
 
     import type {PageData} from './$types';
 
@@ -33,7 +34,7 @@
                     use:transition={`post-${post.slug}`}
                 >
                     <header>
-                        <h1 class="mb-2 hover:decoration-underline" use:transition={`post-title-${post.slug}`}>
+                        <h1 class="mb-2 text-light-lavender dark:text-dark-lavender hover:decoration-underline" use:transition={`post-title-${post.slug}`}>
                             {post.title}
                         </h1>
                         <div
@@ -41,12 +42,10 @@
                             role="doc-subtitle"
                             use:transition={`post-dates-${post.slug}`}
                         >
-                            Published {dateFormatter.format(
-                                new Date(post.date)
-                            )} | Updated
-                            {dateFormatter.format(
-                                new Date(post.updated)
-                            )}
+                            {m.post_card_published({
+                                published: dateFormatter.format(new Date(post.date)),
+                                updated: dateFormatter.format(new Date(post.updated))
+                            })}
                         </div>
                     </header>
 

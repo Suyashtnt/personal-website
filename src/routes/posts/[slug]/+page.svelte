@@ -1,5 +1,10 @@
 <script generics="C extends typeof SvelteComponent" lang="ts">
+    import Giscus from '@giscus/svelte';
+    import * as m from "@inlang/paraglide-js/website/messages"
     import { setupViewTransition } from 'sveltekit-view-transition';
+
+    import giscusTheme from './giscus.css?url'
+    $: giscusThemeFullUrl = new URL(giscusTheme, import.meta.url).href
 
     // Generics bork
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -50,7 +55,7 @@
     });
 </script>
 
-<PageHead {description} title={data.frontmatter.title} />
+<PageHead {description} title={`${data.frontmatter.title} in ${data.language}`} />
 
 <svelte:head>
     <meta content="article" property="og:type" />
@@ -107,22 +112,38 @@
                 class="my-0 text-light-subtext-0 dark:text-dark-subtext-0"
                 use:transition={`post-dates-${data.slug}`}
             >
-                By {data.frontmatter.author} | Published {dateFormatter.format(
-                    datePublished
-                )} | Last updated {dateFormatter.format(dateModified)}
+                {m.post_card_by({author: data.frontmatter.author})} | {m.post_card_published({
+                    published: dateFormatter.format(datePublished),
+                    updated: dateFormatter.format(dateModified)
+                })}
                 {#if draft}
                     | <span class="text-light-red dark:text-dark-red"
-                        >DRAFT</span
+                        >{m.post_card_draft()}</span
                     >
                 {/if}
             </p>
         </header>
 
         <p
-            class="article-content text-justify"
+            class="article-content text-justify prose"
         >
             <svelte:component this={component} />
         </p>
+
+        <Giscus
+            category="Announcements"
+            categoryId="DIC_kwDOI0N8xs4Caho4"
+            emitMetadata="1"
+            inputPosition="top"
+            lang={data.language}
+            loading="lazy"
+            mapping="og:title"
+            reactionsEnabled="1"
+            repo="Suyashtnt/personal-website"
+            repoId="R_kgDOI0N8xg"
+            strict="0"
+            theme={giscusThemeFullUrl}
+        />
     </article>
 
     <aside class="grid-area-[notes] mr-4 hidden md:block" />
@@ -196,8 +217,12 @@
             --at-apply: '!text-light-sapphire !dark:text-dark-sapphire text-xl';
         }
 
+        & a {
+            --at-apply: 'text-light-blue dark:text-dark-blue hover:text-light-lavender dark:hover:text-dark-lavender visited:text-light-lavender dark:visited:text-dark-lavender';
+        }
+
         & pre {
-            --at-apply: 'rounded-xl pa-2 overflow-x-auto';
+            --at-apply: 'rounded-xl pa-2 max-w-[calc(100vw-4rem)] overflow-x-auto';
         }
         & code {
             --at-apply: 'rounded-xl';

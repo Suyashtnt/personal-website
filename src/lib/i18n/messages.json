@@ -1,0 +1,349 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "data": [
+        {
+            "id": "header_about",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "About"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Oor"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "header_contact",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Contact"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Kontak"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "header_home",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Home"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Tuis"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "header_landing",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Landing"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Landing"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "header_posts",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Posts"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Plasings"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "hello",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Hi, I'm"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Hallo, ek is"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "hero_gamer",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Gamer"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Speler"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "hero_programmer",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Programmer"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Programmeerder"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "hero_student",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Student"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Student"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "post_card_published",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Published "
+                        },
+                        {
+                            "type": "VariableReference",
+                            "name": "published"
+                        },
+                        {
+                            "type": "Text",
+                            "value": " | Updated "
+                        },
+                        {
+                            "type": "VariableReference",
+                            "name": "updated"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Gepubliseer "
+                        },
+                        {
+                            "type": "VariableReference",
+                            "name": "published"
+                        },
+                        {
+                            "type": "Text",
+                            "value": " | Opgedateer "
+                        },
+                        {
+                            "type": "VariableReference",
+                            "name": "updated"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "post_card_by",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "By "
+                        },
+                        {
+                            "type": "VariableReference",
+                            "name": "author"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "Deur "
+                        },
+                        {
+                            "type": "VariableReference",
+                            "name": "author"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "post_card_draft",
+            "selectors": [],
+            "variants": [
+                {
+                    "languageTag": "en",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "DRAFT"
+                        }
+                    ]
+                },
+                {
+                    "languageTag": "af",
+                    "match": [],
+                    "pattern": [
+                        {
+                            "type": "Text",
+                            "value": "KONSEP"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,4 +1,5 @@
 import { slugFromPath } from '$lib/helpers/slug-from-path';
+import { allPosts } from '$lib/posts';
 import { D } from '@mobily/ts-belt';
 import { error } from '@sveltejs/kit';
 
@@ -13,31 +14,21 @@ export type DataItemWithChildren = {
 	children: readonly DataItemWithChildren[];
 } & DataItem;
 
-export const load: PageLoad = async ({ params }) => {
-	const modules = import.meta.glob(`/src/lib/posts/*.{md,svx,svelte.md}`);
+export const load: PageLoad = async ({ params, parent }) => {
+	const { language } = await parent();
 
-	let match: { path?: string; resolver?: App.MdsvexResolver } = {};
+	const posts = allPosts[language];
+	const post = posts.find((post) => post.slug === params.slug);
 
-	for (const [path, resolver] of Object.entries(modules)) {
-		if (slugFromPath(path) === params.slug) {
-			const typedResolver = resolver as unknown as App.MdsvexResolver;
-
-			match = { path, resolver: typedResolver };
-			break;
-		}
-	}
-
-	const post = await match?.resolver?.();
-
-	const cannotFindPost = !post?.metadata || !post.metadata.title;
+	const cannotFindPost = !post?.title;
 
 	if (cannotFindPost) {
-		throw error(404);
+		throw error(404, `Cannot find post with slug '${params.slug}'`);
 	}
 
 	return {
-		component: post.default,
-		frontmatter: post.metadata,
+		component: post.component,
+		frontmatter: post,
 		slug: params.slug
 	};
 };

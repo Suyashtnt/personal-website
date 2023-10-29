@@ -1,4 +1,5 @@
 <script lang="ts">
+    import * as m from '@inlang/paraglide-js/website/messages'
     import Image from '@zerodevx/svelte-img';
     import anime from 'animejs';
     import 'atropos/css';
@@ -104,7 +105,7 @@
             <h1
                 class="mb-2 px-2 text-center text-6xl leading-18 md:mb-0 md:px-0 md:text-left md:text-7xl"
             >
-                Hi, I'm
+                {m.hello()}
                 <br />
                 <span class="names">
                     {#each names as name, i}
@@ -129,7 +130,7 @@
                     on:touchend={() => endAnimateWord('student')}
                     on:touchstart={() => animateWord('student')}
                 >
-                    {#each 'Student'.split('') as letter}
+                    {#each m.hero_student().split('') as letter}
                         <span class="letter inline-block"
                             >{letter}</span
                         >
@@ -148,7 +149,7 @@
                         href="https://github.com/Suyashtnt"
                         rel="me"
                     >
-                        {#each 'Programmer'.split('') as letter}
+                        {#each m.hero_programmer().split('') as letter}
                             <span
                                 class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue"
                             >
@@ -170,7 +171,7 @@
                         href="https://steamcommunity.com/id/suyashtnt123"
                         rel="me"
                     >
-                        {#each 'Gamer'.split('') as letter}
+                        {#each m.hero_gamer().split('') as letter}
                             <span
                                 class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue"
                             >
@@ -181,13 +182,13 @@
                 </p>
             </h2>
             <ul
-                class="grid mt-0 list-none items-center justify-center gap-4 pl-0 text-2xl md:grid-cols-3"
+                class="mt-0 flex flex-col list-none items-center justify-center gap-4 pl-0 text-2xl md:flex-row"
             >
                 <li class="w-min flex flex-row items-center gap-2">
                     <div
-                        class="i-ic-baseline-discord h-24 w-24 text-light-blue dark:text-dark-blue"
+                        class="i-ic-baseline-discord h-16 w-16 text-light-blue dark:text-dark-blue"
                     />
-                    A badly drawn wobbler#8550
+                    @tabiasgeehuman
                 </li>
                 <li class="w-min flex flex-row items-center gap-2">
                     <div

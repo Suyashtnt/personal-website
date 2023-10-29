@@ -1,22 +1,26 @@
 <script lang="ts">
+    import ParaglideSveltekitAdapter from '$lib/i18n/ParaglideSveltekitAdapter.svelte';
+    import { setupViewTransition } from 'sveltekit-view-transition';
+
     import Footer from './footer.svelte';
-    import Header from './header.svelte';
-	import { setupViewTransition } from 'sveltekit-view-transition';
+	import Header from './header.svelte';
 
 	setupViewTransition();
 </script>
 
 <svelte:head>
-    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght,MONO@300..800,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,MONO@300..800,0..1,0..1&display=swap" rel="stylesheet">
 </svelte:head>
 
-<Header />
-<main
-    class="bg-light-base text-light-text dark:bg-dark-base dark:text-dark-text"
->
-    <slot />
-</main>
-<Footer />
+<ParaglideSveltekitAdapter>
+    <Header />
+    <main
+        class="bg-light-base text-light-text dark:bg-dark-base dark:text-dark-text"
+    >
+        <slot />
+    </main>
+    <Footer />
+</ParaglideSveltekitAdapter>
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
 <style>
@@ -34,6 +38,24 @@
 
         &:has(#dropdown-button[data-active='true']) {
             overflow: hidden;
+        }
+    }
+
+    :global(
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6
+    ) {
+        transition: all 150ms ease-in-out;
+        font-variation-settings: "CASL" 0;
+        font-weight: 500;
+
+        &:hover {
+            font-variation-settings: "CASL" 1;
+            font-weight: 800;
         }
     }
 

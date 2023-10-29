@@ -1,0 +1,91 @@
+/*!
+ * Giscus custom theme based on catppuccin
+ * Dark mode only for now. Light mode to be done soon:tm:
+ */
+
+main {
+  --color-prettylights-syntax-comment: #a6adc8;
+  --color-prettylights-syntax-constant: #74c7ec;
+  --color-prettylights-syntax-entity: #f5c2e7;
+  --color-prettylights-syntax-storage-modifier-import: #a6adc8;
+  --color-prettylights-syntax-entity-tag: #a6e3a1;
+  --color-prettylights-syntax-keyword: #f38ba8;
+  --color-prettylights-syntax-string: #74c7ec;
+  --color-prettylights-syntax-variable: #fab387;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #f38ba8;
+  --color-prettylights-syntax-invalid-illegal-text: #eba0ac;
+  --color-prettylights-syntax-invalid-illegal-bg: #d20f39;
+  --color-prettylights-syntax-carriage-return-text: #cdd6f4;
+  --color-prettylights-syntax-carriage-return-bg: #d20f39;
+  --color-prettylights-syntax-string-regexp: #a6e3a1;
+  --color-prettylights-syntax-markup-list: #f9e2af;
+  --color-prettylights-syntax-markup-heading: #89b4fa;
+  --color-prettylights-syntax-markup-italic: #cdd6f4;
+  --color-prettylights-syntax-markup-bold: #cdd6f4;
+  --color-prettylights-syntax-markup-deleted-text: #f2cdcd;
+  --color-prettylights-syntax-markup-deleted-bg: #d20f39;
+  --color-prettylights-syntax-markup-inserted-text: #a6e3a1;
+  --color-prettylights-syntax-markup-inserted-bg: #40a02b;
+  --color-prettylights-syntax-markup-changed-text: #f2cdcd;
+  --color-prettylights-syntax-markup-changed-bg: #dd7878;
+  --color-prettylights-syntax-markup-ignored-text: #a6adc8;
+  --color-prettylights-syntax-markup-ignored-bg: #04a5e5;
+  --color-prettylights-syntax-meta-diff-range: #b4befe;
+  --color-prettylights-syntax-brackethighlighter-angle: #cdd6f4;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #585b70;
+  --color-prettylights-syntax-constant-other-reference-link: #89dceb;
+  --color-btn-text: #cdd6f4;
+  --color-btn-bg: #313244;
+  --color-btn-border: #6c7086;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #585b70;
+  --color-btn-hover-border: #b4befe;
+  --color-btn-active-bg: #313244
+  --color-btn-active-border: #6c7086;
+  --color-btn-selected-bg: #11111b;
+  --color-btn-primary-text: #cdd6f4;
+  --color-btn-primary-bg: rgb(180 190 254 / 20%);
+  --color-btn-primary-border: #89b4fa;
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #bbc4ff;
+  --color-btn-primary-hover-border: #89b4fa;
+  --color-btn-primary-selected-bg: #a6e3a1;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: #bac2de;
+  --color-btn-primary-disabled-bg: #6c7086;
+  --color-btn-primary-disabled-border: #9399b2;
+  --color-action-list-item-default-hover-bg: #45475a;
+  --color-segmented-control-bg: #313244;
+  --color-segmented-control-button-bg: #6c7086;
+  --color-segmented-control-button-selected-border: #9399b2;
+  --color-fg-default: #cdd6f4;
+  --color-fg-muted: #bac2de;
+  --color-fg-subtle: #a6adc8;
+  --color-canvas-default: #161b22;
+  --color-canvas-overlay: #6c7086;
+  --color-canvas-inset: #181825;
+  --color-canvas-subtle: #313244;
+  --color-border-default: #6c7086;
+  --color-border-muted: #313244;
+  --color-neutral-muted: #9ca4d7;
+  --color-accent-fg: #b4befe;
+  --color-accent-emphasis: #cba6f7;
+  --color-accent-muted: rgb(180 190 254 / 50%);
+  --color-accent-subtle: rgb(180 190 254 / 20%);
+  --color-success-fg: #a6e3a1;
+  --color-attention-fg: #fab387;
+  --color-attention-muted: rgb(250 179 135 / 50%);
+  --color-attention-subtle: rgb(250 179 135 / 20%);
+  --color-danger-fg: #f38ba8;
+  --color-danger-muted: rgb(243 139 168 / 50%);
+  --color-danger-subtle: rgb(243 139 168 / 20%);
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-scale-gray-7: #181825;
+  --color-scale-blue-8: #89b4fa;
+
+  /*! Extensions from @primer/css/alerts/flash.scss */
+  --color-social-reaction-bg-hover: var(--color-scale-gray-7);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+}

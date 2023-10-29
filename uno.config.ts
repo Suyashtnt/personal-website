@@ -49,6 +49,14 @@ export default defineConfig({
 		// @ts-expect-error This is a valid preset
 		presetHeroPatterns()
 	],
+	rules: [
+		[
+			'casl',
+			{
+				'font-variation-settings': '"CASL" 1'
+			}
+		]
+	],
 	theme: {
 		colors: {
 			dark: createTheme(variants.mocha),
