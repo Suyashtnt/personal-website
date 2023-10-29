@@ -125,7 +125,7 @@
         </header>
 
         <p
-            class="article-content text-justify prose"
+            class="article-content text-justify hyphens-auto prose"
         >
             <svelte:component this={component} />
         </p>
