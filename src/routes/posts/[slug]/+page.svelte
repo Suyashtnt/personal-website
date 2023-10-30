@@ -55,7 +55,7 @@
     });
 </script>
 
-<PageHead {description} title={`${data.frontmatter.title} in ${data.language}`} />
+<PageHead {description} title={data.frontmatter.title} />
 
 <svelte:head>
     <meta content="article" property="og:type" />
