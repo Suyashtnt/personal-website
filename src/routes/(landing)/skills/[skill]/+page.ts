@@ -12,7 +12,7 @@ export const load: PageLoad = ({ params }) => {
 
 	const html = marked(selectedSkill.experience, {
 		breaks: true,
-		gfm: true,
+		gfm: true
 	});
 
 	return {

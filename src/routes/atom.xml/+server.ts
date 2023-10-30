@@ -1,28 +1,30 @@
-import { allPosts } from '$lib/posts'
-import { v5 as uuid } from 'uuid'
-import type { RequestHandler } from './$types';
 import type { AvailableLanguageTag } from '@inlang/paraglide-js/website';
+
+import { allPosts } from '$lib/posts';
+import { v5 as uuid } from 'uuid';
+
+import type { RequestHandler } from './$types';
 
 export const prerender = true;
 
-const blogUuid = uuid("https://tntman.tech", uuid.URL);
+const blogUuid = uuid('https://tntman.tech', uuid.URL);
 
-function _objectEntries<
-  T extends Record<PropertyKey, unknown>,
-  K extends keyof T,
-  V extends T[K]
->(o: T) {
-  return Object.entries(o) as [K, V][];
+function _objectEntries<T extends Record<PropertyKey, unknown>, K extends keyof T, V extends T[K]>(
+	o: T
+) {
+	return Object.entries(o) as [K, V][];
 }
 
-export const GET: RequestHandler = async ({  }) => {
-    const posts = await Promise.all(_objectEntries(allPosts).map(async ([language, postPromises]) => {
-        const posts = await postPromises;
-        return posts.map((post) => ({
-            ...post,
-            language,
-        }));
-    })).then((posts) => posts.flat());
+export const GET: RequestHandler = async () => {
+	const posts = await Promise.all(
+		_objectEntries(allPosts).map(async ([language, postPromises]) => {
+			const posts = await postPromises;
+			return posts.map((post) => ({
+				...post,
+				language
+			}));
+		})
+	).then((posts) => posts.flat());
 
 	const publishedPosts = posts.filter((post) => post.published);
 	publishedPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
@@ -37,9 +39,10 @@ export const GET: RequestHandler = async ({  }) => {
 	};
 
 	return new Response(body, options);
-}
+};
 
-const _render = (posts: (App.BlogPost & {language: AvailableLanguageTag})[]) => `
+const _render = (posts: (App.BlogPost & { language: AvailableLanguageTag })[]) =>
+	`
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>The Badly Drawn Blog</title>
@@ -60,13 +63,16 @@ const _render = (posts: (App.BlogPost & {language: AvailableLanguageTag})[]) => 
 
   ${posts.map(_renderPost).join('\n')}
 </feed>
-`.trim()
+`.trim();
 
 // TODO: copyright (still figuring it out)
-const _renderPost = (post: App.BlogPost & {language: string}) => `
+const _renderPost = (post: App.BlogPost & { language: string }) =>
+	`
 <entry>
     <title>${post.title}</title>
-    <id>tag:tntman.tech,${new Date(post.date).toISOString().split('T')[0]}:${_getPostUuid(post)}</id>
+    <id>tag:tntman.tech,${new Date(post.date).toISOString().split('T')[0]}:${_getPostUuid(
+			post
+		)}</id>
 
 
     <link
@@ -85,6 +91,6 @@ const _renderPost = (post: App.BlogPost & {language: string}) => `
     <updated>${new Date(post.updated).toISOString()}</updated>
     <published>${new Date(post.date).toISOString()}</published>
 </entry>
-`.trim()
+`.trim();
 
 const _getPostUuid = (post: App.BlogPost) => uuid(post.slug, blogUuid);

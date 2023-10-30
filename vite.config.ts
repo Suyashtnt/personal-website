@@ -1,15 +1,16 @@
-import type { UserConfig } from 'vite';
-
 import { sveltekit } from '@sveltejs/kit/vite';
 import unoCSS from '@unocss/svelte-scoped/vite';
 import { imagetools } from '@zerodevx/svelte-img/vite';
 import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
+import { defineConfig } from 'vite';
+import { watch } from 'vite-plugin-watch';
 
 const targets = browserslistToTargets(
 	browserslist('defaults, not IE 11, not IE_Mob 11, not OperaMini all')
 );
-const config: UserConfig = {
+
+export default defineConfig(({ command }) => ({
 	build: {
 		cssMinify: 'lightningcss'
 	},
@@ -23,6 +24,9 @@ const config: UserConfig = {
 		},
 		transformer: 'lightningcss'
 	},
+	optimizeDeps: {
+		exclude: command === 'serve' ? ['@inlang/paraglide-js'] : []
+	},
 	plugins: [
 		unoCSS(),
 		imagetools({
@@ -33,8 +37,13 @@ const config: UserConfig = {
 				})
 			}
 		}),
+		watch({
+			command: 'paraglide-js compile --namespace website',
+			pattern: 'static/messages.json'
+		}),
 		sveltekit()
-	]
-};
-
-export default config;
+	],
+	ssr: {
+		noExternal: ['@inlang/paraglide-js']
+	}
+}));

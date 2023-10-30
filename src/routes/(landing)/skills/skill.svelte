@@ -40,8 +40,9 @@
 </script>
 
 <script lang="ts">
-	import { setupViewTransition } from 'sveltekit-view-transition';
 	import type { OnNavigate } from '@sveltejs/kit';
+
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
     export let skill: ISkill;
     export let href: string;
@@ -62,9 +63,9 @@
     data-sveltekit-noscroll
     {href}
     use:transition={{
+        applyImmediately,
         name: `card-${skill.id}`,
-        shouldApply,
-        applyImmediately
+        shouldApply
     }}
 >
     <img
@@ -72,18 +73,18 @@
         class="h-auto w-8 md:w-10"
         src={skill.icon}
         use:transition={{
+            applyImmediately,
             name: `img-${skill.id}`,
-            shouldApply,
-            applyImmediately
+            shouldApply
         }}
     />
 
     <h2
         class="text-2xl md:text-2xl"
         use:transition={{
+            applyImmediately,
             name: `text-${skill.id}`,
-            shouldApply,
-            applyImmediately
+            shouldApply
         }}
     >
         {skill.name}

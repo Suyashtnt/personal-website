@@ -1,6 +1,7 @@
 <script lang="ts">
-    import type {PageData} from './$types';
-	import { setupViewTransition } from 'sveltekit-view-transition';
+    import { setupViewTransition } from 'sveltekit-view-transition';
+
+	import type {PageData} from './$types';
 
     export let data: PageData;
     const {html, selectedSkill} = data;
