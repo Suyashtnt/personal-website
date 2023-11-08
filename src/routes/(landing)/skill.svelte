@@ -40,52 +40,31 @@
 </script>
 
 <script lang="ts">
-	import type { OnNavigate } from '@sveltejs/kit';
-
-	import { setupViewTransition } from 'sveltekit-view-transition';
+    import type { TransitionConfig } from "svelte/transition";
 
     export let skill: ISkill;
-    export let href: string;
 
-    const { transition } = setupViewTransition();
-
-	function shouldApply({ navigation }: { navigation: OnNavigate }) {
-		return navigation?.to?.params?.skill === skill.id.toString();
-	}
-
-	function applyImmediately({ navigation }: { navigation: OnNavigate }) {
-		return navigation?.from?.params?.skill === skill.id.toString();
-	}
+    export let send: (node: Element, args: { key: string }) => ( ) => TransitionConfig
+    export let receive: (node: Element, args: { key: string }) => ( ) => TransitionConfig
 </script>
 
 <a
-    class="max-w-full flex items-center gap-4 border-light-overlay-0 rounded-xl bg-light-base pl-4 text-light-text decoration-none transition-all duration-200 hover:cursor-pointer dark:border-dark-overlay-0 hover:border-light-sapphire dark:bg-dark-base dark:text-dark-text visited:text-light-text hover:shadow-2xl dark:hover:border-dark-sapphire visited:dark-text-dark-text"
+    class="flex items-center gap-4 text-light-text decoration-none dark:text-dark-text visited:text-light-text visited:dark:text-dark-text"
     data-sveltekit-noscroll
-    {href}
-    use:transition={{
-        applyImmediately,
-        name: `card-${skill.id}`,
-        shouldApply
-    }}
+    href={`/?skill=${skill.id}`}
 >
     <img
         alt={skill.iconAlt}
         class="h-auto w-8 md:w-10"
+        in:receive={{key: `img-${skill.id}`}}
+        out:send={{key: `img-${skill.id}`}}
         src={skill.icon}
-        use:transition={{
-            applyImmediately,
-            name: `img-${skill.id}`,
-            shouldApply
-        }}
     />
 
     <h2
         class="text-2xl md:text-2xl"
-        use:transition={{
-            applyImmediately,
-            name: `text-${skill.id}`,
-            shouldApply
-        }}
+        in:receive={{key: `text-${skill.id}`}}
+        out:send={{key: `text-${skill.id}`}}
     >
         {skill.name}
     </h2>

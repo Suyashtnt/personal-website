@@ -73,6 +73,7 @@
         "@inlang/paraglide-js": "1.0.0-prerelease.3",
         "@mobily/ts-belt": "^4.0.0-rc.5",
         "animejs": "^3.2.1",
-        "atropos": "^2.0.2"
+        "atropos": "^2.0.2",
+        "m3-svelte": "^2.0.7"
     }
 }

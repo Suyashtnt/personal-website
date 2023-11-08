@@ -1,11 +1,10 @@
 <script lang="ts">
-    import PageHead from '$lib/components/page-head.svelte';
-	import * as m from "@inlang/paraglide-js/website/messages"
-    import { setupViewTransition } from 'sveltekit-view-transition';
+    import * as m from "@inlang/paraglide-js/website/messages"
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
-    import type {PageData} from './$types';
+    import type { PageData } from './$types';
 
-    export let data: PageData;
+    export let data: PageData
 
     const dateFormatter = new Intl.DateTimeFormat('en-uk', {
         day: '2-digit',
@@ -16,13 +15,11 @@
 	const { transition } = setupViewTransition();
 </script>
 
-<PageHead description="My blog posts" title="Posts" />
-
-<h1 class="ml-4 text-5xl">
+<h1 class="ml-4 text-5xl lg:ml-8">
     Posts
 </h1>
 
-<ul class="mx-2 flex flex-wrap list-none gap-2 pa-0 lg:mx-4">
+<ul class="mx-2 flex flex-wrap list-none gap-2 pa-0 lg:mx-8">
     {#each data.posts as post (post.slug)}
         <li class="flex-[1_1_280px]">
             <a

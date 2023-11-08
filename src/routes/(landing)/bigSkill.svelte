@@ -1,40 +1,44 @@
 <script lang="ts">
-    import { setupViewTransition } from 'sveltekit-view-transition';
+    import type { TransitionConfig } from 'svelte/transition';
 
-	import type {PageData} from './$types';
+    import type {PageData} from './$types';
 
     export let data: PageData;
-    const {html, selectedSkill} = data;
+    export let send: (node: Element, args: { key: string }) => ( ) => TransitionConfig
+    export let receive: (node: Element, args: { key: string }) => ( ) => TransitionConfig
 
-	const { transition } = setupViewTransition();
+    const {html, selectedSkill} = data;
 </script>
 
 <article
-    class="mx-2 box-border overflow-hidden rounded-xl bg-light-mantle px-4 pb-4 dark:bg-dark-mantle"
-    use:transition={`card-${selectedSkill.id}`}
+    class="grid-area-[1/2/span_1/span_1] mx-2 box-border overflow-hidden rounded-xl bg-light-mantle px-4 pb-4 dark:bg-dark-mantle"
+    in:receive={{key: `skill-${selectedSkill.id}`}}
+    out:send={{key: `skill-${selectedSkill.id}`}}
 >
     <!-- title -->
     <header class="my-4 flex items-center gap-4">
-        {#key selectedSkill}
-            <img
-                alt={selectedSkill?.iconAlt}
-                class="h-auto w-12"
-                src={selectedSkill?.icon}
-                use:transition={`img-${selectedSkill.id}`}
-            />
-            <hgroup>
-                <h1 class="my-0 text-3xl" use:transition={`text-${selectedSkill.id}`}>
-                    {selectedSkill?.name}
-                </h1>
-                <p class="my-0 text-xl">
-                    {selectedSkill?.description}
-                </p>
-            </hgroup>
-        {/key}
+        <img
+            alt={selectedSkill?.iconAlt}
+            class="h-auto w-12"
+            in:receive={{key: `img-${selectedSkill.id}`}}
+            out:send={{key: `img-${selectedSkill.id}`}}
+            src={selectedSkill?.icon}
+        />
+        <hgroup>
+            <h1
+                class="my-0 text-3xl"
+                in:receive={{key: `text-${selectedSkill.id}`}}
+                out:send={{key: `text-${selectedSkill.id}`}}
+            >
+                {selectedSkill?.name}
+            </h1>
+            <p class="my-0 text-xl">
+                {selectedSkill?.description}
+            </p>
+        </hgroup>
     </header>
     <!-- chips -->
     <section class="w-min flex">
-        {#key selectedSkill}
             <div
                 class="m-1 h-5 flex items-center justify-center rounded-full px-2 py-1 text-light-mantle dark:text-dark-mantle"
                 class:bg-light-green={selectedSkill?.proficiency ===
@@ -88,15 +92,11 @@
                     {selectedSkill?.type}
                 </p>
             </div>
-        {/key}
     </section>
-    <!-- experience/main content. Key is required for transitions -->
-    {#key selectedSkill}
-        <section
-            class="mt-4 text-lg"
-        >
-            <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            {@html html}
-        </section>
-    {/key}
+    <section
+        class="mt-4 text-lg"
+    >
+        <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+        {@html html}
+    </section>
 </article>
