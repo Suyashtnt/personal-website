@@ -15,7 +15,7 @@
     );
 
     const [_send, _receive] = containerTransform({
-        duration: 10000,
+        duration: 600,
         easing: easeEmphasized
     });
 
@@ -33,7 +33,7 @@
         <ul class="grid-area-[1/1/span_1/span_1] my-0 flex flex-col list-none gap-4 overflow-hidden px-2 lg:px-0">
             {#each skillsWithoutSelected as skill (skill.id)}
                 <li
-                    animate:flip={{duration: 10000, easing: easeEmphasized}}
+                    animate:flip={{duration: 600, easing: easeEmphasized}}
                     class="rounded-xl bg-light-base pl-4 transition-all duration-200 hover:cursor-pointer dark:bg-dark-base hover:shadow-2xl"
                     in:receive={{key: `skill-${skill.id}`}}
                     out:send={{key: `skill-${skill.id}`}}
