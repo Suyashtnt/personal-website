@@ -1,3 +1,3 @@
-import { load as parentServerLoad } from '../(landing)/+layout.server';
+import { load as parentServerLoad } from '../(landing)/+page.server';
 
 export const load = parentServerLoad;
