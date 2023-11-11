@@ -1,7 +1,7 @@
 <script lang="ts">
     import { browser } from "$app/environment";
     import { page } from "$app/stores";
-    import { onSetLanguageTag, setLanguageTag } from "@inlang/paraglide-js/website"
+    import { onSetLanguageTag, setLanguageTag } from "$i18n/runtime"
     import { getContext, setContext } from "svelte";
 
     // from root layout. The page will ALWAYS have this.

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import * as m from '@inlang/paraglide-js/website/messages'
+    import * as m from '$i18n/messages'
     import Image from '@zerodevx/svelte-img';
     import anime from 'animejs';
     import 'atropos/css';

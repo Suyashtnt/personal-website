@@ -38,8 +38,8 @@ export default defineConfig(({ command }) => ({
 			}
 		}),
 		watch({
-			command: 'paraglide-js compile --namespace website',
-			pattern: 'static/messages.json'
+			command: 'paraglide-js compile',
+			pattern: 'src/lib/i18n/*.json'
 		}),
 		sveltekit()
 	],

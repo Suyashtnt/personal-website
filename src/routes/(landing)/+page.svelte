@@ -1,4 +1,5 @@
 <script lang="ts">
+    import * as m from '$i18n/messages';
     import PageHead from '$lib/components/page-head.svelte';
 
     import AboutToBlog from './about-to-blog.svelte';
@@ -9,7 +10,7 @@
     export let data;
 </script>
 
-<PageHead description="Hi, I'm TNTMan1671." title={undefined} />
+<PageHead description={m.landingpagedesc()} title={undefined} />
 
 <Hero />
 

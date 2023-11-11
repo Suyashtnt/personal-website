@@ -12,6 +12,7 @@ const config = {
     kit: {
         adapter: adapter(),
         alias: {
+            $i18n: "./src/paraglide",
             $lib: "./src/lib",
         },
         prerender: {

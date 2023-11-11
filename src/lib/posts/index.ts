@@ -1,4 +1,4 @@
-import type { AvailableLanguageTag } from '@inlang/paraglide-js/website';
+import type { AvailableLanguageTag } from '$i18n/runtime';
 
 import { slugFromPath } from '$lib/helpers/slug-from-path';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import * as m from "@inlang/paraglide-js/website/messages"
+    import * as m from "$i18n/messages"
 	import { setupViewTransition } from 'sveltekit-view-transition';
 
     import type { PageData } from './$types';

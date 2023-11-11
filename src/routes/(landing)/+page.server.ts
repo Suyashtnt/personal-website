@@ -1,8 +1,11 @@
 import { error } from '@sveltejs/kit';
 
+import type { IProject } from './project.svelte';
+import type { ISkill } from './skill.svelte';
+
 export const prerender = false;
+import { availableLanguageTags } from '$i18n/runtime';
 import { allPosts } from '$lib/posts';
-import { availableLanguageTags } from '@inlang/paraglide-js/website';
 
 import type { Actions, PageServerLoad } from './$types';
 
@@ -37,9 +40,6 @@ export const actions = {
 		}
 	}
 } satisfies Actions;
-
-import type { IProject } from './project.svelte';
-import type { ISkill } from './skill.svelte';
 
 export const _skills: ISkill[] = [
 	{

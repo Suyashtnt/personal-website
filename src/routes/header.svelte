@@ -2,9 +2,9 @@
     import { browser } from '$app/environment';
     import { enhance } from '$app/forms';
     import {page} from '$app/stores';
+    import * as m from '$i18n/messages'
+    import { availableLanguageTags } from '$i18n/runtime'
     import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css';
-    import { availableLanguageTags } from '@inlang/paraglide-js/website'
-    import * as m from '@inlang/paraglide-js/website/messages'
 
     let selected: 'about' | 'blog' | 'contact' | 'landing' =
         'landing';

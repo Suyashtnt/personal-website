@@ -1,6 +1,6 @@
 <script generics="C extends typeof SvelteComponent" lang="ts">
+    import * as m from "$i18n/messages"
     import Giscus from '@giscus/svelte';
-    import * as m from "@inlang/paraglide-js/website/messages"
     import { setupViewTransition } from 'sveltekit-view-transition';
 
     import giscusTheme from './giscus.css?url'

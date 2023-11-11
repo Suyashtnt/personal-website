@@ -1,4 +1,4 @@
-import type { AvailableLanguageTag } from '@inlang/paraglide-js/website';
+import type { AvailableLanguageTag } from '$i18n/runtime';
 
 import { allPosts } from '$lib/posts';
 import { v5 as uuid } from 'uuid';
