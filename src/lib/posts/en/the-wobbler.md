@@ -1,9 +1,9 @@
 ---
-title: "The badly drawn wobbler"
-description: "From Minecraft mod to profile picture: The origins of the badly drawn wobbler and my other miscellaneous usernames."
-author: "A badly drawn wobbler (AKA Suyashtnt, TNTMan1671)"
-date: "2023-06-30 20:06"
-updated: "2023-06-30 20:06"
+title: 'The badly drawn wobbler'
+description: 'From Minecraft mod to profile picture: The origins of the badly drawn wobbler and my other miscellaneous usernames.'
+author: 'A badly drawn wobbler (AKA Suyashtnt, TNTMan1671)'
+date: '2023-06-30 20:06'
+updated: '2023-06-30 20:06'
 published: true
 ---
 
@@ -44,9 +44,9 @@ We decided that using Java to create our mods would be too difficult, so we both
 
 The main block of the Sushal dimension was the Sushal block. There were a few options for the texture at the time:
 
-- My face (no)
-- Literal sushi (boring)
-- My discord profile picture (sure I guess; Why not?)
+-   My face (no)
+-   Literal sushi (boring)
+-   My discord profile picture (sure I guess; Why not?)
 
 So, the first version of the mod had my discord profile as the texture. The issue was that my discord profile picture was Landfall's [TABS Emoji](https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless) <Image src="https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless" alt="Landfall's TABS emoji on discord" class="important-h-auto important-w-[1em] align-middle inline-block" />. This emoji is what's known as a wobbler, the base humanoid-style unit in TABS. Me at the time thought "Wait since landfall owns this emoji they may not like it." I asked my friend about that. This was the response:
 

@@ -71,8 +71,8 @@ const _renderPost = (post: App.BlogPost & { language: string }) =>
 <entry>
     <title>${post.title}</title>
     <id>tag:tntman.tech,${new Date(post.date).toISOString().split('T')[0]}:${_getPostUuid(
-			post
-		)}</id>
+		post
+	)}</id>
 
 
     <link

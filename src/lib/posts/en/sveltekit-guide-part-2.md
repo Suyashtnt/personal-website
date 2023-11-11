@@ -1,9 +1,9 @@
 ---
-title: "The Sveltekit tutorial: Part 2 | What am I even looking at?"
+title: 'The Sveltekit tutorial: Part 2 | What am I even looking at?'
 description: "Welcome to your local wobblers guide to Sveltekit. This part will be about understanding the project structure and routing. We'll also get a basic todo-list going (doing it wrong way)"
-author: "Suyashtnt"
-date: "2023-10-22 16:42"
-updated: "2023-10-22 16:42"
+author: 'Suyashtnt'
+date: '2023-10-22 16:42'
+updated: '2023-10-22 16:42'
 published: false
 ---
 
@@ -72,9 +72,9 @@ and what to do with them.
 It first sets up _preprocessors_, which can transform your code before it's compiled.
 In Doen, we tell Svelte to:
 
-- use Vite to transform typescript to javascript
-- use Vite to process our CSS through LightningCSS
-- use MeltUI's preprocessor to remove a lot of boilerplate
+-   use Vite to transform typescript to javascript
+-   use Vite to process our CSS through LightningCSS
+-   use MeltUI's preprocessor to remove a lot of boilerplate
 
 Another thing it does is set up _adapters_. This is a SvelteKit specific feature.
 It allows you to deploy your app to different hosting platforms
@@ -137,7 +137,7 @@ much any business logic you require for your app.
 #### The `src/lib` folder
 
 This folder contains any code that is not specific to routing
-or any other part of the app. It contains code that can be used anywhere*
+or any other part of the app. It contains code that can be used anywhere\*
 
 <Note>
 *If you have `lib/server`, any code in there will only be available on the server.
@@ -176,89 +176,89 @@ Now, let's create a basic todo list app using the root `+page.svelte` file!
 ```svelte
 <!-- change lang="js" to lang="ts". Limitation of my blog setup -->
 <script lang="js">
-    import { browser } from "$app/environment";
-    import { flip } from 'svelte/animate'
+	import { browser } from '$app/environment';
+	import { flip } from 'svelte/animate';
 
-    // Interface for a todo. This is the data model
-    interface Todo {
-        done: boolean
-        id: string
-        text: string
-    }
+	// Interface for a todo. This is the data model
+	interface Todo {
+		done: boolean;
+		id: string;
+		text: string;
+	}
 
-    // The internal todo list
-    // This is the wrong way to do it,
-    // but we'll fix it and move the logic to the server in the next post
-    let todos: Todo[] = []
+	// The internal todo list
+	// This is the wrong way to do it,
+	// but we'll fix it and move the logic to the server in the next post
+	let todos: Todo[] = [];
 
-    const addTodo = (text: string) => {
-        // In order to get Svelte to update the list,
-        // we need to reassign the todos variable
-        todos = [
-            ...todos,
-            {
-                done: false,
-                id: createUniqueId(),
-                text,
-            },
-        ]
-    }
+	const addTodo = (text: string) => {
+		// In order to get Svelte to update the list,
+		// we need to reassign the todos variable
+		todos = [
+			...todos,
+			{
+				done: false,
+				id: createUniqueId(),
+				text
+			}
+		];
+	};
 
-    const removeTodo = (id: string) => {
-        // If we want to remove a todo, just filter it out
-        todos = todos.filter(todo => todo.id !== id)
-    }
+	const removeTodo = (id: string) => {
+		// If we want to remove a todo, just filter it out
+		todos = todos.filter((todo) => todo.id !== id);
+	};
 
-    // While we could just use window.crypto.randomUUID() directly,
-    // it may lead to collisions. So we'll just recursively call
-    // the function until we get a unique id.
-    //
-    // Fun fact: This has a time complexity of O(Infinity) in the worst case,
-    // Since we could theoretically get an infinite amount of collisions.
-    const createUniqueId = () => {
-        let id = window.crypto.randomUUID()
+	// While we could just use window.crypto.randomUUID() directly,
+	// it may lead to collisions. So we'll just recursively call
+	// the function until we get a unique id.
+	//
+	// Fun fact: This has a time complexity of O(Infinity) in the worst case,
+	// Since we could theoretically get an infinite amount of collisions.
+	const createUniqueId = () => {
+		let id = window.crypto.randomUUID();
 
-        const todoExists = todos.find(todo => todo.id === id)
-        if (todoExists) {
-            id = createUniqueId()
-        }
+		const todoExists = todos.find((todo) => todo.id === id);
+		if (todoExists) {
+			id = createUniqueId();
+		}
 
-        return id
-    }
+		return id;
+	};
 
-    // Since SvelteKit does SSR, we need to check if we're in the browser
-    // before accessing browser APIs
-    if (browser) {
-        // Since we want to sync the todo list between sessions,
-        // we'll use localStorage to get the todos
-        const rawTodos = localStorage.getItem('todos')
+	// Since SvelteKit does SSR, we need to check if we're in the browser
+	// before accessing browser APIs
+	if (browser) {
+		// Since we want to sync the todo list between sessions,
+		// we'll use localStorage to get the todos
+		const rawTodos = localStorage.getItem('todos');
 
-        if (rawTodos) {
-            todos = JSON.parse(rawTodos)
-        }
-    }
+		if (rawTodos) {
+			todos = JSON.parse(rawTodos);
+		}
+	}
 
-    // Whenever `todos` changes, we'll update localStorage with the new todos
-    $: if (browser) {
-        localStorage.setItem('todos', JSON.stringify(todos))
-    }
+	// Whenever `todos` changes, we'll update localStorage with the new todos
+	$: if (browser) {
+		localStorage.setItem('todos', JSON.stringify(todos));
+	}
 
-    // Temporarily store the new todo
-    let newTodo = ''
+	// Temporarily store the new todo
+	let newTodo = '';
 
-    // Should we show done todos?
-    let showDone = true
+	// Should we show done todos?
+	let showDone = true;
 
-    // Todo list shown in the UI
-    // If we want to show done todos, we'll just use the todos array
-    // else, we'll filter out the done todos
-    $: todoList = showDone ? todos : todos.filter(todo => !todo.done)
+	// Todo list shown in the UI
+	// If we want to show done todos, we'll just use the todos array
+	// else, we'll filter out the done todos
+	$: todoList = showDone ? todos : todos.filter((todo) => !todo.done);
 </script>
 
 <svelte:head>
-    <!-- Lets get some default styling with https://picocss.com -->
-    <!-- This is where most of the colour and sizing comes from. The layout we handle -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+	<!-- Lets get some default styling with https://picocss.com -->
+	<!-- This is where most of the colour and sizing comes from. The layout we handle -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
 </svelte:head>
 
 <!--
@@ -267,130 +267,115 @@ Now, let's create a basic todo list app using the root `+page.svelte` file!
     in production builds.
 -->
 <header>
-    <hgroup class="text-center">
-        <h1>Doen</h1>
-        <h2>Your next todo list</h2>
-    </hgroup>
+	<hgroup class="text-center">
+		<h1>Doen</h1>
+		<h2>Your next todo list</h2>
+	</hgroup>
 </header>
 
 <main class="mx-4">
-    <div class="flex flex-row gap-4 mb-4">
-        <h3 class="my-auto">Todos</h3>
-        <div class="flex gap-4 items-center">
-            <label for="show-done">Show done</label>
-            <!-- bind:checked syncs the checkbox's checked attribute with the showDone variable -->
-            <input
-                type="checkbox"
-                bind:checked={showDone}
-                id="show-done"
-            >
-        </div>
-    </div>
+	<div class="flex flex-row gap-4 mb-4">
+		<h3 class="my-auto">Todos</h3>
+		<div class="flex gap-4 items-center">
+			<label for="show-done">Show done</label>
+			<!-- bind:checked syncs the checkbox's checked attribute with the showDone variable -->
+			<input type="checkbox" bind:checked={showDone} id="show-done" />
+		</div>
+	</div>
 
-    <ul class="flex flex-col">
-        <!-- (todo.id) makes sure that svelte properly diffs the list -->
-        {#each todoList as todo (todo.id)}
-            <!-- animate:flip applies a FLIP animation to the list item -->
-            <!-- This means that when the item moves, it animates smoothly across the list -->
-            <li class="grid grid-cols-6 gap-4" animate:flip={{ duration: 150 }}>
-                <!-- The first way of applying a class based on a variable: inline JS -->
-                <input
-                    type="text"
-                    bind:value={todo.text}
-                    class="col-span-4 {todo.done ? 'bg-green-500/40' : ''}"
-                >
-                <!-- The second way of applying a class based on a variable: the class directive -->
-                <!-- class:name={boolean}. If true, the class is added -->
-                <button
-                    on:click={() => todo.done = !todo.done}
-                    class:bg-red-500={todo.done}
-                    class:bg-blue-500={!todo.done}
-                >
-                    {#if todo.done}
-                        Unmark
-                    {:else}
-                        Mark Done
-                    {/if}
-                </button>
-                <button on:click={() => removeTodo(todo.id)}>Remove</button>
-            </li>
-        {/each}
-    </ul>
+	<ul class="flex flex-col">
+		<!-- (todo.id) makes sure that svelte properly diffs the list -->
+		{#each todoList as todo (todo.id)}
+			<!-- animate:flip applies a FLIP animation to the list item -->
+			<!-- This means that when the item moves, it animates smoothly across the list -->
+			<li class="grid grid-cols-6 gap-4" animate:flip={{ duration: 150 }}>
+				<!-- The first way of applying a class based on a variable: inline JS -->
+				<input
+					type="text"
+					bind:value={todo.text}
+					class="col-span-4 {todo.done ? 'bg-green-500/40' : ''}"
+				/>
+				<!-- The second way of applying a class based on a variable: the class directive -->
+				<!-- class:name={boolean}. If true, the class is added -->
+				<button
+					on:click={() => (todo.done = !todo.done)}
+					class:bg-red-500={todo.done}
+					class:bg-blue-500={!todo.done}
+				>
+					{#if todo.done}
+						Unmark
+					{:else}
+						Mark Done
+					{/if}
+				</button>
+				<button on:click={() => removeTodo(todo.id)}>Remove</button>
+			</li>
+		{/each}
+	</ul>
 
-    <!-- This is the wrong way to use forms in sveltekit. I'll show you the right way in a later post. -->
-    <form
-        on:submit|preventDefault={() => addTodo(newTodo)}
-        class="grid grid-cols-7 gap-4"
-    >
-        <input
-            type="text"
-            bind:value={newTodo}
-            placeholder="What needs to be done?"
-            class="col-span-6"
-        >
-        <button type="submit">Add</button>
-    </form>
+	<!-- This is the wrong way to use forms in sveltekit. I'll show you the right way in a later post. -->
+	<form on:submit|preventDefault={() => addTodo(newTodo)} class="grid grid-cols-7 gap-4">
+		<input
+			type="text"
+			bind:value={newTodo}
+			placeholder="What needs to be done?"
+			class="col-span-6"
+		/>
+		<button type="submit">Add</button>
+	</form>
 </main>
 
 <main class="mx-4">
-    <div class="flex flex-row gap-4 mb-4">
-        <h3 class="my-auto">Todos</h3>
-        <div class="flex gap-4 items-center">
-            <label for="show-done">Show done</label>
-            <!-- bind:checked syncs the checkbox's checked attribute with the showDone variable -->
-            <input
-                type="checkbox"
-                bind:checked={showDone}
-                id="show-done"
-            >
-        </div>
-    </div>
+	<div class="flex flex-row gap-4 mb-4">
+		<h3 class="my-auto">Todos</h3>
+		<div class="flex gap-4 items-center">
+			<label for="show-done">Show done</label>
+			<!-- bind:checked syncs the checkbox's checked attribute with the showDone variable -->
+			<input type="checkbox" bind:checked={showDone} id="show-done" />
+		</div>
+	</div>
 
-    <ul class="flex flex-col">
-        <!-- (todo.id) makes sure that svelte properly diffs the list -->
-        {#each todoList as todo (todo.id)}
-            <!-- animate:flip applies a FLIP animation to the list item -->
-            <!-- This means that when the item moves, it animates smoothly across the list -->
-            <li class="grid grid-cols-6 gap-4" animate:flip={{ duration: 150 }}>
-                <!-- The first way of applying a class based on a variable: inline JS -->
-                <input
-                    type="text"
-                    bind:value={todo.text}
-                    class="col-span-4 {todo.done ? 'bg-green-500/40' : ''}"
-                >
-                <!-- The second way of applying a class based on a variable: the class directive -->
-                <!-- class:name={boolean}. If true, the class is added -->
-                <button
-                    on:click={() => todo.done = !todo.done}
-                    class:bg-red-500={todo.done}
-                    class:bg-blue-500={!todo.done}
-                >
-                    {#if todo.done}
-                        Unmark
-                    {:else}
-                        Mark Done
-                    {/if}
-                </button>
-                <button on:click={() => removeTodo(todo.id)}>Remove</button>
-            </li>
-        {/each}
-    </ul>
+	<ul class="flex flex-col">
+		<!-- (todo.id) makes sure that svelte properly diffs the list -->
+		{#each todoList as todo (todo.id)}
+			<!-- animate:flip applies a FLIP animation to the list item -->
+			<!-- This means that when the item moves, it animates smoothly across the list -->
+			<li class="grid grid-cols-6 gap-4" animate:flip={{ duration: 150 }}>
+				<!-- The first way of applying a class based on a variable: inline JS -->
+				<input
+					type="text"
+					bind:value={todo.text}
+					class="col-span-4 {todo.done ? 'bg-green-500/40' : ''}"
+				/>
+				<!-- The second way of applying a class based on a variable: the class directive -->
+				<!-- class:name={boolean}. If true, the class is added -->
+				<button
+					on:click={() => (todo.done = !todo.done)}
+					class:bg-red-500={todo.done}
+					class:bg-blue-500={!todo.done}
+				>
+					{#if todo.done}
+						Unmark
+					{:else}
+						Mark Done
+					{/if}
+				</button>
+				<button on:click={() => removeTodo(todo.id)}>Remove</button>
+			</li>
+		{/each}
+	</ul>
 
-    <!-- This is the wrong way to use forms in sveltekit. I'll show you the right way in a later post. -->
-    <form
-        on:submit|preventDefault={() => addTodo(newTodo)}
-        class="grid grid-cols-7 gap-4"
-    >
-        <input
-            type="text"
-            bind:value={newTodo}
-            placeholder="What needs to be done?"
-            class="col-span-6"
-        >
-        <button type="submit">Add</button>
-    </form>
+	<!-- This is the wrong way to use forms in sveltekit. I'll show you the right way in a later post. -->
+	<form on:submit|preventDefault={() => addTodo(newTodo)} class="grid grid-cols-7 gap-4">
+		<input
+			type="text"
+			bind:value={newTodo}
+			placeholder="What needs to be done?"
+			class="col-span-6"
+		/>
+		<button type="submit">Add</button>
+	</form>
 </main>
-
 ```
 
 If you find any of this file confusing,
@@ -413,20 +398,20 @@ Let's create a layout for our app:
 ```svelte
 <!-- Lets keep the default styling across pages -->
 <svelte:head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
 </svelte:head>
 
 <!-- Lets also keep the header-->
 <header>
-    <hgroup class="text-center">
-        <h1>Doen</h1>
-        <h2>Your next todo list</h2>
-    </hgroup>
+	<hgroup class="text-center">
+		<h1>Doen</h1>
+		<h2>Your next todo list</h2>
+	</hgroup>
 </header>
 
 <main class="mx-4">
-    <!-- The slot component is where the inner html will be inserted -->
-    <slot />
+	<!-- The slot component is where the inner html will be inserted -->
+	<slot />
 </main>
 ```
 
@@ -434,7 +419,7 @@ Let's create a layout for our app:
 
 ```svelte
 <script lang="js">
-    // script tag stays the same
+	// script tag stays the same
 </script>
 
 <!--
@@ -443,58 +428,51 @@ Let's create a layout for our app:
 -->
 
 <div class="flex flex-row gap-4 mb-4">
-    <h3 class="my-auto">Todos</h3>
-    <div class="flex gap-4 items-center">
-        <label for="show-done">Show done</label>
-        <input
-            type="checkbox"
-            bind:checked={showDone}
-            id="show-done"
-        >
-    </div>
+	<h3 class="my-auto">Todos</h3>
+	<div class="flex gap-4 items-center">
+		<label for="show-done">Show done</label>
+		<input type="checkbox" bind:checked={showDone} id="show-done" />
+	</div>
 </div>
 
 <ul class="flex flex-col">
-    <!-- (todo.id) makes sure that svelte properly diffs the list -->
-    {#each todoList as todo (todo.id)}
-        <!-- animate:flip applies a FLIP animation to the list item -->
-        <!-- This means that when the item moves, it animates smoothly across the list -->
-        <li class="grid grid-cols-6 gap-4" animate:flip={{ duration: 150 }}>
-            <!-- The first way of applying a class based on a variable: inline JS -->
-            <input
-                type="text"
-                bind:value={todo.text}
-                class="col-span-4 {todo.done ? 'bg-green-500/40' : ''}"
-            >
-            <!-- The second way of applying a class based on a variable: the class directive -->
-            <!-- class:name={boolean}. If true, the class is added -->
-            <button
-                on:click={() => todo.done = !todo.done}
-                class:bg-red-500={todo.done}
-                class:bg-blue-500={!todo.done}
-            >
-                {#if todo.done}
-                    Unmark
-                {:else}
-                    Mark Done
-                {/if}
-            </button>
-            <button on:click={() => removeTodo(todo.id)}>Remove</button>
-        </li>
-    {/each}
+	<!-- (todo.id) makes sure that svelte properly diffs the list -->
+	{#each todoList as todo (todo.id)}
+		<!-- animate:flip applies a FLIP animation to the list item -->
+		<!-- This means that when the item moves, it animates smoothly across the list -->
+		<li class="grid grid-cols-6 gap-4" animate:flip={{ duration: 150 }}>
+			<!-- The first way of applying a class based on a variable: inline JS -->
+			<input
+				type="text"
+				bind:value={todo.text}
+				class="col-span-4 {todo.done ? 'bg-green-500/40' : ''}"
+			/>
+			<!-- The second way of applying a class based on a variable: the class directive -->
+			<!-- class:name={boolean}. If true, the class is added -->
+			<button
+				on:click={() => (todo.done = !todo.done)}
+				class:bg-red-500={todo.done}
+				class:bg-blue-500={!todo.done}
+			>
+				{#if todo.done}
+					Unmark
+				{:else}
+					Mark Done
+				{/if}
+			</button>
+			<button on:click={() => removeTodo(todo.id)}>Remove</button>
+		</li>
+	{/each}
 </ul>
 
-<form
-    on:submit|preventDefault={() => addTodo(newTodo)}
-    class="grid grid-cols-7 gap-4"
->
-    <input
-        type="text"
-        bind:value={newTodo}
-        placeholder="What needs to be done?"
-        class="col-span-6"
-    >
-    <button type="submit">Add</button>
+<form on:submit|preventDefault={() => addTodo(newTodo)} class="grid grid-cols-7 gap-4">
+	<input
+		type="text"
+		bind:value={newTodo}
+		placeholder="What needs to be done?"
+		class="col-span-6"
+	/>
+	<button type="submit">Add</button>
 </form>
 ```
 

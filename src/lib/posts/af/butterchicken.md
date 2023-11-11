@@ -1,9 +1,9 @@
 ---
-title: "Botterhoender"
-description: "Die ongelooflike Noord-Indiese gereg."
-author: "Suyashtnt"
-date: "2023-10-29 18:00"
-updated: "2023-10-29 18:00"
+title: 'Botterhoender'
+description: 'Die ongelooflike Noord-Indiese gereg.'
+author: 'Suyashtnt'
+date: '2023-10-29 18:00'
+updated: '2023-10-29 18:00'
 published: true
 ---
 
@@ -53,6 +53,7 @@ Ek skuif dit hierheen omdat ek kan.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## Geskiedenis
@@ -95,6 +96,7 @@ Ek skuif dit hierheen omdat ek kan.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## Resep
@@ -103,19 +105,19 @@ _**Lewer 4**_
 
 ### Bestanddele
 
-- 5-6 Hoenderfilette
-- 250ml vars room
-- 2 Tamaties
-- 125g van botter
-- Suhana Butter chicken spice sakkie
-- ’n Handvol koljander (vir garnering)
+-   5-6 Hoenderfilette
+-   250ml vars room
+-   2 Tamaties
+-   125g van botter
+-   Suhana Butter chicken spice sakkie
+-   ’n Handvol koljander (vir garnering)
 
 #### Marineer bestanddele
 
-- 1 tl gemmerknoffel
-- Sout na smaak (Besluit jou eie hoeveelheid)
-- 1 tl Hoender Spice
-- 1 tl BBQ speserye
+-   1 tl gemmerknoffel
+-   Sout na smaak (Besluit jou eie hoeveelheid)
+-   1 tl Hoender Spice
+-   1 tl BBQ speserye
 
 ### Metode
 

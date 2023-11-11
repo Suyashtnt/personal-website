@@ -1,22 +1,22 @@
 <script lang="ts">
-    import { browser } from "$app/environment";
-    import { page } from "$app/stores";
-    import { onSetLanguageTag, setLanguageTag } from "$i18n/runtime"
-    import { getContext, setContext } from "svelte";
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
+	import { onSetLanguageTag, setLanguageTag } from '$i18n/runtime';
+	import { getContext, setContext } from 'svelte';
 
-    // from root layout. The page will ALWAYS have this.
-    $: language = $page.data.language as string
-    $: setContext("languageTag", language)
+	// from root layout. The page will ALWAYS have this.
+	$: language = $page.data.language as string;
+	$: setContext('languageTag', language);
 
-    setLanguageTag(() => getContext("languageTag"))
+	setLanguageTag(() => getContext('languageTag'));
 
-    if (browser) {
-        onSetLanguageTag((newLanguageTag) => {
-            language = newLanguageTag
-        })
-    }
+	if (browser) {
+		onSetLanguageTag((newLanguageTag) => {
+			language = newLanguageTag;
+		});
+	}
 </script>
 
 {#key language}
-    <slot></slot>
+	<slot />
 {/key}
