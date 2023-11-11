@@ -11,25 +11,15 @@
 </script>
 
 <article
-	class="grid-area-[1/2/span_1/span_1] mx-2 box-border overflow-hidden rounded-xl bg-light-mantle px-4 pb-4 dark:bg-dark-mantle"
+	class="grid-area-[1/2/span_1/span_1] mx-2 box-border flex flex-col gap-4 p-4 rounded-xl bg-light-mantle dark:bg-dark-mantle"
 	in:receive={{ key: `skill-${selectedSkill.id}` }}
-	out:send={{ key: `skill-${selectedSkill.id}` }}
+	out:send={{ key: `leave-skill-${selectedSkill.id}` }}
 >
 	<!-- title -->
-	<header class="my-4 flex items-center gap-4">
-		<img
-			alt={selectedSkill?.iconAlt}
-			class="h-auto w-12"
-			in:receive={{ key: `img-${selectedSkill.id}` }}
-			out:send={{ key: `img-${selectedSkill.id}` }}
-			src={selectedSkill?.icon}
-		/>
+	<header class="flex items-center gap-4">
+		<img alt={selectedSkill?.iconAlt} class="h-auto w-12" src={selectedSkill?.icon} />
 		<hgroup>
-			<h1
-				class="my-0 text-3xl"
-				in:receive={{ key: `text-${selectedSkill.id}` }}
-				out:send={{ key: `text-${selectedSkill.id}` }}
-			>
+			<h1 class="my-0 text-3xl">
 				{selectedSkill?.name}
 			</h1>
 			<p class="my-0 text-xl">
@@ -73,7 +63,7 @@
 			</p>
 		</div>
 	</section>
-	<section class="mt-4 text-lg">
+	<section class="text-lg">
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html html}
 	</section>
