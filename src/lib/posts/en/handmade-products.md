@@ -1,9 +1,9 @@
 ---
-title: "Handmade products"
-description: "Short blog for a school project. Read in Afrikaans for the true experience™️"
-author: "Suyashtnt"
-date: "2023-10-29 15:40"
-updated: "2023-10-29 15:40"
+title: 'Handmade products'
+description: 'Short blog for a school project. Read in Afrikaans for the true experience™️'
+author: 'Suyashtnt'
+date: '2023-10-29 15:40'
+updated: '2023-10-29 15:40'
 published: true
 ---
 
@@ -23,7 +23,7 @@ Handmade products are quite interesting pieces of art. They are, well,
 items that are made by hand, with little machinery involved.
 
 Some examples include: Prisma Audio's AZULs, some musical instruments,
-and a ton of items on [Etsy](https://etsy.com)*.
+and a ton of items on [Etsy](https://etsy.com)\*.
 
 <Note>
 *Etsy is a website where people can sell their handmade products.

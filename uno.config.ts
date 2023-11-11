@@ -10,7 +10,9 @@ import {
 
 // Get the hex value of the color, and then set the color to the hex value
 const createTheme = (colors: Labels<Color, AlphaColor>) => {
-	const values = Object.fromEntries(Object.entries(colors).map(([key, value]) => [key, value.hex]));
+	const values = Object.fromEntries(
+		Object.entries(colors).map(([key, value]) => [key, value.hex])
+	);
 	const vals = Object.entries(values);
 
 	const finalTheme: Record<string, Record<string, string> | string> = {};

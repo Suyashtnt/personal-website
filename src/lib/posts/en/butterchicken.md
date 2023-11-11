@@ -1,9 +1,9 @@
 ---
-title: "Butter Chicken"
-description: "The incredible Northern-Indian dish. Read in Afrikaans for the true experience™️"
-author: "Suyashtnt"
-date: "2023-10-29 18:00"
-updated: "2023-10-29 18:00"
+title: 'Butter Chicken'
+description: 'The incredible Northern-Indian dish. Read in Afrikaans for the true experience™️'
+author: 'Suyashtnt'
+date: '2023-10-29 18:00'
+updated: '2023-10-29 18:00'
 published: true
 ---
 
@@ -53,6 +53,7 @@ I'm moving it here because I can.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## History
@@ -95,6 +96,7 @@ I'm moving it here because I can.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## Recipe
@@ -103,19 +105,19 @@ _**Serves 4**_
 
 ### Ingredients
 
-- 5-6 Chicken Fillets
-- 250ml Fresh cream
-- 2 Tomatoes
-- 125g of butter
-- Suhana Butter chicken spice sachet
-- A handful of Coriander (for garnish)
+-   5-6 Chicken Fillets
+-   250ml Fresh cream
+-   2 Tomatoes
+-   125g of butter
+-   Suhana Butter chicken spice sachet
+-   A handful of Coriander (for garnish)
 
 #### Marinate ingredients
 
-- 1tsp Ginger garlic
-- Salt to taste (Decide your own amount)
-- 1tsp Chicken Spice
-- 1tsp BBQ spice
+-   1tsp Ginger garlic
+-   Salt to taste (Decide your own amount)
+-   1tsp Chicken Spice
+-   1tsp BBQ spice
 
 ### Method
 
