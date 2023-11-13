@@ -34,32 +34,17 @@
 </script>
 
 <script lang="ts">
-	import type { TransitionConfig } from 'svelte/transition';
-
 	export let skill: ISkill;
-
-	export let send: (node: Element, args: { key: string }) => () => TransitionConfig;
-	export let receive: (node: Element, args: { key: string }) => () => TransitionConfig;
 </script>
 
 <a
-	class="flex items-center gap-4 text-light-text decoration-none dark:text-dark-text visited:text-light-text visited:dark:text-dark-text"
+	class="flex items-center gap-4 px-4 text-light-text decoration-none dark:text-dark-text transition-all duration-200 hover:shadow-2xl"
 	data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >
-	<img
-		alt={skill.iconAlt}
-		class="h-auto w-8 md:w-10"
-		in:receive={{ key: `img-${skill.id}` }}
-		out:send={{ key: `img-${skill.id}` }}
-		src={skill.icon}
-	/>
+	<img alt={skill.iconAlt} class="h-auto w-8 md:w-10" src={skill.icon} />
 
-	<h2
-		class="text-2xl md:text-2xl"
-		in:receive={{ key: `text-${skill.id}` }}
-		out:send={{ key: `text-${skill.id}` }}
-	>
+	<h2 class="text-2xl md:text-2xl">
 		{skill.name}
 	</h2>
 </a>
