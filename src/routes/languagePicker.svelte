@@ -5,12 +5,12 @@
 </script>
 
 <div
-	class="flex-inline flex-row items-center rounded-lg bg-light-base/80 pa-2 text-light-text dark:bg-dark-base/80 dark:text-dark-text"
+	class="flex-inline flex-row items-center rounded-lg bg-light-base/80 pa-2 text-light-text dark:bg-dark-surface_background/80 dark:text-dark-surface_foreground"
 >
 	<div class="i-ic-language inline-block h-8 w-8" />
 	<form action="/" class="contents" method="POST" use:enhance>
 		<select
-			class="border-none bg-transparent text-xl text-light-text dark:text-dark-text font-inherit grow"
+			class="grow border-none bg-transparent text-xl font-inherit text-light-text dark:text-dark-surface_foreground"
 			name="language"
 			on:change={(e) => {
 				e.currentTarget.form?.requestSubmit();

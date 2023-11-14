@@ -23,8 +23,8 @@
 	const receive = _receive!;
 </script>
 
-<section class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface-0 md:px-8" id="about">
-	<h1 class="text-5xl">Skills</h1>
+<section class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface_background md:px-8" id="about">
+	<h1 class="w-min text-5xl text-light-lavender dark:text-dark-primary_foreground">Skills</h1>
 
 	<div class="grid grid-cols-2 grid-rows-1 gap-4 overflow-hidden">
 		<ul
@@ -33,7 +33,7 @@
 			{#each skillsWithoutSelected as skill (skill.id)}
 				<li
 					animate:flip={{ duration: 600, easing: easeEmphasized }}
-					class="rounded-xl bg-light-base dark:bg-dark-base"
+					class="rounded-xl bg-light-base dark:bg-dark-overlay_background"
 					in:receive={{ key: `leave-skill-${skill.id}` }}
 					out:send={{ key: `skill-${skill.id}` }}
 				>

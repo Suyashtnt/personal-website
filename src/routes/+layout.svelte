@@ -2,9 +2,9 @@
 	import ParaglideSveltekitAdapter from '$lib/i18n/ParaglideSveltekitAdapter.svelte';
 	import { setupViewTransition } from 'sveltekit-view-transition';
 
+	import '../app.css';
 	import Footer from './footer.svelte';
 	import Header from './header.svelte';
-	import '../app.css';
 
 	setupViewTransition();
 </script>
@@ -17,17 +17,19 @@
 </svelte:head>
 
 <ParaglideSveltekitAdapter>
-	<Header />
-	<main class="bg-light-base text-light-text dark:bg-dark-base dark:text-dark-text">
-		<slot />
-	</main>
-	<Footer />
+    <Header />
+    <main
+        class="bg-light-base text-light-text dark:bg-dark-base_background dark:text-dark-base_foreground"
+    >
+        <slot />
+    </main>
+    <Footer />
 </ParaglideSveltekitAdapter>
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
 <style>
 	:global(a) {
-		--at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
+		--at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-secondary_foreground dark:visited:text-dark-primary_foreground';
 	}
 
 	:global(body) {
@@ -61,10 +63,10 @@
 			'wght' 450;
 	}
 
-	:global(html, body) {
-		scroll-behavior: smooth;
-		--at-apply: 'bg-light-base dark:bg-dark-base';
-	}
+    :global(html, body) {
+        scroll-behavior: smooth;
+        --at-apply: 'bg-light-base dark:bg-dark-base_background dark:text-dark-base_foreground';
+    }
 
 	:root {
 		view-transition-name: none;

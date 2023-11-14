@@ -38,7 +38,7 @@
 </script>
 
 <a
-	class="flex items-center gap-4 px-4 text-light-text decoration-none dark:text-dark-text transition-all duration-200 hover:shadow-2xl"
+	class="flex items-center gap-4 px-4 text-light-text decoration-none transition-all duration-200 dark:text-dark-overlay_foreground hover:shadow-2xl"
 	data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >

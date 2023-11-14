@@ -16,7 +16,7 @@
 	const updateCasl = (selector: string) => {
 		document.querySelectorAll(selector).forEach((el) => {
 			if (el instanceof HTMLElement) {
-				el.style.fontVariationSettings = `"CASL" ${el.dataset.fontCasl} "MONO" ${el.dataset.fontCasl}`;
+				el.style.fontVariationSettings = `"CASL" ${el.dataset.fontCasl}, "MONO" ${el.dataset.fontCasl}`;
 			}
 		});
 	};
@@ -113,32 +113,37 @@
 	});
 </script>
 
-<section class="relative bg-light-base dark:bg-dark-base" id="landing">
-	<div class="flex flex-row justify-between gap-6 xl:mx-16">
-		<div class="min-w-128 flex flex-[1_1_auto] flex-col items-center justify-between gap-6">
-			<atropos-component class="group col-span-2 mt-8 w-64 rounded-xl rounded-xl">
-				<div
-					class="flex content-center justify-center rounded-2xl from-light-red to-light-rosewater bg-gradient-to-br pa-2 transition-all group-hover:ma-2 dark:from-dark-red dark:to-dark-rosewater group-hover:pa-0"
-				>
-					<Image
-						alt="a contemporary portrait of me"
-						class="h-auto w-60 rounded-xl object-cover transition-all group-hover:scale-105"
-						loading="eager"
-						src={face}
-					/>
-				</div>
-			</atropos-component>
+<section
+    class="relative bg-light-mantle dark:bg-dark-base_background"
+    id="landing"
+>
+    <div class="flex flex-row justify-between gap-6 xl:mx-16">
+        <div class="min-w-max flex flex-[1_1_auto] flex-col items-center justify-between rounded-xl bg-light-base dark:bg-dark-surface_background">
+            <atropos-component
+                class="group mt-8 w-64 rounded-xl rounded-xl"
+            >
+                <div
+                    class="flex content-center justify-center rounded-2xl from-light-red to-light-rosewater bg-gradient-to-br pa-2 transition-all group-hover:ma-2 dark:from-dark-primary_foreground dark:to-dark-secondary_foreground group-hover:pa-0"
+                >
+                    <Image
+                        alt="a contemporary portrait of me"
+                        class="h-auto w-60 rounded-xl object-cover transition-all group-hover:scale-105"
+                        loading="eager"
+                        src={face}
+                    />
+                </div>
+            </atropos-component>
 
-			<div class="col-span-3">
+			<div class="mx-4 mb-8">
 				<h1
-					class="mb-2 mt-0 px-2 text-center text-6xl leading-18 md:mb-0 md:px-0 md:text-left md:text-7xl"
+					class="mx-0 px-2 text-center text-6xl leading-18 md:mb-0 md:px-0 md:text-left md:text-7xl"
 				>
 					{m.hello()}
 					<br />
 					<span class="names">
 						{#each names as name, i}
 							<span
-								class={`name-${i} inline-block`}
+								class="name-{i} inline-block dark:from-dark-primary_foreground dark:to-dark-secondary_foreground from-light-lavender to-light-blue bg-gradient-to-br bg-clip-text text-transparent"
 								class:opacity-0={i !== 0}
 								data-font-casl={0}
 							>
@@ -152,60 +157,76 @@
 				<ul
 					class="my-0 mt-4 flex flex-col list-none items-center pl-0 text-2xl leading-0 md:flex-row md:items-start md:gap-[1ch]"
 				>
-					<h2
-						class="student"
-						on:mouseenter={() => animateWord('student')}
-						on:mouseleave={() => endAnimateWord('student')}
-						on:touchend={() => endAnimateWord('student')}
-						on:touchstart={() => animateWord('student')}
-					>
-						{#each m.hero_student().split('') as letter}
-							<span class="letter inline-block">{letter}</span>
-						{/each}
-					</h2>
-					<h2
-						class="programmer"
-						on:mouseenter={() => animateWord('programmer')}
-						on:mouseleave={() => endAnimateWord('programmer')}
-						on:touchend={() => endAnimateWord('programmer')}
-						on:touchstart={() => animateWord('programmer')}
-					>
-						<a
-							class="group flex text-light-text underline-offset-14 dark:text-dark-text visited:text-light-text hover:underline-light-blue dark:visited:text-dark-text dark:hover:underline-dark-blue"
-							href="https://github.com/Suyashtnt"
-							rel="me"
-						>
-							{#each m.hero_programmer().split('') as letter}
-								<span
-									class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue"
-								>
-									{letter}
-								</span>
-							{/each}
-						</a>
-					</h2>
-					<h2
-						class="gamer"
-						on:mouseenter={() => animateWord('gamer')}
-						on:mouseleave={() => endAnimateWord('gamer')}
-						on:touchend={() => endAnimateWord('gamer')}
-						on:touchstart={() => animateWord('gamer')}
-					>
-						<a
-							class="group flex text-light-text underline-offset-14 dark:text-dark-text visited:text-light-text hover:underline-light-blue dark:visited:text-dark-text dark:hover:underline-dark-blue"
-							href="https://steamcommunity.com/id/suyashtnt123"
-							rel="me"
-						>
-							{#each m.hero_gamer().split('') as letter}
-								<span
-									class="letter group-hover:text-light-blue dark:group-hover:text-dark-blue"
-								>
-									{letter}
-								</span>
-							{/each}
-						</a>
-					</h2>
+                    <li>
+                        <h2
+                            class="student"
+                            on:mouseenter={() => animateWord('student')}
+                            on:mouseleave={() => endAnimateWord('student')}
+                            on:touchend={() => endAnimateWord('student')}
+                            on:touchstart={() => animateWord('student')}
+                        >
+                            {#each m.hero_student().split('') as letter}
+                                <span class="letter inline-block">{letter}</span>
+                            {/each}
+                        </h2>
+                    </li>
+                    <li>
+                        <h2
+                            class="programmer"
+                            on:mouseenter={() => animateWord('programmer')}
+                            on:mouseleave={() => endAnimateWord('programmer')}
+                            on:touchend={() => endAnimateWord('programmer')}
+                            on:touchstart={() => animateWord('programmer')}
+                        >
+                            <a
+                                class="group dark:hover:underline-dark-blue flex text-light-text underline-offset-14 dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
+                                href="https://github.com/Suyashtnt"
+                                rel="me"
+                            >
+                                {#each m.hero_programmer().split('') as letter}
+                                    <span
+                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary_foreground"
+                                    >
+                                        {letter}
+                                    </span>
+                                {/each}
+                            </a>
+                        </h2>
+                    </li>
+					<li>
+                        <h2
+                            class="gamer"
+                            on:mouseenter={() => animateWord('gamer')}
+                            on:mouseleave={() => endAnimateWord('gamer')}
+                            on:touchend={() => endAnimateWord('gamer')}
+                            on:touchstart={() => animateWord('gamer')}
+                        >
+                            <a
+                                class="group dark:hover:underline-dark-blue flex text-light-text underline-offset-14 dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
+                                href="https://steamcommunity.com/id/suyashtnt123"
+                                rel="me"
+                            >
+                                {#each m.hero_gamer().split('') as letter}
+                                    <span
+                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary_foreground"
+                                    >
+                                        {letter}
+                                    </span>
+                                {/each}
+                            </a>
+                        </h2>
+                    </li>
 				</ul>
+                <ul
+					class="my-0 mt-6 flex flex-col list-none items-center pl-0 text-2xl leading-0 md:flex-row md:items-start md:gap-[1ch]"
+                >
+                    <li>
+                        Email
+                    </li>
+                    <li>
+                        Discord
+                    </li>
+                </ul>
 			</div>
 		</div>
 
@@ -228,18 +249,18 @@
 	</div>
 </section>
 
-<div class="wave bg-light-base dark:bg-dark-base">
-	<svg
-		data-name="Layer 1"
-		preserveAspectRatio="none"
-		viewBox="0 0 1200 120"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			class="fill-light-surface-0 dark:fill-dark-surface-0"
-			d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-		/>
-	</svg>
+<div class="wave bg-light-base dark:bg-dark-base_background">
+    <svg
+        data-name="Layer 1"
+        preserveAspectRatio="none"
+        viewBox="0 0 1200 120"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            class="fill-light-surface-0 dark:fill-dark-surface_background"
+            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        />
+    </svg>
 </div>
 
 <style>
