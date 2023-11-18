@@ -39,7 +39,7 @@ I'm moving it here because I can.
         href="https://commons.wikimedia.org/wiki/File:Chicken_makhani.jpg"
         class="col-span-1 md:col-span-2"
     >
-        <figure class="bg-light-surface0 dark:bg-dark-surface0 pa-4 rounded-xl">
+        <figure class="bg-light-surface0 dark:bg-dark-overlay_background pa-4 rounded-xl">
             <Image
                 src={ChickenMakhani}
                 alt="Chicken Makhani, murgh makhani, or Butter Chicken"
@@ -82,7 +82,7 @@ I'm moving it here because I can.
         href="https://commons.wikimedia.org/wiki/File:Kundan-Lal-Gujral.jpg"
         class="col-span-1 md:col-span-2"
     >
-        <figure class="pa-4 rounded-xl bg-light-surface0 dark:bg-dark-surface0">
+        <figure class="pa-4 rounded-xl bg-light-surface0 dark:bg-dark-overlay_background">
             <Image
                 src={KundanLalGujral}
                 alt="Portrait of Kundan Lal Gujral"
@@ -105,19 +105,19 @@ _**Serves 4**_
 
 ### Ingredients
 
--   5-6 Chicken Fillets
--   250ml Fresh cream
--   2 Tomatoes
--   125g of butter
--   Suhana Butter chicken spice sachet
--   A handful of Coriander (for garnish)
+- 5-6 Chicken Fillets
+- 250ml Fresh cream
+- 2 Tomatoes
+- 125g of butter
+- Suhana Butter chicken spice sachet
+- A handful of Coriander (for garnish)
 
 #### Marinate ingredients
 
--   1tsp Ginger garlic
--   Salt to taste (Decide your own amount)
--   1tsp Chicken Spice
--   1tsp BBQ spice
+- 1tsp Ginger garlic
+- Salt to taste (Decide your own amount)
+- 1tsp Chicken Spice
+- 1tsp BBQ spice
 
 ### Method
 

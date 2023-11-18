@@ -11,9 +11,9 @@
 </script>
 
 <footer
-	class="flex flex-col items-center justify-between bg-light-mantle px-2 text-light-text md:flex-row dark:bg-dark-base_background lg:px-16 dark:text-dark-base_foreground"
+	class="flex flex-col items-center justify-between rounded-t-2xl bg-light-mantle px-2 text-light-text lg:mx-8 md:flex-row dark:bg-dark-surface_background lg:px-16 dark:text-dark-surface_foreground"
 >
-    <p class="text-2xl font-semibold">TNTMan1671</p>
+    <p class="my-4 text-2xl font-semibold">TNTMan1671</p>
     <p>
         Made with <a
             class="text-light-text dark:text-dark-base_foreground visited:text-light-text dark:visited:text-dark-base_foreground"

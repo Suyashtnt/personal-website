@@ -220,11 +220,29 @@
                 <ul
 					class="my-0 mt-6 flex flex-col list-none items-center pl-0 text-2xl leading-0 md:flex-row md:items-start md:gap-[1ch]"
                 >
-                    <li>
-                        Email
+                    <li class="dark:hover:underline-dark-blue flex items-center gap-[1ch] text-light-text dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground">
+	                    <div class="i-ic-email inline-block h-8 w-8" />
+                        <a
+                            class="dark:hover:underline-dark-blue text-light-text dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
+                            href="mailto:suyashtnt@gmail.com"
+                        >
+                            Suyashtnt@gmail.com
+                        </a>
                     </li>
-                    <li>
-                        Discord
+                    <li class="flex items-center gap-[1ch]">
+	                    <div class="i-ic-baseline-discord inline-block h-8 w-8" />
+                        <a
+                            class="dark:hover:underline-dark-blue text-light-text dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
+                            href="https://discord.com"
+                            on:click|preventDefault={() => {
+                                navigator.clipboard.writeText("tabiasgeehuman")
+                                alert("Copied to clipboard!")
+                            }}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            @tabiasgeehuman
+                        </a>
                     </li>
                 </ul>
 			</div>

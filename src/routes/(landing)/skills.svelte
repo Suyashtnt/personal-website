@@ -24,7 +24,7 @@
 </script>
 
 <section class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface_background md:px-8" id="about">
-	<h1 class="w-min text-5xl text-light-lavender dark:text-dark-primary_foreground">Skills</h1>
+	<h2 class="w-min text-5xl text-light-lavender dark:text-dark-primary_foreground">Skills</h2>
 
 	<div class="grid grid-cols-2 grid-rows-1 gap-4 overflow-hidden">
 		<ul

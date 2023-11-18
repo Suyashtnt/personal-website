@@ -13,7 +13,7 @@
 			<li class="mt-0 pt-2">
 				<!-- according to catppuccin style guidelines: red, peach, yellow, green, sapphire, Lavender -->
 				<a
-					class="relative inline-block text-inherit decoration-none after:absolute after:bottom-0 after:block after:h-0.5 after:w-0 after:bg-none after:bg-scroll after:bg-repeat before:text-light-text after:transition-all after:content-empty data-[active]:after:w-full hover:after:w-full dark:before:text-dark-text"
+					class="relative inline-block text-inherit decoration-none after:absolute after:bottom-0 after:block after:h-0.5 after:w-0 after:bg-none after:bg-scroll after:bg-repeat before:text-light-text after:transition-all after:content-empty data-[active]:after:w-full hover:after:w-full dark:before:text-dark-base_foreground"
 					class:after-bg-light-green={level === 4}
 					class:after-bg-light-lavender={level === 6}
 					class:after-bg-light-peach={level === 2}
@@ -22,16 +22,16 @@
 					class:after-bg-light-yellow={level === 3}
 					class:after-dark-bg-dark-green={level === 4}
 					class:after-dark-bg-dark-lavender={level === 6}
-					class:after-dark-bg-dark-peach={level === 2}
+					class:after-dark-bg-dark-primary_foreground={level === 2}
 					class:after-dark-bg-dark-red={level === 1}
-					class:after-dark-bg-dark-sapphire={level === 5}
+					class:after-dark-bg-dark-teal={level === 5}
 					class:after-dark-bg-dark-yellow={level === 3}
 					class:dark-text-dark-green={level === 4}
 					class:dark-text-dark-lavender={level === 6}
-					class:dark-text-dark-peach={level === 2}
+					class:dark-text-dark-orange={level === 3}
+					class:dark-text-dark-primary_foreground={level === 2}
 					class:dark-text-dark-red={level === 1}
-					class:dark-text-dark-sapphire={level === 5}
-					class:dark-text-dark-yellow={level === 3}
+					class:dark-text-dark-teal={level === 5}
 					class:text-light-green={level === 4}
 					class:text-light-lavender={level === 6}
 					class:text-light-peach={level === 2}
@@ -40,17 +40,15 @@
 					class:text-light-yellow={level === 3}
 					class:visited-dark-text-dark-green={level === 4}
 					class:visited-dark-text-dark-lavender={level === 6}
-					class:visited-dark-text-dark-peach={level === 2}
+					class:visited-dark-text-dark-orange={level === 3}
+					class:visited-dark-text-dark-primary_foreground={level === 2}
 					class:visited-dark-text-dark-red={level === 1}
-					class:visited-dark-text-dark-sapphire={level === 5}
-					class:visited-dark-text-dark-yellow={level === 3}
+					class:visited-dark-text-dark-teal={level === 5}
 					class:visited-text-light-green={level === 4}
 					class:visited-text-light-lavender={level === 6}
-					class:visited-text-light-peach={level === 2}
 					class:visited-text-light-red={level === 1}
 					class:visited-text-light-sapphire={level === 5}
 					class:visited-text-light-yellow={level === 3}
-					data-
 					href="#{heading.id}"
 					use:melt={$item(heading.id)}
 				>

@@ -75,28 +75,28 @@
 	</aside>
 
 	<article
-		class="grid-area-[content] mb-6 justify-self-center rounded-3xl bg-light-mantle px-4 text-xl prose md:mx-0 dark:bg-dark-mantle"
+		class="grid-area-[content] mb-6 justify-self-center rounded-3xl bg-light-mantle px-4 text-xl prose md:mx-0 dark:bg-dark-surface_background"
 		id="article"
 		use:transition={`post-${data.slug}`}
 	>
 		<header class="mb-8 py-4">
 			<hr
-				class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-blue dark:to-dark-blue"
+				class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-primary_foreground dark:to-dark-secondary_foreground"
 			/>
 
 			<h1
-				class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl font-light text-transparent transition-all dark:from-dark-lavender dark:to-dark-mauve xl:text-5xl"
+				class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl font-light text-transparent dark:from-dark-primary_foreground dark:via-dark-primary_foreground dark:to-dark-secondary_foreground xl:text-5xl"
 				use:transition={`post-title-${data.slug}`}
 			>
 				{data.frontmatter.title}
 			</h1>
 
 			<hr
-				class="mb-2 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-blue dark:to-dark-blue"
+				class="mb-2 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-secondary_foreground dark:to-dark-primary_foreground"
 			/>
 
 			<p
-				class="my-0 text-light-subtext-0 dark:text-dark-subtext-0"
+				class="my-0 text-light-subtext-0 dark:text-dark-subtle/90"
 				use:transition={`post-dates-${data.slug}`}
 			>
 				{m.post_card_by({ author: data.frontmatter.author })} | {m.post_card_published({
@@ -161,17 +161,17 @@
 		& h5,
 		& h6 {
 			--at-apply: 'scroll-mt-8';
-			--at-apply: 'text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text';
+			--at-apply: 'text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground';
 
 			& > a {
-				--at-apply: 'text-light-text dark:text-dark-text visited:text-light-text dark:visited:text-dark-text inline-block relative decoration-none transition-all';
+				--at-apply: 'text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground inline-block relative decoration-none transition-all';
 
 				& :after {
-					--at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-blue bottom-0 content-empty block h-0.5 absolute transition-all w-0';
+					--at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
 				}
 
 				& :hover {
-					--at-apply: 'text-light-blue dark:text-dark-blue visited:text-light-blue dark:visited:text-dark-blue';
+					--at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
 
 					& :after {
 						--at-apply: 'w-full';
@@ -185,11 +185,11 @@
 		}
 
 		& h3 > a {
-			--at-apply: '!text-light-peach !dark:text-dark-peach';
+			--at-apply: '!text-light-peach !dark:text-dark-primary_foreground';
 		}
 
 		& h4 > a {
-			--at-apply: '!text-light-yellow !dark:text-dark-yellow';
+			--at-apply: '!text-light-yellow !dark:text-dark-orange';
 		}
 
 		& h5 > a {
@@ -197,7 +197,7 @@
 		}
 
 		& h6 > a {
-			--at-apply: '!text-light-sapphire !dark:text-dark-sapphire text-xl';
+			--at-apply: '!text-light-sapphire !dark:text-dark-teal text-xl';
 		}
 
 		& a {
