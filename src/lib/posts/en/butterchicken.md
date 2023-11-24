@@ -9,10 +9,9 @@ published: true
 
 <script lang="ts">
     import Note from "$lib/components/note.svelte"
-    import Image from '@zerodevx/svelte-img';
 
-    import ChickenMakhani from '$lib/pictures/posts/butter-chicken/Chicken_makhani.jpg?as=optimize'
-    import KundanLalGujral from '$lib/pictures/posts/butter-chicken/Kundan-Lal-Gujral.jpg?as=optimize'
+    import ChickenMakhani from '$lib/pictures/posts/butter-chicken/Chicken_makhani.jpg?enhanced'
+    import KundanLalGujral from '$lib/pictures/posts/butter-chicken/Kundan-Lal-Gujral.jpg?enhanced'
 </script>
 
 [Jump to recipe](#recipe)
@@ -40,7 +39,7 @@ I'm moving it here because I can.
         class="col-span-1 md:col-span-2"
     >
         <figure class="bg-light-surface0 dark:bg-dark-overlay_background pa-4 rounded-xl">
-            <Image
+            <enhanced:img
                 src={ChickenMakhani}
                 alt="Chicken Makhani, murgh makhani, or Butter Chicken"
                 class="rounded-md transition w-full h-auto"
@@ -83,7 +82,7 @@ I'm moving it here because I can.
         class="col-span-1 md:col-span-2"
     >
         <figure class="pa-4 rounded-xl bg-light-surface0 dark:bg-dark-overlay_background">
-            <Image
+            <enhanced:img
                 src={KundanLalGujral}
                 alt="Portrait of Kundan Lal Gujral"
                 class="rounded-md transition w-full h-auto"

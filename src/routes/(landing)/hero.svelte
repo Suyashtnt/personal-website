@@ -1,14 +1,11 @@
 <script lang="ts">
 	import * as m from '$i18n/messages';
-	import Image from '@zerodevx/svelte-img';
 	import anime from 'animejs';
 	import 'atropos/css';
 	import { onMount } from 'svelte';
 
 	const { random, remove, timeline } = anime;
 
-	import computer from '$lib/pictures/Computer.png?as=optimize';
-	import face from '$lib/pictures/face.png?w=640;320;160&as=optimize';
 	import { easeEmphasized } from 'm3-svelte';
 
 	const names = ['TNTMan\\1671', 'Suyashtnt', 'TNT \\Man \\Inc'];
@@ -125,11 +122,11 @@
                 <div
                     class="flex content-center justify-center rounded-2xl from-light-red to-light-rosewater bg-gradient-to-br pa-2 transition-all group-hover:ma-2 dark:from-dark-primary_foreground dark:to-dark-secondary_foreground group-hover:pa-0"
                 >
-                    <Image
+                    <enhanced:img
                         alt="a contemporary portrait of me"
                         class="h-auto w-60 rounded-xl object-cover transition-all group-hover:scale-105"
                         loading="eager"
-                        src={face}
+                        src='$lib/pictures/face.png'
                     />
                 </div>
             </atropos-component>
@@ -257,11 +254,11 @@
                 {/each}
             </ul> -->
 
-			<Image
+			<enhanced:img
 				alt="Picture of my computer"
 				class="block h-full max-h-full max-w-full w-auto rounded-xl object-cover transition-all group-hover:scale-105"
 				loading="eager"
-				src={computer}
+				src='$lib/pictures/Computer.png'
 			/>
 		</section>
 	</div>

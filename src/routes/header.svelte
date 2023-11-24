@@ -30,6 +30,6 @@
 
 <style>
     .links a {
-        --at-apply: "text-light-text decoration-none transition-all dark:text-dark-surface_foreground visited:text-light-text hover:casl dark:visited:text-dark-surface_foreground";
+        --at-apply: "text-light-text decoration-none dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground";
     }
 </style>

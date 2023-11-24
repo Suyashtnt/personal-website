@@ -15,10 +15,12 @@
         "@eslint/js": "^8.54.0",
         "@iconify-json/ic": "^1.1.14",
         "@iconify-json/mdi": "^1.1.55",
+        "@inlang/paraglide-js": "1.0.0-prerelease.10",
         "@julr/unocss-preset-heropatterns": "^1.0.2",
         "@melt-ui/pp": "^0.1.4",
         "@melt-ui/svelte": "^0.62.1",
         "@sveltejs/adapter-cloudflare": "^2.3.3",
+        "@sveltejs/enhanced-img": "^0.1.5",
         "@sveltejs/kit": "^1.27.6",
         "@types/animejs": "^3.1.12",
         "@types/culori": "^2.0.4",
@@ -32,7 +34,6 @@
         "@typescript-eslint/parser": "^6.12.0",
         "@unocss/eslint-plugin": "^0.57.7",
         "@unocss/svelte-scoped": "^0.57.7",
-        "@zerodevx/svelte-img": "^2.1.0",
         "browserslist": "^4.22.1",
         "eslint": "^8.54.0",
         "eslint-config-prettier": "^9.0.0",
@@ -63,7 +64,6 @@
         "unocss-preset-theme": "^0.11.0",
         "uuid": "^9.0.1",
         "vite": "^4.5.0",
-        "@inlang/paraglide-js": "1.0.0-prerelease.10",
         "vite-plugin-watch": "^0.2.0"
     },
     "overrides": {

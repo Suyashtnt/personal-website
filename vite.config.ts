@@ -1,10 +1,10 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import unoCSS from '@unocss/svelte-scoped/vite';
-import { imagetools } from '@zerodevx/svelte-img/vite';
 import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
 import { defineConfig } from 'vite';
 import { watch } from 'vite-plugin-watch';
+import { enhancedImages } from '@sveltejs/enhanced-img';
 
 const targets = browserslistToTargets(
 	browserslist('defaults, not IE 11, not IE_Mob 11, not OperaMini all')
@@ -29,14 +29,7 @@ export default defineConfig(({ command }) => ({
 	},
 	plugins: [
 		unoCSS(),
-		imagetools({
-			profiles: {
-				optimize: new URLSearchParams({
-					format: 'avif;webp;jpg',
-					w: '1920;1366;780;414'
-				})
-			}
-		}),
+		enhancedImages(),
 		watch({
 			command: 'paraglide-js compile',
 			pattern: 'src/lib/i18n/*.json'
