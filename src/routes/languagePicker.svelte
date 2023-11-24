@@ -1,7 +1,19 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
-	import { availableLanguageTags } from '$i18n/runtime';
+	import { availableLanguageTags, type AvailableLanguageTag } from '$i18n/runtime';
+    import * as m from '$i18n/messages';
+
+    const translateLanguage = (language: AvailableLanguageTag) => {
+        switch (language) {
+            case 'en':
+                return m.lang_en();
+            case 'af':
+                return m.lang_af();
+            default:
+                return language;
+        }
+    }
 </script>
 
 <div
@@ -18,7 +30,7 @@
 		>
 			{#each availableLanguageTags as language}
 				<option selected={language === $page.data.language} value={language}>
-					{language}
+					{translateLanguage(language)}
 				</option>
 			{/each}
 		</select>

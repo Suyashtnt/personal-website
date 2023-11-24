@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as m from '$i18n/messages';
-	import '$lib/fonts/Anicons_webfont_kit/anicons-regular.css';
 
 	import LanguagePicker from './languagePicker.svelte';
 </script>
@@ -17,12 +16,12 @@
         </a>
     </h1>
     <div class="links hidden flex-row items-center gap-2 text-center text-2xl sm:flex">
-        <a href="/" >
-            <span class="anicon">M</span>
+        <a href="/" class="flex flex-row items-center">
+            <span class="inline-block i-ic-play-arrow"/>
             {m.header_home()}
         </a>
-        <a href="/posts" >
-            <span class="anicon">M</span>
+        <a href="/posts" class="flex flex-row items-center">
+            <span class="inline-block i-ic-play-arrow"/>
             {m.header_posts()}
         </a>
         <LanguagePicker />
@@ -30,12 +29,6 @@
 </nav>
 
 <style>
-	.anicon {
-		font-family: 'Anicons Regular', sans-serif;
-		font-variation-settings: 'TIME' 100;
-		transition: all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
-	}
-
     .links a {
         --at-apply: "text-light-text decoration-none transition-all dark:text-dark-surface_foreground visited:text-light-text hover:casl dark:visited:text-dark-surface_foreground";
     }

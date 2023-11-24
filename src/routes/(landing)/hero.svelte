@@ -117,7 +117,7 @@
     class="relative bg-light-mantle dark:bg-dark-base_background"
     id="landing"
 >
-    <div class="flex flex-row justify-between gap-6 xl:mx-16">
+    <div class="flex flex-col xl:flex-row justify-between gap-6 xl:mx-16">
         <div class="min-w-max flex flex-[1_1_auto] flex-col items-center justify-between rounded-xl bg-light-base dark:bg-dark-surface_background">
             <atropos-component
                 class="group mt-8 w-64 rounded-xl rounded-xl"

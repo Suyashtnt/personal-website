@@ -3,18 +3,12 @@
 	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	import '../app.css';
+    import '$lib/fonts/Recursive/recursive.css'
 	import Footer from './footer.svelte';
 	import Header from './header.svelte';
 
 	setupViewTransition();
 </script>
-
-<svelte:head>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,MONO@300..800,0..1,0..1&display=swap"
-		rel="stylesheet"
-	/>
-</svelte:head>
 
 <ParaglideSveltekitAdapter>
     <Header />
@@ -33,7 +27,7 @@
 	}
 
 	:global(body) {
-		font-family: 'Recursive', sans-serif;
+		font-family: 'RecVar', sans-serif;
 		font-variation-settings:
 			'wght' 450,
 			'MONO' 0;
@@ -57,7 +51,7 @@
 	}
 
 	:global(code) {
-		font-family: 'Recursive', monospace !important;
+		font-family: 'RecVar', monospace !important;
 		font-variation-settings:
 			'MONO' 1,
 			'wght' 450;
