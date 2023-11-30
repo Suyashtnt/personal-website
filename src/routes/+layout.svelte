@@ -6,8 +6,16 @@
     import '$lib/fonts/Recursive/recursive.css'
 	import Footer from './footer.svelte';
 	import Header from './header.svelte';
+	import { browser } from '$app/environment';
+	import type { LayoutData } from './$types';
 
 	setupViewTransition();
+    export let data: LayoutData
+
+	//Keep the <html> lang attribute in sync with the current language
+	$: if (browser) {
+		document.documentElement.lang = data.language
+	}
 </script>
 
 <ParaglideSveltekitAdapter>

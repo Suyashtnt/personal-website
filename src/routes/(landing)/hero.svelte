@@ -123,10 +123,11 @@
                     class="flex content-center justify-center rounded-2xl from-light-red to-light-rosewater bg-gradient-to-br pa-2 transition-all group-hover:ma-2 dark:from-dark-primary_foreground dark:to-dark-secondary_foreground group-hover:pa-0"
                 >
                     <enhanced:img
-                        alt="a contemporary portrait of me"
+                        alt="A contemporary portrait of me."
                         class="h-auto w-60 rounded-xl object-cover transition-all group-hover:scale-105"
                         loading="eager"
                         src='$lib/pictures/face.png'
+                        sizes="240px 360px"
                     />
                 </div>
             </atropos-component>
@@ -255,10 +256,11 @@
             </ul> -->
 
 			<enhanced:img
-				alt="Picture of my computer"
+				alt="My desktop computer rice."
 				class="block h-full max-h-full max-w-full w-auto rounded-xl object-cover transition-all group-hover:scale-105"
 				loading="eager"
 				src='$lib/pictures/Computer.png'
+                sizes="1280px 720px 480px 360px"
 			/>
 		</section>
 	</div>
