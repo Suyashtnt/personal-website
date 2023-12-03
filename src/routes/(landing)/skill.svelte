@@ -39,9 +39,9 @@
 </script>
 
 <a
-	class="flex items-center gap-4 px-4 text-light-text decoration-none transition-all duration-200 dark:text-dark-overlay_foreground hover:shadow-2xl border-light-lavender/20 dark:border-dark-primary_background/80 border-2 rounded-xl"
-	data-sveltekit-noscroll
-    class:border-solid={isSelected}
+	class="flex items-center gap-4 border-2 border-light-lavender/20 rounded-xl px-4 text-light-text decoration-none transition-all duration-200 dark:border-dark-primary_background/80 dark:text-dark-overlay_foreground hover:shadow-2xl"
+	class:border-solid={isSelected}
+    data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >
 	<img alt={skill.iconAlt} class="h-auto w-8 md:w-10" src={skill.icon} />

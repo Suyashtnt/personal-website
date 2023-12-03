@@ -1,13 +1,13 @@
 <script lang="ts">
-	import ParaglideSveltekitAdapter from '$lib/i18n/ParaglideSveltekitAdapter.svelte';
-	import { setupViewTransition } from 'sveltekit-view-transition';
+	import { browser } from '$app/environment';
+	import '$lib/fonts/Recursive/recursive.css'	import ParaglideSveltekitAdapter from '$lib/i18n/ParaglideSveltekitAdapter.svelte';
+    import { setupViewTransition } from 'sveltekit-view-transition';
+
+	import type { LayoutData } from './$types';
 
 	import '../app.css';
-    import '$lib/fonts/Recursive/recursive.css'
 	import Footer from './footer.svelte';
 	import Header from './header.svelte';
-	import { browser } from '$app/environment';
-	import type { LayoutData } from './$types';
 
 	setupViewTransition();
     export let data: LayoutData

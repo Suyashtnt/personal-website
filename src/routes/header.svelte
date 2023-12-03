@@ -8,7 +8,7 @@
 
 <!-- TODO: mobile -->
 
-<nav class="top-4 z-10 ma-4 flex items-center justify-between border-2 border-light-mantle/80 rounded-xl border-solid bg-light-mantle/20 px-2 backdrop-blur lg:sticky dark:border-dark-subtle/80 dark:bg-dark-surface_background/70 sm:px-8 dark:bg-hero-diagonal-lines-[#acaaff]/20 relative">
+<nav class="relative top-4 z-10 ma-4 flex items-center justify-between border-2 border-light-mantle/80 rounded-xl border-solid bg-light-mantle/20 px-2 backdrop-blur lg:sticky dark:border-dark-subtle/80 dark:bg-dark-surface_background/70 sm:px-8 dark:bg-hero-diagonal-lines-[#acaaff]/20">
     <h1>
         <a
             class="text-light-text decoration-none dark:text-dark-base_foreground visited:text-light-text dark:visited:text-dark-base_foreground"
@@ -19,24 +19,24 @@
     </h1>
 
     <button
-      type="button"
-      class="dropdown__title block sm:hidden h-80% aspect-square bg-dark-surface_background border-none rounded-xl text-4xl flex items-center justify-center"
-      aria-expanded={dropdownOpen}
       aria-controls="sweets-dropdown"
+      aria-expanded={dropdownOpen}
+      class="dropdown__title block aspect-square h-80% flex items-center justify-center rounded-xl border-none bg-dark-surface_background text-4xl sm:hidden"
       on:click={() => dropdownOpen = !dropdownOpen}
+      type="button"
     >
-      <span class="inline-block i-ic-menu" aria-label="Dropdown menu" />
+      <span aria-label="Dropdown menu" class="i-ic-menu inline-block" />
     </button>
 
     <div
-    class="links rotate-x-90 -translate-x-1/2 left-1/2 top-[calc(100%+0.25rem)] origin-top-center opacity-3/10 sm:rotate-x-0 sm:opacity-full absolute flex-row items-center gap-8 text-center sm:gap-2 sm:text-2xl sm:flex sm:relative transition-all invisible sm:visible bg-dark-overlay_background rounded-xl sm:left-0 sm:top-0 sm:translate-x-0 pa-2 text-4xl sm:p-0 sm:pl-4 items-center"
+    class="links opacity-3/10 sm:opacity-full invisible absolute left-1/2 top-[calc(100%+0.25rem)] flex-row origin-top-center rotate-x-90 items-center items-center gap-8 rounded-xl bg-dark-overlay_background pa-2 text-center text-4xl transition-all sm:visible sm:relative sm:left-0 sm:top-0 sm:flex -translate-x-1/2 sm:translate-x-0 sm:rotate-x-0 sm:gap-2 sm:p-0 sm:pl-4 sm:text-2xl"
     >
-        <a href="/" class="flex flex-row items-center">
-            <span class="inline-block i-ic-play-arrow"/>
+        <a class="flex flex-row items-center" href="/">
+            <span class="i-ic-play-arrow inline-block"/>
             {m.header_home()}
         </a>
-        <a href="/posts" class="flex flex-row items-center">
-            <span class="inline-block i-ic-play-arrow"/>
+        <a class="flex flex-row items-center" href="/posts">
+            <span class="i-ic-play-arrow inline-block"/>
             {m.header_posts()}
         </a>
         <LanguagePicker />

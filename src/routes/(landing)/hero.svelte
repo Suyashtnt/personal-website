@@ -114,7 +114,7 @@
     class="relative bg-light-mantle dark:bg-dark-base_background"
     id="landing"
 >
-    <div class="flex flex-col xl:flex-row justify-between gap-6 xl:mx-16">
+    <div class="flex flex-col justify-between gap-6 xl:mx-16 xl:flex-row">
         <div class="min-w-max flex flex-[1_1_auto] flex-col items-center justify-between rounded-xl bg-light-base dark:bg-dark-surface_background">
             <atropos-component
                 class="group mt-8 w-64 rounded-xl rounded-xl"
@@ -126,8 +126,8 @@
                         alt="A contemporary portrait of me."
                         class="h-auto w-60 rounded-xl object-cover transition-all group-hover:scale-105"
                         loading="eager"
-                        src='$lib/pictures/face.png'
                         sizes="240px 360px"
+                        src='$lib/pictures/face.png'
                     />
                 </div>
             </atropos-component>
@@ -259,8 +259,8 @@
 				alt="My desktop computer rice."
 				class="block h-full max-h-full max-w-full w-auto rounded-xl object-cover transition-all group-hover:scale-105"
 				loading="eager"
-				src='$lib/pictures/Computer.png'
-                sizes="1280px 720px 480px 360px"
+				sizes="1280px 720px 480px 360px"
+                src='$lib/pictures/Computer.png'
 			/>
 		</section>
 	</div>

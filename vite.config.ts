@@ -1,10 +1,10 @@
+import { paraglide } from '@inlang/paraglide-js-adapter-vite';
+import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 import unoCSS from '@unocss/svelte-scoped/vite';
 import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
 import { defineConfig } from 'vite';
-import { enhancedImages } from '@sveltejs/enhanced-img';
-import { paraglide } from "@inlang/paraglide-js-adapter-vite"
 
 const targets = browserslistToTargets(
 	browserslist('defaults, not IE 11, not IE_Mob 11, not OperaMini all')
@@ -28,9 +28,9 @@ export default defineConfig({
 		unoCSS(),
 		enhancedImages(),
 		paraglide({
-            project: './project.inlang',
-            outdir: './src/paraglide',
+			outdir: './src/paraglide',
+			project: './project.inlang'
 		}),
 		sveltekit()
-	],
+	]
 });

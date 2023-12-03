@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
-	import { availableLanguageTags, type AvailableLanguageTag } from '$i18n/runtime';
-    import * as m from '$i18n/messages';
+	import * as m from '$i18n/messages';
+    import { type AvailableLanguageTag, availableLanguageTags } from '$i18n/runtime';
 
     const translateLanguage = (language: AvailableLanguageTag) => {
         switch (language) {
@@ -23,8 +23,8 @@
 	    <label class="i-ic-language inline-block h-8 w-8" for="lang-picker" />
 		<select
 			class="grow border-none bg-transparent text-xl font-inherit text-light-text dark:text-dark-surface_foreground"
-			name="language"
-            id="lang-picker"
+			id="lang-picker"
+            name="language"
 			on:change={(e) => {
 				e.currentTarget.form?.requestSubmit();
 			}}

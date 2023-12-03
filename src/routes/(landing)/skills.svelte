@@ -10,7 +10,7 @@
 <section class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface_background md:px-8" id="about">
 	<h2 class="w-min text-5xl text-light-lavender dark:text-dark-primary_foreground">Skills</h2>
 
-	<div class="md:grid flex flex-col grid-cols-2 grid-rows-1 gap-4 overflow-hidden">
+	<div class="grid-cols-2 grid-rows-1 flex flex-col gap-4 overflow-hidden md:grid">
 		<ul
 			class="my-0 flex flex-col list-none gap-4 px-2 lg:px-0"
 		>
@@ -19,7 +19,7 @@
 					class="rounded-xl bg-light-base dark:bg-dark-overlay_background"
 				>
 		            {#key data.selectedSkill}
-					    <Skill {skill} isSelected={skill.id === data.selectedSkill.id} />
+					    <Skill isSelected={skill.id === data.selectedSkill.id} {skill} />
 		            {/key}
 				</li>
 			{/each}
