@@ -17,13 +17,14 @@
 </script>
 
 <div
-	class="flex-inline flex-row items-center rounded-lg bg-light-base/80 pa-2 text-light-text dark:bg-dark-surface_background/80 dark:text-dark-surface_foreground"
+	class="flex-inline flex-row items-center rounded-lg bg-light-base/80 pa-2 pr-0 text-light-text dark:bg-dark-surface_background/20 dark:text-dark-overlay_foreground"
 >
-	<div class="i-ic-language inline-block h-8 w-8" />
 	<form action="/" class="contents" method="POST" use:enhance>
+	    <label class="i-ic-language inline-block h-8 w-8" for="lang-picker" />
 		<select
 			class="grow border-none bg-transparent text-xl font-inherit text-light-text dark:text-dark-surface_foreground"
 			name="language"
+            id="lang-picker"
 			on:change={(e) => {
 				e.currentTarget.form?.requestSubmit();
 			}}
