@@ -1,21 +1,28 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import '$lib/fonts/Recursive/recursive.css';
     import ParaglideSveltekitAdapter from '$lib/i18n/ParaglideSveltekitAdapter.svelte';
     import { setupViewTransition } from 'sveltekit-view-transition';
 
-    import Footer from './footer.svelte';
+	import type { LayoutData } from './$types';
+
+	import '../app.css';
+	import Footer from './footer.svelte';
 	import Header from './header.svelte';
 
 	setupViewTransition();
-</script>
+    export let data: LayoutData
 
-<svelte:head>
-    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,MONO@300..800,0..1,0..1&display=swap" rel="stylesheet">
-</svelte:head>
+	//Keep the <html> lang attribute in sync with the current language
+	$: if (browser) {
+		document.documentElement.lang = data.language
+	}
+</script>
 
 <ParaglideSveltekitAdapter>
     <Header />
     <main
-        class="bg-light-base text-light-text dark:bg-dark-base dark:text-dark-text"
+        class="bg-light-base text-light-text dark:bg-dark-base_background dark:text-dark-base_foreground"
     >
         <slot />
     </main>
@@ -24,51 +31,44 @@
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
 <style>
-    :global(a) {
-        --at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-blue dark:visited:text-dark-lavender';
-    }
+	:global(a) {
+		--at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-secondary_foreground dark:visited:text-dark-primary_foreground';
+	}
 
-    :global(body) {
-        font-family: 'Recursive', sans-serif;
-        font-variation-settings:
-            "wght" 450,
-            "MONO" 0;
+	:global(body) {
+		font-family: 'RecVar', sans-serif;
+		font-variation-settings:
+			'wght' 450,
+			'MONO' 0;
 
-        min-height: 100vh;
+		min-height: 100vh;
 
-        &:has(#dropdown-button[data-active='true']) {
-            overflow: hidden;
-        }
-    }
+		&:has(#dropdown-button[data-active='true']) {
+			overflow: hidden;
+		}
+	}
 
-    :global(
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6
-    ) {
-        transition: all 150ms ease-in-out;
-        font-variation-settings: "CASL" 0;
-        font-weight: 500;
+	:global(h1, h2, h3, h4, h5, h6) {
+		transition: all 150ms ease-in-out;
+		font-variation-settings: 'CASL' 0;
+		font-weight: 500;
 
-        &:hover {
-            font-variation-settings: "CASL" 1;
-            font-weight: 800;
-        }
-    }
+		&:hover {
+			font-variation-settings: 'CASL' 1;
+			font-weight: 800;
+		}
+	}
 
-    :global(code) {
-        font-family: 'Recursive', monospace !important;
-        font-variation-settings:
-            "MONO" 1,
-            "wght" 450;
-    }
+	:global(code) {
+		font-family: 'RecVar', monospace !important;
+		font-variation-settings:
+			'MONO' 1,
+			'wght' 450;
+	}
 
     :global(html, body) {
         scroll-behavior: smooth;
-        --at-apply: 'bg-light-base dark:bg-dark-base';
+        --at-apply: 'bg-light-base dark:bg-dark-base_background dark:text-dark-base_foreground';
     }
 
 	:root {

@@ -1,0 +1,17 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "header_about": "About",
+    "header_home": "Home",
+    "header_landing": "Landing",
+    "header_posts": "Posts",
+    "lang_en": "English",
+    "lang_af": "Afrikaans",
+    "hello": "Hi, I'm",
+    "hero_gamer": "Gamer",
+    "hero_programmer": "Programmer",
+    "hero_student": "Student",
+    "post_card_published": "Published {published} | Updated {updated}",
+    "post_card_by": "By {author}",
+    "post_card_draft": "DRAFT",
+    "landingpagedesc": "Hi, I'm TNTMan1671."
+}

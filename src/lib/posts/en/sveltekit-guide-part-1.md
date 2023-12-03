@@ -1,9 +1,9 @@
 ---
-title: "The Sveltekit tutorial: Part 1 | What, why, and how?"
-description: "Welcome to your local wobblers guide to Sveltekit. This is an introduction to sveltekit and setting up the project to get stuff done™️."
-author: "Suyashtnt"
-date: "2023-09-24 19:56"
-updated: "2023-09-25 12:38"
+title: 'The Sveltekit tutorial: Part 1 | What, why, and how?'
+description: 'Welcome to your local wobblers guide to Sveltekit. This is an introduction to sveltekit and setting up the project to get stuff done™️.'
+author: 'Suyashtnt'
+date: '2023-09-24 19:56'
+updated: '2023-09-25 12:38'
 published: true
 ---
 
@@ -37,7 +37,8 @@ you don't want to do yourself, but isn't related to the UI.
 
 ## Why Sveltekit
 
-Now you're probably saying*:
+Now you're probably saying\*:
+
 > That's cool and all, but why should I use it when I can just use HTML?
 
 <Note>
@@ -207,6 +208,7 @@ direnv allow
 ```
 
 Now, we can finally start working on it!
+
 </details>
 
 ### Installing dependencies
@@ -258,107 +260,106 @@ commented it out. I'll update the post when it works.
 Paste in the following:
 
 ```js
-import js from "@eslint/js";
-import typescriptPlugin from "@typescript-eslint/eslint-plugin";
-import typescriptParser from "@typescript-eslint/parser";
-import unocssPlugin from "@unocss/eslint-plugin";
-import prettier from "eslint-config-prettier";
-import perfectionistNatural from "eslint-plugin-perfectionist/configs/recommended-natural";
-import prettierPlugin from "eslint-plugin-prettier";
-import sveltePlugin from "eslint-plugin-svelte";
-import svelteParser from "svelte-eslint-parser";
+import js from '@eslint/js';
+import typescriptPlugin from '@typescript-eslint/eslint-plugin';
+import typescriptParser from '@typescript-eslint/parser';
+import unocssPlugin from '@unocss/eslint-plugin';
+import prettier from 'eslint-config-prettier';
+import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
+import prettierPlugin from 'eslint-plugin-prettier';
+import sveltePlugin from 'eslint-plugin-svelte';
+import svelteParser from 'svelte-eslint-parser';
 
 const prettierConfig = {
-    overrides: [
-        {
-            files: "*.svelte",
-            options: {
-                parser: "svelte",
-            },
-        },
-    ],
-    plugins: ["prettier-plugin-svelte"],
-    printWidth: 100,
-    singleQuote: true,
-    trailingComma: "none",
-    useTabs: true,
+	overrides: [
+		{
+			files: '*.svelte',
+			options: {
+				parser: 'svelte'
+			}
+		}
+	],
+	plugins: ['prettier-plugin-svelte'],
+	printWidth: 100,
+	singleQuote: true,
+	trailingComma: 'none',
+	useTabs: true
 };
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const defaultRules = {
-    ...typescriptPlugin.configs.recommended.rules,
-    "arrow-body-style": "off",
-    "no-undef": "off",
-    "prefer-arrow-callback": "off",
+	...typescriptPlugin.configs.recommended.rules,
+	'arrow-body-style': 'off',
+	'no-undef': 'off',
+	'prefer-arrow-callback': 'off'
 };
 
 /**
  * @type {import("eslint").Linter.FlatConfig[]}
  */
 export default [
-    {
-        ignores: [".svelte-kit/**/*"],
-    },
-    js.configs.recommended,
-    {
-        plugins: {
-            "@unocss": unocssPlugin,
-        },
-        rules: unocssPlugin.configs.recommended.rules,
-    },
-    {
-        files: ["**/*.js", "**/*.cjs"],
-    },
-    {
-        files: ["**/*.ts"],
-        languageOptions: {
-            parser: typescriptParser,
-            parserOptions: {
-                ecmaVersion: 2020,
-                extraFileExtensions: [".svelte"],
-                project: "./tsconfig.json",
-                sourceType: "module",
-            },
-        },
-        plugins: {
-            "@typescript-eslint": typescriptPlugin,
-            prettier: prettierPlugin,
-        },
-        rules: {
-            ...defaultRules,
-            "prettier/prettier": [
-                "error",
-                prettierConfig,
-                {
-                    usePrettierrc: false,
-                },
-            ],
-        }
-    },
-    {
-        files: ["**/*.svelte"],
-        languageOptions: {
-            parser: svelteParser,
-            parserOptions: {
-                parser: typescriptParser,
-            },
-        },
-        plugins: {
-            "@typescript-eslint": typescriptPlugin,
-            // prettier: prettierPlugin,
-            svelte: sveltePlugin,
-        },
-        processor: "svelte/svelte",
-        rules: {
-            ...defaultRules,
-            ...sveltePlugin.configs.recommended.rules,
-            // ...sveltePlugin.configs.prettier.rules,
-        },
-    },
-    perfectionistNatural,
-    prettier,
+	{
+		ignores: ['.svelte-kit/**/*']
+	},
+	js.configs.recommended,
+	{
+		plugins: {
+			'@unocss': unocssPlugin
+		},
+		rules: unocssPlugin.configs.recommended.rules
+	},
+	{
+		files: ['**/*.js', '**/*.cjs']
+	},
+	{
+		files: ['**/*.ts'],
+		languageOptions: {
+			parser: typescriptParser,
+			parserOptions: {
+				ecmaVersion: 2020,
+				extraFileExtensions: ['.svelte'],
+				project: './tsconfig.json',
+				sourceType: 'module'
+			}
+		},
+		plugins: {
+			'@typescript-eslint': typescriptPlugin,
+			prettier: prettierPlugin
+		},
+		rules: {
+			...defaultRules,
+			'prettier/prettier': [
+				'error',
+				prettierConfig,
+				{
+					usePrettierrc: false
+				}
+			]
+		}
+	},
+	{
+		files: ['**/*.svelte'],
+		languageOptions: {
+			parser: svelteParser,
+			parserOptions: {
+				parser: typescriptParser
+			}
+		},
+		plugins: {
+			'@typescript-eslint': typescriptPlugin,
+			// prettier: prettierPlugin,
+			svelte: sveltePlugin
+		},
+		processor: 'svelte/svelte',
+		rules: {
+			...defaultRules,
+			...sveltePlugin.configs.recommended.rules
+			// ...sveltePlugin.configs.prettier.rules,
+		}
+	},
+	perfectionistNatural,
+	prettier
 ];
-
 ```
 
 You may be viewing this and thinking:
@@ -429,30 +430,27 @@ import { browserslistToTargets } from 'lightningcss';
 import { defineConfig } from 'vitest/config';
 
 const targets = browserslistToTargets(
-        browserslist('defaults, not IE 11, not IE_Mob 11, not OperaMini all')
+	browserslist('defaults, not IE 11, not IE_Mob 11, not OperaMini all')
 );
 
 export default defineConfig({
-        build: {
-                cssMinify: 'lightningcss'
-        },
-        css: {
-                devSourcemap: true,
-                lightningcss: {
-                        drafts: {
-                                nesting: true
-                        },
-                        targets
-                },
-                transformer: 'lightningcss'
-        },
-        plugins: [
-            unoCSS(),
-            sveltekit(),
-        ],
-        test: {
-                include: ['src/**/*.{test,spec}.{js,ts}']
-        }
+	build: {
+		cssMinify: 'lightningcss'
+	},
+	css: {
+		devSourcemap: true,
+		lightningcss: {
+			drafts: {
+				nesting: true
+			},
+			targets
+		},
+		transformer: 'lightningcss'
+	},
+	plugins: [unoCSS(), sveltekit()],
+	test: {
+		include: ['src/**/*.{test,spec}.{js,ts}']
+	}
 });
 ```
 
@@ -488,25 +486,25 @@ options for everything else.
 I'm also going to edit the sveltekit config to support our custom eslint config better.
 
 ```js
-import {preprocessMeltUI} from "@melt-ui/pp";
+import { preprocessMeltUI } from '@melt-ui/pp';
 import adapter from '@sveltejs/adapter-auto';
-import {vitePreprocess} from '@sveltejs/kit/vite';
-import sequence from "svelte-sequential-preprocessor";
+import { vitePreprocess } from '@sveltejs/kit/vite';
+import sequence from 'svelte-sequential-preprocessor';
 
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
-  kit: {
-    adapter: adapter(),
-    typescript: {
-        config(config) {
-            config.include.push("../vite.config.ts");
-            config.include.push("../eslint.config.js");
-            config.include.push("../playwright.config.ts");
-            return config;
-        },
-    },
-  },
-  preprocess: sequence([vitePreprocess(), preprocessMeltUI()])
+	kit: {
+		adapter: adapter(),
+		typescript: {
+			config(config) {
+				config.include.push('../vite.config.ts');
+				config.include.push('../eslint.config.js');
+				config.include.push('../playwright.config.ts');
+				return config;
+			}
+		}
+	},
+	preprocess: sequence([vitePreprocess(), preprocessMeltUI()])
 };
 export default config;
 ```

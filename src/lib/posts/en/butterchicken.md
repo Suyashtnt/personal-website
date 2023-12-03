@@ -1,18 +1,17 @@
 ---
-title: "Butter Chicken"
-description: "The incredible Northern-Indian dish. Read in Afrikaans for the true experience™️"
-author: "Suyashtnt"
-date: "2023-10-29 18:00"
-updated: "2023-10-29 18:00"
+title: 'Butter Chicken'
+description: 'The incredible Northern-Indian dish. Read in Afrikaans for the true experience™️'
+author: 'Suyashtnt'
+date: '2023-10-29 18:00'
+updated: '2023-10-29 18:00'
 published: true
 ---
 
 <script lang="ts">
     import Note from "$lib/components/note.svelte"
-    import Image from '@zerodevx/svelte-img';
 
-    import ChickenMakhani from '$lib/pictures/posts/butter-chicken/Chicken_makhani.jpg?as=optimize'
-    import KundanLalGujral from '$lib/pictures/posts/butter-chicken/Kundan-Lal-Gujral.jpg?as=optimize'
+    import ChickenMakhani from '$lib/pictures/posts/butter-chicken/Chicken_makhani.jpg?enhanced'
+    import KundanLalGujral from '$lib/pictures/posts/butter-chicken/Kundan-Lal-Gujral.jpg?enhanced'
 </script>
 
 [Jump to recipe](#recipe)
@@ -39,8 +38,8 @@ I'm moving it here because I can.
         href="https://commons.wikimedia.org/wiki/File:Chicken_makhani.jpg"
         class="col-span-1 md:col-span-2"
     >
-        <figure class="bg-light-surface0 dark:bg-dark-surface0 pa-4 rounded-xl">
-            <Image
+        <figure class="bg-light-surface0 dark:bg-dark-overlay_background pa-4 rounded-xl">
+            <enhanced:img
                 src={ChickenMakhani}
                 alt="Chicken Makhani, murgh makhani, or Butter Chicken"
                 class="rounded-md transition w-full h-auto"
@@ -53,6 +52,7 @@ I'm moving it here because I can.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## History
@@ -81,8 +81,8 @@ I'm moving it here because I can.
         href="https://commons.wikimedia.org/wiki/File:Kundan-Lal-Gujral.jpg"
         class="col-span-1 md:col-span-2"
     >
-        <figure class="pa-4 rounded-xl bg-light-surface0 dark:bg-dark-surface0">
-            <Image
+        <figure class="pa-4 rounded-xl bg-light-surface0 dark:bg-dark-overlay_background">
+            <enhanced:img
                 src={KundanLalGujral}
                 alt="Portrait of Kundan Lal Gujral"
                 class="rounded-md transition w-full h-auto"
@@ -95,6 +95,7 @@ I'm moving it here because I can.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## Recipe

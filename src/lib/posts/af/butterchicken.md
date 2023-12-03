@@ -1,18 +1,17 @@
 ---
-title: "Botterhoender"
-description: "Die ongelooflike Noord-Indiese gereg."
-author: "Suyashtnt"
-date: "2023-10-29 18:00"
-updated: "2023-10-29 18:00"
+title: 'Botterhoender'
+description: 'Die ongelooflike Noord-Indiese gereg.'
+author: 'Suyashtnt'
+date: '2023-10-29 18:00'
+updated: '2023-10-29 18:00'
 published: true
 ---
 
 <script lang="ts">
     import Note from "$lib/components/note.svelte"
-    import Image from '@zerodevx/svelte-img';
 
-    import ChickenMakhani from '$lib/pictures/posts/butter-chicken/Chicken_makhani.jpg?as=optimize'
-    import KundanLalGujral from '$lib/pictures/posts/butter-chicken/Kundan-Lal-Gujral.jpg?as=optimize'
+    import ChickenMakhani from '$lib/pictures/posts/butter-chicken/Chicken_makhani.jpg?enhanced'
+    import KundanLalGujral from '$lib/pictures/posts/butter-chicken/Kundan-Lal-Gujral.jpg?enhanced'
 </script>
 
 [Spring na resep](#resep)
@@ -40,7 +39,7 @@ Ek skuif dit hierheen omdat ek kan.
         class="col-span-1 md:col-span-2"
     >
         <figure class="bg-light-surface0 dark:bg-dark-surface0 pa-4 rounded-xl">
-            <Image
+            <enhanced:img
                 src={ChickenMakhani}
                 alt="Chicken Makhani, murgh makhani, of Butter Chicken"
                 class="rounded-md transition w-full h-auto"
@@ -53,6 +52,7 @@ Ek skuif dit hierheen omdat ek kan.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## Geskiedenis
@@ -82,7 +82,7 @@ Ek skuif dit hierheen omdat ek kan.
         class="col-span-1 md:col-span-2"
     >
         <figure class="pa-4 rounded-xl bg-light-surface0 dark:bg-dark-surface0">
-            <Image
+            <enhanced:img
                 src={KundanLalGujral}
                 alt="Portret van Kundan Lal Gujral"
                 class="rounded-md transition w-full h-auto"
@@ -95,6 +95,7 @@ Ek skuif dit hierheen omdat ek kan.
             </figcaption>
         </figure>
     </a>
+
 </div>
 
 ## Resep
@@ -103,19 +104,19 @@ _**Lewer 4**_
 
 ### Bestanddele
 
-- 5-6 Hoenderfilette
-- 250ml vars room
-- 2 Tamaties
-- 125g van botter
-- Suhana Butter chicken spice sakkie
-- ’n Handvol koljander (vir garnering)
+-   5-6 Hoenderfilette
+-   250ml vars room
+-   2 Tamaties
+-   125g van botter
+-   Suhana Butter chicken spice sakkie
+-   ’n Handvol koljander (vir garnering)
 
 #### Marineer bestanddele
 
-- 1 tl gemmerknoffel
-- Sout na smaak (Besluit jou eie hoeveelheid)
-- 1 tl Hoender Spice
-- 1 tl BBQ speserye
+-   1 tl gemmerknoffel
+-   Sout na smaak (Besluit jou eie hoeveelheid)
+-   1 tl Hoender Spice
+-   1 tl BBQ speserye
 
 ### Metode
 

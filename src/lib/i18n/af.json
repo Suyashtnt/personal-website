@@ -1,0 +1,17 @@
+{
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "header_about": "Oor",
+    "header_home": "Tuis",
+    "header_landing": "Landing",
+    "header_posts": "Plasings",
+    "lang_en": "Engels",
+    "lang_af": "Afrikaans",
+    "hello": "Hallo, ek is",
+    "hero_gamer": "Speler",
+    "hero_programmer": "Programmeerder",
+    "hero_student": "Student",
+    "post_card_published": "Gepubliseer {published} | Opgedateer {updated}",
+    "post_card_by": "Deur {author}",
+    "post_card_draft": "KONSEP",
+    "landingpagedesc": "Hallo, ek is TNTMan1671,"
+}
