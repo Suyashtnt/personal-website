@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import '$lib/fonts/Recursive/recursive.css'	import ParaglideSveltekitAdapter from '$lib/i18n/ParaglideSveltekitAdapter.svelte';
+	import '$lib/fonts/Recursive/recursive.css';
+    import ParaglideSveltekitAdapter from '$lib/i18n/ParaglideSveltekitAdapter.svelte';
     import { setupViewTransition } from 'sveltekit-view-transition';
 
 	import type { LayoutData } from './$types';
