@@ -8,7 +8,7 @@
 
 	import { easeEmphasized } from 'm3-svelte';
 
-	const names = ['TNTMan\\1671', 'Suyashtnt', 'TNT \\Man \\Inc'];
+	const names = ['TNTMan\\1671', 'Suyashtnt', 'TNT Man Inc'];
 
 	const updateCasl = (selector: string) => {
 		document.querySelectorAll(selector).forEach((el) => {
@@ -134,14 +134,14 @@
 
 			<div class="mx-4 mb-8">
 				<h1
-					class="mx-0 px-2 text-center text-6xl leading-18 md:mb-0 md:px-0 md:text-left md:text-7xl"
+					class="mx-0 text-center text-6xl leading-18 md:mb-0 md:px-0 md:text-left md:text-7xl"
 				>
 					{m.hello()}
 					<br />
 					<span class="names">
 						{#each names as name, i}
 							<span
-								class="name-{i} inline-block dark:from-dark-primary_foreground dark:to-dark-secondary_foreground from-light-lavender to-light-blue bg-gradient-to-br bg-clip-text text-transparent"
+								class="name-{i} inline-block dark:from-dark-primary_foreground dark:to-dark-secondary_foreground from-light-lavender to-light-blue bg-gradient-to-br bg-clip-text text-transparent break-word"
 								class:opacity-0={i !== 0}
 								data-font-casl={0}
 							>

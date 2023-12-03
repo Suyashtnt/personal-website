@@ -1,19 +1,13 @@
 <script lang="ts">
-	import type { TransitionConfig } from 'svelte/transition';
-
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	export let send: (node: Element, args: { key: string }) => () => TransitionConfig;
-	export let receive: (node: Element, args: { key: string }) => () => TransitionConfig;
 
 	const { html, selectedSkill } = data;
 </script>
 
 <article
-	class="grid-area-[1/2/span_1/span_1] mx-2 box-border flex flex-col gap-4 rounded-xl bg-light-mantle p-4 dark:bg-dark-overlay_background"
-	in:receive={{ key: `skill-${selectedSkill.id}` }}
-	out:send={{ key: `leave-skill-${selectedSkill.id}` }}
+	class="mx-2 box-border flex flex-col gap-4 rounded-xl bg-light-mantle p-4 dark:bg-dark-overlay_background"
 >
 	<!-- title -->
 	<header class="flex items-center gap-4">
