@@ -18,7 +18,9 @@
 				<li
 					class="rounded-xl bg-light-base dark:bg-dark-overlay_background"
 				>
-					<Skill {skill} />
+		            {#key data.selectedSkill}
+					    <Skill {skill} isSelected={skill.id === data.selectedSkill.id} />
+		            {/key}
 				</li>
 			{/each}
 		</ul>

@@ -11,7 +11,7 @@
 </script>
 
 <footer
-	class="flex flex-col items-center justify-between rounded-t-2xl bg-light-mantle px-2 text-light-text lg:mx-8 md:flex-row dark:bg-dark-surface_background lg:px-16 dark:text-dark-surface_foreground"
+	class="flex flex-col items-center justify-between rounded-t-2xl bg-light-mantle px-2 text-light-text lg:mx-8 lg:mb-8 md:flex-row dark:bg-dark-surface_background lg:px-16 dark:text-dark-surface_foreground"
 >
     <p class="my-4 text-2xl font-semibold">TNTMan1671</p>
     <p>{footerText}</p>

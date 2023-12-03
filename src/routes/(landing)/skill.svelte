@@ -35,11 +35,13 @@
 
 <script lang="ts">
 	export let skill: ISkill;
+    export let isSelected = false;
 </script>
 
 <a
-	class="flex items-center gap-4 px-4 text-light-text decoration-none transition-all duration-200 dark:text-dark-overlay_foreground hover:shadow-2xl"
+	class="flex items-center gap-4 px-4 text-light-text decoration-none transition-all duration-200 dark:text-dark-overlay_foreground hover:shadow-2xl border-light-lavender/20 dark:border-dark-primary_background/80 border-2 rounded-xl"
 	data-sveltekit-noscroll
+    class:border-solid={isSelected}
 	href={`/?skill=${skill.id}`}
 >
 	<img alt={skill.iconAlt} class="h-auto w-8 md:w-10" src={skill.icon} />

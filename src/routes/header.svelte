@@ -45,7 +45,7 @@
 
 <style>
     .links a {
-        --at-apply: "text-light-text decoration-none dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground";
+        --at-apply: "decoration-none text-dark-surface_foreground visited:text-dark-surface_foreground";
     }
 
     nav {
