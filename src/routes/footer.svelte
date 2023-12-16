@@ -2,10 +2,10 @@
     import * as m from '$i18n/messages';
 
 	const potentialFooterTexts = [
-		'Do we really need a footer?',
-		'Hello welcome to the bottom of the page!',
-		'Why do websites even have footers anymore?',
-		'Footer disclaimer: We ran out of witty things to say.'
+		m.footer_txt_1(),
+        m.footer_txt_2(),
+        m.footer_txt_3(),
+        m.footer_txt_4()
 	] as const;
 
 	const footerText =
