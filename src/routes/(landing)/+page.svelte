@@ -20,4 +20,4 @@
 
 <h2 class="ml-4 w-min text-5xl text-5xl text-light-lavender lg:ml-8 dark:text-dark-primary_foreground">Posts</h2>
 
-<Posts posts={data.posts} />
+<Posts lang={data.language} posts={data.posts} />
