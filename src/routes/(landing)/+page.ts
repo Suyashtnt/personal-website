@@ -8,7 +8,7 @@ export const load: PageLoad = ({ data, url }) => {
 	const selectedSkill = data.skills.find(
 		(skill) => skill.id.toLowerCase() === wantedSkill.toLowerCase()
 	);
-	if (!selectedSkill) throw error(404, 'Skill not found');
+	if (!selectedSkill) error(404, 'Skill not found');
 
 	const html = marked(selectedSkill.experience, {
 		breaks: true,

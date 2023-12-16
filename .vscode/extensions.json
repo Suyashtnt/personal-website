@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "samverschueren.linter-xo",
     "svelte.svelte-vscode",
     "inlang.vs-code-extension"
   ]

@@ -22,15 +22,15 @@
 					class:after-bg-light-yellow={level === 3}
 					class:after-dark-bg-dark-green={level === 4}
 					class:after-dark-bg-dark-lavender={level === 6}
-					class:after-dark-bg-dark-primary_foreground={level === 2}
-					class:after-dark-bg-dark-red={level === 1}
+					class:after-dark-bg-dark-primary_foreground={level === 1}
+					class:after-dark-bg-dark-red={level === 2}
 					class:after-dark-bg-dark-teal={level === 5}
 					class:after-dark-bg-dark-yellow={level === 3}
 					class:dark-text-dark-green={level === 4}
 					class:dark-text-dark-lavender={level === 6}
 					class:dark-text-dark-orange={level === 3}
-					class:dark-text-dark-primary_foreground={level === 2}
-					class:dark-text-dark-red={level === 1}
+					class:dark-text-dark-primary_foreground={level === 1}
+					class:dark-text-dark-red={level === 2}
 					class:dark-text-dark-teal={level === 5}
 					class:text-light-green={level === 4}
 					class:text-light-lavender={level === 6}
@@ -41,8 +41,8 @@
 					class:visited-dark-text-dark-green={level === 4}
 					class:visited-dark-text-dark-lavender={level === 6}
 					class:visited-dark-text-dark-orange={level === 3}
-					class:visited-dark-text-dark-primary_foreground={level === 2}
-					class:visited-dark-text-dark-red={level === 1}
+					class:visited-dark-text-dark-primary_foreground={level === 1}
+					class:visited-dark-text-dark-red={level === 2}
 					class:visited-dark-text-dark-teal={level === 5}
 					class:visited-text-light-green={level === 4}
 					class:visited-text-light-lavender={level === 6}

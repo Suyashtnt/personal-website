@@ -10,9 +10,9 @@
 <section class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface_background md:px-8" id="about">
 	<h2 class="w-min text-5xl text-light-lavender dark:text-dark-primary_foreground">Skills</h2>
 
-	<div class="grid-cols-2 grid-rows-1 flex flex-col gap-4 overflow-hidden md:grid">
+	<div class="flex flex-col gap-4 overflow-hidden md:flex-row">
 		<ul
-			class="my-0 flex flex-col list-none gap-4 px-2 lg:px-0"
+			class="my-0 flex flex-basis-1/2 flex-col list-none gap-4 px-2 lg:px-0"
 		>
 			{#each data.skills as skill (skill.id)}
 				<li

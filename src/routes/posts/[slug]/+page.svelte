@@ -85,7 +85,7 @@
 			/>
 
 			<h1
-				class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl font-light text-transparent dark:from-dark-primary_foreground dark:via-dark-primary_foreground dark:to-dark-secondary_foreground xl:text-5xl"
+				class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl text-transparent font-light dark:from-dark-primary_foreground dark:via-dark-primary_foreground dark:to-dark-secondary_foreground xl:text-5xl"
 				use:transition={`post-title-${data.slug}`}
 			>
 				{data.frontmatter.title}
@@ -154,12 +154,12 @@
 	}
 
 	.article-content {
-		& h1,
-		& h2,
-		& h3,
-		& h4,
-		& h5,
-		& h6 {
+		& :global(h1),
+		& :global(h2),
+		& :global(h3),
+		& :global(h4),
+		& :global(h5),
+		& :global(h6) {
 			--at-apply: 'scroll-mt-8';
 			--at-apply: 'text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground';
 
@@ -180,41 +180,40 @@
 			}
 		}
 
-		& h2 > a {
-			--at-apply: '!text-light-red !dark:text-dark-red';
+		& :global(h2 > a) {
+			--at-apply: '!text-light-red !dark:text-dark-primary_foreground';
 		}
 
-		& h3 > a {
-			--at-apply: '!text-light-peach !dark:text-dark-primary_foreground';
+		& :global(h3 > a) {
+			--at-apply: '!text-light-peach !dark:text-dark-red';
 		}
 
-		& h4 > a {
+		& :global(h4 > a) {
 			--at-apply: '!text-light-yellow !dark:text-dark-orange';
 		}
 
-		& h5 > a {
+		& :global(h5 > a) {
 			--at-apply: '!text-light-green !dark:text-dark-green text-xl';
 		}
 
-		& h6 > a {
+		& :global(h6 > a) {
 			--at-apply: '!text-light-sapphire !dark:text-dark-teal text-xl';
 		}
 
-		& a {
+		& :global(a) {
 			--at-apply: 'text-light-blue dark:text-dark-blue hover:text-light-lavender dark:hover:text-dark-lavender visited:text-light-lavender dark:visited:text-dark-lavender';
 		}
 
-		& pre {
+		& :global(pre) {
 			--at-apply: 'rounded-xl pa-2 max-w-[calc(100vw-4rem)] overflow-x-auto';
 		}
-		& code {
+		& :global(code) {
 			--at-apply: 'rounded-xl';
 		}
 	}
 
 	@media (prefers-color-scheme: dark) {
-		:global(.shiki),
-		:global(.shiki span) {
+		:global(.shiki, .shiki span) {
 			color: var(--shiki-dark) !important;
 			background-color: var(--shiki-dark-bg) !important;
 			/* Optional, if you also want font styles */

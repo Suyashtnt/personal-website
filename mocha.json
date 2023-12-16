@@ -1,9 +1,10 @@
 {
     "$schema": "vscode://schemas/color-theme",
-    "name": "Kleur Dark",
+    "name": "kleur-dark",
     "type": "dark",
     "colors": {
         "foreground": "#dadbf8",
+        "fg": "#dadbf8",
         "disabledForeground": "#60607a",
         "widget.shadow": "#060516",
         "selection.background": "#acaaff",
@@ -114,6 +115,7 @@
         "tab.unfocusedInactiveModifiedBorder": "#acaaff",
         "editorPane.background": "#060516",
         "editor.background": "#060516",
+        "bg": "#060516",
         "editor.foreground": "#dadbf8",
         "editorLineNumber.foreground": "#2b2b41",
         "editorLineNumber.activeForeground": "#60607a",

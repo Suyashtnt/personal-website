@@ -23,7 +23,7 @@ export const load: PageLoad = async ({ params, parent }) => {
 	const cannotFindPost = !post?.title;
 
 	if (cannotFindPost) {
-		throw error(404, `Cannot find post with slug '${params.slug}'`);
+		error(404, `Cannot find post with slug '${params.slug}'`);
 	}
 
 	return {

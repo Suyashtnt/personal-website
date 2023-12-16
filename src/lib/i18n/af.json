@@ -13,5 +13,15 @@
     "post_card_published": "Gepubliseer {published} | Opgedateer {updated}",
     "post_card_by": "Deur {author}",
     "post_card_draft": "KONSEP",
-    "landingpagedesc": "Hallo, ek is TNTMan1671,"
+    "landingpagedesc": "Hallo, ek is TNTMan1671,",
+    "skill_beginner": "Beginner",
+    "skill_skilled": "Vaardig",
+    "skill_intermediate": "Tussentyds",
+    "skill_backend": "Agterkant",
+    "skill_frontend": "Voorkant",
+    "skill_framework": "Raamwerk",
+    "skill_language": "Programmeertaal",
+    "skill_tool": "Gereedskap",
+    "skill_other": "Ander",
+    "footer_copyright": "Kopiereg"
 }

@@ -27,13 +27,13 @@ export const actions = {
 			'en';
 
 		if (isElementOfAvailableLanguageTags(newLanguage)) {
-			cookies.set('language', newLanguage);
+			cookies.set('language', newLanguage, { path: '/' });
 
 			return {
 				language: newLanguage
 			};
 		} else {
-			throw error(
+			error(
 				400,
 				`Invalid language. Valid languages are: ${availableLanguageTags.join(', ')}`
 			);

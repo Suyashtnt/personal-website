@@ -1,13 +1,47 @@
 <script lang="ts">
+	import * as m from '$i18n/messages';
+
 	import type { PageData } from './$types';
+    import type { ISkill } from './skill.svelte';
 
 	export let data: PageData;
 
 	const { html, selectedSkill } = data;
+    $: proficiency = getProficiency(data.selectedSkill.proficiency)
+    $: type = getType(data.selectedSkill.type)
+
+    const getProficiency = (level: ISkill['proficiency']) => {
+        switch (level) {
+            case 'Beginner':
+                return m.skill_beginner()
+            case 'Intermediate':
+                return m.skill_intermediate()
+            case 'Skilled':
+                return m.skill_skilled()
+        }
+    }
+
+    const getType = (type: ISkill['type']) => {
+        switch (type) {
+            case 'Backend':
+                return m.skill_backend()
+            case 'Framework':
+                return m.skill_framework()
+            case 'Frontend':
+                return m.skill_frontend()
+            case 'Language':
+                return m.skill_language()
+            case 'Other':
+                return m.skill_other()
+            case 'Tool':
+                return m.skill_tool()
+        }
+    }
+
 </script>
 
 <article
-	class="mx-2 box-border flex flex-col gap-4 rounded-xl bg-light-mantle p-4 dark:bg-dark-overlay_background"
+	class="mx-2 box-border flex flex-grow flex-basis-[70ch] flex-col gap-4 rounded-xl bg-light-mantle p-4 dark:bg-dark-overlay_background"
 >
 	<!-- title -->
 	<header class="flex items-center gap-4">
@@ -41,7 +75,7 @@
 			style="--un-bg-opacity: 15%;"
 		>
 			<p class="my-0 max-w-full flex-initial text-lg font-normal leading-none">
-				{selectedSkill?.proficiency}
+				{proficiency}
 			</p>
 		</div>
 
@@ -75,7 +109,7 @@
 			style="--un-bg-opacity: 15%;"
         >
 			<p class="my-0 max-w-full flex-initial text-lg font-normal leading-none">
-				{selectedSkill?.type}
+				{type}
 			</p>
 		</div>
 	</section>

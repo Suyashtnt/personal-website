@@ -48,17 +48,6 @@
 		}
 	}
 
-	:global(h1, h2, h3, h4, h5, h6) {
-		transition: all 150ms ease-in-out;
-		font-variation-settings: 'CASL' 0;
-		font-weight: 500;
-
-		&:hover {
-			font-variation-settings: 'CASL' 1;
-			font-weight: 800;
-		}
-	}
-
 	:global(code) {
 		font-family: 'RecVar', monospace !important;
 		font-variation-settings:

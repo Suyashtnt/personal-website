@@ -1,12 +1,26 @@
 <script lang="ts">
+	import type { AvailableLanguageTag } from '$i18n/runtime';
+
 	import * as m from '$i18n/messages';
-	import { setupViewTransition } from 'sveltekit-view-transition';
+    import { setupViewTransition } from 'sveltekit-view-transition';
 
 	import type { PageData } from '../../routes/(landing)/$types';
 
 	export let posts: PageData["posts"];
+    export let lang: AvailableLanguageTag
 
-	const dateFormatter = new Intl.DateTimeFormat('en-uk', {
+    $: locale = getLocaleFromLanguageTag(lang)
+
+    const getLocaleFromLanguageTag = (lang: AvailableLanguageTag) => {
+        switch (lang) {
+            case 'en':
+                return 'en-uk'
+            case 'af':
+                return 'af-za'
+        }
+    }
+
+	const dateFormatter = new Intl.DateTimeFormat(locale, {
 		day: '2-digit',
 		month: 'short',
 		year: 'numeric'

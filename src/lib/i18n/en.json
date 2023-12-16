@@ -13,5 +13,15 @@
     "post_card_published": "Published {published} | Updated {updated}",
     "post_card_by": "By {author}",
     "post_card_draft": "DRAFT",
-    "landingpagedesc": "Hi, I'm TNTMan1671."
+    "landingpagedesc": "Hi, I'm TNTMan1671.",
+    "skill_beginner": "Beginner",
+    "skill_skilled": "Skilled",
+    "skill_intermediate": "Intermediate",
+    "skill_backend": "Backend",
+    "skill_frontend": "Frontend",
+    "skill_framework": "Framework",
+    "skill_language": "Language",
+    "skill_tool": "Tool",
+    "skill_other": "Other",
+    "footer_copyright": "Copyright"
 }

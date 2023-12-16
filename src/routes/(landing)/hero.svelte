@@ -134,10 +134,9 @@
 
 			<div class="mx-4 mb-8">
 				<h1
-					class="mx-0 text-center text-6xl leading-18 md:mb-0 md:px-0 md:text-left md:text-7xl"
+					class="mx-0 text-center text-7xl leading-18 md:mb-0 md:px-0 md:text-left"
 				>
 					{m.hello()}
-					<br />
 					<span class="names">
 						{#each names as name, i}
 							<span

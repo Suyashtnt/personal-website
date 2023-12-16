@@ -6,7 +6,6 @@ import remarkGithub from 'remark-github';
 import { codeToHtml } from 'shikiji';
 
 import mochaTheme from './mocha.json' assert { type: 'json' };
-import frappeTheme from './frappe.json' assert { type: 'json' };
 
 /**
  * @param {string} code
@@ -25,10 +24,9 @@ async function highlighter(code, lang = '') {
 
 	const html = await codeToHtml(code, {
 		lang,
-
 		themes: {
 			dark: mochaTheme,
-			light: frappeTheme
+            light: 'github-light'
 		}
 	});
 
