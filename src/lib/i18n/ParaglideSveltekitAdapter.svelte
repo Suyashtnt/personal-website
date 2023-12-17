@@ -4,6 +4,8 @@
 	import { onSetLanguageTag, setLanguageTag } from '$i18n/runtime';
 	import { getContext, setContext } from 'svelte';
 
+    const { children } = $props();
+
 	// from root layout. The page will ALWAYS have this.
 	let language = $state($page.data.language as string);
 	$effect(() => {
@@ -21,5 +23,5 @@
 </script>
 
 {#key language}
-	<slot />
+    {@render children()}
 {/key}

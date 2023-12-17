@@ -7,4 +7,8 @@
 	/>
 </svelte:head>
 
-<slot />
+<script>
+    const { children } = $props();
+</script>
+
+{@render children()}
