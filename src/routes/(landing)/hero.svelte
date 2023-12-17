@@ -2,7 +2,6 @@
 	import * as m from '$i18n/messages';
 	import anime from 'animejs';
 	import 'atropos/css';
-	import { onMount } from 'svelte';
 
 	const { random, remove, timeline } = anime;
 
@@ -52,14 +51,14 @@
 		});
 	};
 
-	onMount(async () => {
+	$effect(async () => {
 		const { default: AtroposComponent } = await import('atropos/element');
 		if (!customElements.get('atropos-component')) {
 			customElements.define('atropos-component', AtroposComponent);
 		}
 	});
 
-	onMount(() => {
+	$effect(() => {
 		const opacityIn = [0, 1];
 
 		const transYIn = [-50, 0];
@@ -107,6 +106,7 @@
 		}
 
 		tl.play();
+        console.log('here')
 	});
 </script>
 

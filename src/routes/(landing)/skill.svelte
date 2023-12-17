@@ -34,8 +34,11 @@
 </script>
 
 <script lang="ts">
-	export let skill: ISkill;
-    export let isSelected = false;
+    interface Props {
+        isSelected: boolean;
+        skill: ISkill;
+    }
+    const { isSelected, skill } = $props<Props>();
 </script>
 
 <a

@@ -7,7 +7,10 @@
 </script>
 
 <script lang="ts">
-	export let project: IProject;
+    interface Props {
+        project: IProject
+    }
+    const { project } = $props<Props>();
 </script>
 
 <a class="group box-border h-full rounded-2xl decoration-none" href={project.url}>
@@ -24,7 +27,7 @@
 		</p>
 		<div class="mb-2 flex flex-col space-y-2">
 			<a
-				class="dark:text-dark-text dark:outline-dark-maroon visited:dark:text-dark-text group-hover:dark:bg-dark-maroon group-hover:dark:text-dark-mantle group-hover:visited:dark:text-dark-mantle rounded-xl bg-transparent pa-2 text-center text-xl text-light-text decoration-none outline-light-maroon outline transition-all group-hover:(bg-light-maroon text-2xl tracking-wider text-light-mantle outline-0 visited:text-light-mantle) visited:text-light-text"
+				class="dark:text-dark-text dark:outline-dark-maroon visited:dark:text-dark-text group-hover:dark:bg-dark-maroon group-hover:dark:text-dark-mantle group-hover:visited:dark:text-dark-mantle rounded-xl bg-transparent pa-2 text-center text-xl text-light-text decoration-none outline-light-maroon outline transition-all group-hover:(bg-light-maroon text-2xl text-light-mantle tracking-wider outline-0 visited:text-light-mantle) visited:text-light-text"
 				href={project.url}
 			>
 				Learn more →

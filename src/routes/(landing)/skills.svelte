@@ -4,7 +4,10 @@
 	import BigSkill from './bigSkill.svelte';
 	import Skill from './skill.svelte';
 
-	export let data: PageData;
+    interface Props {
+        data: PageData
+    }
+    const { data } = $props<Props>();
 </script>
 
 <section class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface_background md:px-8" id="about">

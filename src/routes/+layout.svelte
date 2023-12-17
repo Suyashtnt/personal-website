@@ -11,12 +11,16 @@
 	import Header from './header.svelte';
 
 	setupViewTransition();
-    export let data: LayoutData
 
-	//Keep the <html> lang attribute in sync with the current language
-	$: if (browser) {
-		document.documentElement.lang = data.language
-	}
+    interface Props {
+        data: LayoutData
+    }
+    const { data } = $props<Props>();
+
+	$effect(() => {
+	    // Keep the <html> lang attribute in sync with the current language
+        document.documentElement.lang = data.language
+    })
 </script>
 
 <ParaglideSveltekitAdapter>
@@ -31,36 +35,4 @@
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
 <style>
-	:global(a) {
-		--at-apply: 'text-light-blue visited:text-light-lavender dark:text-dark-secondary_foreground dark:visited:text-dark-primary_foreground';
-	}
-
-	:global(body) {
-		font-family: 'RecVar', sans-serif;
-		font-variation-settings:
-			'wght' 450,
-			'MONO' 0;
-
-		min-height: 100vh;
-
-		&:has(#dropdown-button[data-active='true']) {
-			overflow: hidden;
-		}
-	}
-
-	:global(code) {
-		font-family: 'RecVar', monospace !important;
-		font-variation-settings:
-			'MONO' 1,
-			'wght' 450;
-	}
-
-    :global(html, body) {
-        scroll-behavior: smooth;
-        --at-apply: 'bg-light-base dark:bg-dark-base_background dark:text-dark-base_foreground';
-    }
-
-	:root {
-		view-transition-name: none;
-	}
 </style>

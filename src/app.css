@@ -1,12 +1,22 @@
 body {
+    font-family: 'RecVar', sans-serif;
+    font-variation-settings:
+        'wght' 450,
+        'MONO' 0;
+
+    min-height: 100vh;
+
+    &:has(#dropdown-button[data-active='true']) {
+        overflow: hidden;
+    }
 	margin: 0;
 }
+
 @media (prefers-color-scheme: dark) {
 	body {
 		color-scheme: dark;
 	}
 }
-
 
 h1, h2, h3, h4, h5, h6 {
     transition: all 150ms ease-in-out;
@@ -17,4 +27,40 @@ h1, h2, h3, h4, h5, h6 {
         font-variation-settings: 'CASL' 1;
         font-weight: 800;
     }
+}
+
+
+a {
+    color: rgb(56 189 248);
+    &:visited {
+        color: rgb(114 135 253 / var(--un-text-opacity));
+    }
+
+    @media (prefers-color-scheme: dark) {
+        color: rgb(68 168 231 / var(--un-text-opacity));
+        &:visited {
+            color: rgb(172 170 255 / var(--un-text-opacity));
+        }
+    }
+}
+
+
+code {
+    font-family: 'RecVar', monospace !important;
+    font-variation-settings:
+        'MONO' 1,
+        'wght' 450;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    background-color: rgb(239 241 245);
+    @media (prefers-color-scheme: dark) {
+        background-color: rgb(6 5 22);
+        color: rgb(212 213 242);
+    }
+}
+
+:root {
+    view-transition-name: none;
 }

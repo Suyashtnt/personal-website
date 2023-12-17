@@ -6,25 +6,30 @@
 
 	import type { PageData } from '../../routes/(landing)/$types';
 
-	export let posts: PageData["posts"];
-    export let lang: AvailableLanguageTag
+    interface Props {
+        lang: AvailableLanguageTag
+        posts: PageData["posts"];
+    }
+    const { lang, posts } = $props<Props>();
 
-    $: locale = getLocaleFromLanguageTag(lang)
-
-    const getLocaleFromLanguageTag = (lang: AvailableLanguageTag) => {
+    const getLocaleFromLanguageTag = () => {
         switch (lang) {
             case 'en':
                 return 'en-uk'
             case 'af':
                 return 'af-za'
+            default:
+                throw new Error(`Unknown language tag: ${lang}`)
         }
     }
 
-	const dateFormatter = new Intl.DateTimeFormat(locale, {
+
+    const locale = $derived(getLocaleFromLanguageTag())
+	const dateFormatter = $derived(new Intl.DateTimeFormat(locale, {
 		day: '2-digit',
 		month: 'short',
 		year: 'numeric'
-	});
+	}));
 
 	const { transition } = setupViewTransition();
 </script>

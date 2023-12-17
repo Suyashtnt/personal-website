@@ -1,4 +1,5 @@
 // See https://kit.svelte.dev/docs/types#app
+
 import type { SvelteComponent } from 'svelte';
 
 declare global {

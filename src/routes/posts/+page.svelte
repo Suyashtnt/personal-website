@@ -4,11 +4,14 @@
 
     import type { PageData } from './$types';
 
-	export let data: PageData;
+    interface Props {
+        data: PageData
+    }
+    const { data } = $props<Props>();
 </script>
 
 <PageHead description="My blog posts" title="Posts" />
 
 <h1 class="ml-4 text-5xl lg:ml-8">Posts</h1>
 
-<Posts posts={data.posts} />
+<Posts lang={data.language} posts={data.posts} />

@@ -3,11 +3,16 @@
 	import PageHead from '$lib/components/page-head.svelte';
     import Posts from '$lib/posts/posts.svelte';
 
+    import type { PageData } from './$types';
+
 	import AboutToBlog from './about-to-blog.svelte';
 	import Hero from './hero.svelte';
 	import Skills from './skills.svelte';
 
-	export let data;
+    interface Props {
+        data: PageData
+    }
+    const { data } = $props<Props>();
 </script>
 
 <PageHead description={m.landingpagedesc()} title={undefined} />

@@ -5,10 +5,13 @@
 	import { getContext, setContext } from 'svelte';
 
 	// from root layout. The page will ALWAYS have this.
-	$: language = $page.data.language as string;
-	$: setContext('languageTag', language);
+	let language = $state($page.data.language as string);
+	$effect(() => {
+		language = $page.data.language
+	    setContext('languageTag', language)
+    });
 
-	setLanguageTag(() => getContext('languageTag'));
+	setLanguageTag(() => getContext('languageTag') ?? language);
 
 	if (browser) {
 		onSetLanguageTag((newLanguageTag) => {

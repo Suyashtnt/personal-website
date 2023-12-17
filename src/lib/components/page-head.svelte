@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let title: string | undefined;
-	export let description: string;
+    interface Props {
+        description: string;
+        title?: string;
+    }
+
+    const { description, title } = $props<Props>()
 
 	const siteTitle = 'TNTMan1671';
 	const formattedTitle = title ? `${title} | ${siteTitle}` : siteTitle;

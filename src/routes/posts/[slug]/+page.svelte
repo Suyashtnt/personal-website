@@ -1,14 +1,10 @@
-<script generics="C extends typeof SvelteComponent" lang="ts">
+<script lang="ts">
 	import * as m from '$i18n/messages';
 	import Giscus from '@giscus/svelte';
 	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	import giscusTheme from './giscus.css?url';
-	$: giscusThemeFullUrl = new URL(giscusTheme, import.meta.url).href;
-
-	// Generics bork
-	// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-	import type { SvelteComponent } from 'svelte';
+	const giscusThemeFullUrl = $derived(new URL(giscusTheme, import.meta.url).href);
 
 	import PageHead from '$lib/components/page-head.svelte';
 	import { createTableOfContents } from '@melt-ui/svelte';
@@ -17,11 +13,14 @@
 
 	import ToC from './table-of-contents.svelte';
 
-	export let data: PageData;
+    interface Props {
+        data: PageData
+    }
+    const { data } = $props<Props>();
 
 	// Generics bork
 	// eslint-disable-next-line no-undef
-	$: component = data.component as unknown as C;
+	const component = $derived(data.component);
 
 	if (
 		!data.frontmatter.date ||
@@ -137,89 +136,93 @@
 		grid-template-areas:
 			'sidebar'
 			'content';
+	}
 
-		@media (min-width: 1024px) {
+	@media (min-width: 1024px) {
+        .grid-layout-article {
 			grid-template-areas:
 				'sidebar content'
 				'sidebar notes';
 
 			grid-template-columns: 1fr 3fr;
 		}
+    }
 
-		@media (min-width: 1536px) {
+	@media (min-width: 1536px) {
+        .grid-layout-article {
 			grid-template-areas: 'sidebar content notes';
 
 			grid-template-columns: 1fr 3fr 1fr;
-		}
+        }
 	}
 
-	.article-content {
-		& :global(h1),
-		& :global(h2),
-		& :global(h3),
-		& :global(h4),
-		& :global(h5),
-		& :global(h6) {
-			--at-apply: 'scroll-mt-8';
-			--at-apply: 'text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground';
+    .article-content {
+		& h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			--at-apply: 'scroll-mt-8 text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground';
+            & > a {
+                --at-apply: 'text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground inline-block relative decoration-none transition-all';
 
-			& > a {
-				--at-apply: 'text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground inline-block relative decoration-none transition-all';
+                &::after {
+                    --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
+                }
 
-				& :after {
-					--at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
-				}
+                &:hover {
+                    --at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
 
-				& :hover {
-					--at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
-
-					& :after {
-						--at-apply: 'w-full';
-					}
-				}
-			}
+                    &::after {
+                        --at-apply: 'w-full';
+                    }
+                }
+            }
 		}
 
-		& :global(h2 > a) {
+		& h2 > a {
 			--at-apply: '!text-light-red !dark:text-dark-primary_foreground';
 		}
 
-		& :global(h3 > a) {
+		& h3 > a {
 			--at-apply: '!text-light-peach !dark:text-dark-red';
 		}
 
-		& :global(h4 > a) {
+		& h4 > a {
 			--at-apply: '!text-light-yellow !dark:text-dark-orange';
 		}
 
-		& :global(h5 > a) {
+		& h5 > a {
 			--at-apply: '!text-light-green !dark:text-dark-green text-xl';
 		}
 
-		& :global(h6 > a) {
+		& h6 > a {
 			--at-apply: '!text-light-sapphire !dark:text-dark-teal text-xl';
 		}
 
-		& :global(a) {
+		& a {
 			--at-apply: 'text-light-blue dark:text-dark-blue hover:text-light-lavender dark:hover:text-dark-lavender visited:text-light-lavender dark:visited:text-dark-lavender';
 		}
 
-		& :global(pre) {
+		& pre {
 			--at-apply: 'rounded-xl pa-2 max-w-[calc(100vw-4rem)] overflow-x-auto';
 		}
-		& :global(code) {
+		& code {
 			--at-apply: 'rounded-xl';
 		}
-	}
 
-	@media (prefers-color-scheme: dark) {
-		:global(.shiki, .shiki span) {
-			color: var(--shiki-dark) !important;
-			background-color: var(--shiki-dark-bg) !important;
-			/* Optional, if you also want font styles */
-			font-style: var(--shiki-dark-font-style) !important;
-			font-weight: var(--shiki-dark-font-weight) !important;
-			text-decoration: var(--shiki-dark-text-decoration) !important;
-		}
-	}
+        @media (prefers-color-scheme: dark) {
+            & .shiki,
+            .shiki span {
+                color: var(--shiki-dark) !important;
+                background-color: var(--shiki-dark-bg) !important;
+                /* Optional, if you also want font styles */
+                font-style: var(--shiki-dark-font-style) !important;
+                font-weight: var(--shiki-dark-font-weight) !important;
+                text-decoration: var(--shiki-dark-text-decoration) !important;
+            }
+        }
+    }
+
 </style>

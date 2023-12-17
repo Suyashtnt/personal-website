@@ -2,16 +2,15 @@
 	import * as m from '$i18n/messages';
 
 	import type { PageData } from './$types';
-    import type { ISkill } from './skill.svelte';
 
-	export let data: PageData;
+    interface Props {
+        data: PageData
+    }
+    const { data } = $props<Props>();
+	const { html, selectedSkill } = $derived(data);
 
-	const { html, selectedSkill } = data;
-    $: proficiency = getProficiency(data.selectedSkill.proficiency)
-    $: type = getType(data.selectedSkill.type)
-
-    const getProficiency = (level: ISkill['proficiency']) => {
-        switch (level) {
+    const getProficiency = () => {
+        switch (data.selectedSkill.proficiency) {
             case 'Beginner':
                 return m.skill_beginner()
             case 'Intermediate':
@@ -21,8 +20,8 @@
         }
     }
 
-    const getType = (type: ISkill['type']) => {
-        switch (type) {
+    const getType = () => {
+        switch (data.selectedSkill.type) {
             case 'Backend':
                 return m.skill_backend()
             case 'Framework':
@@ -38,6 +37,8 @@
         }
     }
 
+    const proficiency = $derived(getProficiency())
+    const type = $derived(getType())
 </script>
 
 <article
