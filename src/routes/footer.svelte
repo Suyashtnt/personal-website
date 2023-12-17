@@ -1,15 +1,6 @@
 <script lang="ts">
     import * as m from '$i18n/messages';
-
-	const potentialFooterTexts = [
-		m.footer_txt_1(),
-        m.footer_txt_2(),
-        m.footer_txt_3(),
-        m.footer_txt_4()
-	] as const;
-
-	const footerText =
-		potentialFooterTexts[Math.floor(Math.random() * potentialFooterTexts.length)];
+    const { footerText } = $props<{ footerText: string }>();
 </script>
 
 <footer

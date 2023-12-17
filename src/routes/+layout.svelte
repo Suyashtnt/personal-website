@@ -30,7 +30,7 @@
     >
         {@render children()}
     </main>
-    <Footer />
+    <Footer footerText={data.footerText} />
 </ParaglideSveltekitAdapter>
 
 <!-- Due to the new way unocss svelte-scoped works, we need to use this -->
