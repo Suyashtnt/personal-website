@@ -6,6 +6,7 @@
 	const { random, remove, timeline } = anime;
 
 	import { easeEmphasized } from 'm3-svelte';
+	import { onMount } from 'svelte';
 
 	const names = ['TNTMan\\1671', 'Suyashtnt', 'TNT Man Inc'];
 
@@ -51,14 +52,14 @@
 		});
 	};
 
-	$effect(async () => {
-		const { default: AtroposComponent } = await import('atropos/element');
-		if (!customElements.get('atropos-component')) {
-			customElements.define('atropos-component', AtroposComponent);
-		}
+	onMount(async () => {
+        const { default: AtroposComponent } = await import('atropos/element');
+        if (!customElements.get('atropos-component')) {
+            customElements.define('atropos-component', AtroposComponent);
+        }
 	});
 
-	$effect(() => {
+	onMount(() => {
 		const opacityIn = [0, 1];
 
 		const transYIn = [-50, 0];
@@ -104,9 +105,6 @@
 				update: () => updateCasl(selector)
 			});
 		}
-
-		tl.play();
-        console.log('here')
 	});
 </script>
 

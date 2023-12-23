@@ -2,22 +2,16 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { onSetLanguageTag, setLanguageTag } from '$i18n/runtime';
-	import { getContext, setContext } from 'svelte';
 
     const { children } = $props();
 
 	// from root layout. The page will ALWAYS have this.
-	let language = $state($page.data.language as string);
-	$effect(() => {
-		language = $page.data.language
-	    setContext('languageTag', language)
-    });
-
-	setLanguageTag(() => getContext('languageTag') ?? language);
+	let language = $derived($page.data.language as string);
+	setLanguageTag(() => language);
 
 	if (browser) {
 		onSetLanguageTag((newLanguageTag) => {
-			language = newLanguageTag;
+			$page.data.language = newLanguageTag;
 		});
 	}
 </script>
