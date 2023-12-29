@@ -1,4 +1,9 @@
-<div class="spacer about-to-blog" />
+<script lang="ts">
+	import dark from '$lib/pictures/interestsToProjectsDark.svg?url'
+	import light from '$lib/pictures/interestsToProjectsLight.svg?url'
+</script>
+
+<div class="spacer" style={`--light-transition: url(${light}); --dark-transition: url(${dark});`} />
 
 <style>
 	.spacer {
@@ -6,17 +11,9 @@
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		.about-to-blog {
-			background-image: url('$lib/pictures/interestsToProjectsDark.svg');
-		}
-	}
-
-	@media (prefers-color-scheme: light) {
-		.about-to-blog {
-			background-image: url('$lib/pictures/interestsToProjectsLight.svg');
+		background-image: var(--light-transition);
+		@media (prefers-color-scheme: dark) {
+			background-image: var(--dark-transition);
 		}
 	}
 </style>

@@ -13,10 +13,10 @@
 
 	import ToC from './table-of-contents.svelte';
 
-    interface Props {
-        data: PageData
-    }
-    const { data } = $props<Props>();
+  interface Props {
+      data: PageData
+  }
+  const { data } = $props<Props>();
 
 	if (
 		!data.frontmatter.date ||
@@ -105,7 +105,7 @@
 		</header>
 
 		<p class="article-content text-justify hyphens-auto prose">
-			<svelte:component this={component} />
+			<svelte:component this={data.component} />
 		</p>
 
 		<Giscus
@@ -135,14 +135,14 @@
 	}
 
 	@media (min-width: 1024px) {
-        .grid-layout-article {
+   .grid-layout-article {
 			grid-template-areas:
 				'sidebar content'
 				'sidebar notes';
 
 			grid-template-columns: 1fr 3fr;
 		}
-    }
+  }
 
 	@media (min-width: 1536px) {
         .grid-layout-article {
@@ -152,29 +152,28 @@
         }
 	}
 
-    .article-content {
+  #article {
 		& h1,
 		h2,
 		h3,
 		h4,
 		h5,
 		h6 {
-			--at-apply: 'scroll-mt-8 text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground';
-            & > a {
-                --at-apply: 'text-light-text dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground inline-block relative decoration-none transition-all';
+	        & > a {
+	            --at-apply: 'inline-block relative decoration-none transition-all';
 
-                &::after {
-                    --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
-                }
+	            &::after {
+	                --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
+	            }
 
-                &:hover {
-                    --at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
+	            &:hover {
+	                --at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
 
-                    &::after {
-                        --at-apply: 'w-full';
-                    }
-                }
-            }
+	                &::after {
+	                    --at-apply: 'w-full';
+	                }
+	            }
+	        }
 		}
 
 		& h2 > a {
@@ -208,17 +207,16 @@
 			--at-apply: 'rounded-xl';
 		}
 
-        @media (prefers-color-scheme: dark) {
-            & .shiki,
-            .shiki span {
-                color: var(--shiki-dark) !important;
-                background-color: var(--shiki-dark-bg) !important;
-                /* Optional, if you also want font styles */
-                font-style: var(--shiki-dark-font-style) !important;
-                font-weight: var(--shiki-dark-font-weight) !important;
-                text-decoration: var(--shiki-dark-text-decoration) !important;
-            }
+    @media (prefers-color-scheme: dark) {
+        & .shiki,
+        .shiki span {
+            color: var(--shiki-dark) !important;
+            background-color: var(--shiki-dark-bg) !important;
+            /* Optional, if you also want font styles */
+            font-style: var(--shiki-dark-font-style) !important;
+            font-weight: var(--shiki-dark-font-weight) !important;
+            text-decoration: var(--shiki-dark-text-decoration) !important;
         }
     }
-
+	}
 </style>
