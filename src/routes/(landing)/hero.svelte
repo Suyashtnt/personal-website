@@ -60,19 +60,19 @@
 	});
 
 	onMount(() => {
+        const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 		const opacityIn = [0, 1];
 
-		const transYIn = [-50, 0];
-		const transYOut = [0, 50];
+		const transYIn = isReduced ? 0 : [-50, 0];
+		const transYOut = isReduced ? 0 : [0, 50];
 
-		const durationIn = 400;
-		const durationOut = 400;
+		const duration = isReduced ? 600 : 400;
 		const easing = () => easeEmphasized;
 
-		const delay = 1000;
+		const delay = isReduced ? 2500 : 1000;
 
-		const fontWeightIn = [100, 900];
-		const fontWeightOut = [900, 100];
+		const fontWeightIn = isReduced ? 900 : [100, 900];
+		const fontWeightOut = isReduced ? 900 : [900, 100];
 
 		const tl = timeline({
 			autoplay: true,
@@ -84,7 +84,7 @@
 
 			tl.add({
 				'data-font-casl': 1,
-				duration: durationIn,
+				duration: duration,
 				easing,
 				fontWeight: fontWeightIn,
 				hidden: false,
@@ -95,7 +95,7 @@
 			}).add({
 				'data-font-casl': 0,
 				delay,
-				duration: durationOut,
+				duration: duration,
 				easing,
 				fontWeight: fontWeightOut,
 				hidden: true,

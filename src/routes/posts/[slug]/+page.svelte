@@ -18,10 +18,6 @@
     }
     const { data } = $props<Props>();
 
-	// Generics bork
-	// eslint-disable-next-line no-undef
-	const component = $derived(data.component);
-
 	if (
 		!data.frontmatter.date ||
 		!data.frontmatter.updated ||

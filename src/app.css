@@ -18,6 +18,14 @@ body {
 	}
 }
 
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
     transition: all 150ms ease-in-out;
     font-variation-settings: 'CASL' 0;
