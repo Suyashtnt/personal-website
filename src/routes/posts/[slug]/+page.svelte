@@ -4,6 +4,7 @@
 	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	import giscusTheme from './giscus.css?url';
+	import "@portaljs/remark-callouts/styles.css";
 	const giscusThemeFullUrl = $derived(new URL(giscusTheme, import.meta.url).href);
 
 	import PageHead from '$lib/components/page-head.svelte';
@@ -217,6 +218,11 @@
             font-weight: var(--shiki-dark-font-weight) !important;
             text-decoration: var(--shiki-dark-text-decoration) !important;
         }
-    }
+
+				.callout, .blockquote {
+					--at-apply: 'rounded-xl pa-2 mx-2 overflow-x-auto';
+					--callout-bg-color: #060516;
+				}
+	    }
 	}
 </style>

@@ -5,15 +5,7 @@ import { error } from '@sveltejs/kit';
 
 import type { EntryGenerator, PageLoad } from './$types';
 
-export type DataItem = {
-	depth: 1 | 2 | 3 | 4 | 5 | 6;
-	value: string | undefined;
-};
-
-export type DataItemWithChildren = {
-	children: readonly DataItemWithChildren[];
-} & DataItem;
-
+export const csr = false;
 export const load: PageLoad = async ({ params, parent }) => {
 	const { language } = await parent();
 

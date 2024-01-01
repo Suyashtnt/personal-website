@@ -3,6 +3,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkAbbr from 'remark-abbr';
 import remarkGithub from 'remark-github';
+import remarkCallouts from "@portaljs/remark-callouts";
 import { codeToHtml } from 'shikiji';
 
 import mochaTheme from './mocha.json' assert { type: 'json' };
@@ -26,7 +27,7 @@ async function highlighter(code, lang = '') {
 		lang,
 		themes: {
 			dark: mochaTheme,
-            light: 'github-light'
+      light: 'github-light'
 		}
 	});
 
@@ -51,13 +52,14 @@ const config = defineConfig({
 	],
 
 	remarkPlugins: [
+		remarkAbbr,
 		[
 			remarkGithub,
 			{
 				repository: 'https://github.com/suyashtnt/personal-website.git'
 			}
 		],
-		remarkAbbr
+		remarkCallouts
 	],
 
 	smartypants: {
