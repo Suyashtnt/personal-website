@@ -60,19 +60,10 @@
 	});
 
 	onMount(() => {
-        const isReduced = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 		const opacityIn = [0, 1];
-
-		const transYIn = isReduced ? 0 : [-50, 0];
-		const transYOut = isReduced ? 0 : [0, 50];
-
-		const duration = isReduced ? 600 : 400;
+		const duration = 600;
 		const easing = () => easeEmphasized;
-
-		const delay = isReduced ? 2500 : 1000;
-
-		const fontWeightIn = isReduced ? 900 : [100, 900];
-		const fontWeightOut = isReduced ? 900 : [900, 100];
+		const delay = 2500;
 
 		const tl = timeline({
 			autoplay: true,
@@ -86,22 +77,18 @@
 				'data-font-casl': 1,
 				duration: duration,
 				easing,
-				fontWeight: fontWeightIn,
 				hidden: false,
 				opacity: opacityIn,
 				targets: selector,
-				translateY: transYIn,
 				update: () => updateCasl(selector)
 			}).add({
 				'data-font-casl': 0,
 				delay,
 				duration: duration,
 				easing,
-				fontWeight: fontWeightOut,
 				hidden: true,
 				opacity: 0,
 				targets: selector,
-				translateY: transYOut,
 				update: () => updateCasl(selector)
 			});
 		}
