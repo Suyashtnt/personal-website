@@ -35,8 +35,8 @@
 				</option>
 			{/each}
 		</select>
-		<noscript>
-			<button class="i-ic-arrow-forward h-4 w-4" type="submit" />
-		</noscript>
+		<!-- <noscript> -->
+		<button class="i-ic-arrow-forward h-4 w-4" type="submit" />
+		<!-- </noscript> -->
 	</form>
 </div>
