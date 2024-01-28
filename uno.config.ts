@@ -1,4 +1,4 @@
-import { type AlphaColor, type Color, type Labels, variants } from '@catppuccin/palette';
+import { flavors, type Colors, type ColorFormat } from '@catppuccin/palette';
 import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns';
 import {
 	defineConfig,
@@ -11,7 +11,7 @@ import {
 import darkTheme from './kleur-dark.json' assert { type: 'json' };
 
 // Get the hex value of the color, and then set the color to the hex value
-const createTheme = (colors: Labels<Color, AlphaColor>) => {
+const createTheme = (colors: Colors<ColorFormat>) => {
 	const values = Object.fromEntries(
 		Object.entries(colors).map(([key, value]) => [key, value.hex])
 	);
@@ -82,7 +82,7 @@ export default defineConfig({
 	theme: {
 		colors: {
 			dark: flattenTheme(darkTheme),
-			light: createTheme(variants.latte)
+			light: createTheme(flavors.latte)
 		}
 	},
 	transformers: [transformerDirectives()]

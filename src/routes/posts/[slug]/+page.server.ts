@@ -2,6 +2,7 @@ import { slugFromPath } from '$lib/helpers/slug-from-path';
 import { allPosts } from '$lib/posts';
 import { D } from '@mobily/ts-belt';
 import { error } from '@sveltejs/kit';
+import { render } from 'svelte/server';
 
 import type { EntryGenerator, PageLoad } from './$types';
 
@@ -10,17 +11,20 @@ export const load: PageLoad = async ({ params, parent }) => {
 	const { language } = await parent();
 
 	const posts = await allPosts[language];
-	const post = posts.find((post) => post.slug === params.slug);
+	const { component, ...frontmatter} = posts.find((post) => post.slug === params.slug);
 
-	const cannotFindPost = !post?.title;
+	const cannotFindPost = !frontmatter?.title;
 
 	if (cannotFindPost) {
 		error(404, `Cannot find post with slug '${params.slug}'`);
 	}
 
 	return {
-		component: post.component,
-		frontmatter: post,
+		postHtml: render(component, {
+			props: {},
+			context: {}
+		}).html,
+		frontmatter,
 		slug: params.slug
 	};
 };

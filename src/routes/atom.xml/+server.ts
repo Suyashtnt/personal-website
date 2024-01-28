@@ -7,6 +7,7 @@ import type { RequestHandler } from './$types';
 
 export const prerender = true;
 
+// keep the old URL so its the same
 const blogUuid = uuid('https://tntman.tech', uuid.URL);
 
 function _objectEntries<T extends Record<PropertyKey, unknown>, K extends keyof T, V extends T[K]>(
@@ -50,15 +51,15 @@ const _render = (posts: (App.BlogPost & { language: AvailableLanguageTag })[]) =
 
   <id>tag:tntman.tech,2008-03-10:${blogUuid}</id>
 
-  <link href="https://tntman.tech/posts" />
-  <link href="https://tntman.tech/atom.xml" rel="self" type="application/atom+xml" />
+  <link href="https://wobbl.in/posts" />
+  <link href="https://wobbl.in/atom.xml" rel="self" type="application/atom+xml" />
 
   <updated>${new Date(posts[0]!.updated).toISOString()}</updated>
 
   <author>
     <name>Suyashtnt</name>
     <email>Suyashtnt@gmail.com</email>
-    <uri>https://tntman.tech</uri>
+    <uri>https://wobbl.in</uri>
   </author>
 
   ${posts.map(_renderPost).join('\n')}
@@ -76,7 +77,7 @@ const _renderPost = (post: App.BlogPost & { language: string }) =>
 
 
     <link
-        href="https://tntman.tech/posts/${post.slug}?lang=${post.language}"
+        href="https://wobbl.in/posts/${post.slug}?lang=${post.language}"
         hreflang="${post.language}"
         type="text/html"
     />
@@ -86,7 +87,7 @@ const _renderPost = (post: App.BlogPost & { language: string }) =>
     </author>
 
     <summary>${post.description}</summary>
-    <content src="https://tntman.tech/posts/${post.slug}" type="text/html" />
+    <content src="https://wobbl.in/posts/${post.slug}" type="text/html" />
 
     <updated>${new Date(post.updated).toISOString()}</updated>
     <published>${new Date(post.date).toISOString()}</published>

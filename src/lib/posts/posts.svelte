@@ -2,8 +2,7 @@
 	import type { AvailableLanguageTag } from '$i18n/runtime';
 
 	import * as m from '$i18n/messages';
-    import { setupViewTransition } from 'sveltekit-view-transition';
-
+  import { setupViewTransition } from 'sveltekit-view-transition';
 	import type { PageData } from '../../routes/(landing)/$types';
 
     interface Props {
@@ -25,11 +24,11 @@
 
 
     const locale = $derived(getLocaleFromLanguageTag())
-	const dateFormatter = $derived(new Intl.DateTimeFormat(locale, {
-		day: '2-digit',
-		month: 'short',
-		year: 'numeric'
-	}));
+		const dateFormatter = $derived(new Intl.DateTimeFormat(locale, {
+			day: '2-digit',
+			month: 'short',
+			year: 'numeric'
+		}));
 
 	const { transition } = setupViewTransition();
 </script>

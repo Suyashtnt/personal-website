@@ -106,7 +106,7 @@
 		</header>
 
 		<p class="article-content text-justify hyphens-auto prose">
-			<svelte:component this={data.component} />
+			{@html data.postHtml}
 		</p>
 
 		<Giscus
