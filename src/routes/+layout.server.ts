@@ -4,8 +4,6 @@ import { error } from '@sveltejs/kit';
 
 import type { LayoutServerLoad } from './$types';
 
-export const csr = false
-
 export const load = (async ({ cookies, request }) => {
 	const potentialFooterTexts = [
 		m.footer_txt_1(),
