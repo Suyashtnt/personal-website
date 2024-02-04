@@ -160,21 +160,21 @@
 		h4,
 		h5,
 		h6 {
-	        & > a {
-	            --at-apply: 'inline-block relative decoration-none transition-all';
+      & > a {
+        --at-apply: 'inline-block relative decoration-none transition-all';
 
-	            &::after {
-	                --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
-	            }
+        &::after {
+          --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
+        }
 
-	            &:hover {
-	                --at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
+        &:hover {
+          --at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
 
-	                &::after {
-	                    --at-apply: 'w-full';
-	                }
-	            }
-	        }
+          &::after {
+            --at-apply: 'w-full';
+          }
+        }
+      }
 		}
 
 		& h2 > a {
@@ -201,16 +201,21 @@
 			--at-apply: 'text-light-blue dark:text-dark-blue hover:text-light-lavender dark:hover:text-dark-lavender visited:text-light-lavender dark:visited:text-dark-lavender';
 		}
 
-		& pre {
+		& :global(pre) {
 			--at-apply: 'rounded-xl pa-2 max-w-[calc(100vw-4rem)] overflow-x-auto';
 		}
-		& code {
-			--at-apply: 'rounded-xl';
+
+		& :global(code) {
+			--at-apply: 'rounded-xl overflow-x-auto';
+		}
+
+		.callout, .blockquote {
+			--at-apply: 'rounded-xl pa-2 mx-2 overflow-x-auto';
 		}
 
     @media (prefers-color-scheme: dark) {
         & .shiki,
-        .shiki span {
+        .shiki :global(span) {
             color: var(--shiki-dark) !important;
             background-color: var(--shiki-dark-bg) !important;
             /* Optional, if you also want font styles */
@@ -220,7 +225,6 @@
         }
 
 				.callout, .blockquote {
-					--at-apply: 'rounded-xl pa-2 mx-2 overflow-x-auto';
 					--callout-bg-color: #060516;
 				}
 	    }
