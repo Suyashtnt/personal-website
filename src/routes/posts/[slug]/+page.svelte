@@ -77,18 +77,18 @@
 	>
 		<header class="mb-8 py-4">
 			<hr
-				class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-primary_foreground dark:to-dark-secondary_foreground"
+				class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-primary_foreground dark:to-dark-secondary"
 			/>
 
 			<h1
-				class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl text-transparent font-light dark:from-dark-primary_foreground dark:via-dark-primary_foreground dark:to-dark-secondary_foreground xl:text-5xl"
+				class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl text-transparent font-light dark:from-dark-primary_foreground dark:via-dark-primary_foreground dark:to-dark-secondary xl:text-5xl"
 				use:transition={`post-title-${data.slug}`}
 			>
 				{data.frontmatter.title}
 			</h1>
 
 			<hr
-				class="mb-2 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-secondary_foreground dark:to-dark-primary_foreground"
+				class="mb-2 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-secondary dark:to-dark-primary_foreground"
 			/>
 
 			<p
@@ -164,11 +164,11 @@
         --at-apply: 'inline-block relative decoration-none transition-all';
 
         &::after {
-          --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary_foreground bottom-0 content-empty block h-0.5 absolute transition-all w-0';
+          --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary bottom-0 content-empty block h-0.5 absolute transition-all w-0';
         }
 
         &:hover {
-          --at-apply: 'text-light-blue dark:text-dark-secondary_foreground visited:text-light-blue dark:visited:text-dark-secondary_foreground';
+          --at-apply: 'text-light-blue dark:text-dark-secondary visited:text-light-blue dark:visited:text-dark-secondary';
 
           &::after {
             --at-apply: 'w-full';

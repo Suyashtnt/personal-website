@@ -105,7 +105,7 @@
                 class="group mt-8 w-64 rounded-xl rounded-xl"
             >
                 <div
-                    class="flex content-center justify-center rounded-2xl from-light-red to-light-rosewater bg-gradient-to-br pa-2 transition-all group-hover:ma-2 dark:from-dark-primary_foreground dark:to-dark-secondary_foreground group-hover:pa-0"
+                    class="flex content-center justify-center rounded-2xl from-light-red to-light-rosewater bg-gradient-to-br pa-2 transition-all group-hover:ma-2 dark:from-dark-primary_foreground dark:to-dark-secondary group-hover:pa-0"
                 >
                     <enhanced:img
                         alt="A contemporary portrait of me."
@@ -125,7 +125,7 @@
 					<span class="names">
 						{#each names as name, i}
 							<span
-								class="name-{i} inline-block dark:from-dark-primary_foreground dark:to-dark-secondary_foreground from-light-lavender to-light-blue bg-gradient-to-br bg-clip-text text-transparent break-word"
+								class="name-{i} inline-block dark:from-dark-primary_foreground dark:to-dark-secondary from-light-lavender to-light-blue bg-gradient-to-br bg-clip-text text-transparent break-word"
 								class:opacity-0={i !== 0}
 								data-font-casl={0}
 							>
@@ -167,7 +167,7 @@
                             >
                                 {#each m.hero_programmer().split('') as letter}
                                     <span
-                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary_foreground"
+                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary"
                                     >
                                         {letter}
                                     </span>
@@ -190,7 +190,7 @@
                             >
                                 {#each m.hero_gamer().split('') as letter}
                                     <span
-                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary_foreground"
+                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary"
                                     >
                                         {letter}
                                     </span>
