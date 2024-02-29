@@ -3,9 +3,8 @@
 	import Giscus from '@giscus/svelte';
 	import { setupViewTransition } from 'sveltekit-view-transition';
 
-	import giscusTheme from './giscus.css?url';
+	import './giscus.css';
 	import "@portaljs/remark-callouts/styles.css";
-	const giscusThemeFullUrl = $derived(new URL(giscusTheme, import.meta.url).href);
 
 	import PageHead from '$lib/components/page-head.svelte';
 	import { createTableOfContents } from '@melt-ui/svelte';
@@ -121,7 +120,6 @@
 			repo="Suyashtnt/personal-website"
 			repoId="R_kgDOI0N8xg"
 			strict="0"
-			theme={giscusThemeFullUrl}
 		/>
 	</article>
 
