@@ -3,7 +3,7 @@ title: 'ULTRAMUSIC review: prelude'
 description: 'Just me shilling my favourite game OST of all time'
 author: 'A badly drawn wobbler'
 date: '2024-02-28 21:00'
-updated: '2024-02-28 21:00'
+updated: '2024-03-02 19:50'
 published: true
 ---
 
@@ -22,7 +22,7 @@ posts because then I'm going act-by-act.
 
 This is such a calming song for what is otherwise an insanely violent game.
 Sounds about right for menu music though. It just has that _cozy_ vibe you get from them.
-The name is also downbeat for a game which is has an all-caps bolded industrial looking title of ULTRAKILL
+The name is also downbeat for a game which has an all-caps bolded industrial looking title of ULTRAKILL
 (This is what is known in the industry as "foreshadowing").
 
 # Layer 0: OVERTURE: MOUTH OF HELL
