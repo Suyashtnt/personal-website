@@ -6,7 +6,7 @@ import remarkGithub from 'remark-github';
 import remarkCallouts from "@portaljs/remark-callouts";
 import { codeToHtml } from 'shikiji';
 
-import mochaTheme from './mocha.json' assert { type: 'json' };
+import syntaxDark from './syntax-dark.json' assert { type: 'json' };
 
 /**
  * @param {string} code
@@ -26,7 +26,7 @@ async function highlighter(code, lang = '') {
 	const html = await codeToHtml(code, {
 		lang,
 		themes: {
-			dark: mochaTheme,
+			dark: syntaxDark,
       light: 'github-light'
 		}
 	});

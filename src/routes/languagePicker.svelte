@@ -2,29 +2,31 @@
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import * as m from '$i18n/messages';
-    import { type AvailableLanguageTag, availableLanguageTags } from '$i18n/runtime';
+  import { type AvailableLanguageTag, availableLanguageTags } from '$i18n/runtime';
+  import Language from '~icons/ic/language'
+  import Arrow from '~icons/ic/arrow-forward'
 
-    const translateLanguage = (language: AvailableLanguageTag) => {
-        switch (language) {
-            case 'en':
-                return m.lang_en();
-            case 'af':
-                return m.lang_af();
-            default:
-                return language;
-        }
+  const translateLanguage = (language: AvailableLanguageTag) => {
+      switch (language) {
+          case 'en':
+              return m.lang_en();
+          case 'af':
+              return m.lang_af();
+          default:
+              return language;
+      }
     }
 </script>
 
 <div
-	class="flex-inline flex-row items-center rounded-lg bg-light-base/80 pa-2 pr-0 text-light-text dark:bg-dark-surface_background/20 dark:text-dark-overlay_foreground"
+	class="flex flex:row align-items:center r:4x bg:surface/.80 p:2 pr:0 text:surface"
 >
-	<form action="/" class="contents" method="POST" use:enhance>
-	    <label class="i-ic-language inline-block h-8 w-8" for="lang-picker" />
+	<form action="/" class="flex flex:row align-items:center gap:1x" method="POST" use:enhance>
+	  <Language class="inline-block text:4x ml:1x" />
 		<select
-			class="grow border-none bg-transparent text-xl font-inherit text-light-text dark:text-dark-surface_foreground"
+			class="flex:grow border:none bg:transparent text:4x font:inherit text-light-text dark:text-dark-surface_foreground"
 			id="lang-picker"
-            name="language"
+      name="language"
 			on:change={(e) => {
 				e.currentTarget.form?.requestSubmit();
 			}}
@@ -35,8 +37,10 @@
 				</option>
 			{/each}
 		</select>
-		<!-- <noscript> -->
-		<button class="i-ic-arrow-forward h-4 w-4" type="submit" />
-		<!-- </noscript> -->
+		<noscript>
+			<button class="r:2x bg:transparent border:none" type="submit">
+				<Arrow />
+			</button>
+		</noscript>
 	</form>
 </div>

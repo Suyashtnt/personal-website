@@ -4,26 +4,24 @@
 	import BigSkill from './bigSkill.svelte';
 	import Skill from './skill.svelte';
 
-    interface Props {
-        data: PageData
-    }
-    const { data } = $props<Props>();
+  interface Props {
+      data: PageData
+  }
+  const { data }: Props = $props();
 </script>
 
-<section class="overflow-clip bg-light-surface-0 py-8 dark:bg-dark-surface_background md:px-8" id="about">
-	<h2 class="w-min text-5xl text-light-lavender dark:text-dark-primary_foreground">Skills</h2>
+<section class="overflow:clip bg:surface py:4x" id="about">
+	<h2 class="ml:4x w:min text:8x fg:primary ml:8x@md">Skills</h2>
 
-	<div class="flex flex-col gap-4 overflow-hidden md:flex-row">
+	<div class="flex flex:col gap:4x overflow:hidden flex:row@md px:6x">
 		<ul
-			class="my-0 flex flex-basis-1/2 flex-col list-none gap-4 px-2 lg:px-0"
+			class="my:0 flex flex-basis:50% flex:col list-style:none gap:4x pl:0"
 		>
 			{#each data.skills as skill (skill.id)}
-				<li
-					class="rounded-xl bg-light-base dark:bg-dark-overlay_background"
-				>
-		            {#key data.selectedSkill}
+				<li class="r:4x bg:overlay">
+		       {#key data.selectedSkill}
 					    <Skill isSelected={skill.id === data.selectedSkill.id} {skill} />
-		            {/key}
+		       {/key}
 				</li>
 			{/each}
 		</ul>

@@ -2,6 +2,8 @@
 
 import type { SvelteComponent } from 'svelte';
 
+import 'unplugin-icons/types/svelte'
+
 declare global {
 	namespace App {
 		// Interface Error {}

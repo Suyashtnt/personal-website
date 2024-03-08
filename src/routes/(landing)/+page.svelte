@@ -1,9 +1,9 @@
 <script lang="ts">
 	import * as m from '$i18n/messages';
 	import PageHead from '$lib/components/page-head.svelte';
-    import Posts from '$lib/posts/posts.svelte';
+  import Posts from '$lib/posts/posts.svelte';
 
-    import type { PageData } from './$types';
+  import type { PageData } from './$types';
 
 	import AboutToBlog from './about-to-blog.svelte';
 	import Hero from './hero.svelte';
@@ -23,6 +23,6 @@
 
 <AboutToBlog />
 
-<h2 class="ml-4 w-min text-5xl text-5xl text-light-lavender lg:ml-8 dark:text-dark-primary_foreground">Posts</h2>
+<h2 class="ml:4x w:min text:8x fg:primary ml:8x@md">Posts</h2>
 
 <Posts lang={data.language} posts={data.posts} />

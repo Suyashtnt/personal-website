@@ -38,18 +38,18 @@
         isSelected: boolean;
         skill: ISkill;
     }
-    const { isSelected, skill } = $props<Props>();
+    const { isSelected, skill }: Props = $props();
 </script>
 
 <a
-	class="flex items-center gap-4 border-2 border-light-lavender/20 rounded-xl px-4 text-light-text decoration-none transition-all duration-200 dark:border-dark-primary_background/80 dark:text-dark-overlay_foreground hover:shadow-2xl"
+	class="flex align-items:center gap:4x b:2|primary/.2 r:4x px:4x text:overlay decoration:none transition:all duration:300 shadow:4x:hover"
 	class:border-solid={isSelected}
-    data-sveltekit-noscroll
+  data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >
-	<img alt={skill.iconAlt} class="h-auto w-8 md:w-10" src={skill.icon} />
+	<img alt={skill.iconAlt} class="h:auto w:8x w:10x@md" src={skill.icon} />
 
-	<h2 class="text-2xl md:text-2xl">
+	<h2 class="text:6x">
 		{skill.name}
 	</h2>
 </a>

@@ -23,37 +23,37 @@
     }
 
 
-    const locale = $derived(getLocaleFromLanguageTag())
-		const dateFormatter = $derived(new Intl.DateTimeFormat(locale, {
-			day: '2-digit',
-			month: 'short',
-			year: 'numeric'
-		}));
+  const locale = $derived(getLocaleFromLanguageTag())
+	const dateFormatter = $derived(new Intl.DateTimeFormat(locale, {
+		day: '2-digit',
+		month: 'short',
+		year: 'numeric'
+	}));
 
 	const { transition } = setupViewTransition();
 </script>
 
 
-<ul class="mx-2 flex flex-wrap list-none gap-2 pa-0 lg:mx-8">
+<ul class="mx:2x flex flex:wrap list-style:none gap:2x p:0 mx:8x@md">
 	{#each posts as post (post.slug)}
-		<li class="flex-[1_1_280px]">
+		<li class={"flex:grow flex:shrink flex:280px"}>
 			<a
-				class="text-light-text decoration-none dark:text-dark-surface_foreground visited:text-light-text dark:visited:text-dark-surface_foreground"
+				class="text:none bg:surface text:surface text:surface@visited"
 				href="/posts/{post.slug}"
 			>
 				<article
-					class="h-full flex flex-col justify-between rounded-2xl bg-light-mantle px-6 dark:bg-dark-overlay_background"
+					class="h:full flex flex:col justify-items:space-between r:4x bg:overlay px:6x"
 					use:transition={`post-${post.slug}`}
 				>
 					<header>
 						<h1
-							class="mb-2 text-light-lavender dark:text-dark-primary_foreground hover:decoration-underline"
+							class="mb:2 text:primary text:underline:hover"
 							use:transition={`post-title-${post.slug}`}
 						>
 							{post.title}
 						</h1>
 						<div
-							class="text-light-text/80 dark:text-dark-subtle/90"
+							class="text:subtle/.80"
 							role="doc-subtitle"
 							use:transition={`post-dates-${post.slug}`}
 						>
