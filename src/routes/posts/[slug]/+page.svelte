@@ -16,7 +16,7 @@
   interface Props {
       data: PageData
   }
-  const { data } = $props<Props>();
+  const { data }: Props = $props();
 
 	if (
 		!data.frontmatter.date ||
@@ -44,10 +44,11 @@
 
 	const {
 		elements: { item },
-		states: { activeHeadingIdxs, headingsTree }
+		states: { headingsTree }
 	} = createTableOfContents({
 		activeType: 'highest-parents',
-		selector: '#article'
+		selector: '#article',
+		exclude: []
 	});
 </script>
 
@@ -59,22 +60,19 @@
 	<meta content={dateModified.toISOString()} property="og:article:modified_time" />
 </svelte:head>
 
-<div class="grid-layout-article grid justify-center">
-	<aside class="top-0 grid-area-[sidebar] ml-4 self-start lg:sticky">
-		<p class="line-clamp-2 mt-4 text-2xl">
-			{data.frontmatter.title}
-		</p>
+<div class="grid-layout:article grid justify-items:center">
+	<aside class="top:10x grid-area:sidebar mx:2x align-self:start sticky@md">
 		{#key $headingsTree}
-			<ToC activeHeadingIdxs={$activeHeadingIdxs} {item} tree={$headingsTree} />
+			<ToC {item} tree={$headingsTree} />
 		{/key}
 	</aside>
 
 	<article
-		class="grid-area-[content] mb-6 justify-self-center rounded-3xl bg-light-mantle px-4 text-xl prose md:mx-0 dark:bg-dark-surface_background"
+		class="grid-area:content mb:6x justify-self:center r:4x bg:surface px:4x text:5x max-w:75ch md:mx-0 $col:blue $primary:text-primary $vred:red $vorange:orange $vgreen:green $vteal:teal"
 		id="article"
 		use:transition={`post-${data.slug}`}
 	>
-		<header class="mb-8 py-4">
+		<header class="mb:6x py:4x">
 			<hr
 				class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-primary_foreground dark:to-dark-secondary"
 			/>
@@ -91,7 +89,7 @@
 			/>
 
 			<p
-				class="my-0 text-light-subtext-0 dark:text-dark-subtle/90"
+				class="my-0 fg:subtle opacity:.9"
 				use:transition={`post-dates-${data.slug}`}
 			>
 				{m.post_card_by({ author: data.frontmatter.author })} | {m.post_card_published({
@@ -104,9 +102,9 @@
 			</p>
 		</header>
 
-		<p class="article-content text-justify hyphens-auto prose">
+		<article class="text-wrap:pretty text-wrap:balance text-justify hyphens-auto">
 			{@html data.postHtml}
-		</p>
+		</article>
 
 		<Giscus
 			category="Announcements"
@@ -123,18 +121,18 @@
 		/>
 	</article>
 
-	<aside class="grid-area-[notes] mr-4 hidden md:block" />
+	<aside class="grid-area:notes mr-4 hidden md:block" />
 </div>
 
 <style>
-	.grid-layout-article {
+	.grid-layout\:article {
 		grid-template-areas:
 			'sidebar'
 			'content';
 	}
 
 	@media (min-width: 1024px) {
-   .grid-layout-article {
+   .grid-layout\:article {
 			grid-template-areas:
 				'sidebar content'
 				'sidebar notes';
@@ -144,76 +142,99 @@
   }
 
 	@media (min-width: 1536px) {
-        .grid-layout-article {
+    .grid-layout\:article {
 			grid-template-areas: 'sidebar content notes';
-
 			grid-template-columns: 1fr 3fr 1fr;
-        }
+    }
 	}
 
-  #article {
-		& h1,
+  :global(#article) {
+  	& :global(> article h1) {
+			font-size: 2.5rem;  		
+  	}
+
+		& :global(:is(h1,
 		h2,
 		h3,
 		h4,
 		h5,
-		h6 {
-      & > a {
-        --at-apply: 'inline-block relative decoration-none transition-all';
+		h6)) {
+      transform: none !important;
+      & :global(> a) {
+        display: inline-block;
+        position: relative;
+        text-decoration: none;
+        transition: all 300ms var(--m3-easing);
 
         &::after {
-          --at-apply: 'bg-none bg-repeat bg-scroll bg-light-blue dark:bg-dark-secondary bottom-0 content-empty block h-0.5 absolute transition-all w-0';
+          background: var(--col) none repeat scroll;
+          bottom: 0;
+          content: '';
+          display: block;
+          height: 0.125rem;
+          position: absolute;
+	        transition: all 300ms var(--m3-easing);
+	        width: 0;
         }
 
         &:hover {
-          --at-apply: 'text-light-blue dark:text-dark-secondary visited:text-light-blue dark:visited:text-dark-secondary';
-
+          color: var(--col);
           &::after {
-            --at-apply: 'w-full';
+            width: 100%;
           }
         }
       }
 		}
 
-		& h2 > a {
-			--at-apply: '!text-light-red !dark:text-dark-primary_foreground';
+		& :global(h1 > a) {
+			color: var(--primary) !important;
 		}
 
-		& h3 > a {
-			--at-apply: '!text-light-peach !dark:text-dark-red';
+		& :global(h2 > a) {
+			color: var(--primary) !important;
 		}
 
-		& h4 > a {
-			--at-apply: '!text-light-yellow !dark:text-dark-orange';
+		& :global(h3 > a) {
+			color: var(--vred) !important;
 		}
 
-		& h5 > a {
-			--at-apply: '!text-light-green !dark:text-dark-green text-xl';
+		& :global(h4 > a) {
+			color: var(--vorange) !important;
 		}
 
-		& h6 > a {
-			--at-apply: '!text-light-sapphire !dark:text-dark-teal text-xl';
+		& :global(h5 > a) {
+			color: var(--vgreen) !important;
 		}
 
-		& a {
-			--at-apply: 'text-light-blue dark:text-dark-blue hover:text-light-lavender dark:hover:text-dark-lavender visited:text-light-lavender dark:visited:text-dark-lavender';
+		& :global(h6 > a) {
+			color: var(--vteal) !important;
+		}
+
+		& :global(a) {
+			color: var(--vblue) !important;
 		}
 
 		& :global(pre) {
-			--at-apply: 'rounded-xl pa-2 max-w-[calc(100vw-4rem)] overflow-x-auto';
+			border-radius: 1rem;
+			padding: 1rem;
+			max-width: calc(100vw - 4rem);
+			overflow-x: auto;
 		}
 
 		& :global(code) {
-			--at-apply: 'rounded-xl overflow-x-auto';
+			border-radius: 1rem;
+			overflow-x: auto;
 		}
 
-		.callout, .blockquote {
-			--at-apply: 'rounded-xl pa-2 mx-2 overflow-x-auto';
+		:global(:is(.callout, .blockquote)) {
+			border-radius: 1rem;
+			padding: 1rem;
+			margin: 1rem;
+			overflow-x: auto;
 		}
 
     @media (prefers-color-scheme: dark) {
-        & .shiki,
-        .shiki :global(span) {
+        & :global(:is(.shiki, .shiki span)) {
             color: var(--shiki-dark) !important;
             background-color: var(--shiki-dark-bg) !important;
             /* Optional, if you also want font styles */
@@ -222,7 +243,7 @@
             text-decoration: var(--shiki-dark-text-decoration) !important;
         }
 
-				.callout, .blockquote {
+				:global(:is(.callout, .blockquote)) {
 					--callout-bg-color: #060516;
 				}
 	    }

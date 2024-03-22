@@ -1,7 +1,7 @@
 import type { Config } from '@master/css'
 
 export default {
-    themeDriver: 'media',
+    modeDriver: 'media',
     styles: {},
     rules: {},
     variables: {
@@ -41,8 +41,8 @@ export default {
         }
     },
     semantics: {},
-    mediaQueries: {},
+    queries: {},
     animations: {},
     selectors: {},
     functions: {}
-} as Config
+} satisfies Config

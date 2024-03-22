@@ -3,7 +3,7 @@ title: 'ULTRAMUSIC review: prelude'
 description: 'Just me shilling my favourite game OST of all time'
 author: 'A badly drawn wobbler'
 date: '2024-02-28 21:00'
-updated: '2024-03-02 19:50'
+updated: '2024-03-09 12:47'
 published: true
 ---
 
@@ -16,7 +16,7 @@ do the prelude so you don't have to stay for _that_ long.
 Don't expect the same luxuries on the next couple of 
 posts because then I'm going act-by-act.
 
-# Menu Music: The fire is gone
+## Menu Music: The fire is gone
 
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1991900720/size=large/bgcol=181a1b/linkcol=056cc4/tracklist=false/artwork=small/track=847718442/transparent=true/" seamless />
 
@@ -25,12 +25,12 @@ Sounds about right for menu music though. It just has that _cozy_ vibe you get f
 The name is also downbeat for a game which has an all-caps bolded industrial looking title of ULTRAKILL
 (This is what is known in the industry as "foreshadowing").
 
-# Layer 0: OVERTURE: MOUTH OF HELL
+## Layer 0: OVERTURE: MOUTH OF HELL
 Theres a small intro tutorial that you never
 play again and doesn't actually have music so
 moving on.
 
-## PRELUDE /// FIRST: INTO THE FIRE (and more)
+### PRELUDE /// FIRST: INTO THE FIRE (and more)
 
 Oh look the fire is back
 
@@ -55,7 +55,7 @@ before you're let free.
 
 5 cerberi / 7 maurices
 
-## PRELUDE /// FOURTH: A ONE-MACHINE ARMY
+### PRELUDE /// FOURTH: A ONE-MACHINE ARMY
 
 More break per core.
 
@@ -67,7 +67,7 @@ Into the fire.
 
 5 maurices / 7 cerberi
 
-## PRELUDE /// CLIMAX: CERBERUS
+### PRELUDE /// CLIMAX: CERBERUS
 
 Wait this ain't no dog-
 
@@ -77,9 +77,9 @@ I don't know how to describe this song other than _heavy._
 It's bass-only-filtered drum samples, the crunchy ear-piercing synth (if you can even call it a a synth),
 the dark grungy drone noises, it just sounds like it will beat you to death. 
 
-6 three-headed-dogs / 9 YOUHAVEUNOITCOMESFREEWITHYOURXBOX-
+2 three-headed-dogs / 3 YOUHAVEUNOITCOMESFREEWITHYOURXBOX-
 
-# FREEDOM! (temporarily)
+## FREEDOM! (temporarily)
 And thats all the music from the prelude. Yeah, not much,
 but hey it's a taste for the chaos that is about to come.
 So prepare yourself to be kept in for longer because the

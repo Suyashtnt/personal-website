@@ -4,10 +4,8 @@ import { D } from '@mobily/ts-belt';
 import { error } from '@sveltejs/kit';
 import { render } from 'svelte/server';
 
-import type { EntryGenerator, PageLoad } from './$types';
-
-export const csr = false;
-export const load: PageLoad = async ({ params, parent }) => {
+import type { EntryGenerator, PageServerLoad } from './$types';
+export const load: PageServerLoad = async ({ params, parent }) => {
 	const { language } = await parent();
 
 	const posts = await allPosts[language];
@@ -22,8 +20,8 @@ export const load: PageLoad = async ({ params, parent }) => {
 	return {
 		postHtml: render(component, {
 			props: {},
-			context: {}
-		}).html,
+			context: new Map()
+		}).html.replaceAll(/<!--ssr:([^-])-->/g, ""),
 		frontmatter,
 		slug: params.slug
 	};

@@ -16,7 +16,7 @@
       children: any
       data: LayoutData
   }
-  const { children, data } = $props<Props>();
+  const { children, data }: Props = $props();
 
   let CSSRuntimeProvider: CSSProviderType = $state<any>(Fragment);
 	$effect(() => {
