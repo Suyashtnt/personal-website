@@ -31,11 +31,17 @@ h1, h2, h3, h4, h5, h6 {
     font-variation-settings: 'CASL' 0;
     font-weight: 500;
 
-    &:hover {
+    &:has(a):hover {
         font-variation-settings: 'CASL' 1;
         font-weight: 800;
         transform: scale(1.05);
     }
+}
+
+a :is(h1, h2, h3, h4, h5, h6):hover {
+    font-variation-settings: 'CASL' 1;
+    font-weight: 800;
+    transform: scale(1.05);
 }
 
 

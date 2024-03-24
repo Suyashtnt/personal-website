@@ -14,8 +14,8 @@
         "@eslint/js": "^8.57.0",
         "@iconify-json/ic": "^1.1.17",
         "@inlang/paraglide-js": "1.3.3",
-        "@inlang/paraglide-js-adapter-vite": "^1.2.24",
-        "@master/eslint-config-css": "^2.0.0-rc.26",
+        "@inlang/paraglide-js-adapter-vite": "^1.2.26",
+        "@master/eslint-config-css": "^2.0.0-beta.175",
         "@melt-ui/pp": "^0.3.0",
         "@melt-ui/svelte": "^0.76.0",
         "@portaljs/remark-callouts": "^1.0.5",
@@ -50,7 +50,7 @@
         "remark-github": "^12.0.0",
         "sharp": "^0.33.2",
         "shikiji": "^0.10.2",
-        "svelte": "^5.0.0-next.81",
+        "svelte": "^5.0.0-next.82",
         "svelte-check": "^3.6.8",
         "svelte-eslint-parser": "^0.33.1",
         "svelte-preprocess": "^5.1.3",
@@ -60,7 +60,7 @@
         "typescript": "^5.4.3",
         "unplugin-icons": "^0.18.5",
         "uuid": "^9.0.1",
-        "vite": "^5.2.2"
+        "vite": "5.1"
     },
     "overrides": {
         "svelte": "$svelte"
@@ -68,8 +68,8 @@
     "type": "module",
     "dependencies": {
         "@giscus/svelte": "^3.0.0",
-        "@master/css-server": "^2.0.0-rc.26",
-        "@master/css.svelte": "^2.0.0-rc.26",
+        "@master/css-server": "^2.0.0-beta.189",
+        "@master/css.svelte": "^2.0.0-beta.131",
         "@mobily/ts-belt": "^4.0.0-rc.5",
         "animejs": "^3.2.2",
         "atropos": "^2.0.2",

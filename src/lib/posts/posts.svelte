@@ -33,7 +33,7 @@
 </script>
 
 
-<ul class="mx:2x flex flex:wrap list-style:none gap:2x p:0 mx:8x@md">
+<ul class="mx:4x flex flex:wrap list-style:none gap:4x p:0 mx:8x@md">
 	{#each posts as post (post.slug)}
 		<li class={"flex:grow flex:shrink flex:280px"}>
 			<a
@@ -41,7 +41,7 @@
 				href="/posts/{post.slug}"
 			>
 				<article
-					class="h:full flex flex:col justify-content:space-between r:4x bg:overlay px:6x"
+					class="h:full flex flex:col r:4x bg:overlay px:6x"
 					use:transition={`post-${post.slug}`}
 				>
 					<header>

@@ -10,7 +10,7 @@
 	import { easeEmphasized } from 'm3-svelte';
 	import { onMount } from 'svelte';
 
-	const names = ['TNTMan\\1671', 'Suyashtnt', 'TNT Man Inc'];
+	const names = ['TNT\\Man\\1671', 'Suyash\\tnt', 'TNT Man Inc'];
 
 	const updateCasl = (selector: string) => {
 		document.querySelectorAll(selector).forEach((el) => {
@@ -102,52 +102,51 @@
 	});
 </script>
 
-<!-- hack because mastercss doesn't have global styling -->
-<div class="hidden bg:secondary fg:primary" />
-
 <section
     class="rel bg:base fg:base mx:6x flex flex:col flex:row@lg gap:6x justify-items:space-between"
     id="landing"
 >
-  <div class="flex align-items:center bg:surface flex:auto flex:grow flex:col justify-items:space-between r:4x">
-    <atropos-component
-        class={"mt:8x w:64x r:4x {m:2x;p:0}:hover>div scale(1.05):hover>div>picture>img"}
-    >
-        <div
-            class="flex ~all|300ms gradient(45deg,var(--text-primary),var(--secondary)) p:2x place-items:center r:6x"
-        >
-            <enhanced:img
-                alt="A contemporary portrait of me."
-                class="object-cover ~all|300ms h:auto r:4x w:60x"
-                loading="eager"
-                sizes="240px 360px"
-                src='$lib/pictures/face.png'
-            />
-        </div>
-    </atropos-component>
-		<div class="mb:8x mx:4x">
-			<h1
-				class={"mx:0x text:center text:12x line-height:1.2! {mb:0;px:0;text:left}@md"}
-			>
-				{m.hello()}
-				<span class="names">
-					{#each names as name, i}
-						<span
-							class="name-{i} break-word gradient-text inline-block gradient(45deg,var(--text-primary),var(--secondary))"
-							class:opacity-0={i !== 0}
-							data-font-casl={0}
-						>
-							{#each name.split('\\') as segement}
-								{segement}<wbr />
-							{/each}
-						</span>
-					{/each}
-				</span>
-			</h1>
-  		<ul
-  			class={"my:0 mt:4x flex flex:col list-style:none align-items:center pl:0 text:6x line-height:0.2! {flex:row;align-items:start;gap:1ch}@md"}
+  <div class="flex align-items:center bg:surface flex:auto flex:grow flex:col r:4x px:6x">
+    <div class="flex align-items:center justify-content:space-between gap:6x@sm mt:8x w:full">
+      <atropos-component
+          class={"w:32x w:40x@sm r:4x {m:2x;p:0}:hover>div scale(1.05):hover>div>picture>img"}
+      >
+          <div
+              class="flex ~all|300ms p:2x place-items:center r:6x"
+          >
+              <enhanced:img
+                  alt="A contemporary portrait of me."
+                  class="object-cover ~all|300ms h:auto r:4x w:28x w:36x@sm"
+                  loading="eager"
+                  sizes="240px 360px"
+                  src='$lib/pictures/face.png'
+              />
+          </div>
+      </atropos-component>
+  		<h1
+  			class={"m:0 text:center text:12x text:14x@sm line-height:1.2! {mb:0;px:0;text:left}@md flex-grow:1"}
   		>
-        <li>
+  			{m.hello()}
+  			<span class="names h:2lh">
+  				{#each names as name, i}
+  					<span
+  						class="name-{i} gradient-text inline-block gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary"
+  						class:opacity-0={i !== 0}
+  						data-font-casl={0}
+  					>
+  						{#each name.split('\\') as segement}
+  							{segement}<wbr />
+  						{/each}
+  					</span>
+  				{/each}
+  			</span>
+  		</h1>
+    </div>
+		<div class="mb:8x">
+  		<ul
+  			class={"my:0 mt:4x  flex flex:col align-items:center pl:0 text:6x line-height:0.2! {flex:row;align-items:start;gap:2ch}@2xs list-style:none@<2xs"}
+  		>
+        <li class="list-style:none">
             <h2
                 class="student w:36x@md"
                 on:mouseenter={() => animateWord('student')}
@@ -204,7 +203,7 @@
         </li>
   		</ul>
       <ul
-  				class="my:0 mt:3x flex:col list-style:none align-items:center pl:0 text:5x line-height:0 flex:row@md align-items:start@md gap:1ch@md flex"
+  				class="my:0 mt:3x list-style:none align-items:center pl:0 text:5x line-height:0 align-items:start@md gap:1ch flex flex:col@<2xs"
       >
           <li class="text-decoration:blue:hover align-items:center gap:1ch fg:surface fg:surface@visited flex">
               <Email class="h-8 w-8" />

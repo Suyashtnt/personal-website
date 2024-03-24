@@ -19,12 +19,12 @@
 </script>
 
 <div
-	class="flex flex:row align-items:center r:4x bg:surface/.80 p:2 pr:0 text:surface"
+	class="flex flex:row align-items:center r:6x bg:surface p:2x pr:0 fg:surface"
 >
 	<form action="/" class="flex flex:row align-items:center gap:1x" method="POST" use:enhance>
-	  <Language class="inline-block text:4x ml:1x" />
+	  <Language class="inline-block text:6x ml:1x" />
 		<select
-			class="flex:grow border:none bg:transparent text:4x font:inherit text-light-text dark:text-dark-surface_foreground"
+			class="flex:grow border:none bg:transparent text:5x font:inherit text-light-text dark:text-dark-surface_foreground"
 			id="lang-picker"
       name="language"
 			on:change={(e) => {

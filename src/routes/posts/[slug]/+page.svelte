@@ -68,24 +68,24 @@
 	</aside>
 
 	<article
-		class="grid-area:content mb:6x justify-self:center r:4x bg:surface px:4x text:5x max-w:75ch md:mx-0 $col:blue $primary:text-primary $vred:red $vorange:orange $vgreen:green $vteal:teal"
+		class="grid-area:content text-wrap:pretty text-wrap:balance text-justify hypens-auto mb:6x justify-self:center r:4x bg:surface px:4x text:5x max-w:75ch md:mx-0 $col:blue $primary:text-primary $vred:red $vorange:orange $vgreen:green $vteal:teal"
 		id="article"
 		use:transition={`post-${data.slug}`}
 	>
-		<header class="mb:6x py:4x">
+		<header class="mb:3x py:4x">
 			<hr
-				class="-0 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-primary_foreground dark:to-dark-secondary"
+				class="h:.5x gradient(45deg,var(--from),var(--to)) $from:text-primary $to:secondary"
 			/>
 
 			<h1
-				class="my-0 from-light-lavender to-light-mauve bg-gradient-to-br bg-clip-text text-center text-4xl text-transparent font-light dark:from-dark-primary_foreground dark:via-dark-primary_foreground dark:to-dark-secondary xl:text-5xl"
+				class="text:center"
 				use:transition={`post-title-${data.slug}`}
 			>
 				{data.frontmatter.title}
 			</h1>
 
 			<hr
-				class="mb-2 h-0.5 from-light-blue to-light-sapphire bg-gradient-to-r dark:from-dark-secondary dark:to-dark-primary_foreground"
+				class="h:.5x gradient(-45deg,var(--from),var(--to)) $from:text-primary $to:secondary"
 			/>
 
 			<p
@@ -102,9 +102,7 @@
 			</p>
 		</header>
 
-		<article class="text-wrap:pretty text-wrap:balance text-justify hyphens-auto">
 			{@html data.postHtml}
-		</article>
 
 		<Giscus
 			category="Announcements"
@@ -141,7 +139,7 @@
 		}
   }
 
-	@media (min-width: 1536px) {
+	@media (min-width: 1440px) {
     .grid-layout\:article {
 			grid-template-areas: 'sidebar content notes';
 			grid-template-columns: 1fr 3fr 1fr;
