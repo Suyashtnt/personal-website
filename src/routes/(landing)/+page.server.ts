@@ -4,42 +4,9 @@ import type { IProject } from './project.svelte';
 import type { ISkill } from './skill.svelte';
 
 export const prerender = false;
-import { availableLanguageTags } from '$i18n/runtime';
 import { allPosts } from '$lib/posts';
 
-import type { Actions, PageServerLoad } from './$types';
-
-const isElementOfAvailableLanguageTags = (
-	element: string
-): element is (typeof availableLanguageTags)[number] => {
-	return availableLanguageTags.includes(element as never);
-};
-
-export const actions = {
-	default: async ({ cookies, request }) => {
-		const data = await request.formData();
-
-		const dataLanguage = data.get('language')?.toString();
-		const newLanguage =
-			dataLanguage ??
-			request.headers.get('accept-language')?.split(',')[0]?.split('-')[0] ??
-			cookies.get('language') ??
-			'en';
-
-		if (isElementOfAvailableLanguageTags(newLanguage)) {
-			cookies.set('language', newLanguage, { path: '/' });
-
-			return {
-				language: newLanguage
-			};
-		} else {
-			error(
-				400,
-				`Invalid language. Valid languages are: ${availableLanguageTags.join(', ')}`
-			);
-		}
-	}
-} satisfies Actions;
+import type { PageServerLoad } from './$types';
 
 export const _skills: ISkill[] = [
 	{
@@ -102,7 +69,7 @@ It's package manager is probably the best part. I have access to the biggest rep
 
 I've used it in production to create and deploy minimal docker containers. The fact that I can turn my apps binary into a baseless docker image with basically 0 effort seems like dark magic.
 `,
-		icon: 'https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake.svg',
+		icon: 'https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake-colours.svg',
 		iconAlt: 'NixOS logo',
 		id: 'Nix',
 		name: 'Nix/OS',

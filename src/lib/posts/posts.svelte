@@ -2,27 +2,27 @@
 	import type { AvailableLanguageTag } from '$i18n/runtime';
 
 	import * as m from '$i18n/messages';
-  import { setupViewTransition } from 'sveltekit-view-transition';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 	import type { PageData } from '../../routes/(landing)/$types';
 
-  interface Props {
-      lang: AvailableLanguageTag
-      posts: PageData["posts"];
-  }
-  const { lang, posts }: Props = $props();
+	interface Props {
+		lang: AvailableLanguageTag
+		posts: PageData["posts"];
+	}
+	const { lang, posts }: Props = $props();
 
-  const getLocaleFromLanguageTag = () => {
-      switch (lang) {
-          case 'en':
-              return 'en-uk'
-          case 'af':
-              return 'af-za'
-          default:
-              throw new Error(`Unknown language tag: ${lang}`)
-      }
-  }
+	const getLocaleFromLanguageTag = () => {
+		switch (lang) {
+			case 'en':
+				return 'en-uk'
+			case 'af':
+				return 'af-za'
+			default:
+				throw new Error(`Unknown language tag: ${lang}`)
+		}
+	}
 
-  const locale = $derived(getLocaleFromLanguageTag())
+	const locale = $derived(getLocaleFromLanguageTag())
 	const dateFormatter = $derived(new Intl.DateTimeFormat(locale, {
 		day: '2-digit',
 		month: 'short',

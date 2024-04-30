@@ -1,63 +1,53 @@
 <script lang="ts">
-	import * as m from '$i18n/messages';
-	import anime from 'animejs';
+	import * as m from '$i18n/messages'
 	import 'atropos/css';
 	import Email from '~icons/ic/email'
 	import Discord from '~icons/ic/baseline-discord'
-
-	const { random, remove, timeline } = anime;
+	import { animate, timeline, type TimelineDefinition } from 'motion'
 
 	import { easeEmphasized } from 'm3-svelte';
 	import { onMount } from 'svelte';
 
 	const names = ['TNT\\Man\\1671', 'Suyash\\tnt', 'TNT Man Inc'];
 
-	const updateCasl = (selector: string) => {
-		document.querySelectorAll(selector).forEach((el) => {
-			if (el instanceof HTMLElement) {
-				el.style.fontVariationSettings = `"CASL" ${el.dataset.fontCasl}, "MONO" ${el.dataset.fontCasl}`;
-			}
-		});
-	};
+	const easing = easeEmphasized;
+	const random = (min: number, max: number) => {
+	  return Math.random() * (max - min) + min;
+	}
 
-	const easing = () => easeEmphasized;
-
-	const animateWord = (word: string) => {
+	const animateWord= (word: string) => {
 		const selector = `.${word} .letter`;
-		remove(selector);
+		const elements = document.querySelectorAll(selector)
 
-		anime({
-			autoplay: true,
-			easing,
-			duration: 300,
-			'data-font-casl': 1,
-			fontWeight: [400, 900],
-			rotate: () => random(-15, 15),
-			scale: () => random(0.95, 1.05),
-			targets: selector,
-			translateX: () => random(-15, 15),
-			translateY: () => random(-15, 15),
-			update: () => updateCasl(selector)
-		});
+		for (const element of elements) {
+		  animate(element, {
+  			'--casl': [0, 1],
+  			fontWeight: [400, 900],
+  			rotate: random(-15, 15),
+  			scale: random(0.95, 1.05),
+  			x: random(-15, 15),
+  			y: random(-15, 15),
+  		}, {
+  			easing,
+  			duration: 0.3,
+  		})
+		}
 	};
 
 	const endAnimateWord = (word: string) => {
 		const selector = `.${word} .letter`;
-		remove(selector);
 
-		anime({
-			autoplay: true,
-			easing,
-			duration: 300,
-			'data-font-casl': 0,
+		animate(selector, {
+			'--casl': [1, 0],
 			fontWeight: [900, 400],
 			rotate: 0,
 			scale: 1,
-			targets: selector,
-			translateX: 0,
-			translateY: 0,
-			update: () => updateCasl(selector)
-		});
+			x: 0,
+			y: 0,
+		}, {
+			easing,
+			duration: 0.3,
+		})
 	};
 
 	onMount(async () => {
@@ -68,37 +58,38 @@
 	});
 
 	onMount(() => {
-		const opacityIn = [0, 1];
-		const duration = 450;
-		const delay = 2500;
+		const duration = 0.45;
+		const delay = 2.5;
 
-		const tl = timeline({
-			autoplay: true,
-			loop: true
-		});
+		const tlDefinition: TimelineDefinition = []
 
 		for (const [i] of names.entries()) {
 			const selector = `.names .name-${i}`;
 
-			tl.add({
-				'data-font-casl': 1,
-				duration: duration,
-				easing,
-				hidden: false,
-				opacity: opacityIn,
-				targets: selector,
-				update: () => updateCasl(selector)
-			}).add({
-				'data-font-casl': 0,
-				delay,
-				duration: duration,
-				easing,
-				hidden: true,
-				opacity: 0,
-				targets: selector,
-				update: () => updateCasl(selector)
-			});
+			tlDefinition.push([selector, {
+				'--casl': [0, 1],
+			  fontWeight: [0, 600],
+				visibility: 'visible',
+				y: [-30, 0],
+				opacity: [0, 1],
+			}],
+			[selector, {
+				'--casl': [1, 0],
+			  fontWeight: [600, 0],
+				visibility: 'hidden',
+				y: [0, 30],
+				opacity: [1, 0],
+			}, {delay}]);
 		}
+
+		timeline(tlDefinition, {
+      autoplay: true,
+      defaultOptions: {
+        easing,
+        duration
+      },
+      repeat: Infinity
+		})
 	});
 </script>
 
@@ -107,9 +98,9 @@
     id="landing"
 >
   <div class="flex align-items:center bg:surface flex:auto flex:grow flex:col r:4x px:6x">
-    <div class="flex align-items:center justify-content:space-between gap:6x@sm mt:8x w:full">
+    <div class="flex align-items:center justify-content:space-between gap:6x@sm mt:8x w:full r:4x">
       <atropos-component
-          class={"w:32x w:40x@sm r:4x {m:2x;p:0}:hover>div scale(1.05):hover>div>picture>img"}
+          class={"w:32x w:40x@sm r:4x ~all|300ms gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary {m:2x;p:0}:hover>div scale(0.9):hover scale(1.15):hover>div>picture>img"}
       >
           <div
               class="flex ~all|300ms p:2x place-items:center r:6x"
@@ -130,9 +121,7 @@
   			<span class="names h:2lh">
   				{#each names as name, i}
   					<span
-  						class="name-{i} gradient-text inline-block gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary"
-  						class:opacity-0={i !== 0}
-  						data-font-casl={0}
+  						class="name-{i} gradient-text inline-block gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary animate-casl"
   					>
   						{#each name.split('\\') as segement}
   							{segement}<wbr />
@@ -148,14 +137,14 @@
   		>
         <li class="list-style:none">
             <h2
-                class="student w:36x@md"
+                class="student w:36x@2xs"
                 on:mouseenter={() => animateWord('student')}
                 on:mouseleave={() => endAnimateWord('student')}
                 on:touchend={() => endAnimateWord('student')}
                 on:touchstart={() => animateWord('student')}
             >
                 {#each m.hero_student().split('') as letter}
-                    <span class="letter inline-block">{letter}</span>
+                    <span class="letter animate-casl inline-block">{letter}</span>
                 {/each}
             </h2>
         </li>
@@ -173,7 +162,7 @@
                     rel="me"
                 >
                     {#each m.hero_programmer().split('') as letter}
-                        <span class="letter">
+                        <span class="letter animate-casl inline-block">
                             {letter}
                         </span>
                     {/each}
@@ -194,7 +183,7 @@
                     rel="me"
                 >
                     {#each m.hero_gamer().split('') as letter}
-                        <span class="letter">
+                        <span class="letter animate-casl inline-block">
                             {letter}
                         </span>
                     {/each}
@@ -276,8 +265,13 @@
 	.names {
 		display: grid;
 	}
+
 	.names > * {
 		grid-row: 1;
 		grid-column: 1;
+	}
+
+	.animate-casl {
+	   font-variation-settings: "CASL" var(--casl), "MONO" var(--casl);
 	}
 </style>

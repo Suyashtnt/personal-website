@@ -1,5 +1,5 @@
 <script lang="ts">
-    const { footerText } = $props<{ footerText: string }>();
+    const { footerText }: { footerText: string } = $props();
 </script>
 
 <footer

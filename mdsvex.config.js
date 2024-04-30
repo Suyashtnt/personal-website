@@ -4,7 +4,7 @@ import rehypeSlug from 'rehype-slug';
 import remarkAbbr from 'remark-abbr';
 import remarkGithub from 'remark-github';
 import remarkCallouts from "@portaljs/remark-callouts";
-import { codeToHtml } from 'shikiji';
+import { codeToHtml } from 'shiki';
 
 import syntaxDark from './syntax-dark.json' assert { type: 'json' };
 
@@ -27,7 +27,7 @@ async function highlighter(code, lang = '') {
 		lang,
 		themes: {
 			dark: syntaxDark,
-      light: 'github-light'
+			light: 'github-light'
 		}
 	});
 

@@ -1,11 +1,12 @@
 <script lang="ts">
 	import * as m from '$i18n/messages';
-  import Menu from '~icons/ic/menu'
-  import Arrow from '~icons/ic/play-arrow'
+    import Menu from '~icons/ic/menu'
+    import Arrow from '~icons/ic/play-arrow'
+    import Link from '~icons/ic/outline-open-in-new'
 
 	import LanguagePicker from './languagePicker.svelte';
 
-  let dropdownOpen = false
+    let dropdownOpen = false
 </script>
 
 <nav class="flex rel sticky@sm align-items:center bd:blur(8x) border:2|subtle/.80 justify-content:space-between mb:4x mx:4x r:6x top:4x z:10 h:12x">
@@ -42,16 +43,30 @@
     </button>
 
     <div
-      class={"links invisible abs left:50% top:calc(100%+1rem) flex:row transform:top rotate(90,0) r:6x bg:text-primary@2xs bg:overlay p:2x text:center text:6x transition:all|300ms visible@2xs rel@2xs left:0@2xs top:0@2xs flex@2xs translate(-50%, 0) translate(0)@2xs rotate(0)@2xs gap:4x@2xs p:1x@2xs pl:4x@2xs text:5x@2xs fg:black@2xs"}
+      class={"w:80%@<2xs links invisible abs left:50% top:calc(100%+1rem) flex:row transform:top rotate(90,0) r:6x bg:text-primary@2xs bg:overlay p:2x text:center text:6x transition:all|300ms visible@2xs rel@2xs left:0@2xs top:0@2xs flex@2xs translate(-50%,0) translate(0)@2xs rotate(0)@2xs gap:4x p:1x@2xs text:5x@2xs fg:black@2xs"}
     >
-        <a class="flex align-items:center flex:row" href="/">
-            <Arrow />
-            {m.header_home()}
-        </a>
-        <a class="flex align-items:center flex:row" href="/posts">
-            <Arrow />
-            {m.header_posts()}
-        </a>
+        <div class="flex flex:col@<2xs r:6x bg:surface p:2x fg:surface rel text:left mb:2x@<2xs">
+            <span class="hidden@2xs">
+                <Link class="vertical:middle" />
+                {m.header_links()}
+            </span>
+            <ul 
+                class={"r:6x transition:all|300ms my:0 flex flex:col@<2xs pl:4x@<2xs px:1x pl:0 text:5x"}
+            >
+                <li class="list-style:none">
+                    <a class="flex align-items:center flex:row" href="/">
+                        <Arrow />
+                        {m.header_home()}
+                    </a>
+                </li>
+                <li class="list-style:none">
+                    <a class="flex align-items:center flex:row" href="/posts">
+                        <Arrow />
+                        {m.header_posts()}
+                    </a>
+                </li>
+            </ul>
+        </div>
         <LanguagePicker />
     </div>
 </nav>

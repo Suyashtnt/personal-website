@@ -44,7 +44,7 @@
 <a
 	class="flex align-items:center gap:4x b:2|primary/.2 r:4x px:4x text:overlay decoration:none transition:all duration:300 shadow:4x:hover"
 	class:border-solid={isSelected}
-  data-sveltekit-noscroll
+    data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >
 	<img alt={skill.iconAlt} class="h:auto w:8x w:10x@md" src={skill.icon} />

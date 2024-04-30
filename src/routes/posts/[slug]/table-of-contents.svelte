@@ -14,7 +14,9 @@
 			<li class="pt-2x">
 				<a
 					class="relative absolute::after block:after bg:none::after bg:repeat::after bg:scroll::after bottom:0::after content:'\00a0'::after h:1:after text:none ~duration:300::after ~all::after w:0::after w:full[data-active]::after w:full:hover::after"
-					class:bg:purple::after={level === 1}
+					href={`#${heading.id}`}
+				>
+					<!-- class:bg:purple::after={level === 1}
 					class:bg:purple::after={level === 2}
 					class:bg:red::after={level === 3}
 					class:bg:yellow::after={level === 4}
@@ -34,9 +36,7 @@
 					class:fg:yellow:visited:hover={level === 4}
 					class:fg:teal:visited:hover={level === 5}
 					class:fg:blue:visited:hover={level === 6}
-					href="#{heading.id}"
-					use:melt={$item(heading.id)}
-				>
+					use:melt={$item(heading.id)} -->
 					{heading.title}
 				</a>
 			</li>

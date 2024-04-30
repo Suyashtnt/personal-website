@@ -1,4 +1,5 @@
-import { paraglide } from '@inlang/paraglide-js-adapter-vite';
+import { paraglide } from '@inlang/paraglide-sveltekit/vite';
+
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
 import browserslist from 'browserslist';
@@ -33,9 +34,9 @@ export default defineConfig({
 			autoInstall: true
 		})
 	],
-  server: {
-    fs: {
-        allow: ['./master.css.ts']
-    }
+	server: {
+		fs: {
+			allow: ['./master.css.ts']
+		}
 	}
 });
