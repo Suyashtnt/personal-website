@@ -9,7 +9,8 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	const { language } = await parent();
 
 	const posts = await allPosts[language];
-	const { component, ...frontmatter} = posts.find((post) => post.slug === params.slug);
+	const { component, ...frontmatter } =
+		posts.find((post) => post.slug === params.slug) ?? error(404, 'Post not found');
 
 	const cannotFindPost = !frontmatter?.title;
 
@@ -18,11 +19,11 @@ export const load: PageServerLoad = async ({ params, parent }) => {
 	}
 
 	return {
-		postHtml: render(component, {
-			props: {},
-			context: new Map()
-		}).html.replaceAll(/<!--ssr:([^-])-->/g, ""),
 		frontmatter,
+		postHtml: render(component, {
+			context: new Map(),
+			props: {}
+		}).html.replaceAll(/<!--ssr:([^-])-->/g, ''),
 		slug: params.slug
 	};
 };

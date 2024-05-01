@@ -1,25 +1,26 @@
 <script lang="ts">
 	import '$lib/fonts/Recursive/recursive.css';
-	import { setupViewTransition } from 'sveltekit-view-transition';
-	import { Fragment, type CSSRuntimeProvider as CSSProviderType } from '@master/css.svelte';
-	import type { LayoutData } from './$types';
-	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import { i18n } from '$lib/i18n';
+	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
+	import { type CSSRuntimeProvider as CSSProviderType, Fragment } from '@master/css.svelte';
+	import { type Snippet, onMount } from 'svelte';
+	import { setupViewTransition } from 'sveltekit-view-transition';
+
+	import type { LayoutData } from './$types';
 
 	import '../app.css';
 	import Footer from './footer.svelte';
 	import Header from './header.svelte';
-	import { onMount } from 'svelte';
 
 	setupViewTransition();
 
 	interface Props {
-		children: any;
+		children: Snippet;
 		data: LayoutData;
 	}
 	const { children, data }: Props = $props();
 
-	let CSSRuntimeProvider: CSSProviderType = $state<any>(Fragment);
+	let CSSRuntimeProvider: typeof CSSProviderType = $state<any>(Fragment);
 	$effect(() => {
 		// Keep the <html> lang attribute in sync with the current language
 		document.documentElement.lang = data.language;
@@ -31,7 +32,7 @@
 	});
 </script>
 
-<svelte:component this={CSSRuntimeProvider} config={import('../../master.css')}>
+<svelte:component config={import('../../master.css')} this={CSSRuntimeProvider}>
 	<ParaglideJS {i18n}>
 		<Header />
 		<main class="bg:base fg:base pt:4x">

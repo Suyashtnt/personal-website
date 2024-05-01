@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import masterCssPlugin from '@master/eslint-plugin-css'
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import prettier from 'eslint-config-prettier';
@@ -6,7 +7,6 @@ import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommende
 import prettierPlugin from 'eslint-plugin-prettier';
 import sveltePlugin from 'eslint-plugin-svelte';
 import svelteParser from 'svelte-eslint-parser';
-import masterCssPlugin from '@master/eslint-plugin-css'
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const defaultRules = {

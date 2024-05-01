@@ -1,22 +1,17 @@
 <script lang="ts">
 	import * as m from '$i18n/messages';
-	import Giscus from '@giscus/svelte';
-	import { setupViewTransition } from 'sveltekit-view-transition';
-
-	import './giscus.css';
-	import "@portaljs/remark-callouts/styles.css";
-
 	import PageHead from '$lib/components/page-head.svelte';
-	import { createTableOfContents } from '@melt-ui/svelte';
+	import Giscus from '@giscus/svelte';	import { createTableOfContents } from '@melt-ui/svelte';
+	import '@portaljs/remark-callouts/styles.css';	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	import type { PageData } from './$types';
 
-	import ToC from './table-of-contents.svelte';
+	import './giscus.css';	import ToC from './table-of-contents.svelte';
 
-  interface Props {
-      data: PageData
-  }
-  const { data }: Props = $props();
+	interface Props {
+		data: PageData;
+	}
+	const { data }: Props = $props();
 
 	if (
 		!data.frontmatter.date ||
@@ -47,8 +42,8 @@
 		states: { headingsTree }
 	} = createTableOfContents({
 		activeType: 'highest-parents',
-		selector: '#article',
-		exclude: []
+		exclude: [],
+		selector: '#article'
 	});
 </script>
 
@@ -61,37 +56,31 @@
 </svelte:head>
 
 <div class="grid-layout:article grid justify-items:center">
-	<aside class="top:10x grid-area:sidebar mx:2x align-self:start sticky@md">
+	<aside class="sticky@md align-self:start grid-area:sidebar mx:2x top:10x">
 		{#key $headingsTree}
 			<ToC {item} tree={$headingsTree} />
 		{/key}
 	</aside>
 
 	<article
-		class="grid-area:content text-wrap:pretty text-wrap:balance text-justify hypens-auto mb:6x justify-self:center r:4x bg:surface px:4x text:5x max-w:75ch md:mx-0 $col:blue $primary:text-primary $vred:red $vorange:orange $vgreen:green $vteal:teal"
+		class="text-wrap:pretty text-wrap:balance text-justify hypens-auto text:5x md:mx-0 $col:blue $primary:text-primary $vgreen:green $vorange:orange $vred:red $vteal:teal bg:surface grid-area:content justify-self:center max-w:75ch mb:6x px:4x r:4x"
 		id="article"
 		use:transition={`post-${data.slug}`}
 	>
 		<header class="mb:3x py:4x">
 			<hr
-				class="h:.5x gradient(45deg,var(--from),var(--to)) $from:text-primary $to:secondary"
+				class="$from:text-primary $to:secondary gradient(45deg,var(--from),var(--to)) h:.5x"
 			/>
 
-			<h1
-				class="text:center"
-				use:transition={`post-title-${data.slug}`}
-			>
+			<h1 class="text:center" use:transition={`post-title-${data.slug}`}>
 				{data.frontmatter.title}
 			</h1>
 
 			<hr
-				class="h:.5x gradient(-45deg,var(--from),var(--to)) $from:text-primary $to:secondary"
+				class="$from:text-primary $to:secondary gradient(-45deg,var(--from),var(--to)) h:.5x"
 			/>
 
-			<p
-				class="my-0 fg:subtle opacity:.9"
-				use:transition={`post-dates-${data.slug}`}
-			>
+			<p class="my-0 fg:subtle opacity:.9" use:transition={`post-dates-${data.slug}`}>
 				{m.post_card_by({ author: data.frontmatter.author })} | {m.post_card_published({
 					published: dateFormatter.format(datePublished),
 					updated: dateFormatter.format(dateModified)
@@ -102,7 +91,7 @@
 			</p>
 		</header>
 
-			{@html data.postHtml}
+		{@html data.postHtml}
 
 		<Giscus
 			category="Announcements"
@@ -119,7 +108,7 @@
 		/>
 	</article>
 
-	<aside class="grid-area:notes mr-4 hidden md:block" />
+	<aside class="mr-4 md:block hidden grid-area:notes"></aside>
 </div>
 
 <style>
@@ -130,58 +119,53 @@
 	}
 
 	@media (min-width: 1024px) {
-   .grid-layout\:article {
+		.grid-layout\:article {
 			grid-template-areas:
 				'sidebar content'
 				'sidebar notes';
 
 			grid-template-columns: 1fr 3fr;
 		}
-  }
-
-	@media (min-width: 1440px) {
-    .grid-layout\:article {
-			grid-template-areas: 'sidebar content notes';
-			grid-template-columns: 1fr 3fr 1fr;
-    }
 	}
 
-  :global(#article) {
-  	& :global(> article h1) {
-			font-size: 2.5rem;  		
-  	}
+	@media (min-width: 1440px) {
+		.grid-layout\:article {
+			grid-template-areas: 'sidebar content notes';
+			grid-template-columns: 1fr 3fr 1fr;
+		}
+	}
 
-		& :global(:is(h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6)) {
-      transform: none !important;
-      & :global(> a) {
-        display: inline-block;
-        position: relative;
-        text-decoration: none;
-        transition: all 300ms var(--m3-easing);
+	:global(#article) {
+		& :global(> article h1) {
+			font-size: 2.5rem;
+		}
 
-        &::after {
-          background: var(--col) none repeat scroll;
-          bottom: 0;
-          content: '';
-          display: block;
-          height: 0.125rem;
-          position: absolute;
-	        transition: all 300ms var(--m3-easing);
-	        width: 0;
-        }
+		& :global(:is(h1, h2, h3, h4, h5, h6)) {
+			transform: none !important;
+			& :global(> a) {
+				display: inline-block;
+				position: relative;
+				text-decoration: none;
+				transition: all 300ms var(--m3-easing);
 
-        &:hover {
-          color: var(--col);
-          &::after {
-            width: 100%;
-          }
-        }
-      }
+				&::after {
+					background: var(--col) none repeat scroll;
+					bottom: 0;
+					content: '';
+					display: block;
+					height: 0.125rem;
+					position: absolute;
+					transition: all 300ms var(--m3-easing);
+					width: 0;
+				}
+
+				&:hover {
+					color: var(--col);
+					&::after {
+						width: 100%;
+					}
+				}
+			}
 		}
 
 		& :global(h1 > a) {
@@ -231,19 +215,19 @@
 			overflow-x: auto;
 		}
 
-    @media (prefers-color-scheme: dark) {
-        & :global(:is(.shiki, .shiki span)) {
-            color: var(--shiki-dark) !important;
-            background-color: var(--shiki-dark-bg) !important;
-            /* Optional, if you also want font styles */
-            font-style: var(--shiki-dark-font-style) !important;
-            font-weight: var(--shiki-dark-font-weight) !important;
-            text-decoration: var(--shiki-dark-text-decoration) !important;
-        }
+		@media (prefers-color-scheme: dark) {
+			& :global(:is(.shiki, .shiki span)) {
+				color: var(--shiki-dark) !important;
+				background-color: var(--shiki-dark-bg) !important;
+				/* Optional, if you also want font styles */
+				font-style: var(--shiki-dark-font-style) !important;
+				font-weight: var(--shiki-dark-font-weight) !important;
+				text-decoration: var(--shiki-dark-text-decoration) !important;
+			}
 
-				:global(:is(.callout, .blockquote)) {
-					--callout-bg-color: #060516;
-				}
-	    }
+			:global(:is(.callout, .blockquote)) {
+				--callout-bg-color: #060516;
+			}
+		}
 	}
 </style>

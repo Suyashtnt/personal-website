@@ -1,8 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 
-import type { SvelteComponent } from 'svelte';
-
-import 'unplugin-icons/types/svelte'
+import 'unplugin-icons/types/svelte';
 
 declare global {
 	namespace App {
@@ -20,7 +18,7 @@ declare global {
 
 		type BlogPost = {
 			author: string;
-			component: SvelteComponent;
+			component: typeof import('svelte').SvelteComponent;
 			date: string;
 			description: string;
 			published: boolean;

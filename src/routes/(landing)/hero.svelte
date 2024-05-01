@@ -1,250 +1,268 @@
 <script lang="ts">
-	import * as m from '$i18n/messages'
+	import * as m from '$i18n/messages';
+	import Discord from '~icons/ic/baseline-discord';
+	import Email from '~icons/material-symbols/mail-outline';
 	import 'atropos/css';
-	import Email from '~icons/ic/email'
-	import Discord from '~icons/ic/baseline-discord'
-	import { animate, timeline, type TimelineDefinition } from 'motion'
-
 	import { easeEmphasized } from 'm3-svelte';
+	import { type TimelineDefinition, animate, timeline } from 'motion';
 	import { onMount } from 'svelte';
 
 	const names = ['TNT\\Man\\1671', 'Suyash\\tnt', 'TNT Man Inc'];
 
 	const easing = easeEmphasized;
 	const random = (min: number, max: number) => {
-	  return Math.random() * (max - min) + min;
-	}
+		return Math.random() * (max - min) + min;
+	};
 
-	const animateWord= (word: string) => {
+	const animateWord = (word: string) => {
 		const selector = `.${word} .letter`;
-		const elements = document.querySelectorAll(selector)
+		const elements = document.querySelectorAll(selector);
 
 		for (const element of elements) {
-		  animate(element, {
-  			'--casl': [0, 1],
-  			fontWeight: [400, 900],
-  			rotate: random(-15, 15),
-  			scale: random(0.95, 1.05),
-  			x: random(-15, 15),
-  			y: random(-15, 15),
-  		}, {
-  			easing,
-  			duration: 0.3,
-  		})
+			animate(
+				element,
+				{
+					'--casl': [0, 1],
+					fontWeight: [400, 900],
+					rotate: random(-15, 15),
+					scale: random(0.95, 1.05),
+					x: random(-15, 15),
+					y: random(-15, 15)
+				},
+				{
+					duration: 0.3,
+					easing
+				}
+			);
 		}
 	};
 
 	const endAnimateWord = (word: string) => {
 		const selector = `.${word} .letter`;
 
-		animate(selector, {
-			'--casl': [1, 0],
-			fontWeight: [900, 400],
-			rotate: 0,
-			scale: 1,
-			x: 0,
-			y: 0,
-		}, {
-			easing,
-			duration: 0.3,
-		})
+		animate(
+			selector,
+			{
+				'--casl': [1, 0],
+				fontWeight: [900, 400],
+				rotate: 0,
+				scale: 1,
+				x: 0,
+				y: 0
+			},
+			{
+				duration: 0.3,
+				easing
+			}
+		);
 	};
 
 	onMount(async () => {
-        const { default: AtroposComponent } = await import('atropos/element');
-        if (!customElements.get('atropos-component')) {
-            customElements.define('atropos-component', AtroposComponent);
-        }
+		const { default: AtroposComponent } = await import('atropos/element');
+		if (!customElements.get('atropos-component')) {
+			customElements.define('atropos-component', AtroposComponent);
+		}
 	});
 
 	onMount(() => {
 		const duration = 0.45;
 		const delay = 2.5;
 
-		const tlDefinition: TimelineDefinition = []
+		const tlDefinition: TimelineDefinition = [];
 
 		for (const [i] of names.entries()) {
 			const selector = `.names .name-${i}`;
 
-			tlDefinition.push([selector, {
-				'--casl': [0, 1],
-			  fontWeight: [0, 600],
-				visibility: 'visible',
-				y: [-30, 0],
-				opacity: [0, 1],
-			}],
-			[selector, {
-				'--casl': [1, 0],
-			  fontWeight: [600, 0],
-				visibility: 'hidden',
-				y: [0, 30],
-				opacity: [1, 0],
-			}, {delay}]);
+			tlDefinition.push(
+				[
+					selector,
+					{
+						'--casl': [0, 1],
+						fontWeight: [100, 600],
+						opacity: [0, 1],
+						y: [-30, 0]
+					}
+				],
+				[
+					selector,
+					{
+						'--casl': [1, 0],
+						fontWeight: [600, 100],
+						opacity: [1, 0],
+						y: [0, 30]
+					},
+					{ delay }
+				]
+			);
 		}
 
 		timeline(tlDefinition, {
-      autoplay: true,
-      defaultOptions: {
-        easing,
-        duration
-      },
-      repeat: Infinity
-		})
+			autoplay: true,
+			defaultOptions: {
+				duration,
+				easing
+			},
+			repeat: Infinity
+		});
 	});
 </script>
 
 <section
-    class="rel bg:base fg:base mx:6x flex flex:col flex:row@lg gap:6x justify-items:space-between"
-    id="landing"
+	class="flex rel bg:base fg:base flex:col flex:row@lg gap:6x justify-items:stretch mx:6x"
+	id="landing"
 >
-  <div class="flex align-items:center bg:surface flex:auto flex:grow flex:col r:4x px:6x">
-    <div class="flex align-items:center justify-content:space-between gap:6x@sm mt:8x w:full r:4x">
-      <atropos-component
-          class={"w:32x w:40x@sm r:4x ~all|300ms gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary {m:2x;p:0}:hover>div scale(0.9):hover scale(1.15):hover>div>picture>img"}
-      >
-          <div
-              class="flex ~all|300ms p:2x place-items:center r:6x"
-          >
-              <enhanced:img
-                  alt="A contemporary portrait of me."
-                  class="object-cover ~all|300ms h:auto r:4x w:28x w:36x@sm"
-                  loading="eager"
-                  sizes="240px 360px"
-                  src='$lib/pictures/face.png'
-              />
-          </div>
-      </atropos-component>
-  		<h1
-  			class={"m:0 text:center text:12x text:14x@sm line-height:1.2! {mb:0;px:0;text:left}@md flex-grow:1"}
-  		>
-  			{m.hello()}
-  			<span class="names h:2lh">
-  				{#each names as name, i}
-  					<span
-  						class="name-{i} gradient-text inline-block gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary animate-casl"
-  					>
-  						{#each name.split('\\') as segement}
-  							{segement}<wbr />
-  						{/each}
-  					</span>
-  				{/each}
-  			</span>
-  		</h1>
-    </div>
+	<div class="flex align-items:center bg:surface flex-grow:1 flex:auto flex:col px:6x r:4x">
+		<div
+			class="flex align-items:center gap:6x@sm justify-content:space-between mt:8x r:4x w:full"
+		>
+			<atropos-component
+				class={'w:32x w:40x@sm r:4x ~all|300ms gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary {m:2x;p:0}:hover>div scale(0.9):hover scale(1.15):hover>div>picture>img'}
+			>
+				<div class="flex ~all|300ms p:2x place-items:center r:6x">
+					<enhanced:img
+						alt="A contemporary portrait of me."
+						class="object-cover ~all|300ms h:auto r:4x w:28x w:36x@sm"
+						loading="eager"
+						sizes="240px 360px"
+						src="$lib/pictures/face.png"
+					></enhanced:img>
+				</div>
+			</atropos-component>
+			<h1
+				class={'m:0 text:center text:12x text:14x@sm line-height:1.2! {mb:0;px:0;text:left}@md flex-grow:1'}
+			>
+				{m.hello()}
+				<span class="names h:2lh">
+					{#each names as name, i}
+						<span
+							class="name-{i} animate-casl gradient-text inline-block $from:text-primary $to:secondary gradient(90deg,var(--from),var(--to))"
+						>
+							{#each name.split('\\') as segement}
+								{segement}<wbr />
+							{/each}
+						</span>
+					{/each}
+				</span>
+			</h1>
+		</div>
 		<div class="mb:8x">
-  		<ul
-  			class={"my:0 mt:4x  flex flex:col align-items:center pl:0 text:6x line-height:0.2! {flex:row;align-items:start;gap:2ch}@2xs list-style:none@<2xs"}
-  		>
-        <li class="list-style:none">
-            <h2
-                class="student w:36x@2xs"
-                on:mouseenter={() => animateWord('student')}
-                on:mouseleave={() => endAnimateWord('student')}
-                on:touchend={() => endAnimateWord('student')}
-                on:touchstart={() => animateWord('student')}
-            >
-                {#each m.hero_student().split('') as letter}
-                    <span class="letter animate-casl inline-block">{letter}</span>
-                {/each}
-            </h2>
-        </li>
-        <li>
-            <h2
-                class="programmer"
-                on:mouseenter={() => animateWord('programmer')}
-                on:mouseleave={() => endAnimateWord('programmer')}
-                on:touchend={() => endAnimateWord('programmer')}
-                on:touchstart={() => animateWord('programmer')}
-            >
-                <a
-                    class="flex text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:surface text:blue:hover>span text:surface@visited text:underline"
-                    href="https://github.com/Suyashtnt"
-                    rel="me"
-                >
-                    {#each m.hero_programmer().split('') as letter}
-                        <span class="letter animate-casl inline-block">
-                            {letter}
-                        </span>
-                    {/each}
-                </a>
-            </h2>
-        </li>
-  			<li>
-            <h2
-                class="gamer"
-                on:mouseenter={() => animateWord('gamer')}
-                on:mouseleave={() => endAnimateWord('gamer')}
-                on:touchend={() => endAnimateWord('gamer')}
-                on:touchstart={() => animateWord('gamer')}
-            >
-                <a
-                    class="flex text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:surface text:blue:hover>span text:surface@visited text:underline"
-                    href="https://steamcommunity.com/id/suyashtnt123"
-                    rel="me"
-                >
-                    {#each m.hero_gamer().split('') as letter}
-                        <span class="letter animate-casl inline-block">
-                            {letter}
-                        </span>
-                    {/each}
-                </a>
-            </h2>
-        </li>
-  		</ul>
-      <ul
-  				class="my:0 mt:3x list-style:none align-items:center pl:0 text:5x line-height:0 align-items:start@md gap:1ch flex flex:col@<2xs"
-      >
-          <li class="text-decoration:blue:hover align-items:center gap:1ch fg:surface fg:surface@visited flex">
-              <Email class="h-8 w-8" />
-              <a
-                  class="text-decoration:blue:hover fg:surface fg:surface@visited"
-                  href="mailto:suyashtnt@gmail.com"
-              >
-                  Suyashtnt@gmail.com
-              </a>
-          </li>
-          <li class="text-decoration:blue:hover align-items:center gap:1ch fg:surface fg:surface@visited flex">
-              <Discord class="h-8 w-8" />
-              <a
-                  class="text-decoration:blue:hover fg:surface fg:surface@visited"
-                  href="https://discord.com"
-                  on:click|preventDefault={() => {
-                      navigator.clipboard.writeText("tabiasgeehuman")
-                      alert("Copied to clipboard!")
-                  }}
-                  rel="noopener noreferrer"
-                  target="_blank"
-              >
-                  @tabiasgeehuman
-              </a>
-          </li>
-      </ul>
-    </div>
-  </div>
+			<ul
+				class={'my:0 mt:4x  flex flex:col align-items:center pl:0 text:6x line-height:0.2! {flex:row;align-items:start;gap:2ch}@2xs list-style:none@<2xs'}
+			>
+				<li class="list-style:none">
+					<h2
+						class="student w:36x@2xs"
+						on:mouseenter={() => animateWord('student')}
+						on:mouseleave={() => endAnimateWord('student')}
+						on:touchend={() => endAnimateWord('student')}
+						on:touchstart={() => animateWord('student')}
+					>
+						{#each m.hero_student().split('') as letter}
+							<span class="letter animate-casl inline-block">{letter}</span>
+						{/each}
+					</h2>
+				</li>
+				<li>
+					<h2
+						class="programmer"
+						on:mouseenter={() => animateWord('programmer')}
+						on:mouseleave={() => endAnimateWord('programmer')}
+						on:touchend={() => endAnimateWord('programmer')}
+						on:touchstart={() => animateWord('programmer')}
+					>
+						<a
+							class="flex text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:blue:hover>span text:surface text:surface@visited text:underline"
+							href="https://github.com/Suyashtnt"
+							rel="me"
+						>
+							{#each m.hero_programmer().split('') as letter}
+								<span class="letter animate-casl inline-block">
+									{letter}
+								</span>
+							{/each}
+						</a>
+					</h2>
+				</li>
+				<li>
+					<h2
+						class="gamer"
+						on:mouseenter={() => animateWord('gamer')}
+						on:mouseleave={() => endAnimateWord('gamer')}
+						on:touchend={() => endAnimateWord('gamer')}
+						on:touchstart={() => animateWord('gamer')}
+					>
+						<a
+							class="flex text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:blue:hover>span text:surface text:surface@visited text:underline"
+							href="https://steamcommunity.com/id/suyashtnt123"
+							rel="me"
+						>
+							{#each m.hero_gamer().split('') as letter}
+								<span class="letter animate-casl inline-block">
+									{letter}
+								</span>
+							{/each}
+						</a>
+					</h2>
+				</li>
+			</ul>
+			<ul
+				class="text:5x flex align-items:center align-items:start@md flex:col@<2xs gap:1ch line-height:0 list-style:none mt:3x my:0 pl:0"
+			>
+				<li
+					class="flex align-items:center fg:surface fg:surface@visited gap:1ch text-decoration:blue:hover"
+				>
+					<Email class="h-8 w-8" />
+					<a
+						class="fg:surface fg:surface@visited text-decoration:blue:hover"
+						href="mailto:suyashtnt@gmail.com"
+					>
+						Suyashtnt@gmail.com
+					</a>
+				</li>
+				<li
+					class="flex align-items:center fg:surface fg:surface@visited gap:1ch text-decoration:blue:hover"
+				>
+					<Discord class="h-8 w-8" />
+					<a
+						class="fg:surface fg:surface@visited text-decoration:blue:hover"
+						href="https://discord.com"
+						on:click|preventDefault={() => {
+							navigator.clipboard.writeText('tabiasgeehuman');
+							alert('Copied to clipboard!');
+						}}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						@tabiasgeehuman
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-  <section class="flex:auto flex:shrink flex:row flex place-items:center">
-    <enhanced:img
-      alt="My desktop computer rice."
-      class="h:full max-h:full max-w:full w:auto r:4x obj:contain block aspect:21/9@md"
-      loading="eager"
-      sizes="1280px 720px 480px 360px"
-      src='$lib/pictures/Computer.png'
-    />
-  </section>
+	<section class="flex flex:auto flex:row flex:shrink place-items:center">
+		<enhanced:img
+			alt="My desktop computer rice."
+			class="block aspect:21/9@md h:full max-h:full max-w:full obj:contain r:4x w:auto"
+			loading="eager"
+			sizes="1280px 720px 480px 360px"
+			src="$lib/pictures/Computer.png"
+		></enhanced:img>
+	</section>
 </section>
 
 <div class="wave bg:base">
-    <svg
-        data-name="Layer 1"
-        preserveAspectRatio="none"
-        viewBox="0 0 1200 120"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            class="fill:surface"
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-        />
-    </svg>
+	<svg
+		data-name="Layer 1"
+		preserveAspectRatio="none"
+		viewBox="0 0 1200 120"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path
+			class="fill:surface"
+			d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+		/>
+	</svg>
 </div>
 
 <style>
@@ -272,6 +290,8 @@
 	}
 
 	.animate-casl {
-	   font-variation-settings: "CASL" var(--casl), "MONO" var(--casl);
+		font-variation-settings:
+			'CASL' var(--casl),
+			'MONO' var(--casl);
 	}
 </style>

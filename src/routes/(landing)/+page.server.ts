@@ -1,5 +1,3 @@
-import { error } from '@sveltejs/kit';
-
 import type { IProject } from './project.svelte';
 import type { ISkill } from './skill.svelte';
 

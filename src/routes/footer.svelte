@@ -3,8 +3,8 @@
 </script>
 
 <footer
-	class="flex flex:col align-items:center justify-content:space-between rt:2x bg:base px:6x fg:base mx:2x@lg flex:row@sm px:4x@lg"
+	class="flex align-items:center bg:base fg:base flex:col flex:row@sm justify-content:space-between mx:2x@lg px:6x px:4x@lg rt:2x"
 >
-    <p class="my:2x text:6x font:semibold">TNTMan1671 | <a href="https://github.com/Suyashtnt/personal-website/blob/master/LICENSE">©️ Suyash 2024</a></p>
+    <p class="text:6x font:semibold my:2x">TNTMan1671 | <a href="https://github.com/Suyashtnt/personal-website/blob/master/LICENSE">©️ Suyash 2024</a></p>
     <p>{footerText}</p>
 </footer>

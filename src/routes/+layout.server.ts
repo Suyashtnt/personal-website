@@ -1,3 +1,5 @@
+import type { AvailableLanguageTag } from '$i18n/runtime';
+
 import * as m from '$i18n/messages';
 import { error } from '@sveltejs/kit';
 
@@ -17,6 +19,6 @@ export const load = (async ({ locals }) => {
 
 	return {
 		footerText,
-		language: locals.paraglide.lang
+		language: locals.paraglide.lang as AvailableLanguageTag
 	};
 }) satisfies LayoutServerLoad;
