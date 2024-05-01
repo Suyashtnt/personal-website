@@ -71,9 +71,8 @@
     "type": "module",
     "dependencies": {
         "@giscus/svelte": "^3.0.0",
-        "@master/css-server": "^2.0.0-beta.189",
-        "@master/css.svelte": "^2.0.0-beta.131",
-        "@mobily/ts-belt": "^4.0.0-rc.5",
+        "@master/css-server": "^2.0.0-rc.34",
+        "@master/css.svelte": "^2.0.0-rc.34",
         "animejs": "^3.2.2",
         "atropos": "^2.0.2",
         "m3-svelte": "^3.2.6",

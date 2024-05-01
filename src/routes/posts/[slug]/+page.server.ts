@@ -1,6 +1,5 @@
 import { slugFromPath } from '$lib/helpers/slug-from-path';
 import { allPosts } from '$lib/posts';
-import { D } from '@mobily/ts-belt';
 import { error } from '@sveltejs/kit';
 import { render } from 'svelte/server';
 
@@ -41,5 +40,5 @@ export const entries: EntryGenerator = (async () => {
 	);
 
 	const posts = await Promise.all(postPromises);
-	return posts.map(D.selectKeys(['slug']));
+	return posts.map(({ slug }) => ({ slug }));
 }) satisfies EntryGenerator;
