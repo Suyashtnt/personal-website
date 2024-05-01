@@ -20,8 +20,10 @@ async function highlighter(code, lang = '') {
 	 */
 	const escape_svelty = (str) =>
 		str
-			.replace(/[{}`]/g, (c) => ({ '`': '&#96;', '{': '&#123;', '}': '&#125;' })[c])
-			.replace(/\\([trn])/g, '&#92;$1');
+			.replace(/{/g, '&#123;')
+			.replace(/}/g, '&#125;')
+			.replace(/`/g, '&#96;')
+			.replace(/\\([trn])/g, ' ')
 
 	const html = await codeToHtml(code, {
 		lang,
