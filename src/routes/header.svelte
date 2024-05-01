@@ -12,7 +12,7 @@
 <nav
 	class="flex rel sticky@sm align-items:center bd:blur(8x) border:2|subtle/.80 h:12x justify-content:space-between mb:4x mx:4x r:6x top:4x z:10"
 >
-	<section class="flex align-items:center flex:grow gap:2x justify-content:space-between">
+	<section class="flex align-items:center gap:2x justify-content:space-between">
 		<a class="flex place-items:center" href="/posts/the-wobbler">
 			<enhanced:img
 				alt="TNTMAN_1671"
@@ -23,15 +23,15 @@
 			</enhanced:img>
 		</a>
 
-		<h1 class="text:6x my:0">
-			<a class="fg:none fg:base@visited text:base" href="/"> TNTMAN_1671 </a>
+		<h1 class="my:0 text:6x">
+			<a class="fg:base fg:base:visited" href="/"> TNTMAN_1671 </a>
 		</h1>
 	</section>
 
 	<button
 		aria-controls="sweets-dropdown"
 		aria-expanded={dropdownOpen}
-		class="dropdown__title text:6x flex hidden@2xs square align-items:center bg:surface border:none justify-content:center overflow:hidden r:6x size:12x"
+		class="dropdown__title flex hidden@2xs square align-items:center bg:surface border:none justify-content:center overflow:hidden r:6x size:12x text:6x"
 		on:click={() => (dropdownOpen = !dropdownOpen)}
 		type="button"
 	>
@@ -50,13 +50,13 @@
 				class={'r:6x transition:all|300ms my:0 flex flex:col@<2xs pl:4x@<2xs px:1x pl:0 text:5x'}
 			>
 				<li class="list-style:none">
-					<a class="flex align-items:center flex:row" href="/">
+					<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/">
 						<Arrow />
 						{m.header_home()}
 					</a>
 				</li>
 				<li class="list-style:none">
-					<a class="flex align-items:center flex:row" href="/posts">
+					<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/posts">
 						<Arrow />
 						{m.header_posts()}
 					</a>

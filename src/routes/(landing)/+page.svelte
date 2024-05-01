@@ -23,6 +23,6 @@
 
 <AboutToBlog />
 
-<h2 class="text:8x fg:primary ml:4x ml:8x@md w:min">Posts</h2>
+<h2 class="fg:primary ml:4x ml:8x@md text:8x w:min">Posts</h2>
 
 <Posts lang={data.language} posts={data.posts} />

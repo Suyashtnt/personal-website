@@ -47,10 +47,10 @@
 	<header class="flex align-items:center gap:4x">
 		<img alt={selectedSkill?.iconAlt} class="square h:auto w:16x" src={selectedSkill?.icon} />
 		<hgroup>
-			<h1 class="text:7x line-height:0 my:0">
+			<h1 class="line-height:1.2 my:0 text:7x">
 				{selectedSkill?.name}
 			</h1>
-			<p class="text:6x line-height:0 my:0">
+			<p class="my:0 text:5x">
 				{selectedSkill?.description}
 			</p>
 		</hgroup>
@@ -60,11 +60,11 @@
 	<section class="w-min flex">
 		<div
 			class="flex h:8x m:1x opacity:.8 p:3x place-items:center r:4x"
-      class:bg:green={selectedSkill?.proficiency === 'Beginner'}
+      		class:bg:green={selectedSkill?.proficiency === 'Beginner'}
 			class:bg:red={selectedSkill?.proficiency === 'Skilled'}
 			class:bg:yellow={selectedSkill?.proficiency === 'Intermediate'}
 		>
-			<p class="text:5x fg:black my:0">
+			<p class="fg:black my:0 text:5x">
 				{proficiency}
 			</p>
 		</div>
@@ -73,12 +73,12 @@
 			class="flex h:8x m:1x p:3x place-items:center r:4x"
 			class:bg:blue={selectedSkill?.type === 'Tool'}
 			class:bg:green={selectedSkill?.type === 'Language'}
-			class:bg:mauve={selectedSkill?.type === 'Other'}
 			class:bg:orange={selectedSkill?.type === 'Framework'}
+			class:bg:purple={selectedSkill?.type === 'Other'}
 			class:bg:purple={selectedSkill?.type === 'Backend'}
 			class:bg:teal={selectedSkill?.type === 'Frontend'}
     >
-			<p class="text:5x fg:black my:0">
+			<p class="fg:black my:0 text:5x">
 				{type}
 			</p>
 		</div>

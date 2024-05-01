@@ -4,7 +4,7 @@
         title?: string;
     }
 
-    const { description, title } = $props<Props>()
+    const { description, title }: Props = $props()
 
 	const siteTitle = 'TNTMan1671';
 	const formattedTitle = title ? `${title} | ${siteTitle}` : siteTitle;

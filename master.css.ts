@@ -3,11 +3,13 @@ import type { Config } from '@master/css';
 export default {
 	animations: {},
 	functions: {},
-	modeDriver: 'media',
+	modes: {
+		dark: 'media',
+		light: 'media'
+	},
 	queries: {},
 	rules: {},
 	selectors: {},
-	semantics: {},
 	styles: {},
 	variables: {
 		base: {

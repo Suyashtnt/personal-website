@@ -1,5 +1,6 @@
 // See https://kit.svelte.dev/docs/types#app
 
+import 'svelte'
 import 'unplugin-icons/types/svelte';
 
 declare global {

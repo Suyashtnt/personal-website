@@ -20,7 +20,7 @@
 </script>
 
 <div class="flex rel bg:surface fg:surface flex:col@<2xs p:2x r:6x text:left">
-	<button class="text:5x flex align-items:center bg:none border:none flex:row gap:1x">
+	<button class="flex align-items:center bg:none border:none flex:row gap:1x text:5x">
 		<Language />
 		{translateLanguage(languageTag())}
 		<DropDown class="hidden@<2xs" />

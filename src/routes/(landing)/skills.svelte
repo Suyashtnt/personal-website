@@ -11,7 +11,7 @@
 </script>
 
 <section class="bg:surface overflow:clip py:4x" id="about">
-	<h2 class="text:8x fg:primary ml:4x ml:8x@md w:min">Skills</h2>
+	<h2 class="fg:primary ml:4x ml:8x@md text:8x w:min">Skills</h2>
 
 	<div class="flex flex:col flex:row@md gap:4x overflow:hidden px:6x">
 		<ul

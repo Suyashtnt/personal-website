@@ -135,7 +135,7 @@
 				<span class="names h:2lh">
 					{#each names as name, i}
 						<span
-							class="name-{i} animate-casl gradient-text inline-block $from:text-primary $to:secondary gradient(90deg,var(--from),var(--to))"
+							class="name-{i} animate-casl $from:text-primary $to:secondary gradient-text inline-block gradient(90deg,var(--from),var(--to))"
 						>
 							{#each name.split('\\') as segement}
 								{segement}<wbr />
@@ -171,7 +171,7 @@
 						on:touchstart={() => animateWord('programmer')}
 					>
 						<a
-							class="flex text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:blue:hover>span text:surface text:surface@visited text:underline"
+							class="flex fg:surface fg:surface:visited fg:blue:hover>span text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:underline"
 							href="https://github.com/Suyashtnt"
 							rel="me"
 						>
@@ -192,7 +192,7 @@
 						on:touchstart={() => animateWord('gamer')}
 					>
 						<a
-							class="flex text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:blue:hover>span text:surface text:surface@visited text:underline"
+							class="flex fg:surface fg:surface:visited text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:blue:hover>span text:underline"
 							href="https://steamcommunity.com/id/suyashtnt123"
 							rel="me"
 						>
@@ -206,7 +206,7 @@
 				</li>
 			</ul>
 			<ul
-				class="text:5x flex align-items:center align-items:start@md flex:col@<2xs gap:1ch line-height:0 list-style:none mt:3x my:0 pl:0"
+				class="flex align-items:center align-items:start@md flex:col@<2xs gap:1ch line-height:0 list-style:none mt:3x my:0 pl:0 text:5x"
 			>
 				<li
 					class="flex align-items:center fg:surface fg:surface@visited gap:1ch text-decoration:blue:hover"

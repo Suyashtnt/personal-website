@@ -13,7 +13,7 @@
 </script>
 
 <ol
-	class="text:4x counter-reset:item list-style:none"
+	class="counter-reset:item list-style:none text:4x"
 	class:pl:0={level === 1}
 	class:pl:4x={level > 1}
 >
@@ -21,7 +21,7 @@
 		{#each tree as heading, i (i)}
 			<li class="pt-2x">
 				<a
-					class="relative absolute::after ~all::after block:after ~duration:300::after bg:repeat::after bg:scroll::after bg:none::after bottom:0::after h:1:after text:none w:full:hover::after w:0::after w:full[data-active]::after"
+					class="relative absolute::after ~all::after text:none block:after ~duration:300::after bg:none::after bg:repeat::after bg:scroll::after bottom:0::after h:1:after w:0::after w:full[data-active]::after w:full:hover::after"
 					class:bg:blue::after={level === 6}
 					class:bg:purple::after={level === 1}
 					class:bg:purple::after={level === 2}

@@ -42,7 +42,7 @@
 </script>
 
 <a
-	class="decoration:none duration:300 flex align-items:center b:2|primary/.2 gap:4x px:4x r:4x shadow:4x:hover text:overlay transition:all"
+	class="decoration:none flex align-items:center b:2|primary/.2 gap:4x px:4x r:4x text:overlay"
 	class:border-solid={isSelected}
     data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}

@@ -63,7 +63,7 @@
 	</aside>
 
 	<article
-		class="text-wrap:pretty text-wrap:balance text-justify hypens-auto text:5x md:mx-0 $col:blue $primary:text-primary $vgreen:green $vorange:orange $vred:red $vteal:teal bg:surface grid-area:content justify-self:center max-w:75ch mb:6x px:4x r:4x"
+		class="text-wrap:pretty text-wrap:balance text-justify hypens-auto md:mx-0 $col:blue $primary:text-primary $vgreen:green $vorange:orange $vred:red $vteal:teal bg:surface grid-area:content justify-self:center max-w:75ch mb:6x px:4x r:4x text:5x"
 		id="article"
 		use:transition={`post-${data.slug}`}
 	>
@@ -91,6 +91,7 @@
 			</p>
 		</header>
 
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html data.postHtml}
 
 		<Giscus
