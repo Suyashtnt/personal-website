@@ -2,11 +2,10 @@
 	import * as m from '$i18n/messages';
 	import Discord from '~icons/ic/baseline-discord';
 	import Email from '~icons/material-symbols/mail-outline';
-	import 'atropos/css';
 	import { easeEmphasized } from 'm3-svelte';
 	import { type TimelineDefinition, animate, timeline } from 'motion';
 	import { onMount } from 'svelte';
-
+	import { browser } from '$app/environment'
 	const names = ['TNT\\Man\\1671', 'Suyash\\tnt', 'TNT Man Inc'];
 
 	const easing = easeEmphasized;
@@ -57,13 +56,6 @@
 		);
 	};
 
-	onMount(async () => {
-		const { default: AtroposComponent } = await import('atropos/element');
-		if (!customElements.get('atropos-component')) {
-			customElements.define('atropos-component', AtroposComponent);
-		}
-	});
-
 	onMount(() => {
 		const duration = 0.45;
 		const delay = 2.5;
@@ -113,29 +105,32 @@
 >
 	<div class="flex align-items:center bg:surface flex-grow:1 flex:auto flex:col px:6x r:4x">
 		<div
-			class="flex align-items:center gap:6x@sm justify-content:space-between mt:8x r:4x w:full"
+			class="flex align-items:center gap:6x@sm justify-content:space-between mt:8x r:4x"
 		>
-			<atropos-component
-				class={'w:32x w:40x@sm r:4x ~all|300ms gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary {m:2x;p:0}:hover>div scale(0.9):hover scale(1.15):hover>div>picture>img'}
+			<div
+				class={'r:4x ~all|300ms gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary scale(0.9):hover scale(1.25):hover>div>picture>img'}
 			>
-				<div class="flex ~all|300ms p:2x place-items:center r:6x">
+				<div class="flex p:2x place-items:center r:6x">
 					<enhanced:img
 						alt="A contemporary portrait of me."
-						class="object-cover ~all|300ms h:auto r:4x w:28x w:36x@sm"
+						class="object-cover ~all|300ms h:auto r:4x w:28x w:36x@sm vertical:middle"
 						loading="eager"
 						sizes="240px 360px"
 						src="$lib/pictures/face.png"
 					></enhanced:img>
 				</div>
-			</atropos-component>
+			</div>
 			<h1
-				class={'m:0 text:center text:12x text:14x@sm line-height:1.2! {mb:0;px:0;text:left}@md flex-grow:1'}
+				class={'m:0 text:center text:12x text:14x@sm line-height:1.2! {mb:0;px:0;text:left}@md'}
 			>
 				{m.hello()}
-				<span class="names h:2lh">
+				<span 
+					class="flex flex:col"
+					class:names={browser}
+				>
 					{#each names as name, i}
 						<span
-							class="name-{i} animate-casl $from:text-primary $to:secondary gradient-text inline-block gradient(90deg,var(--from),var(--to))"
+							class="name-{i} animate-casl $from:text-primary $to:secondary gradient-text inline gradient(90deg,var(--from),var(--to))"
 						>
 							{#each name.split('\\') as segement}
 								{segement}<wbr />
@@ -245,7 +240,7 @@
 			alt="My desktop computer rice."
 			class="block aspect:21/9@md h:full max-h:full max-w:full obj:contain r:4x w:auto"
 			loading="eager"
-			sizes="1280px 720px 480px 360px"
+			sizes="1280px 720px 480px 360px 240px"
 			src="$lib/pictures/Computer.png"
 		></enhanced:img>
 	</section>

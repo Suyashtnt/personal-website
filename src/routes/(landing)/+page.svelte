@@ -5,7 +5,6 @@
 
 	import type { PageData } from './$types';
 
-	import AboutToBlog from './about-to-blog.svelte';
 	import Hero from './hero.svelte';
 	import Skills from './skills.svelte';
 
@@ -20,8 +19,6 @@
 <Hero />
 
 <Skills {data} />
-
-<AboutToBlog />
 
 <h2 class="fg:primary ml:4x ml:8x@md text:8x w:min">Posts</h2>
 
