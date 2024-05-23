@@ -44,13 +44,13 @@
 <article
 	class="flex bg:overlay box:border flex-basis:70ch flex:1 flex:col gap:4x mx:2 p:4x r:4x"
 >
-	<header class="flex align-items:center gap:4x">
-		<img alt={selectedSkill?.iconAlt} class="square h:auto w:16x" src={selectedSkill?.icon} />
+	<header class="flex align-items:center gap:4x text:5x">
+		{@html selectedSkill.icon}
 		<hgroup>
 			<h1 class="line-height:1.2 my:0 text:7x">
 				{selectedSkill?.name}
 			</h1>
-			<p class="my:0 text:5x">
+			<p class="my:0">
 				{selectedSkill?.description}
 			</p>
 		</hgroup>
@@ -60,7 +60,7 @@
 	<section class="w-min flex">
 		<div
 			class="flex h:8x m:1x opacity:.8 p:3x place-items:center r:4x"
-      		class:bg:green={selectedSkill?.proficiency === 'Beginner'}
+  		class:bg:green={selectedSkill?.proficiency === 'Beginner'}
 			class:bg:red={selectedSkill?.proficiency === 'Skilled'}
 			class:bg:yellow={selectedSkill?.proficiency === 'Intermediate'}
 		>

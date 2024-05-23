@@ -12,7 +12,6 @@
 		 * Preferably SVG, 1:1 aspect ratio
 		 */
 		icon: string;
-		iconAlt: string;
 		id: string;
 		/**
 		 * Name of the skill
@@ -39,7 +38,6 @@
         skill: ISkill;
     }
     const { isSelected, skill }: Props = $props();
-    $inspect(isSelected, skill)
 </script>
 
 <a
@@ -47,7 +45,7 @@
   data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >
-	<img alt={skill.iconAlt} class="h:auto w:8x w:10x@md" src={skill.icon} />
+	{@html skill.icon}
 
 	<h2 class="text:6x">
 		{skill.name}
