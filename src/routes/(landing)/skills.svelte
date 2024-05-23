@@ -10,10 +10,10 @@
   const { data }: Props = $props();
 </script>
 
-<section class="bg:surface overflow:clip py:4x" id="about">
-	<h2 class="fg:primary ml:4x ml:8x@md text:8x w:min">Skills</h2>
+<section class="bg:surface by:2|overlay" id="about">
+	<h2 class="fg:primary ml:4x ml:8x@md text:9x w:min my:2x">Skills</h2>
 
-	<div class="flex flex:col flex:row@md gap:4x overflow:hidden px:6x">
+	<div class="flex flex:col@<md gap:4x px:6x pb:4x">
 		<ul
 			class="flex flex-basis:50% flex:col gap:4x list-style:none my:0 pl:0"
 		>

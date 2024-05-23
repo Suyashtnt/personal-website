@@ -26,10 +26,10 @@
 		document.documentElement.lang = data.language;
 	});
 
-	onMount(async () => {
-		const { CSSRuntimeProvider: runtime } = await import('@master/css.svelte');
-		CSSRuntimeProvider = runtime;
-	});
+	// onMount(async () => {
+	// 	const { CSSRuntimeProvider: runtime } = await import('@master/css.svelte');
+	// 	CSSRuntimeProvider = runtime;
+	// });
 </script>
 
 <svelte:component config={import('../../master.css')} this={CSSRuntimeProvider}>

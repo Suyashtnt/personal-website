@@ -41,7 +41,7 @@
 </script>
 
 <a
-	class="flex align-items:center b:2 gap:4x px:4x r:4x text:overlay {isSelected ? 'b:primary|solid' : 'b:transparent'}"
+	class="flex align-items:center outline:2 gap:4x px:4x r:4x text:overlay {isSelected ? 'outline:primary|solid' : 'outline:transparent'}"
   data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >

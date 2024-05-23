@@ -100,7 +100,7 @@
 </script>
 
 <section
-	class="flex rel bg:base fg:base flex:col flex:row@lg gap:6x justify-items:stretch mx:6x"
+	class="flex rel bg:base fg:base flex:col flex:row@lg gap:6x justify-items:stretch m:6x mt:0x"
 	id="landing"
 >
 	<div class="flex align-items:center bg:surface flex-grow:1 flex:auto flex:col px:6x r:4x">
@@ -246,35 +246,7 @@
 	</section>
 </section>
 
-<div class="wave bg:base">
-	<svg
-		data-name="Layer 1"
-		preserveAspectRatio="none"
-		viewBox="0 0 1200 120"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			class="fill:surface"
-			d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-		/>
-	</svg>
-</div>
-
 <style>
-	.wave {
-		width: 100%;
-		overflow: hidden;
-		line-height: 0;
-		transform: rotate(180deg);
-	}
-
-	.wave svg {
-		position: relative;
-		display: block;
-		width: calc(155% + 1.3px);
-		height: 180px;
-	}
-
 	.names {
 		display: grid;
 	}
