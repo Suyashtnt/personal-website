@@ -48,13 +48,13 @@ The main block of the Sushal dimension was the Sushal block. There were a few op
 -   Literal sushi (boring)
 -   My discord profile picture (sure I guess; Why not?)
 
-So, the first version of the mod had my discord profile as the texture. The issue was that my discord profile picture was Landfall's [TABS Emoji](https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless) . This emoji is what's known as a wobbler, the base humanoid-style unit in TABS. Me at the time thought "Wait since landfall owns this emoji they may not like it." I asked my friend about that. This was the response:
+So, the first version of the mod had my discord profile as the texture. 
+The issue was that my discord profile picture was Landfall's [TABS Emoji](https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless) <img src="https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless" alt="Landfall's TABS emoji on discord" class="h:auto w:1em! verical:middle inline-block">. This emoji is what's known as a wobbler, the base humanoid-style unit in TABS. Me at the time thought "Wait since landfall owns this emoji they may not like it." I asked my friend about that. This was the response:
 
 <figure>
     <enhanced:img alt="can u please make a texture thats like ur profile pic but not from TABS" src={CanPlsMakeTexture} class="rounded-xl" />
 </figure>
 
-<img src="https://cdn.discordapp.com/emojis/230177740454625281.webp?quality=lossless" alt="Landfall's TABS emoji on discord" class="important-h-auto important-w-[1em] align-middle inline-block">
 
 ## Creation of the badly drawn wobbler
 
@@ -72,10 +72,10 @@ As you can see, it was... scuffed. It was also too low resolution so curseforge 
 
 So, first things first: increase the resolution. It was bumped up by quite a bit, and it looked semi-decent. I then decided to add some sort of "chin". Wether this was a good or bad decision... You can decide. I then upscaled it, using AI to smooth the edges. Fun fact: finding the tool and upscaling took longer than the creation of the first version of the wobbler.
 
-<div class="grid grid-rows-3 md:grid-cols-3 gap-3 md:important-h-62">
-    <enhanced:img alt="The first image of the badly drawn wobbler" src={FirstImage} class="rounded-xl aspect-square h-62 w-auto" />
-    <enhanced:img alt="The refined badly drawn wobbler" src={Refined} class="rounded-xl aspect-square h-62 w-auto" />
-    <enhanced:img alt="The AI upscaled badly drawn wobbler" src={Upscaled} class="rounded-xl aspect-square h-62 w-auto" />
+<div class="grid-rows:3@<md grid-cols:3@md gap:2x h:32x!@md">
+    <enhanced:img alt="The first image of the badly drawn wobbler" src={FirstImage} class="r:4x square h:32x w:auto" />
+    <enhanced:img alt="The refined badly drawn wobbler" src={Refined} class="r:4x square h:32x w:auto" />
+    <enhanced:img alt="The AI upscaled badly drawn wobbler" src={Upscaled} class="r:4x square h:32x w:auto" />
 </div>
 
 The AI version looks quite cool, so I decided to keep it, even with its artifacts. The mod was [uploaded to curseforge](https://www.curseforge.com/minecraft/mc-mods/sushal). That would be the end of the story, and this blog post wouldn't exist, but this message came in:
