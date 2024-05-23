@@ -121,7 +121,9 @@
 				</div>
 			</div>
 			<h1
-				class={'m:0 text:center text:12x text:14x@sm line-height:1.2! {mb:0;px:0;text:left}@md'}
+				class={'m:0 ml:2x text:center text:10x text:12x@sm line-height:1.2! {mb:0;px:0;text:left}@md'}
+				class:text:12x={browser}
+				class:text:14x@sm={browser}
 			>
 				{m.hello()}
 				<span 
