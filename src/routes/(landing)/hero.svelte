@@ -115,8 +115,8 @@
 						alt="A contemporary portrait of me."
 						class="object-cover ~all|300ms h:auto r:4x w:28x w:36x@sm vertical:middle"
 						loading="eager"
-						sizes="240px 360px"
-						src="$lib/pictures/face.png"
+						sizes="min(180px, 100vw)"
+						src="$lib/pictures/face.png?w=160;140"
 					></enhanced:img>
 				</div>
 			</div>
@@ -240,8 +240,8 @@
 			alt="My desktop computer rice."
 			class="block aspect:21/9@md h:full max-h:full max-w:full obj:contain r:4x w:auto"
 			loading="eager"
-			sizes="1280px 720px 480px 360px 240px"
-			src="$lib/pictures/Computer.png"
+			sizes="min(1280px, 100vw)"
+			src="$lib/pictures/Computer.png?w=1280;720;480;360;240"
 		></enhanced:img>
 	</section>
 </section>
