@@ -1,10 +1,10 @@
+import Nix from '~icons/devicon/nixos?raw&width=2.5em&height=2.5em';
+import Rust from '~icons/logos/rust?raw&width=2.5em&height=2.5em';
+import Svelte from '~icons/logos/svelte-icon?raw&width=2.5em&height=2.5em';
+import Vue from '~icons/logos/vue?raw&width=2.5em&height=2.5em';
+
 import type { IProject } from './project.svelte';
 import type { ISkill } from './skill.svelte';
-import Svelte from '~icons/logos/svelte-icon?raw&width=2.5em&height=2.5em'
-import Vue from '~icons/logos/vue?raw&width=2.5em&height=2.5em'
-import Rust from '~icons/logos/rust?raw&width=2.5em&height=2.5em'
-import Nix from '~icons/devicon/nixos?raw&width=2.5em&height=2.5em'
-
 
 export const prerender = false;
 import { allPosts } from '$lib/posts';

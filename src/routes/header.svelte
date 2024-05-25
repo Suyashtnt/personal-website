@@ -1,13 +1,75 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import * as m from '$i18n/messages';
+	import { type AvailableLanguageTag, availableLanguageTags, languageTag } from '$i18n/runtime';
+	import { i18n } from '$lib/i18n';
+	import DropDown from '~icons/material-symbols/arrow-drop-down';
+	import Language from '~icons/material-symbols/language';
 	import Menu from '~icons/material-symbols/menu-rounded';
 	import Link from '~icons/material-symbols/open-in-new';
-	import Arrow from '~icons/material-symbols/play-arrow';
+	import Arrow from '~icons/material-symbols/play-arrow-rounded';
 
-	import LanguagePicker from './languagePicker.svelte';
-
-	let dropdownOpen = false;
+	const translateLanguage = (language: AvailableLanguageTag) => {
+		switch (language) {
+			case 'en':
+				return m.lang_en();
+			case 'af':
+				return m.lang_af();
+			default:
+				return language;
+		}
+	};
 </script>
+
+{#snippet dropdownSection(title, Icon, content)}
+	<span>
+		<Icon class="vertical:middle" />
+		{title}
+	</span>
+
+	{@render content()}
+{/snippet}
+
+{#snippet links()}
+	<div class="flex rel bg:surface fg:surface flex:col@<2xs mb:2x@<2xs p:2x r:6x text:left">
+		<ul
+			class={'r:6x transition:all|300ms my:0 flex flex:col@<2xs pl:0 pr:2x text:5x'}
+		>
+			<li class="list-style:none">
+				<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/">
+					<Arrow />
+					{m.header_home()}
+				</a>
+			</li>
+			<li class="list-style:none">
+				<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/posts">
+					<Arrow />
+					{m.header_posts()}
+				</a>
+			</li>
+		</ul>
+	</div>
+{/snippet}
+
+{#snippet langs()}
+	<ul
+		class={'abs@2xs r:6x bg:surface bg:overlay@2xs my:0 flex top:calc(100%+0.25rem) flex:col p:2x p:1x@2xs pr:3x@2xs  text:5x right:0'}
+	>
+		{#each availableLanguageTags.filter((lang) => lang !== languageTag()) as lang}
+			<li class="list-style:none">
+				<a
+					aria-current={lang === languageTag() ? 'page' : undefined}
+					class="flex align-items:center flex:row"
+					href={i18n.route($page.url.pathname)}
+					hreflang={lang}
+				>
+					<Arrow />
+					{translateLanguage(lang)}
+				</a>
+			</li>
+		{/each}
+	</ul>
+{/snippet}
 
 <nav
 	class="flex rel sticky@sm align-items:center bd:blur(8x) border:2|subtle/.80 h:12x justify-content:space-between mb:4x mx:4x r:6x top:4x z:10"
@@ -28,58 +90,31 @@
 		</h1>
 	</section>
 
-	<button
-		aria-controls="sweets-dropdown"
-		aria-expanded={dropdownOpen}
-		class="dropdown__title flex hidden@2xs square align-items:center bg:surface border:none justify-content:center overflow:hidden r:6x size:12x text:6x"
-		on:click={() => (dropdownOpen = !dropdownOpen)}
-		type="button"
-	>
-		<Menu aria-label="Dropdown menu" class="inline-block" />
-	</button>
+	<details class="hidden@2xs">
+		<summary class="bg:overlay h:8x list-style:none p:2x r:6x">
+			<Menu aria-label="Dropdown menu" class="size:8x" />
+		</summary>
+
+		<div
+			class={'w:80% abs left:50% top:calc(100%+1rem) flex:row transform:top rotate(90,0) r:6x bg:text-primary@2xs bg:overlay p:2x text:6x transition:all|300ms translate(-50%,0) gap:4x'}
+		>
+			{@render dropdownSection(m.header_links(), Link, links)}
+			{@render dropdownSection(translateLanguage(languageTag()), Language, langs)}
+		</div>
+	</details>
+
 
 	<div
-		class={'w:80%@<2xs links invisible abs left:50% top:calc(100%+1rem) flex:row transform:top rotate(90,0) r:6x bg:text-primary@2xs bg:overlay p:2x text:center text:6x transition:all|300ms visible@2xs rel@2xs left:0@2xs top:0@2xs flex@2xs translate(-50%,0) translate(0)@2xs rotate(0)@2xs gap:4x p:1x@2xs text:5x@2xs fg:black@2xs'}
+		class={'flex:row r:6x bg:text-primary text:center text:6x hidden@<2xs flex gap:4x p:2x text:5x fg:black'}
 	>
-		<div class="flex rel bg:surface fg:surface flex:col@<2xs mb:2x@<2xs p:2x r:6x text:left">
-			<span class="hidden@2xs">
-				<Link class="vertical:middle" />
-				{m.header_links()}
-			</span>
-			<ul
-				class={'r:6x transition:all|300ms my:0 flex flex:col@<2xs pl:4x@<2xs px:1x pl:0 text:5x'}
-			>
-				<li class="list-style:none">
-					<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/">
-						<Arrow />
-						{m.header_home()}
-					</a>
-				</li>
-				<li class="list-style:none">
-					<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/posts">
-						<Arrow />
-						{m.header_posts()}
-					</a>
-				</li>
-			</ul>
-		</div>
-		<LanguagePicker />
+		{@render links()}
+		<details class="flex rel bg:surface fg:surface flex:col@<2xs p:1x pl:2x place-items:center r:6x">
+			<summary class="flex align-items:center bg:none border:none flex:row gap:1x h:full text:5x">
+				<Language />
+				{translateLanguage(languageTag())}
+				<DropDown />
+			</summary>
+			{@render langs()}
+		</details>
 	</div>
 </nav>
-
-<style>
-	nav {
-		&:hover,
-		&:focus-within {
-			& .links {
-				opacity: 1;
-				transform: rotateX(0deg) translateX(-50%);
-				visibility: visible;
-
-				@media (min-width: 600px) {
-					transform: none;
-				}
-			}
-		}
-	}
-</style>

@@ -41,10 +41,11 @@
 </script>
 
 <a
-	class="flex align-items:center outline:2 gap:4x px:4x r:4x text:overlay {isSelected ? 'outline:primary|solid' : 'outline:transparent'}"
+	class="flex align-items:center gap:4x outline:2 px:4x r:4x text:overlay {isSelected ? 'outline:primary|solid' : 'outline:transparent'}"
   data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html skill.icon}
 
 	<h2 class="text:6x">

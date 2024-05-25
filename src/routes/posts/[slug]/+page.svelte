@@ -1,8 +1,10 @@
 <script lang="ts">
 	import * as m from '$i18n/messages';
 	import PageHead from '$lib/components/page-head.svelte';
-	import Giscus from '@giscus/svelte';	import { createTableOfContents } from '@melt-ui/svelte';
-	import '@portaljs/remark-callouts/styles.css';	import { setupViewTransition } from 'sveltekit-view-transition';
+	import Giscus from '@giscus/svelte';
+	import { createTableOfContents } from '@melt-ui/svelte';
+	import '@portaljs/remark-callouts/styles.css';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	import type { PageData } from './$types';
 
@@ -63,7 +65,7 @@
 	</aside>
 
 	<article
-		class="text-wrap:pretty text-wrap:balance text-justify hypens-auto md:mx-0 $col:blue $primary:text-primary $vgreen:green $vorange:orange $vred:red $vteal:teal bg:surface grid-area:content justify-self:center max-w:75ch mb:6x px:4x r:4x text:5x"
+		class="text-justify hypens-auto md:mx-0 $col:blue $primary:text-primary $vgreen:green $vorange:orange $vred:red $vteal:teal bg:surface grid-area:content justify-self:center max-w:75ch mb:6x px:4x r:4x text-wrap:balance text-wrap:pretty text:5x break-word"
 		id="article"
 		use:transition={`post-${data.slug}`}
 	>
@@ -91,8 +93,10 @@
 			</p>
 		</header>
 
+		<p class="max-w:calc(100vw-2rem)">
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		{@html data.postHtml}
+			{@html data.postHtml}
+		</p>
 
 		<Giscus
 			category="Announcements"

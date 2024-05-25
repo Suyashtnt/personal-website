@@ -1,11 +1,11 @@
 <script lang="ts">
+	import { browser } from '$app/environment'
 	import * as m from '$i18n/messages';
 	import Discord from '~icons/ic/baseline-discord';
 	import Email from '~icons/material-symbols/mail-outline';
 	import { easeEmphasized } from 'm3-svelte';
 	import { type TimelineDefinition, animate, timeline } from 'motion';
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment'
 	const names = ['TNT\\Man\\1671', 'Suyash\\tnt', 'TNT Man Inc'];
 
 	const easing = easeEmphasized;
@@ -113,7 +113,7 @@
 				<div class="flex p:2x place-items:center r:6x">
 					<enhanced:img
 						alt="A contemporary portrait of me."
-						class="object-cover ~all|300ms h:auto r:4x w:28x w:36x@sm vertical:middle"
+						class="object-cover ~all|300ms h:auto r:4x vertical:middle w:28x w:36x@sm"
 						loading="eager"
 						sizes="min(180px, 100vw)"
 						src="$lib/pictures/face.png?w=160;140"
@@ -132,7 +132,7 @@
 				>
 					{#each names as name, i}
 						<span
-							class="name-{i} animate-casl $from:text-primary $to:secondary gradient-text inline gradient(90deg,var(--from),var(--to))"
+							class="name-{i} animate-casl gradient-text inline $from:text-primary $to:secondary gradient(90deg,var(--from),var(--to))"
 						>
 							{#each name.split('\\') as segement}
 								{segement}<wbr />

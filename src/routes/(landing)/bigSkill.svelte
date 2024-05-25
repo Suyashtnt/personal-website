@@ -45,6 +45,7 @@
 	class="flex bg:overlay box:border flex-basis:70ch flex:1 flex:col gap:4x mx:2 p:4x r:4x"
 >
 	<header class="flex align-items:center gap:4x text:5x">
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html selectedSkill.icon}
 		<hgroup>
 			<h1 class="line-height:1.2 my:0 text:7x">
@@ -57,20 +58,24 @@
 	</header>
 
 	<!-- chips -->
-	<section class="w-min flex">
+	<section class="flex gap:2x">
+		{#snippet chipContent(content)}
+			<p class="fg:black my:0 text:5x">
+				{content}
+			</p>
+		{/snippet}
+
 		<div
-			class="flex h:8x m:1x opacity:.8 p:3x place-items:center r:4x"
+			class="flex h:8x p:3x place-items:center r:4x"
   		class:bg:green={selectedSkill?.proficiency === 'Beginner'}
 			class:bg:red={selectedSkill?.proficiency === 'Skilled'}
 			class:bg:yellow={selectedSkill?.proficiency === 'Intermediate'}
 		>
-			<p class="fg:black my:0 text:5x">
-				{proficiency}
-			</p>
+			{@render chipContent(proficiency)}
 		</div>
 
 		<div
-			class="flex h:8x m:1x p:3x place-items:center r:4x"
+			class="flex h:8x p:3x place-items:center r:4x"
 			class:bg:blue={selectedSkill?.type === 'Tool'}
 			class:bg:green={selectedSkill?.type === 'Language'}
 			class:bg:orange={selectedSkill?.type === 'Framework'}
@@ -78,12 +83,10 @@
 			class:bg:purple={selectedSkill?.type === 'Backend'}
 			class:bg:teal={selectedSkill?.type === 'Frontend'}
     >
-			<p class="fg:black my:0 text:5x">
-				{type}
-			</p>
+			{@render chipContent(type)}
 		</div>
 	</section>
-	<section class="text:5x">
+	<section class="mt:0>p:first-child text:5x">
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html html}
 	</section>
