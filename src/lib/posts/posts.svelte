@@ -39,7 +39,7 @@
 	{#each posts as post (post.slug)}
 		<li class={'flex:grow flex:shrink flex:280px'}>
 			<a
-				class="bg:surface fg:surface fg:surface@visited text-decoration:none"
+				class="bg:surface fg:surface fg:surface:visited text-decoration:none"
 				href="/posts/{post.slug}"
 			>
 				<article

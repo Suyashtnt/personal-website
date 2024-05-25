@@ -105,7 +105,7 @@
 
 
 	<div
-		class={'flex:row r:6x bg:text-primary text:center text:6x hidden@<2xs flex gap:4x p:2x text:5x fg:black'}
+		class={'flex:row r:6x bg:primary bg:text-primary@dark text:center text:6x hidden@<2xs flex gap:4x p:2x text:5x fg:black'}
 	>
 		{@render links()}
 		<details class="flex rel bg:surface fg:surface flex:col@<2xs p:1x pl:2x place-items:center r:6x">

@@ -132,7 +132,7 @@
 				>
 					{#each names as name, i}
 						<span
-							class="name-{i} animate-casl gradient-text inline $from:text-primary $to:secondary gradient(90deg,var(--from),var(--to))"
+							class="name-{i} animate-casl gradient-text inline $from:text-primary $to:secondary gradient(60deg,var(--from),var(--to))"
 						>
 							{#each name.split('\\') as segement}
 								{segement}<wbr />
@@ -221,7 +221,7 @@
 				>
 					<Discord class="h-8 w-8" />
 					<a
-						class="fg:surface fg:surface@visited text-decoration:blue:hover"
+						class="fg:surface fg:surface:visited text-decoration:blue:hover"
 						href="https://discord.com"
 						on:click|preventDefault={() => {
 							navigator.clipboard.writeText('tabiasgeehuman');

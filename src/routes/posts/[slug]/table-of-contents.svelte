@@ -21,7 +21,7 @@
 		{#each tree as heading, i (i)}
 			<li class="pt-2x">
 				<a
-					class="relative absolute::after ~all::after text:none block:after ~duration:300::after bg:none::after bg:repeat::after bg:scroll::after bottom:0::after h:1:after text-decoration:none w:0::after w:full[data-active]::after w:full:hover::after"
+					class="relative absolute::after ~all::after text:none block:after ~duration:300::after bg:none::after bg:repeat::after bg:scroll::after bottom:0::after h:1:after text-decoration:none w:0::after w:full[data-active]::after w:full:hover::after fg:base fg:base:visited"
 					class:bg:blue::after={level === 6}
 					class:bg:purple::after={level === 1}
 					class:bg:purple::after={level === 2}
