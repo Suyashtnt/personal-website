@@ -1,289 +1,266 @@
 <script lang="ts">
+	import { browser } from '$app/environment'
 	import * as m from '$i18n/messages';
-	import anime from 'animejs';
-	import 'atropos/css';
-
-	const { random, remove, timeline } = anime;
-
+	import Discord from '~icons/ic/baseline-discord';
+	import Email from '~icons/material-symbols/mail-outline';
 	import { easeEmphasized } from 'm3-svelte';
+	import { type TimelineDefinition, animate, timeline } from 'motion';
 	import { onMount } from 'svelte';
+	const names = ['TNT\\Man\\1671', 'Suyash\\tnt', 'TNT Man Inc'];
 
-	const names = ['TNTMan\\1671', 'Suyashtnt', 'TNT Man Inc'];
-
-	const updateCasl = (selector: string) => {
-		document.querySelectorAll(selector).forEach((el) => {
-			if (el instanceof HTMLElement) {
-				el.style.fontVariationSettings = `"CASL" ${el.dataset.fontCasl}, "MONO" ${el.dataset.fontCasl}`;
-			}
-		});
+	const easing = easeEmphasized;
+	const random = (min: number, max: number) => {
+		return Math.random() * (max - min) + min;
 	};
 
 	const animateWord = (word: string) => {
 		const selector = `.${word} .letter`;
-		remove(selector);
+		const elements = document.querySelectorAll(selector);
 
-		anime({
-			autoplay: true,
-			'data-font-casl': 1,
-			fontWeight: [400, 900],
-			rotate: () => random(-15, 15),
-			scale: () => random(0.95, 1.05),
-			targets: selector,
-			translateX: () => random(-15, 15),
-			translateY: () => random(-15, 15),
-			update: () => updateCasl(selector)
-		});
+		for (const element of elements) {
+			animate(
+				element,
+				{
+					'--casl': [0, 1],
+					fontWeight: [400, 900],
+					rotate: random(-15, 15),
+					scale: random(0.95, 1.05),
+					x: random(-15, 15),
+					y: random(-15, 15)
+				},
+				{
+					duration: 0.3,
+					easing
+				}
+			);
+		}
 	};
 
 	const endAnimateWord = (word: string) => {
 		const selector = `.${word} .letter`;
-		remove(selector);
 
-		anime({
-			autoplay: true,
-			'data-font-casl': 0,
-			fontWeight: [900, 400],
-			rotate: 0,
-			scale: 1,
-			targets: selector,
-			translateX: 0,
-			translateY: 0,
-			update: () => updateCasl(selector)
-		});
+		animate(
+			selector,
+			{
+				'--casl': [1, 0],
+				fontWeight: [900, 400],
+				rotate: 0,
+				scale: 1,
+				x: 0,
+				y: 0
+			},
+			{
+				duration: 0.3,
+				easing
+			}
+		);
 	};
 
-	onMount(async () => {
-        const { default: AtroposComponent } = await import('atropos/element');
-        if (!customElements.get('atropos-component')) {
-            customElements.define('atropos-component', AtroposComponent);
-        }
-	});
-
 	onMount(() => {
-		const opacityIn = [0, 1];
-		const duration = 600;
-		const easing = () => easeEmphasized;
-		const delay = 2500;
+		const duration = 0.45;
+		const delay = 2.5;
 
-		const tl = timeline({
-			autoplay: true,
-			loop: true
-		});
+		const tlDefinition: TimelineDefinition = [];
 
 		for (const [i] of names.entries()) {
 			const selector = `.names .name-${i}`;
 
-			tl.add({
-				'data-font-casl': 1,
-				duration: duration,
-				easing,
-				hidden: false,
-				opacity: opacityIn,
-				targets: selector,
-				update: () => updateCasl(selector)
-			}).add({
-				'data-font-casl': 0,
-				delay,
-				duration: duration,
-				easing,
-				hidden: true,
-				opacity: 0,
-				targets: selector,
-				update: () => updateCasl(selector)
-			});
+			tlDefinition.push(
+				[
+					selector,
+					{
+						'--casl': [0, 1],
+						fontWeight: [100, 600],
+						opacity: [0, 1],
+						y: [-30, 0]
+					}
+				],
+				[
+					selector,
+					{
+						'--casl': [1, 0],
+						fontWeight: [600, 100],
+						opacity: [1, 0],
+						y: [0, 30]
+					},
+					{ delay }
+				]
+			);
 		}
+
+		timeline(tlDefinition, {
+			autoplay: true,
+			defaultOptions: {
+				duration,
+				easing
+			},
+			repeat: Infinity
+		});
 	});
 </script>
 
 <section
-    class="relative bg-light-mantle dark:bg-dark-base_background"
-    id="landing"
+	class="flex rel bg:base fg:base flex:col flex:row@lg gap:6x justify-items:stretch m:6x mt:0x"
+	id="landing"
 >
-    <div class="flex flex-col justify-between gap-6 xl:mx-16 xl:flex-row">
-        <div class="min-w-max flex flex-[1_1_auto] flex-col items-center justify-between rounded-xl bg-light-base dark:bg-dark-surface_background">
-            <atropos-component
-                class="group mt-8 w-64 rounded-xl rounded-xl"
-            >
-                <div
-                    class="flex content-center justify-center rounded-2xl from-light-red to-light-rosewater bg-gradient-to-br pa-2 transition-all group-hover:ma-2 dark:from-dark-primary_foreground dark:to-dark-secondary group-hover:pa-0"
-                >
-                    <enhanced:img
-                        alt="A contemporary portrait of me."
-                        class="h-auto w-60 rounded-xl object-cover transition-all group-hover:scale-105"
-                        loading="eager"
-                        sizes="240px 360px"
-                        src='$lib/pictures/face.png'
-                    />
-                </div>
-            </atropos-component>
-
-			<div class="mx-4 mb-8">
-				<h1
-					class="mx-0 text-center text-7xl leading-18 md:mb-0 md:px-0 md:text-left"
-				>
-					{m.hello()}
-					<span class="names">
-						{#each names as name, i}
-							<span
-								class="name-{i} inline-block dark:from-dark-primary_foreground dark:to-dark-secondary from-light-lavender to-light-blue bg-gradient-to-br bg-clip-text text-transparent break-word"
-								class:opacity-0={i !== 0}
-								data-font-casl={0}
-							>
-								{#each name.split('\\') as segement}
-									{segement}<wbr />
-								{/each}
-							</span>
-						{/each}
-					</span>
-				</h1>
-				<ul
-					class="my-0 mt-4 flex flex-col list-none items-center pl-0 text-2xl leading-0 md:flex-row md:items-start md:gap-[1ch]"
-				>
-                    <li>
-                        <h2
-                            class="student"
-                            on:mouseenter={() => animateWord('student')}
-                            on:mouseleave={() => endAnimateWord('student')}
-                            on:touchend={() => endAnimateWord('student')}
-                            on:touchstart={() => animateWord('student')}
-                        >
-                            {#each m.hero_student().split('') as letter}
-                                <span class="letter inline-block">{letter}</span>
-                            {/each}
-                        </h2>
-                    </li>
-                    <li>
-                        <h2
-                            class="programmer"
-                            on:mouseenter={() => animateWord('programmer')}
-                            on:mouseleave={() => endAnimateWord('programmer')}
-                            on:touchend={() => endAnimateWord('programmer')}
-                            on:touchstart={() => animateWord('programmer')}
-                        >
-                            <a
-                                class="group dark:hover:underline-dark-blue flex text-light-text underline-offset-14 dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
-                                href="https://github.com/Suyashtnt"
-                                rel="me"
-                            >
-                                {#each m.hero_programmer().split('') as letter}
-                                    <span
-                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary"
-                                    >
-                                        {letter}
-                                    </span>
-                                {/each}
-                            </a>
-                        </h2>
-                    </li>
-					<li>
-                        <h2
-                            class="gamer"
-                            on:mouseenter={() => animateWord('gamer')}
-                            on:mouseleave={() => endAnimateWord('gamer')}
-                            on:touchend={() => endAnimateWord('gamer')}
-                            on:touchstart={() => animateWord('gamer')}
-                        >
-                            <a
-                                class="group dark:hover:underline-dark-blue flex text-light-text underline-offset-14 dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
-                                href="https://steamcommunity.com/id/suyashtnt123"
-                                rel="me"
-                            >
-                                {#each m.hero_gamer().split('') as letter}
-                                    <span
-                                        class="letter group-hover:text-light-blue dark:group-hover:text-dark-secondary"
-                                    >
-                                        {letter}
-                                    </span>
-                                {/each}
-                            </a>
-                        </h2>
-                    </li>
-				</ul>
-                <ul
-					class="my-0 mt-6 flex flex-col list-none items-center pl-0 text-2xl leading-0 md:flex-row md:items-start md:gap-[1ch]"
-                >
-                    <li class="dark:hover:underline-dark-blue flex items-center gap-[1ch] text-light-text dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground">
-	                    <div class="i-ic-email inline-block h-8 w-8" />
-                        <a
-                            class="dark:hover:underline-dark-blue text-light-text dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
-                            href="mailto:suyashtnt@gmail.com"
-                        >
-                            Suyashtnt@gmail.com
-                        </a>
-                    </li>
-                    <li class="flex items-center gap-[1ch]">
-	                    <div class="i-ic-baseline-discord inline-block h-8 w-8" />
-                        <a
-                            class="dark:hover:underline-dark-blue text-light-text dark:text-dark-surface_foreground visited:text-light-text hover:underline-light-blue dark:visited:text-dark-surface_foreground"
-                            href="https://discord.com"
-                            on:click|preventDefault={() => {
-                                navigator.clipboard.writeText("tabiasgeehuman")
-                                alert("Copied to clipboard!")
-                            }}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            @tabiasgeehuman
-                        </a>
-                    </li>
-                </ul>
+	<div class="flex align-items:center bg:surface flex-grow:1 flex:auto flex:col px:6x r:4x">
+		<div
+			class="flex align-items:center gap:6x@sm justify-content:space-between mt:8x r:4x"
+		>
+			<div
+				class={'r:4x ~all|300ms gradient(90deg,var(--from),var(--to)) $from:text-primary $to:secondary scale(0.9):hover scale(1.25):hover>div>picture>img'}
+			>
+				<div class="flex p:2x place-items:center r:6x">
+					<enhanced:img
+						alt="A contemporary portrait of me."
+						class="object-cover ~all|300ms h:auto r:4x vertical:middle w:28x w:36x@sm"
+						loading="eager"
+						sizes="min(180px, 100vw)"
+						src="$lib/pictures/face.png?w=160;140"
+					></enhanced:img>
+				</div>
 			</div>
+			<h1
+				class={'m:0 ml:2x text:center text:10x text:12x@sm line-height:1.2! {mb:0;px:0;text:left}@md'}
+				class:text:12x={browser}
+				class:text:14x@sm={browser}
+			>
+				{m.hello()}
+				<span 
+					class="flex flex:col"
+					class:names={browser}
+				>
+					{#each names as name, i}
+						<span
+							class="name-{i} animate-casl gradient-text inline $from:text-primary $to:secondary gradient(60deg,var(--from),var(--to))"
+						>
+							{#each name.split('\\') as segement}
+								{segement}<wbr />
+							{/each}
+						</span>
+					{/each}
+				</span>
+			</h1>
 		</div>
-
-		<section class="flex flex-[0_1_auto] flex-shrink flex-row items-center gap-6">
-			<!-- <ul class="flex flex-wrap list-none gap-2 rounded-xl pa-0">
-                {#each data.projects as project (project.name)}
-                    <li class="flex-[1_1_200px]">
-                        <Project {project} />
-                    </li>
-                {/each}
-            </ul> -->
-
-			<enhanced:img
-				alt="My desktop computer rice."
-				class="block h-full max-h-full max-w-full w-auto rounded-xl object-cover transition-all group-hover:scale-105"
-				loading="eager"
-				sizes="1280px 720px 480px 360px"
-                src='$lib/pictures/Computer.png'
-			/>
-		</section>
+		<div class="mb:8x">
+			<ul
+				class={'my:0 mt:4x  flex flex:col align-items:center pl:0 text:6x line-height:0.2! {flex:row;align-items:start;gap:2ch}@2xs list-style:none@<2xs'}
+			>
+				<li class="list-style:none">
+					<h2
+						class="student w:36x@2xs"
+						on:mouseenter={() => animateWord('student')}
+						on:mouseleave={() => endAnimateWord('student')}
+						on:touchend={() => endAnimateWord('student')}
+						on:touchstart={() => animateWord('student')}
+					>
+						{#each m.hero_student().split('') as letter}
+							<span class="letter animate-casl inline-block">{letter}</span>
+						{/each}
+					</h2>
+				</li>
+				<li>
+					<h2
+						class="programmer"
+						on:mouseenter={() => animateWord('programmer')}
+						on:mouseleave={() => endAnimateWord('programmer')}
+						on:touchend={() => endAnimateWord('programmer')}
+						on:touchstart={() => animateWord('programmer')}
+					>
+						<a
+							class="flex fg:surface fg:surface:visited fg:blue:hover>span text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:underline"
+							href="https://github.com/Suyashtnt"
+							rel="me"
+						>
+							{#each m.hero_programmer().split('') as letter}
+								<span class="letter animate-casl inline-block">
+									{letter}
+								</span>
+							{/each}
+						</a>
+					</h2>
+				</li>
+				<li>
+					<h2
+						class="gamer"
+						on:mouseenter={() => animateWord('gamer')}
+						on:mouseleave={() => endAnimateWord('gamer')}
+						on:touchend={() => endAnimateWord('gamer')}
+						on:touchstart={() => animateWord('gamer')}
+					>
+						<a
+							class="flex fg:surface fg:surface:visited text-decoration:surface text-decoration:blue:hover text-underline-offset:14 text:blue:hover>span text:underline"
+							href="https://steamcommunity.com/id/suyashtnt123"
+							rel="me"
+						>
+							{#each m.hero_gamer().split('') as letter}
+								<span class="letter animate-casl inline-block">
+									{letter}
+								</span>
+							{/each}
+						</a>
+					</h2>
+				</li>
+			</ul>
+			<ul
+				class="flex align-items:center align-items:start@md flex:col@<2xs gap:1ch line-height:0 list-style:none mt:3x my:0 pl:0 text:5x"
+			>
+				<li
+					class="flex align-items:center fg:surface fg:surface@visited gap:1ch text-decoration:blue:hover"
+				>
+					<Email class="h-8 w-8" />
+					<a
+						class="fg:surface fg:surface@visited text-decoration:blue:hover"
+						href="mailto:suyashtnt@gmail.com"
+					>
+						Suyashtnt@gmail.com
+					</a>
+				</li>
+				<li
+					class="flex align-items:center fg:surface fg:surface@visited gap:1ch text-decoration:blue:hover"
+				>
+					<Discord class="h-8 w-8" />
+					<a
+						class="fg:surface fg:surface:visited text-decoration:blue:hover"
+						href="https://discord.com"
+						on:click|preventDefault={() => {
+							navigator.clipboard.writeText('tabiasgeehuman');
+							alert('Copied to clipboard!');
+						}}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						@tabiasgeehuman
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
+
+	<section class="flex flex:auto flex:row flex:shrink place-items:center">
+		<enhanced:img
+			alt="My desktop computer rice."
+			class="block aspect:21/9@md h:full max-h:full max-w:full obj:contain r:4x w:auto"
+			loading="eager"
+			sizes="min(1280px, 100vw)"
+			src="$lib/pictures/Computer.png?w=1280;720;480;360;240"
+		></enhanced:img>
+	</section>
 </section>
 
-<div class="wave bg-light-base dark:bg-dark-base_background">
-    <svg
-        data-name="Layer 1"
-        preserveAspectRatio="none"
-        viewBox="0 0 1200 120"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        <path
-            class="fill-light-surface-0 dark:fill-dark-surface_background"
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-        />
-    </svg>
-</div>
-
 <style>
-	.wave {
-		width: 100%;
-		overflow: hidden;
-		line-height: 0;
-		transform: rotate(180deg);
-	}
-
-	.wave svg {
-		position: relative;
-		display: block;
-		width: calc(155% + 1.3px);
-		height: 180px;
-	}
-
 	.names {
 		display: grid;
 	}
+
 	.names > * {
 		grid-row: 1;
 		grid-column: 1;
+	}
+
+	.animate-casl {
+		font-variation-settings:
+			'CASL' var(--casl),
+			'MONO' var(--casl);
 	}
 </style>

@@ -12,7 +12,6 @@
 		 * Preferably SVG, 1:1 aspect ratio
 		 */
 		icon: string;
-		iconAlt: string;
 		id: string;
 		/**
 		 * Name of the skill
@@ -38,18 +37,18 @@
         isSelected: boolean;
         skill: ISkill;
     }
-    const { isSelected, skill } = $props<Props>();
+    const { isSelected, skill }: Props = $props();
 </script>
 
 <a
-	class="flex items-center gap-4 border-2 border-light-lavender/20 rounded-xl px-4 text-light-text decoration-none transition-all duration-200 dark:border-dark-primary_background/80 dark:text-dark-overlay_foreground hover:shadow-2xl"
-	class:border-solid={isSelected}
-    data-sveltekit-noscroll
+	class="flex align-items:center gap:4x outline:2 px:4x r:4x text:overlay text:overlay:visited text-decoration:none {isSelected ? 'outline:primary|solid' : 'outline:transparent'}"
+  data-sveltekit-noscroll
 	href={`/?skill=${skill.id}`}
 >
-	<img alt={skill.iconAlt} class="h-auto w-8 md:w-10" src={skill.icon} />
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html skill.icon}
 
-	<h2 class="text-2xl md:text-2xl">
+	<h2 class="text:6x">
 		{skill.name}
 	</h2>
 </a>

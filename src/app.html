@@ -1,21 +1,22 @@
 <!doctype html>
-<html lang="%lang%" dir="ltr">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		%unocss-svelte-scoped.global% %sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover" class="m0">
-		<div
-			style="
+<html lang="%paraglide.lang%" dir="%paraglide.textDirection%">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width" />
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover" class="m0">
+	<div style="
 				display: grid;
 				min-height: 100vh;
 				grid-template-rows: auto 1fr auto;
 				grid-template-columns: 100%;
-			"
-		>
-			%sveltekit.body%
-		</div>
-	</body>
+			">
+		%sveltekit.body%
+	</div>
+</body>
+
 </html>

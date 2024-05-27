@@ -42,7 +42,7 @@ export const GET: RequestHandler = async () => {
 	return new Response(body, options);
 };
 
-const _render = (posts: (App.BlogPost & { language: AvailableLanguageTag })[]) =>
+const _render = (posts: ({ language: AvailableLanguageTag } & App.BlogPost)[]) =>
 	`
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -67,7 +67,7 @@ const _render = (posts: (App.BlogPost & { language: AvailableLanguageTag })[]) =
 `.trim();
 
 // TODO: copyright (still figuring it out)
-const _renderPost = (post: App.BlogPost & { language: string }) =>
+const _renderPost = (post: { language: string } & App.BlogPost) =>
 	`
 <entry>
     <title>${post.title}</title>

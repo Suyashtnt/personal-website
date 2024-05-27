@@ -1,78 +1,120 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import * as m from '$i18n/messages';
+	import { type AvailableLanguageTag, availableLanguageTags, languageTag } from '$i18n/runtime';
+	import { i18n } from '$lib/i18n';
+	import DropDown from '~icons/material-symbols/arrow-drop-down';
+	import Language from '~icons/material-symbols/language';
+	import Menu from '~icons/material-symbols/menu-rounded';
+	import Link from '~icons/material-symbols/open-in-new';
+	import Arrow from '~icons/material-symbols/play-arrow-rounded';
 
-	import LanguagePicker from './languagePicker.svelte';
-
-    let dropdownOpen = false
+	const translateLanguage = (language: AvailableLanguageTag) => {
+		switch (language) {
+			case 'en':
+				return m.lang_en();
+			case 'af':
+				return m.lang_af();
+			default:
+				return language;
+		}
+	};
 </script>
 
-<!-- TODO: mobile -->
+{#snippet dropdownSection(title, Icon, content)}
+	<span>
+		<Icon class="vertical:middle" />
+		{title}
+	</span>
 
-<nav class="relative top-4 z-10 mx-4 mb-4 flex items-center justify-between border-2 border-light-mantle/80 rounded-xl border-solid bg-light-mantle/20 pl-2 backdrop-blur lg:sticky dark:border-dark-subtle/80 dark:bg-dark-surface_background/70 dark:bg-hero-diagonal-lines-[#acaaff]/20">
-    <section class="flex items-center justify-around gap-2">
-        <a
-            class="flex items-center justify-around gap-2 text-light-text decoration-none dark:text-dark-base_foreground visited:text-light-text dark:visited:text-dark-base_foreground"
-            href="/posts/the-wobbler"
-        >
-            <enhanced:img
-                alt="TNTMAN_1671"
-                class="aspect-square h-8 w-8 rounded-full align-middle transition-all hover:scale-105 hover:rounded-md hover:shadow-lg"
-                sizes="32px 48px 64px"
-                src="$lib/pictures/wobbler.png" />
-        </a>
+	{@render content()}
+{/snippet}
 
-        <h1 class="my-0 text-2xl">
-            <a
-                class="text-light-text decoration-none dark:text-dark-base_foreground visited:text-light-text dark:visited:text-dark-base_foreground"
-                href="/"
-            >
-                TNTMAN_1671
-            </a>
-        </h1>
-    </section>
+{#snippet links()}
+	<div class="flex rel bg:surface fg:surface flex:col@<2xs mb:2x@<2xs p:2x r:6x text:left">
+		<ul
+			class={'r:6x transition:all|300ms my:0 flex flex:col@<2xs pl:0 pr:2x text:5x'}
+		>
+			<li class="list-style:none">
+				<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/">
+					<Arrow />
+					{m.header_home()}
+				</a>
+			</li>
+			<li class="list-style:none">
+				<a class="flex align-items:center fg:base fg:base:visited flex:row" href="/posts">
+					<Arrow />
+					{m.header_posts()}
+				</a>
+			</li>
+		</ul>
+	</div>
+{/snippet}
 
-    <button
-        aria-controls="sweets-dropdown"
-        aria-expanded={dropdownOpen}
-        class="dropdown__title block aspect-square flex items-center justify-center rounded-xl border-none bg-dark-surface_background pa-2 text-4xl sm:hidden"
-        on:click={() => dropdownOpen = !dropdownOpen}
-        type="button"
-    >
-        <span aria-label="Dropdown menu" class="i-ic-menu inline-block" />
-    </button>
+{#snippet langs()}
+	<ul
+		class={'abs@2xs r:6x bg:surface bg:overlay@2xs my:0 flex top:calc(100%+0.25rem) flex:col p:2x p:1x@2xs pr:3x@2xs  text:5x right:0'}
+	>
+		{#each availableLanguageTags.filter((lang) => lang !== languageTag()) as lang}
+			<li class="list-style:none">
+				<a
+					aria-current={lang === languageTag() ? 'page' : undefined}
+					class="flex align-items:center flex:row"
+					href={i18n.route($page.url.pathname)}
+					hreflang={lang}
+				>
+					<Arrow />
+					{translateLanguage(lang)}
+				</a>
+			</li>
+		{/each}
+	</ul>
+{/snippet}
 
-    <div
-        class="links opacity-3/10 sm:opacity-full invisible absolute left-1/2 top-[calc(100%+0.25rem)] flex-row origin-top-center rotate-x-90 items-center items-center gap-8 rounded-xl bg-dark-overlay_background pa-2 text-center text-4xl transition-all sm:visible sm:relative sm:left-0 sm:top-0 sm:flex -translate-x-1/2 sm:translate-x-0 sm:rotate-x-0 sm:gap-2 sm:p-0 sm:pl-4 sm:text-2xl"
-    >
-        <a class="flex flex-row items-center" href="/">
-            <span class="i-ic-play-arrow inline-block"/>
-            {m.header_home()}
-        </a>
-        <a class="flex flex-row items-center" href="/posts">
-            <span class="i-ic-play-arrow inline-block"/>
-            {m.header_posts()}
-        </a>
-        <LanguagePicker />
-    </div>
+<nav
+	class="flex rel sticky@sm align-items:center bd:blur(8x) border:2|subtle/.80 h:12x justify-content:space-between mb:4x mx:4x r:6x top:4x z:10"
+>
+	<section class="flex align-items:center gap:2x justify-content:space-between">
+		<a class="flex place-items:center" href="/posts/the-wobbler">
+			<enhanced:img
+				alt="TNTMAN_1671"
+				class={'aspect-square size:12x r:full align-items:center ~duration:300 ~transform ~shadow {scale(1.3);r:2x;shadow:4x}:hover block'}
+				sizes="32px 48px 64px"
+				src="$lib/pictures/wobbler.png"
+			>
+			</enhanced:img>
+		</a>
+
+		<h1 class="my:0 text:6x">
+			<a class="fg:base fg:base:visited" href="/"> TNTMAN_1671 </a>
+		</h1>
+	</section>
+
+	<details class="hidden@2xs">
+		<summary class="bg:overlay h:8x list-style:none p:2x r:6x">
+			<Menu aria-label="Dropdown menu" class="size:8x" />
+		</summary>
+
+		<div
+			class={'w:80% abs left:50% top:calc(100%+1rem) flex:row transform:top rotate(90,0) r:6x bg:text-primary@2xs bg:overlay p:2x text:6x transition:all|300ms translate(-50%,0) gap:4x'}
+		>
+			{@render dropdownSection(m.header_links(), Link, links)}
+			{@render dropdownSection(translateLanguage(languageTag()), Language, langs)}
+		</div>
+	</details>
+
+
+	<div
+		class={'flex:row r:6x bg:primary bg:text-primary@dark text:center text:6x hidden@<2xs flex gap:4x p:2x text:5x fg:black'}
+	>
+		{@render links()}
+		<details class="flex rel bg:surface fg:surface flex:col@<2xs p:1x pl:2x place-items:center r:6x">
+			<summary class="flex align-items:center bg:none border:none flex:row gap:1x h:full text:5x">
+				<Language />
+				{translateLanguage(languageTag())}
+				<DropDown />
+			</summary>
+			{@render langs()}
+		</details>
+	</div>
 </nav>
-
-<style>
-    .links a {
-        --at-apply: "decoration-none text-dark-surface_foreground visited:text-dark-surface_foreground";
-    }
-
-    nav {
-        &:hover,
-        &:focus-within {
-            & .links {
-                opacity: 1;
-                transform: rotateX(0deg) translateX(-50%);
-                visibility: visible;
-
-                @media (min-width: 640px) {
-                    transform: none;
-                };
-            }
-        }
-    }
-</style>

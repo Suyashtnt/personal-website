@@ -1,10 +1,11 @@
+import type { AvailableLanguageTag } from '$i18n/runtime';
+
 import * as m from '$i18n/messages';
-import { getCurrentLanguage } from '$lib/helpers/i18n';
 import { error } from '@sveltejs/kit';
 
 import type { LayoutServerLoad } from './$types';
 
-export const load = (async ({ cookies, request }) => {
+export const load = (async ({ locals }) => {
 	const potentialFooterTexts = [
 		m.footer_txt_1(),
 		m.footer_txt_2(),
@@ -18,6 +19,6 @@ export const load = (async ({ cookies, request }) => {
 
 	return {
 		footerText,
-		language: getCurrentLanguage(cookies, request)
+		language: locals.paraglide.lang as AvailableLanguageTag
 	};
 }) satisfies LayoutServerLoad;

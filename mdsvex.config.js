@@ -4,9 +4,9 @@ import rehypeSlug from 'rehype-slug';
 import remarkAbbr from 'remark-abbr';
 import remarkGithub from 'remark-github';
 import remarkCallouts from "@portaljs/remark-callouts";
-import { codeToHtml } from 'shikiji';
+import { codeToHtml } from 'shiki';
 
-import mochaTheme from './mocha.json' assert { type: 'json' };
+import syntaxDark from './syntax-dark.json' assert { type: 'json' };
 
 /**
  * @param {string} code
@@ -20,14 +20,16 @@ async function highlighter(code, lang = '') {
 	 */
 	const escape_svelty = (str) =>
 		str
-			.replace(/[{}`]/g, (c) => ({ '`': '&#96;', '{': '&#123;', '}': '&#125;' })[c])
-			.replace(/\\([trn])/g, '&#92;$1');
+			.replace(/{/g, '&#123;')
+			.replace(/}/g, '&#125;')
+			.replace(/`/g, '&#96;')
+			.replace(/\\([trn])/g, ' ')
 
 	const html = await codeToHtml(code, {
 		lang,
 		themes: {
-			dark: mochaTheme,
-      light: 'github-light'
+			dark: syntaxDark,
+			light: 'github-light'
 		}
 	});
 

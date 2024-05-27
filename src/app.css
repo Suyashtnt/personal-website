@@ -9,45 +9,67 @@ body {
     &:has(#dropdown-button[data-active='true']) {
         overflow: hidden;
     }
-	margin: 0;
+
+    margin: 0;
+}
+
+button {
+    font-family: inherit;
+    color: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
-	body {
-		color-scheme: dark;
-	}
+    body {
+        color-scheme: dark;
+    }
 }
 
 @media (prefers-reduced-motion) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
-  }
+
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
 }
 
-h1, h2, h3, h4, h5, h6 {
-    transition: all 150ms ease-in-out;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    transition: all 300ms;
     font-variation-settings: 'CASL' 0;
     font-weight: 500;
 
-    &:hover {
+    &:has(a):hover {
+        transition: all 300ms;
         font-variation-settings: 'CASL' 1;
         font-weight: 800;
+        transform: scale(1.05);
     }
+}
+
+a :is(h1, h2, h3, h4, h5, h6):hover {
+    font-variation-settings: 'CASL' 1;
+    font-weight: 800;
+    transform: scale(1.05);
 }
 
 
 a {
-    color: rgb(56 189 248);
+    color: oklch(77% 0.2 240);
+
     &:visited {
-        color: rgb(114 135 253 / var(--un-text-opacity));
+        color: oklch(0.77 0.2 284);
     }
 
     @media (prefers-color-scheme: dark) {
-        color: rgb(68 168 231 / var(--un-text-opacity));
+        color: oklch(77% 0.2 240);
+
         &:visited {
-            color: rgb(172 170 255 / var(--un-text-opacity));
+            color: oklch(0.77 0.2 284);
         }
     }
 }
@@ -60,15 +82,61 @@ code {
         'wght' 450;
 }
 
-html, body {
+html,
+body {
     scroll-behavior: smooth;
-    background-color: rgb(239 241 245);
+    background-color: oklch(90% 0.03 284);
+
     @media (prefers-color-scheme: dark) {
-        background-color: rgb(6 5 22);
+        background-color: oklch(13% 0.03 284);
         color: rgb(212 213 242);
     }
 }
 
 :root {
     view-transition-name: none;
+    --m3-easing: linear(0, 0.002, 0.01 3.6%, 0.034, 0.074 9.1%, 0.128 11.4%, 0.194 13.4%, 0.271 15%,
+            0.344 16.1%, 0.544, 0.66 20.6%, 0.717 22.4%, 0.765 24.6%, 0.808 27.3%,
+            0.845 30.4%, 0.883 35.1%, 0.916 40.6%, 0.942 47.2%, 0.963 55%, 0.979 64%,
+            0.991 74.4%, 0.998 86.4%, 1);
+}
+
+* {
+    transition-timing-function: var(--m3-easing) !important;
+}
+
+ /* The bare minimum English subset, plus copyright & arrows (← ↑ → ↓) & quotes (“ ” ‘ ’) & bullet (•) */
+@font-face {
+  font-family: 'RecVar';
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('./lib/fonts/Recursive_VF_1.085--subset_range_english_basic-partial.woff2') format('woff2');
+  unicode-range: U+0020-007F,U+00A9,U+2190-2193,U+2018,U+2019,U+201C,U+201D,U+2022;
+}
+
+/* unicode latin-1 letters, basic european diacritics */
+@font-face {
+  font-family: 'RecVar';
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('./lib/fonts/Recursive_VF_1.085--subset_range_latin_1-partial.woff2') format('woff2');
+  unicode-range: U+00C0-00FF;
+}
+
+/* unicode latin-1, punc/symbols & arrows (↔ ↕ ↖ ↗ ↘ ↙) */
+@font-face {
+  font-family: 'RecVar';
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('./lib/fonts/Recursive_VF_1.085--subset_range_latin_1_punc-partial.woff2') format('woff2');
+  unicode-range: U+00A0-00A8,U+00AA-00BF,U+2194-2199;
+}
+
+/* unicode latin A extended */
+@font-face {
+  font-family: 'RecVar';
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('./lib/fonts/Recursive_VF_1.085--subset_range_latin_ext-partial.woff2') format('woff2');
+  unicode-range: U+0100-017F;
 }

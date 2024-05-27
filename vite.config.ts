@@ -1,9 +1,9 @@
-import { paraglide } from '@inlang/paraglide-js-adapter-vite';
+import { paraglide } from '@inlang/paraglide-sveltekit/vite';
 import { enhancedImages } from '@sveltejs/enhanced-img';
 import { sveltekit } from '@sveltejs/kit/vite';
-import unoCSS from '@unocss/svelte-scoped/vite';
 import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
+import Icons from 'unplugin-icons/vite';
 import { defineConfig } from 'vite';
 
 const targets = browserslistToTargets(
@@ -17,20 +17,25 @@ export default defineConfig({
 	css: {
 		devSourcemap: true,
 		lightningcss: {
-			drafts: {
-				nesting: true
-			},
 			targets
 		},
 		transformer: 'lightningcss'
 	},
 	plugins: [
-		unoCSS(),
 		enhancedImages(),
 		paraglide({
 			outdir: './src/paraglide',
 			project: './project.inlang'
 		}),
-		sveltekit()
-	]
+		sveltekit(),
+		Icons({
+			autoInstall: true,
+			compiler: 'svelte'
+		})
+	],
+	server: {
+		fs: {
+			allow: ['./master.css.ts']
+		}
+	}
 });

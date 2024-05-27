@@ -3,10 +3,10 @@
 
 	import type { PageData } from './$types';
 
-    interface Props {
-        data: PageData
-    }
-    const { data } = $props<Props>();
+  interface Props {
+      data: PageData
+  }
+  const { data }: Props = $props();
 	const { html, selectedSkill } = $derived(data);
 
     const getProficiency = () => {
@@ -42,79 +42,51 @@
 </script>
 
 <article
-	class="mx-2 box-border flex flex-grow flex-basis-[70ch] flex-col gap-4 rounded-xl bg-light-mantle p-4 dark:bg-dark-overlay_background"
+	class="flex bg:overlay box:border flex-basis:70ch flex:1 flex:col gap:4x mx:2 p:4x r:4x"
 >
-	<!-- title -->
-	<header class="flex items-center gap-4">
-		<img alt={selectedSkill?.iconAlt} class="h-auto w-12" src={selectedSkill?.icon} />
+	<header class="flex align-items:center gap:4x text:5x">
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		{@html selectedSkill.icon}
 		<hgroup>
-			<h1 class="my-0 text-3xl">
+			<h1 class="line-height:1.2 my:0 text:7x">
 				{selectedSkill?.name}
 			</h1>
-			<p class="my-0 text-xl">
+			<p class="my:0">
 				{selectedSkill?.description}
 			</p>
 		</hgroup>
 	</header>
-	<!-- chips -->
-	<section class="w-min flex">
-		<div
-			class="m-1 h-5 flex items-center justify-center rounded-full pa-3"
-            class:bg-light-green={selectedSkill?.proficiency === 'Beginner'}
-			class:bg-light-red={selectedSkill?.proficiency === 'Skilled'}
-			class:bg-light-yellow={selectedSkill?.proficiency === 'Intermediate'}
-			class:dark-bg-dark-base09={selectedSkill?.proficiency === 'Intermediate'}
-			class:dark-bg-dark-base0B={selectedSkill?.proficiency === 'Beginner'}
-			class:dark-bg-dark-red={selectedSkill?.proficiency === 'Skilled'}
-			class:dark-text-dark-base09={selectedSkill?.proficiency === 'Intermediate'}
 
-			class:dark-text-dark-base0B={selectedSkill?.proficiency === 'Beginner'}
-			class:dark-text-dark-red={selectedSkill?.proficiency === 'Skilled'}
-			class:text-light-green={selectedSkill?.proficiency === 'Beginner'}
-			class:text-light-red={selectedSkill?.proficiency === 'Skilled'}
-			class:text-light-yellow={selectedSkill?.proficiency === 'Intermediate'}
-			style="--un-bg-opacity: 15%;"
-		>
-			<p class="my-0 max-w-full flex-initial text-lg font-normal leading-none">
-				{proficiency}
+	<!-- chips -->
+	<section class="flex gap:2x">
+		{#snippet chipContent(content)}
+			<p class="fg:black my:0 text:5x">
+				{content}
 			</p>
+		{/snippet}
+
+		<div
+			class="flex h:8x p:3x place-items:center r:4x"
+  		class:bg:green={selectedSkill?.proficiency === 'Beginner'}
+			class:bg:red={selectedSkill?.proficiency === 'Skilled'}
+			class:bg:yellow={selectedSkill?.proficiency === 'Intermediate'}
+		>
+			{@render chipContent(proficiency)}
 		</div>
 
 		<div
-			class="m-1 h-5 flex items-center justify-center rounded-full bg-opacity-15 pa-3"
-			class:bg-light-blue={selectedSkill?.type === 'Tool'}
-			class:bg-light-green={selectedSkill?.type === 'Language'}
-			class:bg-light-maroon={selectedSkill?.type === 'Backend'}
-			class:bg-light-mauve={selectedSkill?.type === 'Other'}
-			class:bg-light-sapphire={selectedSkill?.type === 'Frontend'}
-			class:bg-light-yellow={selectedSkill?.type === 'Framework'}
-			class:dark-bg-dark-base01={selectedSkill?.type === 'Other'}
-			class:dark-bg-dark-base07={selectedSkill?.type === 'Frontend'}
-			class:dark-bg-dark-base0B={selectedSkill?.type === 'Framework'}
-			class:dark-bg-dark-base0C={selectedSkill?.type === 'Tool'}
-			class:dark-bg-dark-base0E={selectedSkill?.type === 'Language'}
-			class:dark-bg-dark-red={selectedSkill?.type === 'Backend'}
-			class:dark-text-dark-base01={selectedSkill?.type === 'Other'}
-
-			class:dark-text-dark-base07={selectedSkill?.type === 'Frontend'}
-			class:dark-text-dark-base0B={selectedSkill?.type === 'Framework'}
-			class:dark-text-dark-base0C={selectedSkill?.type === 'Tool'}
-			class:dark-text-dark-base0E={selectedSkill?.type === 'Language'}
-			class:dark-text-dark-red={selectedSkill?.type === 'Backend'}
-			class:text-light-blue={selectedSkill?.type === 'Tool'}
-			class:text-light-green={selectedSkill?.type === 'Language'}
-			class:text-light-maroon={selectedSkill?.type === 'Backend'}
-			class:text-light-mauve={selectedSkill?.type === 'Other'}
-			class:text-light-sapphire={selectedSkill?.type === 'Frontend'}
-			class:text-light-yellow={selectedSkill?.type === 'Framework'}
-			style="--un-bg-opacity: 15%;"
-        >
-			<p class="my-0 max-w-full flex-initial text-lg font-normal leading-none">
-				{type}
-			</p>
+			class="flex h:8x p:3x place-items:center r:4x"
+			class:bg:blue={selectedSkill?.type === 'Tool'}
+			class:bg:green={selectedSkill?.type === 'Language'}
+			class:bg:orange={selectedSkill?.type === 'Framework'}
+			class:bg:purple={selectedSkill?.type === 'Other'}
+			class:bg:purple={selectedSkill?.type === 'Backend'}
+			class:bg:teal={selectedSkill?.type === 'Frontend'}
+    >
+			{@render chipContent(type)}
 		</div>
 	</section>
-	<section class="text-lg">
+	<section class="mt:0>p:first-child text:5x">
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		{@html html}
 	</section>

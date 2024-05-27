@@ -23,8 +23,8 @@ This post was written for an school project.
 I'm moving it here because I can.
 </Note>
 
-<div class="grid gap-2 grid-rows-2 md:grid-cols-5 md:grid-rows-1">
-    <p class="col-span-1 md:col-span-3 h-min">
+<div class="gap:2 grid-cols:5@md grid-rows:2@<md">
+    <p class="grid-col-span:1 grid-col-span:3@md h:min">
         Butter chicken, also known as murgh makhani,
         is a curry made from chicken pieces and a special sauce.
         The sauce is made out of a spices mix, tomatoes, yogurt, and butter.
@@ -36,13 +36,13 @@ I'm moving it here because I can.
 
     <a
         href="https://commons.wikimedia.org/wiki/File:Chicken_makhani.jpg"
-        class="col-span-1 md:col-span-2"
+        class="grid-col-span:2@md"
     >
-        <figure class="bg-light-surface0 dark:bg-dark-overlay_background pa-4 rounded-xl">
+        <figure class="bg:overlay p:4x r:4x">
             <enhanced:img
                 src={ChickenMakhani}
                 alt="Chicken Makhani, murgh makhani, or Butter Chicken"
-                class="rounded-md transition w-full h-auto"
+                class="r:3x transition w:full h:auto"
                 lazy={false}
             />
 
@@ -57,8 +57,8 @@ I'm moving it here because I can.
 
 ## History
 
-<div class="grid gap-2 grid-rows-2 md:grid-cols-5 md:grid-rows-1">
-    <p class="col-span-1 md:col-span-3">
+<div class="gap:2 grid-cols:5@md grid-rows:2@<md">
+    <p class="grid-col-span:1 grid-col-span:3@md h:min">
         Despite what you may think, butter chicken is young.
         It was made by aforementioned Kundan Lal Gujral in 1948.
         Kundan was a buisness man, and he sold Tandoori Chicken
@@ -79,13 +79,13 @@ I'm moving it here because I can.
 
     <a
         href="https://commons.wikimedia.org/wiki/File:Kundan-Lal-Gujral.jpg"
-        class="col-span-1 md:col-span-2"
+        class="grid-col-span:2@md"
     >
-        <figure class="pa-4 rounded-xl bg-light-surface0 dark:bg-dark-overlay_background">
+        <figure class="bg:overlay p:4x r:4x">
             <enhanced:img
                 src={KundanLalGujral}
                 alt="Portrait of Kundan Lal Gujral"
-                class="rounded-md transition w-full h-auto"
+                class="r:3x transition w:full h:auto"
             />
 
             <figcaption>
