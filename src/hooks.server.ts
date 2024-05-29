@@ -7,7 +7,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import config from '../master.css';
 
 export const handle: Handle = sequence(i18n.handle(), ({ event, resolve }) =>
-	resolve(event, {
-		transformPageChunk: ({ html }) => render(html, config).html
-	})
+    resolve(event, {
+        transformPageChunk: ({ html }) => render(html, config).html
+    })
 );

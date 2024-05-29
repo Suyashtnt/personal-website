@@ -11,39 +11,39 @@ export const prerender = true;
 const blogUuid = uuid('https://tntman.tech', uuid.URL);
 
 function _objectEntries<T extends Record<PropertyKey, unknown>, K extends keyof T, V extends T[K]>(
-	o: T
+    o: T
 ) {
-	return Object.entries(o) as [K, V][];
+    return Object.entries(o) as [K, V][];
 }
 
 export const GET: RequestHandler = async () => {
-	const posts = await Promise.all(
-		_objectEntries(allPosts).map(async ([language, postPromises]) => {
-			const posts = await postPromises;
-			return posts.map((post) => ({
-				...post,
-				language
-			}));
-		})
-	).then((posts) => posts.flat());
+    const posts = await Promise.all(
+        _objectEntries(allPosts).map(async ([language, postPromises]) => {
+            const posts = await postPromises;
+            return posts.map((post) => ({
+                ...post,
+                language
+            }));
+        })
+    ).then((posts) => posts.flat());
 
-	const publishedPosts = posts.filter((post) => post.published);
-	publishedPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
+    const publishedPosts = posts.filter((post) => post.published);
+    publishedPosts.sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1));
 
-	const body = _render(publishedPosts);
+    const body = _render(publishedPosts);
 
-	const options = {
-		headers: {
-			'Cache-Control': 'max-age=0, s-maxage=3600',
-			'Content-Type': 'application/atom+xml'
-		}
-	};
+    const options = {
+        headers: {
+            'Cache-Control': 'max-age=0, s-maxage=3600',
+            'Content-Type': 'application/atom+xml'
+        }
+    };
 
-	return new Response(body, options);
+    return new Response(body, options);
 };
 
 const _render = (posts: ({ language: AvailableLanguageTag } & App.BlogPost)[]) =>
-	`
+    `
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>The Badly Drawn Blog</title>
@@ -68,12 +68,12 @@ const _render = (posts: ({ language: AvailableLanguageTag } & App.BlogPost)[]) =
 
 // TODO: copyright (still figuring it out)
 const _renderPost = (post: { language: string } & App.BlogPost) =>
-	`
+    `
 <entry>
     <title>${post.title}</title>
     <id>tag:tntman.tech,${new Date(post.date).toISOString().split('T')[0]}:${_getPostUuid(
-		post
-	)}</id>
+        post
+    )}</id>
 
 
     <link

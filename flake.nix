@@ -16,21 +16,7 @@
           nil
           nodejs
           alejandra
-          (nodePackages.svelte-language-server.overrideAttrs (old: let
-            runtimeLibs = lib.makeLibraryPath [
-              stdenv.cc.cc.lib
-            ];
-          in {
-              nativeBuildInputs = [
-                autoPatchelfHook
-                makeWrapper
-              ];
-              buildInptus = runtimeLibs;
-              preFixup = ''
-                wrapProgram "$out/bin/svelteserver" --prefix LD_LIBRARY_PATH : ${runtimeLibs}
-              '';
-            }
-          ))
+          nodePackages.svelte-language-server
           nodePackages.typescript-language-server marksman pkgs.stdenv.cc.cc.lib];
       };
     });
