@@ -19,7 +19,7 @@ function _objectEntries<T extends Record<PropertyKey, unknown>, K extends keyof 
 export const GET: RequestHandler = async () => {
     const posts = await Promise.all(
         _objectEntries(allPosts).map(async ([language, postPromises]) => {
-            const posts = await postPromises;
+            const posts = await Promise.all(Object.values(postPromises));
             return posts.map((post) => ({
                 ...post,
                 language
@@ -47,7 +47,7 @@ const _render = (posts: ({ language: AvailableLanguageTag } & App.BlogPost)[]) =
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>The Badly Drawn Blog</title>
-  <subtitle>Your local wobblers blog about random stuff (usually relating to tech).</subtitle>
+  <subtitle>Your local wobblers blog about random stuff (usually relating to tech or school projects).</subtitle>
 
   <id>tag:tntman.tech,2008-03-10:${blogUuid}</id>
 
