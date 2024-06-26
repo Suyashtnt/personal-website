@@ -11,22 +11,21 @@ const afrikaansModules = import.meta.glob<false, '', App.MdsvexFile>(
 
 const moduleToPost = (path: string, resolver: App.MdsvexResolver) =>
     resolver().then(
-        (post): App.BlogPost => ({
+        (post): App.BlogPost & { path: string } => ({
             ...post.metadata,
             component: post.default,
+            path,
             slug: slugFromPath(path)
         })
     );
 
-const englishPosts = Promise.all(
-    Object.entries(englishModules).map(([path, resolver]) => moduleToPost(path, resolver))
-);
+const englishPosts = 
+Object.fromEntries(Object.entries(englishModules).map(([path, resolver]) => [slugFromPath(path), moduleToPost(path, resolver)] as const))
 
-const afrikaansPosts = Promise.all(
-    Object.entries(afrikaansModules).map(([path, resolver]) => moduleToPost(path, resolver))
-);
+const afrikaansPosts = 
+Object.fromEntries(Object.entries(afrikaansModules).map(([path, resolver]) => [slugFromPath(path), moduleToPost(path, resolver)] as const))
 
-export const allPosts: Record<AvailableLanguageTag, Promise<App.BlogPost[]>> = {
+export const allPosts: Record<AvailableLanguageTag, Record<string, Promise<App.BlogPost & {path: string}>>> = {
     af: afrikaansPosts,
     en: englishPosts
 };

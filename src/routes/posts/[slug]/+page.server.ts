@@ -7,9 +7,9 @@ import type { EntryGenerator, PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ params, parent }) => {
     const { language } = await parent();
 
-    const posts = await allPosts[language];
+    const posts = allPosts[language];
     const { component, ...frontmatter } =
-        posts.find((post) => post.slug === params.slug) ?? error(404, 'Post not found');
+        await posts[params.slug] ?? error(404, 'Post not found');
 
     const cannotFindPost = !frontmatter?.title;
 

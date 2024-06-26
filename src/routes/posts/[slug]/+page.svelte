@@ -10,6 +10,7 @@
 
     import './giscus.css';
     import ToC from './table-of-contents.svelte';
+    import { type SvelteComponent, onMount } from 'svelte';
 
     interface Props {
         data: PageData;
@@ -24,6 +25,12 @@
     ) {
         throw new Error('Missing date or updated in frontmatter');
     }
+
+    let component: SvelteComponent | null = $state(null)
+    onMount(async () => {
+        /* @vite-ignore */
+        component = await import(data.frontmatter.path).then(comp => comp.default)
+    })
 
     // Svelte's template doesn't recognize the type narrowing done above
     const description = data.frontmatter.description;
@@ -96,7 +103,11 @@
 
         <p class="max-w:calc(100vw-2rem)">
             <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-            {@html data.postHtml}
+            {#if component}
+                <svelte:component this={component}></svelte:component>
+            {:else}
+                {@html data.postHtml}
+            {/if}
         </p>
 
         <Giscus
