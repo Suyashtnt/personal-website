@@ -12,7 +12,7 @@
     "hero_student": "Student",
     "post_card_published": "Published {published} | Updated {updated}",
     "post_card_by": "By {author}",
-    "post_card_draft": "DRAFT",
+    "post_card_draft": "UNPUBLISHED",
     "landingpagedesc": "Hi, I'm TNTMan1671.",
     "skill_beginner": "Beginner",
     "skill_skilled": "Skilled",
